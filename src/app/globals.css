@@ -289,9 +289,75 @@ body {
   font-weight: 700;
 }
 
+.nearby-water {
+  display: grid;
+  gap: 2px;
+  margin: 10px 0;
+  padding: 9px 11px;
+  border: 1px solid #bae6fd;
+  border-radius: 7px;
+  background: #f0f9ff;
+}
+
+.nearby-water strong {
+  color: #0369a1;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.nearby-water span {
+  color: #0c4a6e;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.nearby-water small {
+  color: #486581;
+  font-size: 0.7rem;
+}
+
+.confidence-rating {
+  margin: 0 0 8px;
+  color: #486581;
+  font-size: 0.75rem;
+}
+
+.confidence-high {
+  color: #15803d;
+}
+
+.confidence-medium {
+  color: #d97706;
+}
+
+.confidence-low {
+  color: #dc2626;
+}
+
 .risk-description {
   margin: 0;
   color: #627d98;
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+
+.risk-feedback {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-left: 3px solid #0ea5e9;
+  border-radius: 0 6px 6px 0;
+  background: #eaf7fc;
+}
+
+.risk-feedback strong {
+  color: #0c4a6e;
+  font-size: 0.76rem;
+}
+
+.risk-feedback p {
+  margin: 4px 0 0;
+  color: #334e68;
   font-size: 0.72rem;
   line-height: 1.45;
 }

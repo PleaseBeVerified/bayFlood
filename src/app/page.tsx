@@ -16,6 +16,7 @@ type RiskResult = {
   score: number;
   level: string;
   color: string;
+  confidence: "Low" | "Medium" | "High";
   elevationMeters: number;
   elevationFeet: number;
   elevationContribution: number;
@@ -24,7 +25,11 @@ type RiskResult = {
   rainfallContribution: number;
   rainfallInches: number | null;
   distanceToSfhaMeters: number | null;
+  distanceToWaterMeters: number | null;
+  nearbyWaterName: string | null;
+  nearbyWaterKind: string | null;
   explanation: string;
+  feedback: string;
   floodZone: {
     zone: string | null;
     subtype: string | null;
@@ -38,6 +43,24 @@ const floodZoneColors = [
   { color: "#f59e0b", label: "Moderate risk (X, shaded)" },
   { color: "#2563eb", label: "Other mapped flood zones" },
 ];
+
+function formatWaterKind(kind: string | null) {
+  if (!kind) return "Water source";
+
+  const labels: Record<string, string> = {
+    river: "River",
+    stream: "Stream",
+    canal: "Canal",
+    drain: "Drainage channel",
+    coastline: "Coastline",
+    lake: "Lake",
+    pond: "Pond",
+    reservoir: "Reservoir",
+    "water body": "Water body",
+  };
+
+  return labels[kind] ?? kind.charAt(0).toUpperCase() + kind.slice(1);
+}
 
 export default function Home() {
   const mapContainer = useRef<HTMLDivElement>(null);
@@ -298,12 +321,39 @@ export default function Home() {
                   {risk.rainfallInches !== null &&
                     ` · ${risk.rainfallInches.toFixed(2)} in 100-year/24-hour rainfall`}
                 </p>
+                {risk.distanceToWaterMeters !== null && (
+                  <div className="nearby-water">
+                    <strong>Nearest mapped water source</strong>
+                    <span>
+                      {risk.nearbyWaterName ??
+                        formatWaterKind(risk.nearbyWaterKind)}
+                    </span>
+                    {risk.nearbyWaterName && (
+                      <small>{formatWaterKind(risk.nearbyWaterKind)}</small>
+                    )}
+                    <small>
+                      {risk.distanceToWaterMeters.toLocaleString()} meters away
+                    </small>
+                  </div>
+                )}
+                <p className="confidence-rating">
+                  Data confidence:{" "}
+                  <strong
+                    className={`confidence-${risk.confidence.toLowerCase()}`}
+                  >
+                    {risk.confidence}
+                  </strong>
+                </p>
                 <p className="risk-description">
                   {risk.explanation} Score components: elevation{" "}
                   {risk.elevationContribution}, FEMA {risk.femaContribution},
                   nearby floodplain {risk.nearbyFloodplainContribution}, rainfall{" "}
                   {risk.rainfallContribution}.
                 </p>
+                <div className="risk-feedback">
+                  <strong>What you can do</strong>
+                  <p>{risk.feedback}</p>
+                </div>
               </>
             )}
           </section>

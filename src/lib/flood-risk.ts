@@ -8,11 +8,13 @@ export type FloodRisk = {
   score: number;
   level: "Low" | "Moderate" | "High" | "Very high";
   color: string;
+  confidence: "Low" | "Medium" | "High";
   elevationContribution: number;
   femaContribution: number;
   nearbyFloodplainContribution: number;
   rainfallContribution: number;
   explanation: string;
+  feedback: string;
 };
 
 function elevationRisk(elevationMeters: number) {
@@ -129,6 +131,15 @@ export function calculateFloodRisk(
     color = "#d97706";
   }
 
+  const feedback =
+    level === "Very high"
+      ? "Take action before the next major storm: review FEMA flood insurance options, create an evacuation plan, protect utilities and valuable belongings above expected flood levels, and have a qualified professional assess drainage and floodproofing."
+      : level === "High"
+        ? "Consider flood insurance, prepare an emergency plan and supplies, keep gutters and nearby drains clear, and ask a qualified professional whether barriers, backflow protection, or raised utilities would reduce damage."
+        : level === "Moderate"
+          ? "Stay prepared by monitoring storm and flood alerts, keeping gutters and drains clear, storing important items above floor level, and reviewing whether flood insurance makes sense for the property."
+          : "Flood exposure appears relatively low, but flooding is still possible. Keep drains clear, follow severe-weather alerts, and reassess after major property, drainage, or flood-map changes.";
+
   const elevationDescription =
     elevationMeters <= 7
       ? "Very low terrain increases exposure to coastal, tidal, and drainage flooding."
@@ -150,14 +161,31 @@ export function calculateFloodRisk(
       ? " FEMA Zone D indicates that flood hazards are possible but have not been determined; it is not a mapped high-risk floodplain."
       : "";
 
+  let availableDataSources = 1;
+  const hasFemaData =
+    Boolean(floodZone.zone || floodZone.subtype || floodZone.sfha) ||
+    distanceToSfhaMeters !== null;
+
+  if (hasFemaData) availableDataSources += 1;
+  if (rainfallInches !== null) availableDataSources += 1;
+
+  const confidence: FloodRisk["confidence"] =
+    availableDataSources === 3
+      ? "High"
+      : availableDataSources === 2
+        ? "Medium"
+        : "Low";
+
   return {
     score,
     level,
     color,
+    confidence,
     elevationContribution,
     femaContribution,
     nearbyFloodplainContribution,
     rainfallContribution,
+    feedback,
     explanation:
       elevationDescription +
       zoneDescription +

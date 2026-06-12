@@ -2,6 +2,7 @@ import { sampleElevation } from "@/lib/elevation";
 import { lookupFema } from "@/lib/fema";
 import { calculateFloodRisk } from "@/lib/flood-risk";
 import { sampleRainfall } from "@/lib/rainfall";
+import { lookupNearbyWater } from "@/lib/water";
 
 export const runtime = "nodejs";
 
@@ -25,11 +26,13 @@ export async function GET(request: Request) {
   }
 
   try {
-    const [elevationMeters, fema, rainfallInches] = await Promise.all([
-      sampleElevation(longitude, latitude),
-      lookupFema(longitude, latitude),
-      sampleRainfall(longitude, latitude),
-    ]);
+    const [elevationMeters, fema, rainfallInches, nearbyWater] =
+      await Promise.all([
+        sampleElevation(longitude, latitude),
+        lookupFema(longitude, latitude),
+        sampleRainfall(longitude, latitude),
+        lookupNearbyWater(longitude, latitude),
+      ]);
 
     if (elevationMeters === null) {
       return Response.json(
@@ -54,6 +57,9 @@ export async function GET(request: Request) {
       distanceToSfhaMeters: fema.distanceToSfhaMeters,
       rainfallInches:
         rainfallInches === null ? null : Math.round(rainfallInches * 100) / 100,
+      distanceToWaterMeters: nearbyWater.distanceMeters,
+      nearbyWaterName: nearbyWater.name,
+      nearbyWaterKind: nearbyWater.kind,
       ...risk,
     });
   } catch (error) {
