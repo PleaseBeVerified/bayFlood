@@ -1,0 +1,212 @@
+{
+  "createdAt": "2026-08-12T22:56:08.203880+00:00",
+  "base": "data/physical-hazard-calibration.csv",
+  "additions": "data/physical-hazard-point-two-extra.csv",
+  "output": "data/physical-hazard-calibration-expanded.csv",
+  "minimumDistanceMeters": 30.0,
+  "baseSummary": {
+    "rows": 10000,
+    "classCounts": {
+      "minimal": 7249,
+      "point_two_percent": 933,
+      "one_percent": 1818
+    },
+    "partitionCounts": {
+      "training": 7364,
+      "validation": 1336,
+      "test": 1300
+    },
+    "countyCounts": {
+      "Alameda County": 1035,
+      "Contra Costa County": 884,
+      "Marin County": 780,
+      "Napa County": 1040,
+      "San Francisco County": 709,
+      "San Mateo County": 682,
+      "Santa Clara County": 1500,
+      "Solano County": 1039,
+      "Sonoma County": 2331
+    },
+    "geographicBlocks": 617
+  },
+  "additionSummary": {
+    "rows": 1500,
+    "classCounts": {
+      "point_two_percent": 1500
+    },
+    "partitionCounts": {
+      "training": 1242,
+      "validation": 258
+    },
+    "countyCounts": {
+      "Alameda County": 155,
+      "Contra Costa County": 133,
+      "Marin County": 117,
+      "Napa County": 156,
+      "San Francisco County": 106,
+      "San Mateo County": 102,
+      "Santa Clara County": 225,
+      "Solano County": 156,
+      "Sonoma County": 350
+    },
+    "geographicBlocks": 192
+  },
+  "acceptedSummary": {
+    "rows": 1474,
+    "classCounts": {
+      "point_two_percent": 1474
+    },
+    "partitionCounts": {
+      "training": 1220,
+      "validation": 254
+    },
+    "countyCounts": {
+      "Alameda County": 154,
+      "Contra Costa County": 132,
+      "Marin County": 117,
+      "Napa County": 152,
+      "San Francisco County": 97,
+      "San Mateo County": 101,
+      "Santa Clara County": 225,
+      "Solano County": 154,
+      "Sonoma County": 342
+    },
+    "geographicBlocks": 192
+  },
+  "expandedSummary": {
+    "rows": 11474,
+    "classCounts": {
+      "minimal": 7249,
+      "point_two_percent": 2407,
+      "one_percent": 1818
+    },
+    "partitionCounts": {
+      "training": 8584,
+      "validation": 1590,
+      "test": 1300
+    },
+    "countyCounts": {
+      "Alameda County": 1189,
+      "Contra Costa County": 1016,
+      "Marin County": 897,
+      "Napa County": 1192,
+      "San Francisco County": 806,
+      "San Mateo County": 783,
+      "Santa Clara County": 1725,
+      "Solano County": 1193,
+      "Sonoma County": 2673
+    },
+    "geographicBlocks": 617
+  },
+  "rejectedCount": 26,
+  "rejectedReasons": {
+    "within_30m_of_existing_or_retained_row": 26
+  },
+  "rejectedRows": [
+    {
+      "sampleId": "physical-point-two-extra-00136",
+      "reason": "within_30m_of_existing_or_retained_row"
+    },
+    {
+      "sampleId": "physical-point-two-extra-00256",
+      "reason": "within_30m_of_existing_or_retained_row"
+    },
+    {
+      "sampleId": "physical-point-two-extra-00409",
+      "reason": "within_30m_of_existing_or_retained_row"
+    },
+    {
+      "sampleId": "physical-point-two-extra-00502",
+      "reason": "within_30m_of_existing_or_retained_row"
+    },
+    {
+      "sampleId": "physical-point-two-extra-00507",
+      "reason": "within_30m_of_existing_or_retained_row"
+    },
+    {
+      "sampleId": "physical-point-two-extra-00558",
+      "reason": "within_30m_of_existing_or_retained_row"
+    },
+    {
+      "sampleId": "physical-point-two-extra-00603",
+      "reason": "within_30m_of_existing_or_retained_row"
+    },
+    {
+      "sampleId": "physical-point-two-extra-00620",
+      "reason": "within_30m_of_existing_or_retained_row"
+    },
+    {
+      "sampleId": "physical-point-two-extra-00623",
+      "reason": "within_30m_of_existing_or_retained_row"
+    },
+    {
+      "sampleId": "physical-point-two-extra-00632",
+      "reason": "within_30m_of_existing_or_retained_row"
+    },
+    {
+      "sampleId": "physical-point-two-extra-00641",
+      "reason": "within_30m_of_existing_or_retained_row"
+    },
+    {
+      "sampleId": "physical-point-two-extra-00653",
+      "reason": "within_30m_of_existing_or_retained_row"
+    },
+    {
+      "sampleId": "physical-point-two-extra-00656",
+      "reason": "within_30m_of_existing_or_retained_row"
+    },
+    {
+      "sampleId": "physical-point-two-extra-00660",
+      "reason": "within_30m_of_existing_or_retained_row"
+    },
+    {
+      "sampleId": "physical-point-two-extra-00661",
+      "reason": "within_30m_of_existing_or_retained_row"
+    },
+    {
+      "sampleId": "physical-point-two-extra-00762",
+      "reason": "within_30m_of_existing_or_retained_row"
+    },
+    {
+      "sampleId": "physical-point-two-extra-01106",
+      "reason": "within_30m_of_existing_or_retained_row"
+    },
+    {
+      "sampleId": "physical-point-two-extra-01121",
+      "reason": "within_30m_of_existing_or_retained_row"
+    },
+    {
+      "sampleId": "physical-point-two-extra-01229",
+      "reason": "within_30m_of_existing_or_retained_row"
+    },
+    {
+      "sampleId": "physical-point-two-extra-01253",
+      "reason": "within_30m_of_existing_or_retained_row"
+    },
+    {
+      "sampleId": "physical-point-two-extra-01314",
+      "reason": "within_30m_of_existing_or_retained_row"
+    },
+    {
+      "sampleId": "physical-point-two-extra-01419",
+      "reason": "within_30m_of_existing_or_retained_row"
+    },
+    {
+      "sampleId": "physical-point-two-extra-01450",
+      "reason": "within_30m_of_existing_or_retained_row"
+    },
+    {
+      "sampleId": "physical-point-two-extra-01466",
+      "reason": "within_30m_of_existing_or_retained_row"
+    },
+    {
+      "sampleId": "physical-point-two-extra-01483",
+      "reason": "within_30m_of_existing_or_retained_row"
+    },
+    {
+      "sampleId": "physical-point-two-extra-01489",
+      "reason": "within_30m_of_existing_or_retained_row"
+    }
+  ],
+  "untouchedTestRowsPreserved": true
+}

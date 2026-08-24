@@ -1,0 +1,904 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-08-12T04:57:01.220715+00:00",
+  "sourceTable": "data/physical-hazard-calibration.csv",
+  "purpose": "Balanced direct three-class benchmark with held-out probability calibration",
+  "productionModelChanged": false,
+  "split": {
+    "training": {
+      "rows": 7364,
+      "geographicBlocks": 463,
+      "classCounts": {
+        "one_percent": 1238,
+        "point_two_percent": 674,
+        "minimal": 5452
+      }
+    },
+    "tuning": {
+      "rows": 667,
+      "geographicBlocks": 42,
+      "classCounts": {
+        "one_percent": 119,
+        "point_two_percent": 51,
+        "minimal": 497
+      }
+    },
+    "calibration": {
+      "rows": 669,
+      "geographicBlocks": 33,
+      "classCounts": {
+        "one_percent": 119,
+        "point_two_percent": 62,
+        "minimal": 488
+      }
+    },
+    "test": {
+      "rows": 1300,
+      "geographicBlocks": 79,
+      "classCounts": {
+        "one_percent": 342,
+        "point_two_percent": 146,
+        "minimal": 812
+      }
+    }
+  },
+  "selection": {
+    "criterion": "highest tuning macro F1, then 0.2% F1, then lowest log loss",
+    "selected": {
+      "candidate": 4,
+      "hyperparameters": {
+        "max_depth": 3,
+        "eta": 0.03,
+        "min_child_weight": 20,
+        "reg_lambda": 10
+      },
+      "rounds": 1999,
+      "tuning": {
+        "rows": 667,
+        "accuracy": 0.8575712143928036,
+        "balancedAccuracy": 0.704909193724438,
+        "macroF1": 0.6827984195868021,
+        "logLoss": 0.3865300118923187,
+        "multiclassBrier": 0.21317688459412032,
+        "expectedCalibrationError": 0.013156050729608633,
+        "macroOneVsRestRocAuc": 0.9026657328725859,
+        "perClassRocAuc": {
+          "one_percent": 0.9707262467030607,
+          "point_two_percent": 0.7745416348357524,
+          "minimal": 0.9627293170789443
+        },
+        "confusionMatrix": [
+          [
+            104,
+            7,
+            8
+          ],
+          [
+            24,
+            17,
+            10
+          ],
+          [
+            15,
+            31,
+            451
+          ]
+        ],
+        "classOrder": [
+          "one_percent",
+          "point_two_percent",
+          "minimal"
+        ],
+        "perClass": {
+          "one_percent": {
+            "precision": 0.7272727272727273,
+            "recall": 0.8739495798319328,
+            "f1": 0.7938931297709924,
+            "support": 119
+          },
+          "point_two_percent": {
+            "precision": 0.3090909090909091,
+            "recall": 0.3333333333333333,
+            "f1": 0.32075471698113206,
+            "support": 51
+          },
+          "minimal": {
+            "precision": 0.9616204690831557,
+            "recall": 0.9074446680080482,
+            "f1": 0.9337474120082816,
+            "support": 497
+          }
+        }
+      }
+    },
+    "leaderboard": [
+      {
+        "candidate": 4,
+        "hyperparameters": {
+          "max_depth": 3,
+          "eta": 0.03,
+          "min_child_weight": 20,
+          "reg_lambda": 10
+        },
+        "rounds": 1999,
+        "tuning": {
+          "rows": 667,
+          "accuracy": 0.8575712143928036,
+          "balancedAccuracy": 0.704909193724438,
+          "macroF1": 0.6827984195868021,
+          "logLoss": 0.3865300118923187,
+          "multiclassBrier": 0.21317688459412032,
+          "expectedCalibrationError": 0.013156050729608633,
+          "macroOneVsRestRocAuc": 0.9026657328725859,
+          "perClassRocAuc": {
+            "one_percent": 0.9707262467030607,
+            "point_two_percent": 0.7745416348357524,
+            "minimal": 0.9627293170789443
+          },
+          "confusionMatrix": [
+            [
+              104,
+              7,
+              8
+            ],
+            [
+              24,
+              17,
+              10
+            ],
+            [
+              15,
+              31,
+              451
+            ]
+          ],
+          "classOrder": [
+            "one_percent",
+            "point_two_percent",
+            "minimal"
+          ],
+          "perClass": {
+            "one_percent": {
+              "precision": 0.7272727272727273,
+              "recall": 0.8739495798319328,
+              "f1": 0.7938931297709924,
+              "support": 119
+            },
+            "point_two_percent": {
+              "precision": 0.3090909090909091,
+              "recall": 0.3333333333333333,
+              "f1": 0.32075471698113206,
+              "support": 51
+            },
+            "minimal": {
+              "precision": 0.9616204690831557,
+              "recall": 0.9074446680080482,
+              "f1": 0.9337474120082816,
+              "support": 497
+            }
+          }
+        }
+      },
+      {
+        "candidate": 5,
+        "hyperparameters": {
+          "max_depth": 4,
+          "eta": 0.03,
+          "min_child_weight": 20,
+          "reg_lambda": 10
+        },
+        "rounds": 1362,
+        "tuning": {
+          "rows": 667,
+          "accuracy": 0.856071964017991,
+          "balancedAccuracy": 0.6999776436396155,
+          "macroF1": 0.6811657414750197,
+          "logLoss": 0.3797238767147064,
+          "multiclassBrier": 0.20651306765950841,
+          "expectedCalibrationError": 0.01284651402411965,
+          "macroOneVsRestRocAuc": 0.9033086141485139,
+          "perClassRocAuc": {
+            "one_percent": 0.9711096117279028,
+            "point_two_percent": 0.7734593837535013,
+            "minimal": 0.9653568469641377
+          },
+          "confusionMatrix": [
+            [
+              102,
+              7,
+              10
+            ],
+            [
+              23,
+              17,
+              11
+            ],
+            [
+              16,
+              29,
+              452
+            ]
+          ],
+          "classOrder": [
+            "one_percent",
+            "point_two_percent",
+            "minimal"
+          ],
+          "perClass": {
+            "one_percent": {
+              "precision": 0.723404255319149,
+              "recall": 0.8571428571428571,
+              "f1": 0.7846153846153846,
+              "support": 119
+            },
+            "point_two_percent": {
+              "precision": 0.32075471698113206,
+              "recall": 0.3333333333333333,
+              "f1": 0.3269230769230769,
+              "support": 51
+            },
+            "minimal": {
+              "precision": 0.9556025369978859,
+              "recall": 0.9094567404426559,
+              "f1": 0.931958762886598,
+              "support": 497
+            }
+          }
+        }
+      },
+      {
+        "candidate": 6,
+        "hyperparameters": {
+          "max_depth": 4,
+          "eta": 0.05,
+          "min_child_weight": 20,
+          "reg_lambda": 15
+        },
+        "rounds": 952,
+        "tuning": {
+          "rows": 667,
+          "accuracy": 0.8575712143928036,
+          "balancedAccuracy": 0.6947830775502689,
+          "macroF1": 0.6789048879438617,
+          "logLoss": 0.380225270986557,
+          "multiclassBrier": 0.20555321626230583,
+          "expectedCalibrationError": 0.017141873824006632,
+          "macroOneVsRestRocAuc": 0.9015832834811541,
+          "perClassRocAuc": {
+            "one_percent": 0.970281543274244,
+            "point_two_percent": 0.7706264323911383,
+            "minimal": 0.9638418747780803
+          },
+          "confusionMatrix": [
+            [
+              102,
+              7,
+              10
+            ],
+            [
+              22,
+              16,
+              13
+            ],
+            [
+              16,
+              27,
+              454
+            ]
+          ],
+          "classOrder": [
+            "one_percent",
+            "point_two_percent",
+            "minimal"
+          ],
+          "perClass": {
+            "one_percent": {
+              "precision": 0.7285714285714285,
+              "recall": 0.8571428571428571,
+              "f1": 0.7876447876447876,
+              "support": 119
+            },
+            "point_two_percent": {
+              "precision": 0.32,
+              "recall": 0.3137254901960784,
+              "f1": 0.31683168316831684,
+              "support": 51
+            },
+            "minimal": {
+              "precision": 0.9517819706498952,
+              "recall": 0.9134808853118712,
+              "f1": 0.9322381930184805,
+              "support": 497
+            }
+          }
+        }
+      },
+      {
+        "candidate": 2,
+        "hyperparameters": {
+          "max_depth": 3,
+          "eta": 0.03,
+          "min_child_weight": 10,
+          "reg_lambda": 5
+        },
+        "rounds": 1896,
+        "tuning": {
+          "rows": 667,
+          "accuracy": 0.8545727136431784,
+          "balancedAccuracy": 0.6955721255638405,
+          "macroF1": 0.6759402971637413,
+          "logLoss": 0.3832828998565674,
+          "multiclassBrier": 0.20794615227816585,
+          "expectedCalibrationError": 0.023502843982276145,
+          "macroOneVsRestRocAuc": 0.9043347258433827,
+          "perClassRocAuc": {
+            "one_percent": 0.9722903760044164,
+            "point_two_percent": 0.7799847211611917,
+            "minimal": 0.9607290803645402
+          },
+          "confusionMatrix": [
+            [
+              103,
+              7,
+              9
+            ],
+            [
+              23,
+              16,
+              12
+            ],
+            [
+              16,
+              30,
+              451
+            ]
+          ],
+          "classOrder": [
+            "one_percent",
+            "point_two_percent",
+            "minimal"
+          ],
+          "perClass": {
+            "one_percent": {
+              "precision": 0.7253521126760564,
+              "recall": 0.865546218487395,
+              "f1": 0.789272030651341,
+              "support": 119
+            },
+            "point_two_percent": {
+              "precision": 0.3018867924528302,
+              "recall": 0.3137254901960784,
+              "f1": 0.3076923076923077,
+              "support": 51
+            },
+            "minimal": {
+              "precision": 0.9555084745762712,
+              "recall": 0.9074446680080482,
+              "f1": 0.9308565531475749,
+              "support": 497
+            }
+          }
+        }
+      },
+      {
+        "candidate": 3,
+        "hyperparameters": {
+          "max_depth": 3,
+          "eta": 0.05,
+          "min_child_weight": 10,
+          "reg_lambda": 10
+        },
+        "rounds": 1647,
+        "tuning": {
+          "rows": 667,
+          "accuracy": 0.8545727136431784,
+          "balancedAccuracy": 0.6897068686629582,
+          "macroF1": 0.6728075661546705,
+          "logLoss": 0.38466426730155945,
+          "multiclassBrier": 0.20448684378161308,
+          "expectedCalibrationError": 0.029583127557605848,
+          "macroOneVsRestRocAuc": 0.9020260018547078,
+          "perClassRocAuc": {
+            "one_percent": 0.9713242961418144,
+            "point_two_percent": 0.7735867074102369,
+            "minimal": 0.9611670020120724
+          },
+          "confusionMatrix": [
+            [
+              103,
+              6,
+              10
+            ],
+            [
+              22,
+              15,
+              14
+            ],
+            [
+              16,
+              29,
+              452
+            ]
+          ],
+          "classOrder": [
+            "one_percent",
+            "point_two_percent",
+            "minimal"
+          ],
+          "perClass": {
+            "one_percent": {
+              "precision": 0.7304964539007093,
+              "recall": 0.865546218487395,
+              "f1": 0.7923076923076923,
+              "support": 119
+            },
+            "point_two_percent": {
+              "precision": 0.3,
+              "recall": 0.29411764705882354,
+              "f1": 0.297029702970297,
+              "support": 51
+            },
+            "minimal": {
+              "precision": 0.9495798319327731,
+              "recall": 0.9094567404426559,
+              "f1": 0.9290853031860226,
+              "support": 497
+            }
+          }
+        }
+      },
+      {
+        "candidate": 1,
+        "hyperparameters": {
+          "max_depth": 2,
+          "eta": 0.03,
+          "min_child_weight": 5,
+          "reg_lambda": 5
+        },
+        "rounds": 2000,
+        "tuning": {
+          "rows": 667,
+          "accuracy": 0.848575712143928,
+          "balancedAccuracy": 0.6992806512276273,
+          "macroF1": 0.6695353662579114,
+          "logLoss": 0.433381587266922,
+          "multiclassBrier": 0.2369709855802967,
+          "expectedCalibrationError": 0.025185979243697428,
+          "macroOneVsRestRocAuc": 0.8762773009238276,
+          "perClassRocAuc": {
+            "one_percent": 0.9691774520026988,
+            "point_two_percent": 0.6977654698242933,
+            "minimal": 0.9618889809444905
+          },
+          "confusionMatrix": [
+            [
+              106,
+              7,
+              6
+            ],
+            [
+              27,
+              16,
+              8
+            ],
+            [
+              18,
+              35,
+              444
+            ]
+          ],
+          "classOrder": [
+            "one_percent",
+            "point_two_percent",
+            "minimal"
+          ],
+          "perClass": {
+            "one_percent": {
+              "precision": 0.7019867549668874,
+              "recall": 0.8907563025210085,
+              "f1": 0.7851851851851852,
+              "support": 119
+            },
+            "point_two_percent": {
+              "precision": 0.27586206896551724,
+              "recall": 0.3137254901960784,
+              "f1": 0.29357798165137616,
+              "support": 51
+            },
+            "minimal": {
+              "precision": 0.9694323144104804,
+              "recall": 0.8933601609657947,
+              "f1": 0.9298429319371728,
+              "support": 497
+            }
+          }
+        }
+      }
+    ]
+  },
+  "training": {
+    "modelRows": 8031,
+    "classWeights": {
+      "one_percent": 1.9727339719970522,
+      "point_two_percent": 3.6924137931034484,
+      "minimal": 0.4499915952260884
+    },
+    "classWeightFormula": "rows / (classCount * numberOfClasses)",
+    "library": "xgboost 3.3.0",
+    "features": {
+      "numeric": [
+        "rainfall_100yr_24h_in",
+        "log_elevation_m",
+        "log_nearest_water_distance_m",
+        "slope_degrees",
+        "local_elevation_250m",
+        "local_elevation_500m",
+        "log_flow_accumulation_m2",
+        "log_height_above_drainage_m"
+      ],
+      "categories": [
+        "Unknown",
+        "artificial path",
+        "canal/ditch",
+        "coastline",
+        "dam/weir",
+        "foreshore",
+        "pipeline",
+        "reservoir",
+        "sea/ocean",
+        "stream/river",
+        "swamp/marsh",
+        "water",
+        "waterbody"
+      ],
+      "expanded": [
+        "rainfall_100yr_24h_in",
+        "log_elevation_m",
+        "log_nearest_water_distance_m",
+        "slope_degrees",
+        "local_elevation_250m",
+        "local_elevation_500m",
+        "log_flow_accumulation_m2",
+        "log_height_above_drainage_m",
+        "nearest_water_kind_0",
+        "nearest_water_kind_1",
+        "nearest_water_kind_2",
+        "nearest_water_kind_3",
+        "nearest_water_kind_4",
+        "nearest_water_kind_5",
+        "nearest_water_kind_6",
+        "nearest_water_kind_7",
+        "nearest_water_kind_8",
+        "nearest_water_kind_9",
+        "nearest_water_kind_10",
+        "nearest_water_kind_11",
+        "nearest_water_kind_12"
+      ]
+    },
+    "directMulticlassMonotonicConstraintLimitation": "No monotonic constraints are applied because XGBoost applies one direction per feature to every output group, while safer terrain should decrease high-hazard probabilities and increase minimal-hazard probability."
+  },
+  "probabilityCalibration": {
+    "method": "vector_scaling",
+    "formula": "softmax(rawMargins * exp(logScales) + biases)",
+    "logScales": [
+      -0.13981295267473814,
+      -0.5026542280210625,
+      -0.7968547464577492
+    ],
+    "scales": [
+      0.8695208617403685,
+      0.6049229236329323,
+      0.45074444248552414
+    ],
+    "biases": [
+      -0.7606007068532938,
+      -1.1086694358144868,
+      0.0
+    ],
+    "l2Penalty": 0.001,
+    "optimizer": "L-BFGS-B",
+    "success": true,
+    "iterations": 9,
+    "before": {
+      "rows": 669,
+      "accuracy": 0.7817638266068759,
+      "balancedAccuracy": 0.6143184137748171,
+      "macroF1": 0.5991860587183058,
+      "logLoss": 0.45914730429649353,
+      "multiclassBrier": 0.27900079346564055,
+      "expectedCalibrationError": 0.06824964748191546,
+      "macroOneVsRestRocAuc": 0.88564066999918,
+      "perClassRocAuc": {
+        "one_percent": 0.9704507257448434,
+        "point_two_percent": 0.7910134452888345,
+        "minimal": 0.895457838963862
+      },
+      "confusionMatrix": [
+        [
+          97,
+          14,
+          8
+        ],
+        [
+          6,
+          11,
+          45
+        ],
+        [
+          36,
+          37,
+          415
+        ]
+      ],
+      "classOrder": [
+        "one_percent",
+        "point_two_percent",
+        "minimal"
+      ],
+      "perClass": {
+        "one_percent": {
+          "precision": 0.697841726618705,
+          "recall": 0.8151260504201681,
+          "f1": 0.751937984496124,
+          "support": 119
+        },
+        "point_two_percent": {
+          "precision": 0.1774193548387097,
+          "recall": 0.1774193548387097,
+          "f1": 0.1774193548387097,
+          "support": 62
+        },
+        "minimal": {
+          "precision": 0.8867521367521367,
+          "recall": 0.8504098360655737,
+          "f1": 0.8682008368200836,
+          "support": 488
+        }
+      }
+    },
+    "after": {
+      "rows": 669,
+      "accuracy": 0.8400597907324364,
+      "balancedAccuracy": 0.5864670035121399,
+      "macroF1": 0.5932708479415084,
+      "logLoss": 0.39812159836347527,
+      "multiclassBrier": 0.23504742245997093,
+      "expectedCalibrationError": 0.02995082242520357,
+      "macroOneVsRestRocAuc": 0.8865246394216904,
+      "perClassRocAuc": {
+        "one_percent": 0.9720091673032849,
+        "point_two_percent": 0.7947334856778445,
+        "minimal": 0.8928312652839416
+      },
+      "confusionMatrix": [
+        [
+          89,
+          5,
+          25
+        ],
+        [
+          1,
+          3,
+          58
+        ],
+        [
+          15,
+          3,
+          470
+        ]
+      ],
+      "classOrder": [
+        "one_percent",
+        "point_two_percent",
+        "minimal"
+      ],
+      "perClass": {
+        "one_percent": {
+          "precision": 0.8476190476190476,
+          "recall": 0.7478991596638656,
+          "f1": 0.7946428571428571,
+          "support": 119
+        },
+        "point_two_percent": {
+          "precision": 0.2727272727272727,
+          "recall": 0.04838709677419355,
+          "f1": 0.0821917808219178,
+          "support": 62
+        },
+        "minimal": {
+          "precision": 0.8499095840867993,
+          "recall": 0.9631147540983607,
+          "f1": 0.9029779058597502,
+          "support": 488
+        }
+      }
+    }
+  },
+  "threeClass": {
+    "testUncalibrated": {
+      "rows": 1300,
+      "accuracy": 0.8392307692307692,
+      "balancedAccuracy": 0.7750199384463362,
+      "macroF1": 0.7583530600133649,
+      "logLoss": 0.3745412826538086,
+      "multiclassBrier": 0.2191193761533796,
+      "expectedCalibrationError": 0.02278646365954325,
+      "macroOneVsRestRocAuc": 0.937973446073124,
+      "perClassRocAuc": {
+        "one_percent": 0.9910693574576664,
+        "point_two_percent": 0.8777094560907861,
+        "minimal": 0.9451415246709197
+      },
+      "confusionMatrix": [
+        [
+          321,
+          11,
+          10
+        ],
+        [
+          11,
+          78,
+          57
+        ],
+        [
+          39,
+          81,
+          692
+        ]
+      ],
+      "classOrder": [
+        "one_percent",
+        "point_two_percent",
+        "minimal"
+      ],
+      "perClass": {
+        "one_percent": {
+          "precision": 0.8652291105121294,
+          "recall": 0.9385964912280702,
+          "f1": 0.9004207573632539,
+          "support": 342
+        },
+        "point_two_percent": {
+          "precision": 0.4588235294117647,
+          "recall": 0.5342465753424658,
+          "f1": 0.4936708860759494,
+          "support": 146
+        },
+        "minimal": {
+          "precision": 0.9117259552042161,
+          "recall": 0.8522167487684729,
+          "f1": 0.8809675366008911,
+          "support": 812
+        }
+      }
+    },
+    "testCalibrated": {
+      "rows": 1300,
+      "accuracy": 0.8623076923076923,
+      "balancedAccuracy": 0.6807773843362934,
+      "macroF1": 0.6883476303334102,
+      "logLoss": 0.33493944018269145,
+      "multiclassBrier": 0.1913918924385751,
+      "expectedCalibrationError": 0.027742119944538297,
+      "macroOneVsRestRocAuc": 0.9380246607700422,
+      "perClassRocAuc": {
+        "one_percent": 0.9915668607845292,
+        "point_two_percent": 0.8781605374991097,
+        "minimal": 0.9443465840264879
+      },
+      "confusionMatrix": [
+        [
+          318,
+          4,
+          20
+        ],
+        [
+          12,
+          22,
+          112
+        ],
+        [
+          19,
+          12,
+          781
+        ]
+      ],
+      "classOrder": [
+        "one_percent",
+        "point_two_percent",
+        "minimal"
+      ],
+      "perClass": {
+        "one_percent": {
+          "precision": 0.9111747851002865,
+          "recall": 0.9298245614035088,
+          "f1": 0.9204052098408104,
+          "support": 342
+        },
+        "point_two_percent": {
+          "precision": 0.5789473684210527,
+          "recall": 0.1506849315068493,
+          "f1": 0.2391304347826087,
+          "support": 146
+        },
+        "minimal": {
+          "precision": 0.8554216867469879,
+          "recall": 0.9618226600985221,
+          "f1": 0.9055072463768116,
+          "support": 812
+        }
+      }
+    }
+  },
+  "orderedProductionBaseline": {
+    "test": {
+      "rows": 1300,
+      "accuracy": 0.8492307692307692,
+      "balancedAccuracy": 0.6231912182176956,
+      "macroF1": 0.6082033871905786,
+      "logLoss": 0.41619864106178284,
+      "multiclassBrier": 0.22547885336197063,
+      "expectedCalibrationError": 0.020889716790272624,
+      "macroOneVsRestRocAuc": 0.8857482370041555,
+      "perClassRocAuc": {
+        "one_percent": 0.9875578385769572,
+        "point_two_percent": 0.7677850715794972,
+        "minimal": 0.9019018008560122
+      },
+      "confusionMatrix": [
+        [
+          298,
+          5,
+          39
+        ],
+        [
+          4,
+          1,
+          141
+        ],
+        [
+          7,
+          0,
+          805
+        ]
+      ],
+      "classOrder": [
+        "one_percent",
+        "point_two_percent",
+        "minimal"
+      ],
+      "perClass": {
+        "one_percent": {
+          "precision": 0.9644012944983819,
+          "recall": 0.8713450292397661,
+          "f1": 0.9155145929339478,
+          "support": 342
+        },
+        "point_two_percent": {
+          "precision": 0.16666666666666666,
+          "recall": 0.00684931506849315,
+          "f1": 0.013157894736842105,
+          "support": 146
+        },
+        "minimal": {
+          "precision": 0.817258883248731,
+          "recall": 0.9913793103448276,
+          "f1": 0.895937673900946,
+          "support": 812
+        }
+      }
+    }
+  },
+  "comparison": {
+    "accuracyChange": 0.013076923076923097,
+    "balancedAccuracyChange": 0.05758616611859779,
+    "macroF1Change": 0.08014424314283153,
+    "pointTwoRecallChange": 0.14383561643835616,
+    "logLossChange": -0.08125920087909139,
+    "multiclassBrierChange": -0.034086960923395526,
+    "expectedCalibrationErrorChange": 0.006852403154265673,
+    "passesBenchmarkGate": true,
+    "recommendation": "advance to physical-behavior and stability audits before production integration"
+  },
+  "importantLimit": "These are FEMA-equivalent physical hazard classifications, not observed 100-year flood outcomes at individual properties."
+}

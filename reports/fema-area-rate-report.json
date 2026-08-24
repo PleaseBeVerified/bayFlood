@@ -1,0 +1,49 @@
+{
+  "generatedAt": "2026-08-10T04:53:39.708Z",
+  "status": "AREA_SIGNAL_READY__PARCEL_PROBABILITY_BLOCKED",
+  "coverage": {
+    "firstExposureYear": 2009,
+    "latestCompleteYear": 2025,
+    "claims": 2782,
+    "policyYears": 788228.88,
+    "censusBlockGroups": 4659,
+    "areaYears": 54484
+  },
+  "smoothing": {
+    "method": "Lagged credibility shrinkage toward the prior county claim rate",
+    "priorPolicyYears": 100,
+    "leakageControl": "Each area-year signal uses only earlier years."
+  },
+  "validation": [
+    {
+      "time_split": "test",
+      "area_years": "9347",
+      "policy_years": 117014.75,
+      "observed_claims": "367",
+      "expected_claims": 473.47,
+      "observed_to_expected_ratio": 0.7751
+    },
+    {
+      "time_split": "train",
+      "area_years": "32625",
+      "policy_years": 514081.73,
+      "observed_claims": "1912",
+      "expected_claims": 777.28,
+      "observed_to_expected_ratio": 2.4598
+    },
+    {
+      "time_split": "validation",
+      "area_years": "9723",
+      "policy_years": 130254.89,
+      "observed_claims": "449",
+      "expected_claims": 503.76,
+      "observed_to_expected_ratio": 0.8913
+    }
+  ],
+  "limitations": [
+    "NFIP policyholders are not a random sample of all properties.",
+    "Claims are insurance events, not all physical flooding events.",
+    "Public records are redacted and cannot identify exact parcels.",
+    "The rate is an area-level historical insurance signal, not a 100-year property probability."
+  ]
+}

@@ -34,7 +34,10 @@ body {
   z-index: 1;
   top: 24px;
   left: 24px;
+  overflow-y: auto;
   width: min(360px, calc(100vw - 48px));
+  max-height: calc(100vh - 48px);
+  box-sizing: border-box;
   padding: 24px;
   border: 1px solid rgb(148 163 184 / 45%);
   border-radius: 16px;
@@ -267,6 +270,12 @@ body {
   font-weight: 700;
 }
 
+.risk-score-unavailable {
+  border-color: #9fb3c8;
+  color: #486581;
+  font-size: 1.5rem;
+}
+
 .risk-meter {
   overflow: hidden;
   height: 6px;
@@ -282,6 +291,188 @@ body {
   transition: width 500ms ease;
 }
 
+.model-meaning {
+  margin: 0 0 12px;
+  color: #486581;
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+
+.probability-benchmark {
+  display: grid;
+  gap: 7px;
+  margin: 0 0 12px;
+  padding: 11px 12px;
+  border: 1px solid #a5b4fc;
+  border-radius: 8px;
+  background: #eef2ff;
+}
+
+.probability-benchmark > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.probability-benchmark span {
+  color: #3730a3;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.probability-benchmark strong {
+  color: #312e81;
+  font-size: 1.1rem;
+  white-space: nowrap;
+}
+
+.probability-benchmark p,
+.probability-benchmark small {
+  margin: 0;
+  color: #4338ca;
+  font-size: 0.69rem;
+  line-height: 1.4;
+}
+
+.probability-benchmark small {
+  color: #5b6479;
+}
+
+.probability-not_determined {
+  border-color: #d9e2ec;
+  background: #f7fafc;
+}
+
+.probability-not_determined span,
+.probability-not_determined strong,
+.probability-not_determined p {
+  color: #486581;
+}
+
+.area-claim-signal {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 12px;
+  padding: 11px 12px;
+  border: 1px solid #99f6e4;
+  border-radius: 8px;
+  background: #f0fdfa;
+}
+
+.area-claim-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.area-claim-heading span {
+  color: #0f766e;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.area-claim-heading strong {
+  color: #115e59;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.area-claim-signal dl {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  margin: 0;
+}
+
+.area-claim-signal dl div {
+  padding: 7px;
+  border-radius: 6px;
+  background: rgb(255 255 255 / 72%);
+}
+
+.area-claim-signal dt {
+  color: #5f6b7a;
+  font-size: 0.6rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.area-claim-signal dd {
+  margin: 3px 0 0;
+  color: #134e4a;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.area-claim-signal p,
+.area-claim-signal small {
+  margin: 0;
+  color: #3f5965;
+  font-size: 0.68rem;
+  line-height: 1.4;
+}
+
+.area-claim-signal small {
+  color: #627d98;
+}
+
+.area-claim-no_nfip_area_rate,
+.area-claim-unavailable {
+  border-color: #d9e2ec;
+  background: #f7fafc;
+}
+
+.area-claim-no_nfip_area_rate .area-claim-heading span,
+.area-claim-no_nfip_area_rate .area-claim-heading strong,
+.area-claim-unavailable .area-claim-heading span,
+.area-claim-unavailable .area-claim-heading strong {
+  color: #486581;
+}
+
+.model-similarity-context {
+  display: grid;
+  gap: 6px;
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border: 1px solid #d9e2ec;
+  border-radius: 8px;
+  background: #f7fafc;
+}
+
+.model-similarity-context > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.model-similarity-context span {
+  color: #627d98;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.model-similarity-context strong {
+  color: #334e68;
+  font-size: 0.92rem;
+  white-space: nowrap;
+}
+
+.model-similarity-context p {
+  margin: 0;
+  color: #627d98;
+  font-size: 0.68rem;
+  line-height: 1.4;
+}
+
 .risk-zone {
   margin: 0 0 5px;
   color: #243b53;
@@ -291,9 +482,9 @@ body {
 
 .nearby-water {
   display: grid;
-  gap: 2px;
+  gap: 7px;
   margin: 10px 0;
-  padding: 9px 11px;
+  padding: 11px 12px;
   border: 1px solid #bae6fd;
   border-radius: 7px;
   background: #f0f9ff;
@@ -308,13 +499,44 @@ body {
 
 .nearby-water span {
   color: #0c4a6e;
-  font-size: 0.82rem;
+  font-size: 0.88rem;
   font-weight: 700;
+}
+
+.nearby-water dl {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+}
+
+.nearby-water dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.nearby-water dt {
+  color: #627d98;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.nearby-water dd {
+  margin: 0;
+  color: #243b53;
+  font-size: 0.68rem;
+  text-align: right;
 }
 
 .nearby-water small {
   color: #486581;
   font-size: 0.7rem;
+  line-height: 1.35;
+}
+
+.nearby-water-muted {
+  border-color: #d9e2ec;
+  background: #f7fafc;
 }
 
 .confidence-rating {
@@ -360,6 +582,16 @@ body {
   color: #334e68;
   font-size: 0.72rem;
   line-height: 1.45;
+}
+
+.risk-feedback ul {
+  display: grid;
+  gap: 6px;
+  margin: 6px 0 0;
+  padding-left: 16px;
+  color: #334e68;
+  font-size: 0.72rem;
+  line-height: 1.4;
 }
 
 .legend {
@@ -420,6 +652,7 @@ body {
     top: 12px;
     left: 12px;
     width: calc(100vw - 24px);
+    max-height: calc(100vh - 24px);
     padding: 18px;
   }
 }

@@ -1,15 +1,60 @@
 # BayFlood
 
-BayFlood is an interactive Bay Area flood-exposure screening tool. Users can
-search for an address or click the map to receive a score based on FEMA flood
-zones, elevation, nearby floodplain distance, and extreme rainfall.
+BayFlood is a Bay Area flood-exposure screening and education tool. Users can
+search for an address or click the map to see FEMA's mapped 100-year event
+benchmark when available or an experimental physical-only estimate when the
+address has no numeric FEMA classification.
 
-The result also reports data confidence, the nearest mapped water source, an
-explanation of the main inputs, and basic preparedness guidance.
+The result also reports historical NFIP claim activity for the surrounding
+Census block group, a separate claim-location similarity score, elevation,
+rainfall, nearby water and floodplain context, data confidence, and basic
+preparedness guidance.
 
 > BayFlood is a screening and educational tool. It is not a parcel-level flood
 > determination, engineering study, insurance quote, or prediction that a
 > property will or will not flood.
+
+## Property-level hazard dataset
+
+Run `npm run hazard:prepare` to validate parcel observations, sample geospatial
+features, build annual exposure rows, and generate a calibration-readiness
+report. See [the property hazard model guide](docs/property-hazard-model.md) for
+the evidence requirements and probability interpretation.
+
+## Terrain feature preprocessing
+
+After creating `terrain/dem-10m.tif` and installing the Whitebox Python package
+inside `.venv-whitebox`, generate the additional physical-model rasters with:
+
+```sh
+npm run terrain:features
+```
+
+The command is resumable and creates 250 m and 500 m local-elevation rasters, a
+hydrologically corrected DEM, D8 flow accumulation, a derived stream network,
+and height above drainage. The Bay Area mosaic contains roughly 407 million
+cells, so this step can run for a long time and create several gigabytes of
+temporary and final raster data.
+
+After the 10 m source rasters finish, build the deployment-oriented terrain
+package:
+
+```sh
+npm run terrain:runtime
+```
+
+This creates a 30 m, five-band, ZSTD-compressed Cloud-Optimized GeoTIFF at
+`terrain/runtime/terrain-features-30m.tif`. The current file is approximately
+432 MiB instead of roughly 7.3 GiB for the five 10 m feature rasters. Local
+development uses this COG automatically. A deployed server can read the same
+artifact from public object storage by setting:
+
+```text
+TERRAIN_COG_URL=https://your-object-host/terrain-features-30m.tif
+```
+
+The object host must support HTTP byte-range requests. The original 10 m
+rasters remain the reproducible source data and are not deleted.
 
 ## Features
 
@@ -20,8 +65,14 @@ explanation of the main inputs, and basic preparedness guidance.
 - Sample NOAA Atlas 14 100-year, 24-hour rainfall.
 - Measure distance to a FEMA Special Flood Hazard Area.
 - Find the nearest mapped water source within 5 kilometers.
-- Calculate a flood-exposure score from 0 to 100.
-- Classify results as Low, Moderate, High, or Very high.
+- Display a cumulative 100-year FEMA event benchmark when the mapped zone
+  defines a numeric annual chance.
+- Estimate a 100-year percentage from physical conditions when FEMA supplies no
+  numeric annual-chance classification for the address.
+- Display historical NFIP claim activity for the surrounding Census block
+  group.
+- Report the trained claim-location similarity model separately as a score out
+  of 100.
 - Report High, Medium, or Low data confidence.
 - Provide risk-level preparedness feedback.
 
@@ -37,10 +88,14 @@ explanation of the main inputs, and basic preparedness guidance.
   vector tiles
 - [GeoTIFF.js](https://geotiffjs.github.io/) for elevation and rainfall raster
   sampling
+- [Proj4js](https://proj4js.org/) for longitude/latitude to California Albers
+  terrain-grid conversion
 
 ### Data and services
 
 - FEMA National Flood Hazard Layer data for mapped flood zones
+- OpenFEMA NFIP claims and policies for the neighborhood historical signal
+- U.S. Census coordinate geography service for block-group matching
 - USGS elevation GeoTIFF tiles
 - NOAA Atlas 14 precipitation-frequency data
 - OpenStreetMap raster map tiles
@@ -61,95 +116,123 @@ Address search or map click
              +--> USGS elevation raster
              +--> FEMA flood-zone GeoJSON
              +--> NOAA rainfall raster
+             +--> 10 m terrain-feature rasters
              +--> OpenStreetMap nearby water
+             +--> Census block-group lookup
+                        |
+                        v
+                  OpenFEMA area signal
              |
              v
- Score + confidence + explanation + feedback
+ FEMA benchmark + neighborhood history + physical context
 ```
 
-The flood-risk API loads the independent data sources in parallel. Elevation,
-FEMA, and rainfall are sent to the scoring function. Nearby water is currently
-displayed as additional context and does not affect the numerical score.
+The flood-risk API loads the independent data sources in parallel. A
+physical-only calibration model uses elevation, rainfall, nearby-water, and
+terrain context to estimate unclassified locations without using FEMA data for
+the target address. A separate claim model uses FEMA context and reports
+claim-location similarity as a secondary score.
 
-## Risk Score
+## Displayed Results
 
-The score is a hand-tuned screening index:
+### Primary 100-year estimate
+
+The primary result is `hundredYearFloodEstimate`. For FEMA classifications that
+define a numeric annual-chance event, BayFlood calculates the chance of at
+least one such event over 100 years:
 
 ```text
-score =
-  elevation contribution
-  + FEMA contribution
-  + nearby floodplain contribution
-  + rainfall contribution
+100-year chance = 1 - (1 - annual chance)^100
 ```
 
-The final value is capped at 100.
+That produces:
 
-### Risk levels
+- `63.4%` for a mapped 1%-annual-chance FEMA event
+- `18.1%` for a mapped 0.2%-annual-chance FEMA event
 
-| Score | Level |
+When the address has no numeric FEMA classification, BayFlood switches to an
+experimental model trained to reconstruct mapped FEMA hazard classes from
+physical conditions alone. The target address contributes only:
+
+- Elevation
+- NOAA Atlas 14 100-year, 24-hour rainfall
+- Nearest mapped-water type and distance
+- Terrain slope
+- Local elevation relative to the surrounding 250 m and 500 m
+- D8 upslope flow accumulation
+- Height above modeled drainage
+
+The calibration table contains 10,000 spatially sampled Bay Area locations.
+Deterministic 0.05-degree geographic blocks target 70% training, 15%
+validation, and 15% untouched test partitions. Because whole blocks stay
+together, the realized split contains 7,364 training rows, 1,336 validation
+rows, and 1,300 test rows. The production gradient-boosted model reaches
+`84.9%` three-class accuracy on the untouched test set. ROC-AUC is `0.988` for
+identifying 1%-annual-chance terrain and `0.902` for identifying terrain at or
+above the 0.2% class. Its Brier scores are `0.0336` and `0.1050`, respectively;
+lower Brier scores indicate better probability predictions.
+
+The model probability-weights three annual-chance anchors: `1%`, `0.2%`, and a
+central `0.1%` assumption for minimal-hazard terrain. Because the minimal class
+has no exact FEMA annual chance, the interface also reports a range obtained by
+varying that anchor from `0%` through `0.2%`.
+
+This is the cumulative chance of the mapped event under constant-chance and
+independent-year assumptions. The physical-only result is an experimental
+screening estimate, not a calibrated probability that a particular building
+will flood.
+
+### FEMA neighborhood claim history
+
+BayFlood matches the selected coordinates to a Census block group and looks up
+the corresponding historical OpenFEMA NFIP claim signal. When available, the
+card reports:
+
+- Historical claim count
+- NFIP policy-years used as the exposure denominator
+- Bay Area percentile
+- Very low, Low, Moderate, High, or Very high historical signal
+- Census block group and data year
+
+This is an area-level insurance-history signal, not an exact-address flood
+history or property probability. A block group without a usable NFIP rate is
+shown as `No area rate`; that does not mean the property is flood-free.
+
+### Secondary claim-location similarity
+
+The trained model's 0-100 output appears separately as `Claim-location
+similarity: N/100`. It estimates how closely the physical conditions resemble
+known NFIP claim locations in the training data. It is not displayed with a
+percent sign and is not used as the 100-year probability.
+
+The model can screen a covered Bay Area address even when that address has no
+known flood or NFIP claim history. If FEMA membership or a mapped distance is
+unavailable, the model treats that input as missing and substitutes the
+training-set median rather than treating the address as safely outside the
+floodplain. Elevation, rainfall, and nearby-water inputs can still be used.
+
+No recorded flood is not proof that flooding has never occurred. Results in
+areas with limited mapping or history should be interpreted with lower
+confidence and remain screening estimates.
+
+### Secondary model levels
+
+| Model probability | Level |
 | ---: | --- |
-| 0-27 | Low |
-| 28-49 | Moderate |
-| 50-74 | High |
-| 75-100 | Very high |
+| Below 60% of the trained threshold | Low |
+| 60% of the trained threshold to the trained threshold | Moderate |
+| Trained threshold to 0.75 | High |
+| 0.75 and above | Very high |
 
-### Elevation contribution
-
-| Elevation | Points |
-| --- | ---: |
-| 0 m or lower | 42 |
-| Greater than 0 m through 3 m | 38 |
-| Greater than 3 m through 7 m | 32 |
-| Greater than 7 m through 15 m | 23 |
-| Greater than 15 m through 30 m | 14 |
-| Greater than 30 m through 60 m | 7 |
-| Greater than 60 m through 120 m | 3 |
-| Greater than 120 m | 0 |
+The numeric features have monotonic physical constraints: greater elevation or
+distance from water/floodplains cannot increase the model signal, while greater
+rainfall or SFHA membership cannot reduce it.
 
 The elevation sampler reads a 5-by-5 pixel window and uses its median valid
 value. This reduces the effect of a single unusual raster pixel.
 
-### FEMA contribution
-
-| FEMA classification | Points |
-| --- | ---: |
-| V or VE coastal high-hazard zone | 58 |
-| A-family zone or Special Flood Hazard Area | 52 |
-| 0.2% annual-chance or moderate hazard | 31 |
-| X | 10 |
-| D | 8 |
-| Other or unavailable classification | 15 |
-
 If overlapping polygons contain the selected point, the lookup prefers the
 feature with the higher hazard priority.
-
-### Nearby floodplain contribution
-
-For locations outside an SFHA, the application measures the distance to the
-nearest SFHA boundary:
-
-| Distance | Base points |
-| --- | ---: |
-| 75 m or closer | 30 |
-| 76-200 m | 23 |
-| 201-500 m | 14 |
-| 501-1,000 m | 6 |
-| More than 1,000 m | 0 |
-
-These points are multiplied by an elevation factor:
-
-- Elevation at or below 15 m: `1.0`
-- Elevation at or below 30 m: `0.75`
-- Higher elevation: `0.4`
-
-### Rainfall contribution
-
-The rainfall input is NOAA Atlas 14's estimated precipitation for a 100-year,
-24-hour storm. Rainfall receives 2 to 12 base points, then an elevation-based
-terrain multiplier from `1.0` on low terrain to `0.25` above 120 meters.
-
-If rainfall data is unavailable, its contribution is zero.
 
 ## Data Confidence
 
@@ -179,7 +262,7 @@ The result displays the nearest source's name when one is available, its type,
 and its approximate distance from the selected point.
 
 Nearby-water results depend on OpenStreetMap coverage and Overpass
-availability. They are informational and currently do not change the score.
+availability. Distance and feature type are inputs to the trained model.
 
 ## Project Structure
 
@@ -194,15 +277,19 @@ src/
     page.tsx               Map, search, and result interface
   lib/
     elevation.ts           Samples USGS elevation GeoTIFFs
+    fema-area-signal.ts     Matches Census block groups to OpenFEMA history
     fema.ts                Looks up FEMA zones and SFHA distance
-    flood-risk.ts          Calculates score, level, confidence, and feedback
+    flood-guidance.ts      Builds condition explanations and preparedness tips
+    flood-model.ts         Calculates claim-location similarity
+    physical-flood-estimate.ts  Estimates unclassified physical hazard
+    flood-probability.ts   Calculates mapped FEMA event benchmarks
     rainfall.ts            Samples the NOAA rainfall GeoTIFF
     water.ts               Queries and measures nearby mapped water
 
 FEMAdata/                  Local FEMA county GeoJSON files
 elevation/                 Local USGS elevation GeoTIFF files
 rainfall/                  NOAA rainfall GeoTIFF
-public/data/               Browser-served FEMA PMTiles archive
+public/data/               FEMA PMTiles and OpenFEMA area-signal files
 ```
 
 ## Local Setup
@@ -231,6 +318,7 @@ FEMAdata/
   marin_county.geojson
   napa_county.geojson
   san_francisco_county_flood_zones.geojson
+  san_joaquin_boundary_flood_zones.geojson
   san_mateo_county_flood_zones.geojson
   santa_clara_flood_zones.geojson
   solano_county.geojson
@@ -244,10 +332,28 @@ rainfall/
 
 public/data/
   bay-area-flood-zones.pmtiles
+  fema-area-claim-signal.json
 ```
 
 `FEMAdata/` and `elevation/` are ignored by Git because these source datasets
 are large. They must be installed separately after cloning the repository.
+
+To download fresh copies of the nine Bay Area DFIRMs and the adjacent San
+Joaquin boundary data directly from FEMA's official National Flood Hazard Layer,
+then rebuild the browser map archive, run:
+
+```bash
+npm run fema:sync
+```
+
+The command records the source URL, retrieval time, DFIRM identifiers, feature
+counts, geographic bounds, and SHA-256 checksums in
+`data/fema-nfhl-snapshot.json`. Check the local files against FEMA's live layer
+with:
+
+```bash
+npm run fema:verify
+```
 
 ### Optional geocoder configuration
 
@@ -276,9 +382,11 @@ Open [http://localhost:3000](http://localhost:3000).
 1. Enter at least three characters of a Bay Area address.
 2. Select an address from the search results.
 3. Alternatively, click any covered point on the map.
-4. Wait while BayFlood reads elevation, FEMA, rainfall, and nearby-water data.
-5. Review the score, level, confidence, mapped zone, rainfall, water source,
-   explanation, and preparedness feedback.
+4. Wait while BayFlood reads elevation, FEMA, rainfall, nearby-water, Census,
+   and OpenFEMA area data.
+5. Review the 100-year benchmark or experimental estimate, neighborhood claim
+   history, secondary similarity score, physical inputs, confidence, and
+   preparedness feedback.
 
 Map colors:
 
@@ -301,8 +409,11 @@ The response includes:
 - FEMA zone and distance to an SFHA
 - Rainfall estimate
 - Nearby-water name, type, and distance
-- Score and risk level
-- Individual score contributions
+- FEMA 100-year event benchmark or experimental physical-only estimate
+- Experimental estimate range and confidence when FEMA is unclassified
+- FEMA neighborhood claim-history signal and Census block group
+- Claim-location similarity score and interpretation
+- Whether exact-address flood history was used
 - Data confidence
 - Explanation and preparedness feedback
 
@@ -345,16 +456,24 @@ BayFlood currently does not model:
 - Live weather or current flood warnings
 - Tides, storm surge, wave action, or sea-level rise
 - Flood depth, velocity, damage, or annual loss
-- Historical claims or observed-flood validation
+- Building-specific flood history or observed inundation reports
 
-The score uses hand-selected thresholds and is not a calibrated probability.
-Two properties with similar scores may have different flood mechanisms and
-real-world outcomes.
+The FEMA benchmark describes mapped event frequency, not the chance that a
+specific structure will experience inundation or damage. Where that benchmark
+is unavailable, the physical-only percentage is explicitly experimental and
+depends on a documented minimal-hazard annual-chance assumption.
+
+The secondary claim-location similarity score is not a calibrated flood
+probability. Two properties with similar scores may have different flood
+mechanisms and real-world outcomes. The current comparison rows also lack
+verified observation windows, so the claim classifier cannot be converted
+responsibly into a probability of flooding within a future number of years.
 
 ## Production Notes
 
-- The Node.js runtime must have access to the local FEMA, elevation, and
-  rainfall files.
+- The Node.js runtime must have access to the FEMA, elevation, rainfall, and
+  hydrography files. Terrain can be local or supplied through
+  `TERRAIN_COG_URL`.
 - Serverless deployments may have file-size and bundle-size limits that make
   the local GeoJSON and GeoTIFF approach unsuitable.
 - The public Overpass API can be slow or rate-limited. A production deployment

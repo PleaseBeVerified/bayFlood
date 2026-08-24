@@ -1,0 +1,69 @@
+{
+  "generatedAt": "2026-08-09T21:23:20.652Z",
+  "apiVersion": "OpenFEMA NfipClaims v3 and NfipPolicies v3",
+  "maximumPerCountyPerDataset": 250,
+  "totalCandidates": 4397,
+  "verifiedPropertiesAdded": 0,
+  "counties": [
+    {
+      "county": "Alameda",
+      "claims": 250,
+      "policyExposures": 250,
+      "skippedWithoutCoordinates": 0
+    },
+    {
+      "county": "Contra Costa",
+      "claims": 250,
+      "policyExposures": 250,
+      "skippedWithoutCoordinates": 0
+    },
+    {
+      "county": "Marin",
+      "claims": 250,
+      "policyExposures": 250,
+      "skippedWithoutCoordinates": 0
+    },
+    {
+      "county": "Napa",
+      "claims": 250,
+      "policyExposures": 250,
+      "skippedWithoutCoordinates": 0
+    },
+    {
+      "county": "San Francisco",
+      "claims": 147,
+      "policyExposures": 250,
+      "skippedWithoutCoordinates": 0
+    },
+    {
+      "county": "San Mateo",
+      "claims": 250,
+      "policyExposures": 250,
+      "skippedWithoutCoordinates": 0
+    },
+    {
+      "county": "Santa Clara",
+      "claims": 250,
+      "policyExposures": 250,
+      "skippedWithoutCoordinates": 0
+    },
+    {
+      "county": "Solano",
+      "claims": 250,
+      "policyExposures": 250,
+      "skippedWithoutCoordinates": 0
+    },
+    {
+      "county": "Sonoma",
+      "claims": 250,
+      "policyExposures": 250,
+      "skippedWithoutCoordinates": 0
+    }
+  ],
+  "limitations": [
+    "Street addresses and parcel identifiers are not present in public OpenFEMA records.",
+    "Latitude and longitude are rounded to one decimal degree and are unsuitable for parcel assignment.",
+    "Public policy and claim rows cannot be reliably joined into an exact property history.",
+    "All generated rows remain pending and are excluded from hazard training."
+  ]
+}

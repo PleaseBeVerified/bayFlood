@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "modelType": "ordered_xgboost_physical_hazard",
+  "meaning": "Experimental FEMA-equivalent annual hazard estimate from physical inputs only.",
+  "createdAt": "2026-08-12T04:28:26.599148+00:00",
+  "sourceTable": "data/physical-hazard-calibration.csv",
+  "featureNames": [
+    "rainfall_100yr_24h_in",
+    "log_elevation_m",
+    "log_nearest_water_distance_m",
+    "slope_degrees",
+    "local_elevation_250m",
+    "local_elevation_500m",
+    "log_flow_accumulation_m2",
+    "log_height_above_drainage_m",
+    "nearest_water_kind_0",
+    "nearest_water_kind_1",
+    "nearest_water_kind_2",
+    "nearest_water_kind_3",
+    "nearest_water_kind_4",
+    "nearest_water_kind_5",
+    "nearest_water_kind_6",
+    "nearest_water_kind_7",
+    "nearest_water_kind_8",
+    "nearest_water_kind_9",
+    "nearest_water_kind_10",
+    "nearest_water_kind_11",
+    "nearest_water_kind_12"
+  ],
+  "numericFeatures": [
+    "rainfall_100yr_24h_in",
+    "log_elevation_m",
+    "log_nearest_water_distance_m",
+    "slope_degrees",
+    "local_elevation_250m",
+    "local_elevation_500m",
+    "log_flow_accumulation_m2",
+    "log_height_above_drainage_m"
+  ],
+  "categoricalFeatures": {
+    "nearest_water_kind": [
+      "Unknown",
+      "artificial path",
+      "canal/ditch",
+      "coastline",
+      "dam/weir",
+      "foreshore",
+      "pipeline",
+      "reservoir",
+      "sea/ocean",
+      "stream/river",
+      "swamp/marsh",
+      "water",
+      "waterbody"
+    ]
+  },
+  "monotonicDirections": [
+    1,
+    -1,
+    -1,
+    0,
+    -1,
+    -1,
+    1,
+    -1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "models": {
+    "onePercent": {
+      "target": "one_percent",
+      "path": "models/flood-physical-hazard-boosted-one-percent.json",
+      "selected": {
+        "candidate": 1,
+        "hyperparameters": {
+          "max_depth": 2,
+          "eta": 0.03,
+          "min_child_weight": 5,
+          "reg_lambda": 5,
+          "subsample": 0.9,
+          "colsample_bytree": 0.9
+        },
+        "rounds": 146,
+        "validation": {
+          "rows": 1336,
+          "positives": 238,
+          "rocAuc": 0.9619533605792043,
+          "brierScore": 0.05510662496089935
+        }
+      }
+    },
+    "atLeastModerate": {
+      "target": "one_percent_or_point_two_percent",
+      "path": "models/flood-physical-hazard-boosted-moderate.json",
+      "selected": {
+        "candidate": 3,
+        "hyperparameters": {
+          "max_depth": 3,
+          "eta": 0.05,
+          "min_child_weight": 20,
+          "reg_lambda": 10,
+          "subsample": 0.9,
+          "colsample_bytree": 0.9
+        },
+        "rounds": 40,
+        "validation": {
+          "rows": 1336,
+          "positives": 351,
+          "rocAuc": 0.8859444372134728,
+          "brierScore": 0.1059325635433197
+        }
+      }
+    }
+  },
+  "evaluationReport": "reports/boosted-model-evaluation.json",
+  "productionStatus": "exported_for_app"
+}

@@ -1,19 +1,20 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import type { FloodZoneInput } from "@/lib/flood-risk";
+import type { FloodZoneInput } from "@/lib/flood-guidance";
 
 type Position = [number, number];
-type PolygonCoordinates = Position[][][];
+type PolygonCoordinates = Position[][];
+type MultiPolygonCoordinates = PolygonCoordinates[];
 type FemaFeature = {
   properties: {
     FLD_ZONE?: string | null;
     ZONE_SUBTY?: string | null;
     SFHA_TF?: string | null;
   };
-  geometry: {
-    type: "MultiPolygon";
-    coordinates: PolygonCoordinates;
-  };
+  geometry:
+    | { type: "Polygon"; coordinates: PolygonCoordinates }
+    | { type: "MultiPolygon"; coordinates: MultiPolygonCoordinates }
+    | null;
 };
 
 type FemaCollection = {
@@ -25,24 +26,43 @@ type CountySource = {
   bounds: [number, number, number, number];
 };
 
+type FemaSnapshot = {
+  sources: Array<{
+    file: string;
+    bounds: CountySource["bounds"];
+  }>;
+};
+
 export type FemaLookup = {
   floodZone: FloodZoneInput;
   distanceToSfhaMeters: number | null;
 };
 
-const countySources: CountySource[] = [
-  { file: "santa_clara_flood_zones.geojson", bounds: [-122.08, 36.95, -121.2, 37.49] },
-  { file: "alameda_county_flood_zones.geojson", bounds: [-122.35, 37.45, -121.45, 37.95] },
-  { file: "contra_costa_county_flood_zones.geojson", bounds: [-122.45, 37.7, -121.5, 38.1] },
-  { file: "san_mateo_county_flood_zones.geojson", bounds: [-122.55, 37.05, -122.05, 37.75] },
-  { file: "san_francisco_county_flood_zones.geojson", bounds: [-122.55, 37.65, -122.3, 37.85] },
-  { file: "marin_county.geojson", bounds: [-123.0, 37.8, -122.35, 38.35] },
-  { file: "napa_county.geojson", bounds: [-122.7, 38.1, -122.0, 38.9] },
-  { file: "solano_county.geojson", bounds: [-122.45, 37.85, -121.55, 38.6] },
-  { file: "sonoma_county_flood_zones.geojson", bounds: [-123.55, 38.05, -122.3, 38.9] },
-];
+const SOURCE_PADDING_DEGREES = 0.02;
 
 const collectionPromises = new Map<string, Promise<FemaCollection>>();
+let sourcePromise: Promise<CountySource[]> | undefined;
+
+function loadCountySources() {
+  if (!sourcePromise) {
+    sourcePromise = readFile(
+      path.join(process.cwd(), "data", "fema-nfhl-snapshot.json"),
+      "utf8",
+    ).then((contents) => {
+      const snapshot = JSON.parse(contents) as FemaSnapshot;
+      return snapshot.sources.map(({ file, bounds }) => ({
+        file,
+        bounds: [
+          bounds[0] - SOURCE_PADDING_DEGREES,
+          bounds[1] - SOURCE_PADDING_DEGREES,
+          bounds[2] + SOURCE_PADDING_DEGREES,
+          bounds[3] + SOURCE_PADDING_DEGREES,
+        ] as CountySource["bounds"],
+      }));
+    });
+  }
+  return sourcePromise;
+}
 
 function loadCollection(file: string) {
   let collectionPromise = collectionPromises.get(file);
@@ -59,18 +79,29 @@ function pointInRing(point: Position, ring: Position[]) {
   for (let index = 0, previous = ring.length - 1; index < ring.length; previous = index++) {
     const [x, y] = ring[index];
     const [previousX, previousY] = ring[previous];
+    if (distanceToSegmentMeters(point, ring[previous], ring[index]) <= 0.01) {
+      return "boundary";
+    }
     const intersects =
       y > point[1] !== previousY > point[1] &&
       point[0] <
         ((previousX - x) * (point[1] - y)) / (previousY - y) + x;
     if (intersects) inside = !inside;
   }
-  return inside;
+  return inside ? "inside" : "outside";
 }
 
 function pointInPolygon(point: Position, polygon: Position[][]) {
-  if (!pointInRing(point, polygon[0])) return false;
-  return !polygon.slice(1).some((hole) => pointInRing(point, hole));
+  const exterior = pointInRing(point, polygon[0]);
+  if (exterior === "outside") return false;
+  if (exterior === "boundary") return true;
+
+  for (const hole of polygon.slice(1)) {
+    const relation = pointInRing(point, hole);
+    if (relation === "boundary") return true;
+    if (relation === "inside") return false;
+  }
+  return true;
 }
 
 function distanceToSegmentMeters(point: Position, start: Position, end: Position) {
@@ -99,12 +130,18 @@ function distanceToSegmentMeters(point: Position, start: Position, end: Position
 }
 
 function distanceToFeatureMeters(point: Position, feature: FemaFeature) {
-  if (feature.geometry.coordinates.some((polygon) => pointInPolygon(point, polygon))) {
+  if (!feature.geometry) return Number.POSITIVE_INFINITY;
+  const polygons =
+    feature.geometry.type === "Polygon"
+      ? [feature.geometry.coordinates]
+      : feature.geometry.coordinates;
+
+  if (polygons.some((polygon) => pointInPolygon(point, polygon))) {
     return 0;
   }
 
   let minimum = Number.POSITIVE_INFINITY;
-  for (const polygon of feature.geometry.coordinates) {
+  for (const polygon of polygons) {
     for (const ring of polygon) {
       for (let index = 1; index < ring.length; index += 1) {
         minimum = Math.min(
@@ -138,6 +175,7 @@ function hazardPriority(feature: FemaFeature) {
 
 export async function lookupFema(longitude: number, latitude: number): Promise<FemaLookup> {
   const point: Position = [longitude, latitude];
+  const countySources = await loadCountySources();
   const sources = countySources.filter((source) => isInsideBounds(point, source.bounds));
   const collections = await Promise.all(sources.map((source) => loadCollection(source.file)));
   let containingFeature: FemaFeature | null = null;

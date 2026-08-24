@@ -7,7 +7,7 @@ type RainfallRaster = {
   noData: number | null;
 };
 
-let rasterPromise: Promise<RainfallRaster> | undefined;
+let rasterPromise: Promise<RainfallRaster> | undefined; 
 
 async function loadRaster() {
   const tiff = await fromFile(
@@ -15,7 +15,7 @@ async function loadRaster() {
   );
   const image = await tiff.getImage();
 
-  return {
+  return {  
     image,
     bounds: image.getBoundingBox() as [number, number, number, number],
     noData: image.getGDALNoData(),
@@ -39,7 +39,7 @@ export async function sampleRainfall(longitude: number, latitude: number) {
   ) {
     return null;
   }
-
+  
   const width = image.getWidth();
   const height = image.getHeight();
   const x = Math.max(

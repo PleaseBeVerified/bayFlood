@@ -1,0 +1,239 @@
+{
+  "tolerance": 2e-06,
+  "fixtures": [
+    {
+      "input": {
+        "elevation_m": 220.4,
+        "rainfall_100yr_24h_in": 6.62,
+        "nearest_water_distance_m": 146.0,
+        "nearest_water_kind": "stream/river",
+        "slope_degrees": 24.768,
+        "local_elevation_250m": 22.359,
+        "local_elevation_500m": 6.195,
+        "flow_accumulation_m2": 400.0,
+        "height_above_drainage_m": 79.056
+      },
+      "expectedClassProbabilities": {
+        "onePercent": 0.0069967154413461685,
+        "pointTwoPercent": 0.07228049449622631,
+        "minimal": 0.9207227900624275
+      }
+    },
+    {
+      "input": {
+        "elevation_m": 19.3,
+        "rainfall_100yr_24h_in": 4.51,
+        "nearest_water_distance_m": 281.0,
+        "nearest_water_kind": "waterbody",
+        "slope_degrees": 0.915,
+        "local_elevation_250m": -0.008,
+        "local_elevation_500m": 0.629,
+        "flow_accumulation_m2": 200.0,
+        "height_above_drainage_m": 6.739
+      },
+      "expectedClassProbabilities": {
+        "onePercent": 0.053042490035295486,
+        "pointTwoPercent": 0.23672650381922722,
+        "minimal": 0.7102310061454773
+      }
+    },
+    {
+      "input": {
+        "elevation_m": 328.3,
+        "rainfall_100yr_24h_in": 7.03,
+        "nearest_water_distance_m": 215.0,
+        "nearest_water_kind": "stream/river",
+        "slope_degrees": 17.486,
+        "local_elevation_250m": -15.817,
+        "local_elevation_500m": -23.964,
+        "flow_accumulation_m2": 20300.0,
+        "height_above_drainage_m": 36.865
+      },
+      "expectedClassProbabilities": {
+        "onePercent": 0.007782858796417713,
+        "pointTwoPercent": 0.08579276781529188,
+        "minimal": 0.9064243733882904
+      }
+    },
+    {
+      "input": {
+        "elevation_m": 7.7,
+        "rainfall_100yr_24h_in": 4.5,
+        "nearest_water_distance_m": 337.0,
+        "nearest_water_kind": "waterbody",
+        "slope_degrees": 1.254,
+        "local_elevation_250m": 0.053,
+        "local_elevation_500m": 0.139,
+        "flow_accumulation_m2": 19900.0,
+        "height_above_drainage_m": 0.043
+      },
+      "expectedClassProbabilities": {
+        "onePercent": 0.172364741563797,
+        "pointTwoPercent": 0.22110816836357117,
+        "minimal": 0.6065270900726318
+      }
+    },
+    {
+      "input": {
+        "elevation_m": 11.0,
+        "rainfall_100yr_24h_in": 4.45,
+        "nearest_water_distance_m": 403.0,
+        "nearest_water_kind": "canal/ditch",
+        "slope_degrees": 0.451,
+        "local_elevation_250m": -0.106,
+        "local_elevation_500m": -0.165,
+        "flow_accumulation_m2": 800.0,
+        "height_above_drainage_m": 0.009
+      },
+      "expectedClassProbabilities": {
+        "onePercent": 0.24092108011245728,
+        "pointTwoPercent": 0.2105858027935028,
+        "minimal": 0.5484931170940399
+      }
+    },
+    {
+      "input": {
+        "elevation_m": 171.3,
+        "rainfall_100yr_24h_in": 6.23,
+        "nearest_water_distance_m": 61.0,
+        "nearest_water_kind": "stream/river",
+        "slope_degrees": 17.483,
+        "local_elevation_250m": -17.503,
+        "local_elevation_500m": -30.668,
+        "flow_accumulation_m2": 1800.0,
+        "height_above_drainage_m": 13.302
+      },
+      "expectedClassProbabilities": {
+        "onePercent": 0.019232653081417084,
+        "pointTwoPercent": 0.1125577911734581,
+        "minimal": 0.8682095557451248
+      }
+    },
+    {
+      "input": {
+        "elevation_m": 256.9,
+        "rainfall_100yr_24h_in": 6.69,
+        "nearest_water_distance_m": 146.0,
+        "nearest_water_kind": "stream/river",
+        "slope_degrees": 24.061,
+        "local_elevation_250m": 6.513,
+        "local_elevation_500m": 7.248,
+        "flow_accumulation_m2": 1500.0,
+        "height_above_drainage_m": 89.671
+      },
+      "expectedClassProbabilities": {
+        "onePercent": 0.0069967154413461685,
+        "pointTwoPercent": 0.07228049449622631,
+        "minimal": 0.9207227900624275
+      }
+    },
+    {
+      "input": {
+        "elevation_m": 96.9,
+        "rainfall_100yr_24h_in": 5.45,
+        "nearest_water_distance_m": 324.0,
+        "nearest_water_kind": "stream/river",
+        "slope_degrees": 2.073,
+        "local_elevation_250m": -1.566,
+        "local_elevation_500m": -1.509,
+        "flow_accumulation_m2": 285600.0,
+        "height_above_drainage_m": 2.669
+      },
+      "expectedClassProbabilities": {
+        "onePercent": 0.1054394468665123,
+        "pointTwoPercent": 0.2048409953713417,
+        "minimal": 0.689719557762146
+      }
+    },
+    {
+      "input": {
+        "elevation_m": 13.8,
+        "rainfall_100yr_24h_in": 4.46,
+        "nearest_water_distance_m": 97.0,
+        "nearest_water_kind": "canal/ditch",
+        "slope_degrees": 0.809,
+        "local_elevation_250m": -0.162,
+        "local_elevation_500m": -0.271,
+        "flow_accumulation_m2": 21600.0,
+        "height_above_drainage_m": 2.045
+      },
+      "expectedClassProbabilities": {
+        "onePercent": 0.15470562875270844,
+        "pointTwoPercent": 0.22161315381526947,
+        "minimal": 0.6236812174320221
+      }
+    },
+    {
+      "input": {
+        "elevation_m": 7.5,
+        "rainfall_100yr_24h_in": 4.46,
+        "nearest_water_distance_m": 536.0,
+        "nearest_water_kind": "waterbody",
+        "slope_degrees": 0.263,
+        "local_elevation_250m": 0.264,
+        "local_elevation_500m": 0.493,
+        "flow_accumulation_m2": 800.0,
+        "height_above_drainage_m": 0.019
+      },
+      "expectedClassProbabilities": {
+        "onePercent": 0.2864447236061096,
+        "pointTwoPercent": 0.22958910465240479,
+        "minimal": 0.4839661717414856
+      }
+    },
+    {
+      "input": {
+        "elevation_m": -0.1,
+        "rainfall_100yr_24h_in": 5.42,
+        "nearest_water_distance_m": 0.0,
+        "nearest_water_kind": "foreshore",
+        "slope_degrees": 1.099,
+        "local_elevation_250m": -0.852,
+        "local_elevation_500m": -0.771,
+        "flow_accumulation_m2": 600.0,
+        "height_above_drainage_m": 0.009
+      },
+      "expectedClassProbabilities": {
+        "onePercent": 0.9668176770210266,
+        "pointTwoPercent": 0.0,
+        "minimal": 0.03318232297897339
+      }
+    },
+    {
+      "input": {
+        "elevation_m": 2.1,
+        "rainfall_100yr_24h_in": 4.38,
+        "nearest_water_distance_m": 0.0,
+        "nearest_water_kind": "reservoir",
+        "slope_degrees": 0.0,
+        "local_elevation_250m": -0.006,
+        "local_elevation_500m": -0.063,
+        "flow_accumulation_m2": 72900.0,
+        "height_above_drainage_m": 0.043
+      },
+      "expectedClassProbabilities": {
+        "onePercent": 0.977286159992218,
+        "pointTwoPercent": 0.0,
+        "minimal": 0.022713840007781982
+      }
+    },
+    {
+      "input": {
+        "elevation_m": 44.0,
+        "rainfall_100yr_24h_in": 4.18,
+        "nearest_water_distance_m": null,
+        "nearest_water_kind": "Unknown",
+        "slope_degrees": 0.406,
+        "local_elevation_250m": -0.006,
+        "local_elevation_500m": 0.136,
+        "flow_accumulation_m2": 6800.0,
+        "height_above_drainage_m": 3.059
+      },
+      "expectedClassProbabilities": {
+        "onePercent": 0.19504709541797638,
+        "pointTwoPercent": 0.23441646993160248,
+        "minimal": 0.5705364346504211
+      }
+    }
+  ]
+}

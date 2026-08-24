@@ -23,6 +23,17 @@
 # source geospatial data
 /FEMAdata/
 /elevation/
+/terrain/
+/.venv-whitebox/
+/.venv-model/
+/data/cache/
+/data/tl_2025_us_county/
+/hydrography/NHDPLUS_H_1805_HU4_GDB*
+
+# generated working artifacts
+/outputs/
+__pycache__/
+*.py[cod]
 
 # misc
 .DS_Store
@@ -36,6 +47,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel

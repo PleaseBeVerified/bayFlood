@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "modelType": "balanced_calibrated_three_class_xgboost_benchmark",
+  "createdAt": "2026-08-12T23:05:58.283645+00:00",
+  "classOrder": [
+    "one_percent",
+    "point_two_percent",
+    "minimal"
+  ],
+  "featureNames": [
+    "rainfall_100yr_24h_in",
+    "log_elevation_m",
+    "log_nearest_water_distance_m",
+    "slope_degrees",
+    "local_elevation_250m",
+    "local_elevation_500m",
+    "log_flow_accumulation_m2",
+    "log_height_above_drainage_m",
+    "nearest_water_kind_0",
+    "nearest_water_kind_1",
+    "nearest_water_kind_2",
+    "nearest_water_kind_3",
+    "nearest_water_kind_4",
+    "nearest_water_kind_5",
+    "nearest_water_kind_6",
+    "nearest_water_kind_7",
+    "nearest_water_kind_8",
+    "nearest_water_kind_9",
+    "nearest_water_kind_10",
+    "nearest_water_kind_11",
+    "nearest_water_kind_12"
+  ],
+  "numericFeatures": [
+    "rainfall_100yr_24h_in",
+    "log_elevation_m",
+    "log_nearest_water_distance_m",
+    "slope_degrees",
+    "local_elevation_250m",
+    "local_elevation_500m",
+    "log_flow_accumulation_m2",
+    "log_height_above_drainage_m"
+  ],
+  "categoricalFeatures": {
+    "nearest_water_kind": [
+      "Unknown",
+      "artificial path",
+      "canal/ditch",
+      "coastline",
+      "dam/weir",
+      "foreshore",
+      "pipeline",
+      "reservoir",
+      "sea/ocean",
+      "stream/river",
+      "swamp/marsh",
+      "water",
+      "waterbody"
+    ]
+  },
+  "selected": {
+    "candidate": 6,
+    "hyperparameters": {
+      "max_depth": 4,
+      "eta": 0.05,
+      "min_child_weight": 20,
+      "reg_lambda": 15
+    },
+    "rounds": 649,
+    "tuning": {
+      "rows": 789,
+      "accuracy": 0.7579214195183777,
+      "balancedAccuracy": 0.695955338657202,
+      "macroF1": 0.690837102173154,
+      "logLoss": 0.5728804469108582,
+      "multiclassBrier": 0.3437867621412168,
+      "expectedCalibrationError": 0.07315087386410497,
+      "macroOneVsRestRocAuc": 0.8836829918848661,
+      "perClassRocAuc": {
+        "one_percent": 0.9566378531802349,
+        "point_two_percent": 0.7960833632770391,
+        "minimal": 0.8983277591973244
+      },
+      "confusionMatrix": [
+        [
+          87,
+          23,
+          5
+        ],
+        [
+          30,
+          85,
+          69
+        ],
+        [
+          9,
+          55,
+          426
+        ]
+      ],
+      "classOrder": [
+        "one_percent",
+        "point_two_percent",
+        "minimal"
+      ],
+      "perClass": {
+        "one_percent": {
+          "precision": 0.6904761904761905,
+          "recall": 0.7565217391304347,
+          "f1": 0.7219917012448133,
+          "support": 115
+        },
+        "point_two_percent": {
+          "precision": 0.5214723926380368,
+          "recall": 0.46195652173913043,
+          "f1": 0.4899135446685879,
+          "support": 184
+        },
+        "minimal": {
+          "precision": 0.852,
+          "recall": 0.8693877551020408,
+          "f1": 0.8606060606060606,
+          "support": 490
+        }
+      }
+    }
+  },
+  "classWeights": {
+    "one_percent": 2.309189455530919,
+    "point_two_percent": 1.5035290343278793,
+    "minimal": 0.5258050039268484
+  },
+  "calibration": {
+    "method": "vector_scaling",
+    "formula": "softmax(rawMargins * exp(logScales) + biases)",
+    "logScales": [
+      -0.5715673688491678,
+      -0.3114994093569607,
+      0.20873315714222485
+    ],
+    "scales": [
+      0.5646397460283782,
+      0.7323480430615156,
+      1.232116173259085
+    ],
+    "biases": [
+      -1.4612630462050813,
+      -0.7621555327514565,
+      0.0
+    ]
+  },
+  "nativeModel": "models/flood-physical-hazard-three-class-expanded-point-two-benchmark.json",
+  "evaluationReport": "reports/three-class-model-evaluation-expanded-point-two.json",
+  "productionStatus": "benchmark_only_not_used_by_app"
+}
