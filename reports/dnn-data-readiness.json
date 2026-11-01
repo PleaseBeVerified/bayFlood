@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "trainingTarget": "Binary current FEMA-equivalent class: one_percent=1, minimal=0; point_two_percent excluded.",
+  "projectionInterpretation": "Scenario sensitivity inputs only; not validated 2056 forecasts or future labels.",
+  "inputLocations": 10000,
+  "trainingRows": 9067,
+  "threeClassTrainingRows": 10000,
+  "excludedPointTwoPercentRows": 933,
+  "scenarioRows": 30000,
+  "scenarioYear": 2056,
+  "scenarioIds": [
+    "low_change",
+    "medium_change",
+    "high_change"
+  ],
+  "trainingLabelCounts": {
+    "0": 7249,
+    "1": 1818
+  },
+  "threeClassTrainingLabelCounts": {
+    "minimal": 7249,
+    "point_two_percent": 933,
+    "one_percent": 1818
+  },
+  "trainingPartitionCounts": {
+    "training": 6690,
+    "validation": 1223,
+    "test": 1154
+  },
+  "threeClassTrainingPartitionCounts": {
+    "training": 7364,
+    "validation": 1336,
+    "test": 1300
+  }
+}

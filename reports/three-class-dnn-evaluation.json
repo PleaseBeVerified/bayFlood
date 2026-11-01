@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-19T02:30:32.258232+00:00",
+  "input": "data/dnn-three-class-training-table.csv",
+  "target": "FEMA-equivalent mapped class: minimal, point_two_percent, one_percent",
+  "features": [
+    "elevation_m",
+    "current_imperviousness_pct",
+    "current_100yr_24h_rainfall_mm",
+    "nearest_water_available",
+    "log_nearest_water_distance_m"
+  ],
+  "classes": [
+    "minimal",
+    "one_percent",
+    "point_two_percent"
+  ],
+  "rowCounts": {
+    "training": 7364,
+    "validation": 1336,
+    "test": 1300
+  },
+  "labelCounts": {
+    "training": {
+      "minimal": 5452,
+      "one_percent": 1238,
+      "point_two_percent": 674
+    },
+    "validation": {
+      "minimal": 985,
+      "one_percent": 238,
+      "point_two_percent": 113
+    },
+    "test": {
+      "minimal": 812,
+      "one_percent": 342,
+      "point_two_percent": 146
+    }
+  },
+  "candidates": [
+    {
+      "hiddenLayerSizes": [
+        32,
+        16
+      ],
+      "alpha": 0.001,
+      "iterations": 74,
+      "validationMacroF1": 0.5627928838693081,
+      "validationBalancedAccuracy": 0.6046806432019823
+    },
+    {
+      "hiddenLayerSizes": [
+        64,
+        32,
+        16
+      ],
+      "alpha": 0.001,
+      "iterations": 81,
+      "validationMacroF1": 0.5944922923814592,
+      "validationBalancedAccuracy": 0.6341342340808567
+    },
+    {
+      "hiddenLayerSizes": [
+        64,
+        64,
+        32
+      ],
+      "alpha": 0.01,
+      "iterations": 94,
+      "validationMacroF1": 0.589858692969058,
+      "validationBalancedAccuracy": 0.6447537534397435
+    }
+  ],
+  "selectedCandidate": {
+    "hiddenLayerSizes": [
+      64,
+      32,
+      16
+    ],
+    "alpha": 0.001,
+    "iterations": 81,
+    "validationMacroF1": 0.5944922923814592,
+    "validationBalancedAccuracy": 0.6341342340808567
+  },
+  "validationMetrics": {
+    "accuracy": 0.7425149700598802,
+    "balancedAccuracy": 0.6341342340808567,
+    "macroF1": 0.5944922923814592,
+    "logLoss": 0.5712315881000049,
+    "perClass": {
+      "minimal": {
+        "precision": 0.9063981042654028,
+        "recall": 0.7766497461928934,
+        "f1": 0.8365226899945325,
+        "support": 985
+      },
+      "one_percent": {
+        "precision": 0.625,
+        "recall": 0.7983193277310925,
+        "f1": 0.7011070110701108,
+        "support": 238
+      },
+      "point_two_percent": {
+        "precision": 0.19680851063829788,
+        "recall": 0.3274336283185841,
+        "f1": 0.24584717607973422,
+        "support": 113
+      }
+    },
+    "confusionMatrix": [
+      [
+        765,
+        100,
+        120
+      ],
+      [
+        17,
+        190,
+        31
+      ],
+      [
+        62,
+        14,
+        37
+      ]
+    ]
+  },
+  "testMetrics": {
+    "accuracy": 0.7776923076923077,
+    "balancedAccuracy": 0.7872305350054399,
+    "macroF1": 0.7230697132370475,
+    "logLoss": 0.5421216514117664,
+    "perClass": {
+      "minimal": {
+        "precision": 0.9443585780525502,
+        "recall": 0.7524630541871922,
+        "f1": 0.8375599725839616,
+        "support": 812
+      },
+      "one_percent": {
+        "precision": 0.768,
+        "recall": 0.8421052631578947,
+        "f1": 0.803347280334728,
+        "support": 342
+      },
+      "point_two_percent": {
+        "precision": 0.4028776978417266,
+        "recall": 0.7671232876712328,
+        "f1": 0.5283018867924528,
+        "support": 146
+      }
+    },
+    "confusionMatrix": [
+      [
+        611,
+        77,
+        124
+      ],
+      [
+        12,
+        288,
+        42
+      ],
+      [
+        24,
+        10,
+        112
+      ]
+    ]
+  },
+  "newarkTestAudit": {
+    "center": {
+      "latitude": 37.53589,
+      "longitude": -122.02951
+    },
+    "radiusKm": 3,
+    "testRows": 10,
+    "correct": 2,
+    "minimalCalledModerate": 8
+  },
+  "majorityClassTestAccuracy": 0.6246153846153846,
+  "jsonExportMaximumProbabilityError": 0.0
+}

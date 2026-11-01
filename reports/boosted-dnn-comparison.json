@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-31T23:33:31.568276+00:00",
+  "target": "FEMA one_percent=1, minimal=0; 0.2 percent excluded",
+  "features": [
+    "elevation_m",
+    "current_imperviousness_pct",
+    "current_100yr_24h_rainfall_mm",
+    "nearest_water_available",
+    "log_nearest_water_distance_m"
+  ],
+  "parameters": {
+    "n_estimators": 350,
+    "max_depth": 3,
+    "learning_rate": 0.03,
+    "subsample": 0.85,
+    "colsample_bytree": 0.9,
+    "reg_lambda": 10,
+    "n_jobs": 4,
+    "random_state": 42
+  },
+  "rowCounts": {
+    "training": 6690,
+    "validation": 1223,
+    "test": 1154
+  },
+  "decisionThreshold": 0.22,
+  "validationMetrics": {
+    "accuracy": 0.9223221586263287,
+    "balancedAccuracy": 0.8944205093204795,
+    "rocAuc": 0.9574094612464275,
+    "averagePrecision": 0.8966037487985395,
+    "precision": 0.7739463601532567,
+    "recall": 0.8487394957983193,
+    "f1": 0.8096192384769539,
+    "brierScore": 0.05378834903240204,
+    "confusionMatrix": [
+      [
+        926,
+        59
+      ],
+      [
+        36,
+        202
+      ]
+    ]
+  },
+  "testMetrics": {
+    "accuracy": 0.938474870017331,
+    "balancedAccuracy": 0.9435874168179068,
+    "rocAuc": 0.9869177253478523,
+    "averagePrecision": 0.9797785473105286,
+    "precision": 0.8537859007832899,
+    "recall": 0.956140350877193,
+    "f1": 0.9020689655172414,
+    "brierScore": 0.03215958923101425,
+    "confusionMatrix": [
+      [
+        756,
+        56
+      ],
+      [
+        15,
+        327
+      ]
+    ]
+  },
+  "referenceCases": [
+    {
+      "inputs": [
+        220.4,
+        0.0,
+        168.148,
+        1.0,
+        4.990432586778736
+      ],
+      "probability": 0.02485680766403675
+    },
+    {
+      "inputs": [
+        19.3,
+        61.0,
+        114.554,
+        1.0,
+        5.641907070938114
+      ],
+      "probability": 0.12001638859510422
+    },
+    {
+      "inputs": [
+        328.3,
+        0.0,
+        178.562,
+        1.0,
+        5.375278407684165
+      ],
+      "probability": 0.00853470154106617
+    },
+    {
+      "inputs": [
+        171.3,
+        27.0,
+        158.242,
+        1.0,
+        4.127134385045092
+      ],
+      "probability": 0.03607749193906784
+    },
+    {
+      "inputs": [
+        256.9,
+        0.0,
+        169.926,
+        1.0,
+        4.990432586778736
+      ],
+      "probability": 0.014015093445777893
+    },
+    {
+      "inputs": [
+        25,
+        60,
+        150,
+        1,
+        null
+      ],
+      "probability": 0.1461755484342575
+    }
+  ],
+  "exportMaximumProbabilityError": 2.641120102481187e-07,
+  "dnnTestMetrics": {
+    "accuracy": 0.901213171577123,
+    "balancedAccuracy": 0.9204944833347737,
+    "precision": 0.7626728110599078,
+    "recall": 0.9678362573099415,
+    "f1": 0.8530927835051546,
+    "rocAuc": 0.9810661711750641,
+    "averagePrecision": 0.9639161534557085,
+    "brierScore": 0.10324644344583842,
+    "confusionMatrix": [
+      [
+        709,
+        103
+      ],
+      [
+        11,
+        331
+      ]
+    ]
+  }
+}

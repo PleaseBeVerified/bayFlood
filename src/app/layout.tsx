@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "BayFlood | Bay Area Flood Risk",
+  title: "Bay Area Flood Risk Analyzer",
   description:
-    "Estimate Bay Area flood exposure using FEMA zones, USGS elevation, and NOAA rainfall data.",
+    "Explore Bay Area flood-risk conditions with an interactive screening analyzer.",
 };
 
 export default function RootLayout({

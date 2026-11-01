@@ -1,167 +1,87 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import maplibregl, { Map as MapLibreMap } from "maplibre-gl";
-import { Protocol } from "pmtiles";
 import "maplibre-gl/dist/maplibre-gl.css";
 
-type SearchResult = {
-  id: string;
-  label: string;
-  longitude: number;
-  latitude: number;
-};
+type SearchResult = { id: string; label: string; longitude: number; latitude: number };
 
 type RiskResult = {
-  score: number;
-  modelExposureLikelihoodPercent: number;
-  modelExposureMeaning: string;
-  addressFloodHistoryUsed: false;
-  level: string;
-  color: string;
-  confidence: "Low" | "Medium" | "High";
-  elevationMeters: number;
-  elevationFeet: number;
-  rainfallInches: number | null;
-  distanceToSfhaMeters: number | null;
-  explanation: string;
-  feedback: string[];
-  nearestWater: {
-    status: "found" | "not_found" | "unavailable";
-    distanceMeters: number | null;
-    name: string | null;
-    kind: string | null;
-    searchRadiusMeters: number;
-  };
-  floodZone: {
-    zone: string | null;
-    subtype: string | null;
-    sfha: string | null;
-  };
-  hundredYearFloodBenchmark: {
-    status: "available" | "not_determined";
-    display: string;
-    percent: number | null;
+  model: {
+    scoreOutOf100: number;
+    classification: string;
+    missingFeatures: string[];
+  } | null;
+  modelMapDisagreement: string | null;
+  floodEventChance: {
+    source: "local_snapshot" | "live_nfhl" | "none";
+    liveStatus: "matched" | "no_match" | "unavailable";
+    kind: "mapped_benchmark" | "upper_bound" | "unavailable";
+    tenYearPercent: number | null;
+    twentyYearPercent: number | null;
     annualChancePercent: number | null;
+    zone: string | null;
     basis: string;
-    caveat: string;
   };
-  hundredYearFloodEstimate: {
-    horizonYears: 100;
-    status: "fema_mapped_benchmark" | "experimental_physical_estimate";
-    sourceLabel: string;
-    display: string;
-    percent: number;
-    annualChancePercent: number;
-    basis: string;
-    caveat: string;
-    range: { lowerPercent: number; upperPercent: number } | null;
-    confidence: "Low" | "Medium" | null;
-    addressFemaRecordRequired: boolean;
-  };
-  areaClaimSignal:
-    | {
-        status: "matched";
-        censusBlockGroup: string;
-        county: string;
-        claims: number;
-        policyYears: number;
-        claimsPer1000PolicyYears: number;
-        percentile: number;
-        level: "Very low" | "Low" | "Moderate" | "High" | "Very high";
-        asOfYear: number;
-        source: string;
-        interpretation: string;
-      }
-    | {
-        status: "no_nfip_area_rate";
-        censusBlockGroup: string;
-        source: string;
-        interpretation: string;
-      }
-    | {
-        status: "unavailable";
-        censusBlockGroup: null;
-        source: string;
-        interpretation: string;
-      };
+  caveat: string;
 };
 
-const floodZoneColors = [
-  { color: "#9d174d", label: "Coastal high hazard (V / VE)" },
-  { color: "#dc2626", label: "High risk (A / AE / AO / AH)" },
-  { color: "#f59e0b", label: "Moderate risk (X, shaded)" },
-  { color: "#2563eb", label: "Other mapped flood zones" },
-];
-function formatWaterKind(kind: string | null) {
-  if (!kind) return "Water source";
+type SelectedLocation = {
+  latitude: number;
+  longitude: number;
+  label: string;
+};
 
-  const labels: Record<string, string> = {
-    "stream/river": "Stream or river",
-    "canal/ditch": "Canal or ditch",
-    "dam/weir": "Dam or weir",
-    "sea/ocean": "Sea or ocean",
-    "swamp/marsh": "Swamp or marsh",
-    foreshore: "Foreshore",
-    coastline: "Coastline",
-    reservoir: "Reservoir",
-    waterbody: "Water body",
-  };
-
-  return labels[kind] ?? kind.charAt(0).toUpperCase() + kind.slice(1);
-}
-
-function formatDistance(distanceMeters: number | null) {
-  if (distanceMeters === null) return "Not available";
-  if (distanceMeters < 1_000) return `${distanceMeters.toLocaleString()} m`;
-  return `${(distanceMeters / 1_000).toFixed(1)} km`;
-}
 export default function Home() {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<MapLibreMap | null>(null);
   const marker = useRef<maplibregl.Marker | null>(null);
   const skipNextSearch = useRef(false);
+  const riskRequest = useRef<AbortController | null>(null);
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResult[]>([]);
   const [searching, setSearching] = useState(false);
   const [risk, setRisk] = useState<RiskResult | null>(null);
   const [riskError, setRiskError] = useState("");
   const [loadingRisk, setLoadingRisk] = useState(false);
+  const [selectedLocation, setSelectedLocation] = useState<SelectedLocation | null>(null);
 
-  async function assessLocation(longitude: number, latitude: number) {
-    const nextMap = map.current;
-    if (!nextMap) return;
-
+  const assessLocation = useCallback(async (longitude: number, latitude: number) => {
+    riskRequest.current?.abort();
+    const controller = new AbortController();
+    riskRequest.current = controller;
     setLoadingRisk(true);
     setRiskError("");
     setRisk(null);
 
-    const point = nextMap.project([longitude, latitude]);
-    const features = nextMap.queryRenderedFeatures(point, {
-      layers: ["flood-zones-fill"],
-    });
-    const properties = features[0]?.properties;
-    const parameters = new URLSearchParams({
-      lat: latitude.toString(),
-      lng: longitude.toString(),
-    });
-
-    if (properties?.FLD_ZONE) parameters.set("zone", properties.FLD_ZONE);
-    if (properties?.ZONE_SUBTY) parameters.set("subtype", properties.ZONE_SUBTY);
-    if (properties?.SFHA_TF) parameters.set("sfha", properties.SFHA_TF);
-
     try {
-      const response = await fetch(`/api/flood-risk?${parameters}`);
+      const parameters = new URLSearchParams({ lat: latitude.toString(), lng: longitude.toString() });
+      const response = await fetch(`/api/flood-risk?${parameters}`, { signal: controller.signal });
       const data = await response.json();
       if (!response.ok) throw new Error(data.error);
       setRisk(data);
     } catch (error) {
-      setRiskError(
-        error instanceof Error ? error.message : "Unable to calculate risk.",
-      );
+      if (controller.signal.aborted) return;
+      setRiskError(error instanceof Error ? error.message : "Unable to calculate the mapped flood-event benchmark.");
     } finally {
-      setLoadingRisk(false);
+      if (!controller.signal.aborted) setLoadingRisk(false);
     }
+  }, []);
+
+  const selectMapLocation = useCallback((longitude: number, latitude: number, label: string) => {
+    setSelectedLocation({ longitude, latitude, label });
+    void assessLocation(longitude, latitude);
+  }, [assessLocation]);
+
+  function clearAssessment() {
+    riskRequest.current?.abort();
+    setLoadingRisk(false);
+    marker.current?.remove();
+    setSelectedLocation(null);
+    setRisk(null);
+    setRiskError("");
+    setQuery("");
+    setResults([]);
   }
 
   useEffect(() => {
@@ -175,10 +95,9 @@ export default function Home() {
     const timeout = window.setTimeout(async () => {
       setSearching(true);
       try {
-        const response = await fetch(
-          `/api/geocode?q=${encodeURIComponent(query)}`,
-          { signal: controller.signal },
-        );
+        const response = await fetch(`/api/geocode?q=${encodeURIComponent(query)}`, {
+          signal: controller.signal,
+        });
         const data = await response.json();
         setResults(data.results ?? []);
       } catch (error) {
@@ -196,9 +115,6 @@ export default function Home() {
 
   useEffect(() => {
     if (!mapContainer.current || map.current) return;
-
-    const protocol = new Protocol();
-    maplibregl.addProtocol("pmtiles", protocol.tile);
     const nextMap = new maplibregl.Map({
       container: mapContainer.current,
       style: {
@@ -208,140 +124,109 @@ export default function Home() {
             type: "raster",
             tiles: ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
             tileSize: 256,
-            attribution:
-              '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-          },
-          floodZones: {
-            type: "vector",
-            url: "pmtiles:///data/bay-area-flood-zones.pmtiles",
-            attribution: "FEMA National Flood Hazard Layer",
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
           },
         },
         layers: [
           { id: "basemap", type: "raster", source: "basemap" },
-          {
-            id: "flood-zones-fill",
-            type: "fill",
-            source: "floodZones",
-            "source-layer": "flood_zones",
-            paint: {
-              "fill-color": [
-                "match",
-                ["get", "FLD_ZONE"],
-                ["V", "VE"],
-                "#9d174d",
-                ["A", "AE", "A1-30", "AO", "AH", "AR", "A99"],
-                "#dc2626",
-                ["X", "0.2 PCT ANNUAL CHANCE FLOOD HAZARD"],
-                "#f59e0b",
-                "#2563eb",
-              ],
-              "fill-opacity": 0.48,
-            },
-          },
-          {
-            id: "flood-zones-outline",
-            type: "line",
-            source: "floodZones",
-            "source-layer": "flood_zones",
-            paint: {
-              "line-color": "#172554",
-              "line-opacity": 0.55,
-              "line-width": ["interpolate", ["linear"], ["zoom"], 7, 0.25, 13, 1],
-            },
-          },
         ],
       },
-      bounds: [
-        [-123.6, 36.85],
-        [-121.15, 38.9],
-      ],
+      bounds: [[-123.1, 36.95], [-121.0, 38.9]],
       fitBoundsOptions: { padding: 36 },
-      maxBounds: [ 
-        [-125, 35.5],
-        [-119.5, 40],
-      ],
-    }); 
-
-    nextMap.addControl(new maplibregl.NavigationControl(), "top-right");
-    nextMap.addControl(
-      new maplibregl.ScaleControl({ unit: "imperial" }),
-      "bottom-right",  
-    );
-    nextMap.on("click", (event) => {
-      marker.current?.remove();
-      marker.current = new maplibregl.Marker({ color: "#0369a1" })
-        .setLngLat(event.lngLat)
-        .addTo(nextMap);
-      void assessLocation(event.lngLat.lng, event.lngLat.lat);
+      maxBounds: [[-123.2, 36.85], [-120.9, 39.0]],
     });
 
-    map.current = nextMap; 
-    return () => {
+    nextMap.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
+    nextMap.addControl(new maplibregl.ScaleControl({ unit: "imperial" }), "bottom-right");
+    nextMap.on("click", (event) => {
       marker.current?.remove();
-      nextMap.remove(); 
+      marker.current = new maplibregl.Marker({ color: "#0369a1" }).setLngLat(event.lngLat).addTo(nextMap);
+      selectMapLocation(event.lngLat.lng, event.lngLat.lat, "Pinned map location");
+    });
+
+    map.current = nextMap;
+    const resizeObserver = new ResizeObserver(() => nextMap.resize());
+    resizeObserver.observe(mapContainer.current);
+    return () => {
+      resizeObserver.disconnect();
+      riskRequest.current?.abort();
+      marker.current?.remove();
+      nextMap.remove();
       map.current = null;
-      maplibregl.removeProtocol("pmtiles");
     };
-  }, []);
+  }, [selectMapLocation]);
 
   function selectResult(result: SearchResult) {
     skipNextSearch.current = true;
     setQuery(result.label);
     setResults([]);
-    map.current?.flyTo({
-      center: [result.longitude, result.latitude],
-      zoom: 14,
-      essential: true,
-    });
+    map.current?.flyTo({ center: [result.longitude, result.latitude], zoom: 14 });
     marker.current?.remove();
-    marker.current = new maplibregl.Marker({ color: "#0369a1" })
-      .setLngLat([result.longitude, result.latitude])
-      .addTo(map.current!);
-    map.current?.once("idle", () => {
-      void assessLocation(result.longitude, result.latitude);
-    });
+    if (map.current) {
+      marker.current = new maplibregl.Marker({ color: "#0369a1" })
+        .setLngLat([result.longitude, result.latitude])
+        .addTo(map.current);
+    }
+    selectMapLocation(result.longitude, result.latitude, result.label);
   }
 
   return (
-    <main className="map-shell">
-      <div ref={mapContainer} className="map" aria-label="Bay Area flood risk map" />
-      <section className="map-panel">
-        <p className="eyebrow">FEMA zones + USGS elevation</p>
-        <h1>Bay Area Flood Risk</h1>
+    <main className="app-shell">
+      <header className="app-header">
+        <div className="brand">
+          <div className="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32"><path d="M6 20c2.7 0 2.7-2 5.4-2s2.7 2 5.3 2 2.7-2 5.4-2 2.7 2 5.4 2" /><path d="M6 25c2.7 0 2.7-2 5.4-2s2.7 2 5.3 2 2.7-2 5.4-2 2.7 2 5.4 2" /><path d="M16 5v8" /></svg>
+          </div>
+          <div>
+            <h1>Bay Area <span>Flood Risk Analyzer</span></h1>
+            <p>Local insight. A clearer perspective.</p>
+          </div>
+        </div>
+        <div className="header-context"><span className="coverage-dot" /> California <span className="header-divider">/</span> Research project</div>
+      </header>
+      <div className="workspace">
+      <section className="map-panel" aria-label="Location analysis">
+        <div className="panel-intro">
+          <p className="eyebrow">Location explorer</p>
+          <h2>A clearer view <br />of flood risk.</h2>
         <p className="panel-description">
-          Search for an address or click the map to estimate flood exposure.
+          Explore FEMA map-based flood-event chances for the current year and the next 10 or 20 years.
         </p>
-        
+        </div>
+
         <div className="address-search">
-          <label htmlFor="address">Address</label>
+          <label htmlFor="address">Search a location</label>
           <div className="search-input-wrap">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="11" cy="11" r="7" />
-              <path d="m20 20-4-4" />
-            </svg>
-            <input 
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-4-4" /></svg>
+            <input
               id="address"
               value={query}
               onChange={(event) => {
                 const nextQuery = event.target.value;
                 setQuery(nextQuery);
-                if (nextQuery.trim().length < 3)  setResults([]);
+                if (nextQuery.trim().length < 3) setResults([]);
               }}
-              placeholder="Search a Bay Area address"
+              onKeyDown={(event) => {
+                if (event.key === "Enter" && results[0]) {
+                  event.preventDefault();
+                  selectResult(results[0]);
+                }
+                if (event.key === "Escape") setResults([]);
+              }}
+              placeholder="Search an address or place…"
               autoComplete="off"
+              role="combobox"
+              aria-expanded={results.length > 0}
+              aria-controls="address-results"
+              aria-autocomplete="list"
             />
             {searching && <span className="search-spinner" />}
           </div>
           {results.length > 0 && (
-            <div className="search-results">
-              {results.map((result, index) => (
-                <button
-                  key={`${result.id}-${result.longitude}-${result.latitude}-${index}`}
-                  onClick={() => selectResult(result)}
-                >
-                  <span className="result-pin">●</span>
-                  {result.label}
+            <div id="address-results" className="search-results" role="listbox">
+              {results.map((result) => (
+                <button key={`${result.id}-${result.longitude}-${result.latitude}`} role="option" aria-selected={false} onClick={() => selectResult(result)}>
+                  <span className="result-pin">●</span>{result.label}
                 </button>
               ))}
               <small>Search results from Photon / OpenStreetMap</small>
@@ -349,172 +234,91 @@ export default function Home() {
           )}
         </div>
 
+        {!selectedLocation && (
+          <div className="empty-state">
+            <div className="contour-art" aria-hidden="true">
+              <svg viewBox="0 0 320 150" fill="none">
+                <path d="M-20 95C20 10 80 130 132 53S252 0 340 30M-20 108C22 24 82 144 142 67S252 14 340 44M-20 121C22 38 90 158 152 81S256 28 340 58M-20 134C26 52 96 172 162 95S256 42 340 72M-20 147C26 66 100 186 172 109S260 56 340 86M-20 160C26 80 106 200 182 123S260 70 340 100" />
+                <circle cx="160" cy="68" r="29" className="pin-halo" />
+                <path d="M160 39a18 18 0 0 0-18 18c0 14 18 29 18 29s18-15 18-29a18 18 0 0 0-18-18Z" className="art-pin" />
+                <circle cx="160" cy="57" r="6" className="pin-center" />
+              </svg>
+              <span>YOUR NEXT PERSPECTIVE STARTS HERE</span>
+            </div>
+            <h3>Every location tells a story.</h3>
+            <p>Search above or select a point on the map to see its current, 10-year, and 20-year FEMA mapped benchmark.</p>
+          </div>
+        )}
+
+        {selectedLocation && (
+          <div className="selected-location">
+            <div>
+              <span>Selected location</span>
+              <strong>{selectedLocation.label}</strong>
+              <small>{selectedLocation.latitude.toFixed(4)}, {selectedLocation.longitude.toFixed(4)}</small>
+            </div>
+            <button className="text-button" onClick={clearAssessment}>Clear</button>
+          </div>
+        )}
+
         {(loadingRisk || riskError || risk) && (
           <section className="risk-card" aria-live="polite">
             {loadingRisk && (
               <div className="risk-loading">
                 <span className="search-spinner" />
-                Reading elevation and FEMA data...
+                <div><strong>Analyzing location</strong><span>Checking the FEMA flood zone and current physical conditions…</span></div>
               </div>
             )}
-            {riskError && <p className="risk-description">{riskError}</p>}
+            {riskError && (
+              <div className="risk-error">
+                <strong>We couldn’t assess this location</strong>
+                <p>{riskError}</p>
+                {selectedLocation && <button className="retry-button" onClick={() => assessLocation(selectedLocation.longitude, selectedLocation.latitude)}>Try again</button>}
+              </div>
+            )}
             {risk && (
               <>
-                <div className="risk-heading">
-                  <div>
-                    <span>Estimated chance of flooding within 100 years</span>
-                    <strong
-                      style={{
-                        color: "#be123c",
-                      }}
-                    >
-                      {risk.hundredYearFloodEstimate.sourceLabel}
-                    </strong>
+                <div className="event-panel">
+                  <span className="event-eyebrow">FEMA mapped flood-event chance</span>
+                  <p className="event-source">Source: {risk.floodEventChance.source === "live_nfhl" ? "live FEMA National Flood Hazard Layer" : risk.floodEventChance.source === "local_snapshot" ? `local FEMA download (live FEMA ${risk.floodEventChance.liveStatus === "unavailable" ? "unavailable" : "had no match"})` : "no matching FEMA data"}</p>
+                  <div className="event-percentages">
+                    <div><small>Current annual benchmark</small><strong className={risk.floodEventChance.annualChancePercent === null ? "event-value-unavailable" : undefined}>{risk.floodEventChance.annualChancePercent === null ? "Unavailable" : `${risk.floodEventChance.kind === "upper_bound" ? "<" : ""}${risk.floodEventChance.annualChancePercent.toFixed(1)}%`}</strong></div>
+                    <div><small>Next 10 years</small><strong className={risk.floodEventChance.tenYearPercent === null ? "event-value-unavailable" : undefined}>{risk.floodEventChance.tenYearPercent === null ? "Unavailable" : `${risk.floodEventChance.kind === "upper_bound" ? "<" : ""}${risk.floodEventChance.tenYearPercent.toFixed(1)}%`}</strong></div>
+                    <div><small>Next 20 years</small><strong className={risk.floodEventChance.twentyYearPercent === null ? "event-value-unavailable" : undefined}>{risk.floodEventChance.twentyYearPercent === null ? "Unavailable" : `${risk.floodEventChance.kind === "upper_bound" ? "<" : ""}${risk.floodEventChance.twentyYearPercent.toFixed(1)}%`}</strong></div>
                   </div>
-                  <div
-                    className="risk-score"
-                    style={{ borderColor: "#be123c", color: "#be123c" }}
-                  >
-                    {risk.hundredYearFloodEstimate.percent}
-                    <small>%</small>
-                  </div>
+                  <p>{risk.floodEventChance.basis}</p>
+                  {risk.floodEventChance.tenYearPercent === null && <p>A blank map benchmark does not mean zero flood risk. Check the current FEMA map for this location.</p>}
                 </div>
-                <div className="risk-meter">
-                  <span
-                    style={{
-                      width: `${risk.hundredYearFloodEstimate.percent}%`,
-                      backgroundColor: "#be123c",
-                    }}
-                  />
+                <div className="current-score-panel">
+                  <span className="event-eyebrow">Separate model pattern score</span>
+                  <p>{risk.model ? `${risk.model.scoreOutOf100} / 100 — similarity to the model's higher-risk training pattern, not a flood percentage.` : "Unavailable because local elevation data could not be sampled."}</p>
+                  {risk.modelMapDisagreement && <p className="model-map-disagreement">{risk.modelMapDisagreement}</p>}
+                  {risk.model && risk.model.missingFeatures.length > 0 && <p>Some current inputs were unavailable, so this score may be less reliable.</p>}
                 </div>
-                <div
-                  className={`probability-benchmark probability-${risk.hundredYearFloodEstimate.status}`}
-                >
-                  <span>What this result means</span>
-                  <p>{risk.hundredYearFloodEstimate.basis}</p>
-                  <small>{risk.hundredYearFloodEstimate.caveat}</small>
-                </div>
-                <div
-                  className={`area-claim-signal area-claim-${risk.areaClaimSignal.status}`}
-                >
-                  <div className="area-claim-heading">
-                    <span>FEMA neighborhood claim history</span>
-                    <strong>
-                      {risk.areaClaimSignal.status === "matched"
-                        ? risk.areaClaimSignal.level
-                        : risk.areaClaimSignal.status === "no_nfip_area_rate"
-                          ? "No area rate"
-                          : "Unavailable"}
-                    </strong>
-                  </div>
-                  {risk.areaClaimSignal.status === "matched" && (
-                    <dl>
-                      <div>
-                        <dt>Historical claims</dt>
-                        <dd>{risk.areaClaimSignal.claims.toLocaleString()}</dd>
-                      </div>
-                      <div>
-                        <dt>NFIP policy-years</dt>
-                        <dd>{risk.areaClaimSignal.policyYears.toFixed(1)}</dd>
-                      </div>
-                      <div>
-                        <dt>Bay Area percentile</dt>
-                        <dd>{risk.areaClaimSignal.percentile.toFixed(1)}</dd>
-                      </div>
-                    </dl>
-                  )}
-                  <p>{risk.areaClaimSignal.interpretation}</p>
-                  {risk.areaClaimSignal.censusBlockGroup && (
-                    <small>
-                      Census block group {risk.areaClaimSignal.censusBlockGroup}
-                      {risk.areaClaimSignal.status === "matched" &&
-                        ` · Data through ${risk.areaClaimSignal.asOfYear}`}
-                    </small>
-                  )}
-                </div>
-                <div className="model-similarity-context">
-                  <div>
-                    <span>Claim-location similarity</span>
-                    <strong>{risk.modelExposureLikelihoodPercent}/100</strong>
-                  </div>
-                  <p>
-                    {risk.modelExposureMeaning} This secondary screening score
-                    is not used as the 100-year probability.
-                  </p>
-                </div>
-                <p className="risk-zone">
-                  {risk.elevationFeet.toLocaleString()} ft elevation
-                  {" · "}
-                  FEMA {risk.floodZone.zone ? `Zone ${risk.floodZone.zone}` : "zone not mapped"}
-                </p>
-                <p className="confidence-rating">
-                  Data confidence: {" "}
-                  <strong className={`confidence-${risk.confidence.toLowerCase()}`}>
-                    {risk.confidence}
-                  </strong>
-                  {risk.rainfallInches !== null &&
-                    ` · 100-year/24-hour rainfall ${risk.rainfallInches.toFixed(2)} in`}
-                </p>
-                <div
-                  className={`nearby-water ${risk.nearestWater.status === "found" ? "" : "nearby-water-muted"}`}
-                >
-                  <strong>Physical inputs</strong>
-                  <dl>
-                    <div>
-                      <dt>Nearest water</dt>
-                      <dd>
-                        {risk.nearestWater.status === "found"
-                          ? risk.nearestWater.name || formatWaterKind(risk.nearestWater.kind)
-                          : "None found within 5 km"}
-                      </dd>
-                    </div>
-                    <div>
-                      <dt>Water distance</dt>
-                      <dd>{formatDistance(risk.nearestWater.distanceMeters)}</dd>
-                    </div>
-                    <div>
-                      <dt>SFHA distance</dt>
-                      <dd>{formatDistance(risk.distanceToSfhaMeters)}</dd>
-                    </div>
-                  </dl>
-                </div>
-                <p className="risk-description">
-                  {risk.explanation} The trained model uses these conditions and
-                  nearby-water context to calculate the claim-location
-                  similarity shown above.
-                </p>
-                <div className="risk-feedback">
-                  <strong>What you can do</strong>
-                  <ul>
-                    {risk.feedback.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
+                <p className="disclaimer">{risk.caveat}</p>
               </>
             )}
           </section>
         )}
 
-        <div className="legend" aria-label="Flood zone legend">
-          {floodZoneColors.map((item) => (
-            <div className="legend-row" key={item.label}>
-              <span
-                className="legend-swatch"
-                style={{ backgroundColor: item.color }}
-              />
-              <span>{item.label}</span>
-            </div>
-          ))}
-        </div>
-        <p className="disclaimer">
-          Screening estimate only, not a parcel-level flood determination. The
-          primary percentage is a FEMA mapped-event benchmark where available;
-          otherwise it is an experimental physical-only estimate. Claim-location
-          similarity is shown separately as a score out of 100. Neither model
-          captures parcel drainage, building elevation, or future climate change.
-        </p>
+        <details className="result-details">
+          <summary>About this analysis <span aria-hidden="true">+</span></summary>
+          <p>The current annual, 10-year, and 20-year percentages use FEMA flood-zone thresholds. In unshaded Zone X, the less-than values are upper bounds for the mapped hazard. They do not predict whether a building floods. The separate DNN score measures similarity to a higher-risk training pattern; it is not a flood probability.</p>
+        </details>
+        <footer className="panel-footer">Built for exploration. Informed by local data.</footer>
       </section>
+      <section className="map-workspace" aria-label="Interactive Bay Area map">
+        <div className="map-toolbar">
+          <div><span className="coverage-dot" /><strong>Bay Area</strong><span className="map-subtitle">California, United States</span></div>
+          <button onClick={() => map.current?.fitBounds([[-123.1, 36.95], [-121.0, 38.9]], { padding: 36 })} className="reset-view" aria-label="Reset map to Bay Area"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 15v5h-5M4 4l6 6m10 10-6-6" /></svg>Reset view</button>
+        </div>
+        <div className="map-canvas-wrap">
+          <div ref={mapContainer} className="map" aria-label="Bay Area flood risk map" />
+          <div className="map-hint"><span className="hint-icon" aria-hidden="true">+</span><span><strong>Select a point to explore</strong><small>Click the map for a mapped flood-event benchmark</small></span></div>
+        </div>
+        <div className="map-bottom-bar"><span>Geographic context</span><span>FEMA mapped benchmark</span></div>
+      </section>
+      </div>
     </main>
   );
 }

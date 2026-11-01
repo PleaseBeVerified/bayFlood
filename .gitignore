@@ -27,6 +27,7 @@
 /.venv-whitebox/
 /.venv-model/
 /data/cache/
+/data/nlcd/
 /data/tl_2025_us_county/
 /hydrography/NHDPLUS_H_1805_HU4_GDB*
 

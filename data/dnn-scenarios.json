@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "scenarioYear": 2056,
+  "scenarioStatus": "illustrative_sensitivity_scenario_not_validated_forecast",
+  "scenarios": [
+    {
+      "id": "low_change",
+      "imperviousnessIncreasePercentagePoints": 5,
+      "rainfallIncreasePercent": 5
+    },
+    {
+      "id": "medium_change",
+      "imperviousnessIncreasePercentagePoints": 10,
+      "rainfallIncreasePercent": 15
+    },
+    {
+      "id": "high_change",
+      "imperviousnessIncreasePercentagePoints": 20,
+      "rainfallIncreasePercent": 25
+    }
+  ]
+}

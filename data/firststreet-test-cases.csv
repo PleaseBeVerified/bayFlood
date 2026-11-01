@@ -1,3 +1,0 @@
-address,lat,lng,flood_factor,risk_label,source,notes
-"36717 Olive Street, Newark, CA 94560",37.5327966,-122.0393693,1,Minimal,user_reported,"First Street result reported by user; keep out of model training"
-"1368 Rimrock Drive, San Jose, CA 95120",37.2059664,-121.8690599,1,Minimal,independent_property_check,"Public property-risk listing reports Minimal; keep out of model training"

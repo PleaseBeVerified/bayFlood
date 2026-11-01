@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-05T20:57:42.010806+00:00",
+  "input": "data/dnn-training-table.csv",
+  "target": "flood_risk_label (FEMA one_percent=1, minimal=0)",
+  "features": [
+    "elevation_m",
+    "current_imperviousness_pct",
+    "current_100yr_24h_rainfall_mm",
+    "nearest_water_available",
+    "log_nearest_water_distance_m"
+  ],
+  "rowCounts": {
+    "training": 6690,
+    "validation": 1223,
+    "test": 1154
+  },
+  "labelCounts": {
+    "training": {
+      "0": 5452,
+      "1": 1238
+    },
+    "validation": {
+      "0": 985,
+      "1": 238
+    },
+    "test": {
+      "0": 812,
+      "1": 342
+    }
+  },
+  "candidates": [
+    {
+      "hiddenLayerSizes": [
+        32,
+        16
+      ],
+      "alpha": 0.001,
+      "iterations": 252,
+      "validationRocAuc": 0.9547114277182955,
+      "validationAveragePrecision": 0.876343707916397
+    },
+    {
+      "hiddenLayerSizes": [
+        64,
+        32,
+        16
+      ],
+      "alpha": 0.001,
+      "iterations": 159,
+      "validationRocAuc": 0.950087446145971,
+      "validationAveragePrecision": 0.868426205905528
+    },
+    {
+      "hiddenLayerSizes": [
+        64,
+        64,
+        32
+      ],
+      "alpha": 0.01,
+      "iterations": 150,
+      "validationRocAuc": 0.947609094399181,
+      "validationAveragePrecision": 0.8675603599450835
+    }
+  ],
+  "selectedCandidate": {
+    "hiddenLayerSizes": [
+      32,
+      16
+    ],
+    "alpha": 0.001,
+    "iterations": 252,
+    "validationRocAuc": 0.9547114277182955,
+    "validationAveragePrecision": 0.876343707916397
+  },
+  "decisionThreshold": 0.665,
+  "validationMetrics": {
+    "accuracy": 0.883892068683565,
+    "balancedAccuracy": 0.8833084502836668,
+    "precision": 0.6481481481481481,
+    "recall": 0.8823529411764706,
+    "f1": 0.7473309608540926,
+    "rocAuc": 0.9547114277182955,
+    "averagePrecision": 0.876343707916397,
+    "brierScore": 0.10490665161199483,
+    "confusionMatrix": [
+      [
+        871,
+        114
+      ],
+      [
+        28,
+        210
+      ]
+    ]
+  },
+  "testMetrics": {
+    "accuracy": 0.901213171577123,
+    "balancedAccuracy": 0.9204944833347737,
+    "precision": 0.7626728110599078,
+    "recall": 0.9678362573099415,
+    "f1": 0.8530927835051546,
+    "rocAuc": 0.9810661711750641,
+    "averagePrecision": 0.9639161534557085,
+    "brierScore": 0.10324644344583842,
+    "confusionMatrix": [
+      [
+        709,
+        103
+      ],
+      [
+        11,
+        331
+      ]
+    ]
+  },
+  "majorityClassTestAccuracy": 0.7036395147313691,
+  "jsonExportMaximumProbabilityError": 0.0
+}
