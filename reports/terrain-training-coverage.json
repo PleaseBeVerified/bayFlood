@@ -1,0 +1,263 @@
+{
+  "generatedAt": "2026-11-08T21:51:56.515853+00:00",
+  "sourceSha256": {
+    "data/dnn-three-class-training-table.csv": "6104603d854d2f521cbb84a20354a0f23f39ae0ccdbcf559e2220efa5ea85cc0",
+    "data/physical-hazard-calibration.csv": "c0261b3e81e0d5ef569107af76316d1226107c00f22c200bfbaa2bab63abbffc",
+    "data/cache/terrain-cnn/three-class/partitions.json": "e60300aaec7822b267b2fb145c3188467f0938bc4a897cb7ced2adfba81f6662"
+  },
+  "partitionCounts": {
+    "training": 5521,
+    "validation": 1166,
+    "test": 1300
+  },
+  "minimumTrainingHoldoutChebyshevSeparationMeters": 1921.1161354635842,
+  "unbufferedTraining": {
+    "minimal": {
+      "count": 5452,
+      "flatLowHandCount": 278,
+      "lowFlatLowHandCount": 157,
+      "elevationAtLeast50mCount": 4232,
+      "higherRiverValleyCount": 1566,
+      "countyCounts": {
+        "Alameda County": 714,
+        "Contra Costa County": 586,
+        "Marin County": 460,
+        "Napa County": 711,
+        "San Francisco County": 478,
+        "San Mateo County": 423,
+        "Santa Clara County": 182,
+        "Solano County": 441,
+        "Sonoma County": 1457
+      }
+    },
+    "one_percent": {
+      "count": 1238,
+      "flatLowHandCount": 824,
+      "lowFlatLowHandCount": 677,
+      "elevationAtLeast50mCount": 285,
+      "higherRiverValleyCount": 47,
+      "countyCounts": {
+        "Alameda County": 67,
+        "Contra Costa County": 65,
+        "Marin County": 120,
+        "Napa County": 78,
+        "San Francisco County": 182,
+        "San Mateo County": 70,
+        "Santa Clara County": 309,
+        "Solano County": 216,
+        "Sonoma County": 131
+      }
+    },
+    "point_two_percent": {
+      "count": 674,
+      "flatLowHandCount": 122,
+      "lowFlatLowHandCount": 80,
+      "elevationAtLeast50mCount": 389,
+      "higherRiverValleyCount": 77,
+      "countyCounts": {
+        "Alameda County": 26,
+        "Contra Costa County": 9,
+        "Marin County": 6,
+        "Napa County": 5,
+        "San Francisco County": 11,
+        "San Mateo County": 3,
+        "Santa Clara County": 566,
+        "Solano County": 33,
+        "Sonoma County": 15
+      }
+    }
+  },
+  "bufferedTraining": {
+    "minimal": {
+      "count": 4037,
+      "flatLowHandCount": 202,
+      "lowFlatLowHandCount": 122,
+      "elevationAtLeast50mCount": 3153,
+      "higherRiverValleyCount": 1151,
+      "countyCounts": {
+        "Alameda County": 574,
+        "Contra Costa County": 412,
+        "Marin County": 331,
+        "Napa County": 531,
+        "San Francisco County": 394,
+        "San Mateo County": 329,
+        "Santa Clara County": 157,
+        "Solano County": 282,
+        "Sonoma County": 1027
+      }
+    },
+    "one_percent": {
+      "count": 945,
+      "flatLowHandCount": 625,
+      "lowFlatLowHandCount": 497,
+      "elevationAtLeast50mCount": 261,
+      "higherRiverValleyCount": 45,
+      "countyCounts": {
+        "Alameda County": 56,
+        "Contra Costa County": 54,
+        "Marin County": 97,
+        "Napa County": 55,
+        "San Francisco County": 169,
+        "San Mateo County": 54,
+        "Santa Clara County": 220,
+        "Solano County": 146,
+        "Sonoma County": 94
+      }
+    },
+    "point_two_percent": {
+      "count": 539,
+      "flatLowHandCount": 96,
+      "lowFlatLowHandCount": 58,
+      "elevationAtLeast50mCount": 315,
+      "higherRiverValleyCount": 58,
+      "countyCounts": {
+        "Alameda County": 14,
+        "Contra Costa County": 7,
+        "Marin County": 5,
+        "Napa County": 4,
+        "San Francisco County": 11,
+        "San Mateo County": 3,
+        "Santa Clara County": 458,
+        "Solano County": 29,
+        "Sonoma County": 8
+      }
+    }
+  },
+  "external": {
+    "santa-cruz-north": {
+      "minimal": {
+        "count": 150,
+        "flatLowHandCount": 0,
+        "lowFlatLowHandCount": 0,
+        "elevationAtLeast50mCount": 149,
+        "higherRiverValleyCount": 54,
+        "countyCounts": {
+          "Santa Cruz County": 150
+        }
+      },
+      "one_percent": {
+        "count": 150,
+        "flatLowHandCount": 0,
+        "lowFlatLowHandCount": 0,
+        "elevationAtLeast50mCount": 100,
+        "higherRiverValleyCount": 62,
+        "countyCounts": {
+          "Santa Cruz County": 150
+        }
+      },
+      "point_two_percent": {
+        "count": 150,
+        "flatLowHandCount": 0,
+        "lowFlatLowHandCount": 0,
+        "elevationAtLeast50mCount": 137,
+        "higherRiverValleyCount": 113,
+        "countyCounts": {
+          "Santa Cruz County": 150
+        }
+      }
+    },
+    "tracy-lathrop-stockton": {
+      "minimal": {
+        "count": 150,
+        "flatLowHandCount": 87,
+        "lowFlatLowHandCount": 80,
+        "elevationAtLeast50mCount": 18,
+        "higherRiverValleyCount": 4,
+        "countyCounts": {
+          "San Joaquin County": 150
+        }
+      },
+      "one_percent": {
+        "count": 150,
+        "flatLowHandCount": 132,
+        "lowFlatLowHandCount": 132,
+        "elevationAtLeast50mCount": 0,
+        "higherRiverValleyCount": 0,
+        "countyCounts": {
+          "San Joaquin County": 150
+        }
+      },
+      "point_two_percent": {
+        "count": 150,
+        "flatLowHandCount": 129,
+        "lowFlatLowHandCount": 129,
+        "elevationAtLeast50mCount": 0,
+        "higherRiverValleyCount": 0,
+        "countyCounts": {
+          "San Joaquin County": 150
+        }
+      }
+    }
+  },
+  "externalCellSupport": {
+    "santa-cruz-north": {
+      "minimal": {
+        "count": 150,
+        "noSameClassTerrainCellInTraining": 0,
+        "fewerThan10SameClassTerrainCellRows": 2
+      },
+      "one_percent": {
+        "count": 150,
+        "noSameClassTerrainCellInTraining": 12,
+        "fewerThan10SameClassTerrainCellRows": 83
+      },
+      "point_two_percent": {
+        "count": 150,
+        "noSameClassTerrainCellInTraining": 0,
+        "fewerThan10SameClassTerrainCellRows": 33
+      }
+    },
+    "tracy-lathrop-stockton": {
+      "minimal": {
+        "count": 150,
+        "noSameClassTerrainCellInTraining": 0,
+        "fewerThan10SameClassTerrainCellRows": 4
+      },
+      "one_percent": {
+        "count": 150,
+        "noSameClassTerrainCellInTraining": 0,
+        "fewerThan10SameClassTerrainCellRows": 22
+      },
+      "point_two_percent": {
+        "count": 150,
+        "noSameClassTerrainCellInTraining": 0,
+        "fewerThan10SameClassTerrainCellRows": 12
+      }
+    }
+  },
+  "strata": {
+    "elevationEdgesMeters": [
+      0,
+      5,
+      20,
+      50,
+      150
+    ],
+    "handEdgesMeters": [
+      1,
+      3,
+      10,
+      30
+    ],
+    "slopeEdgesDegrees": [
+      1,
+      5,
+      15
+    ],
+    "spatialBlockMeters": 2000
+  },
+  "weighting": {
+    "meaning": "Mild inverse-square-root terrain, county, and within-terrain block density; class totals preserved",
+    "recipeSha256": "ed1259724c7b185927ef795c4a87a00da0201035ee60a60ef7cfdf976e14211a",
+    "finalBounds": [
+      0.25,
+      4
+    ],
+    "trainingOnly": true,
+    "threeClassEffectiveSampleSize": 2986.27281442097,
+    "binaryEffectiveSampleSize": 2754.429041579198,
+    "emptyCellsCannotBeFixedByWeights": true
+  },
+  "provenanceGap": "Original calibration rows do not carry source polygon IDs or watershed IDs; a 2 km block is only a provisional clustering proxy.",
+  "testStatus": "Santa Cruz and San Joaquin diagnostics motivated this design; they are development diagnostics, not untouched final tests."
+}

@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-08T06:57:42.935181+00:00",
+  "dataset": "data/tracy-lathrop-stockton-fema-map-class-terrain-sample.csv",
+  "datasetSha256": "ee3004b76dfffaa9d0e93fb9c89d7d2ae81d1f80ceb70747dee48e94180d01c4",
+  "hydrography": {
+    "source": "https://3dhp.nationalmap.gov/arcgis/rest/services/usgs_3dhp_all/FeatureServer/50",
+    "localFile": "hydrography/tracy_lathrop_stockton_3dhp_flowlines.geojson",
+    "sha256": "f71f4b55df1c4d5bb276c5f1b344f892a07a750c198acaeeba14570b35135f56",
+    "flowlineCount": 9200,
+    "note": "USGS 3DHP flowlines were included before sample selection and nearest-water feature computation."
+  },
+  "sampleRole": "Western San Joaquin County external geographic test; no retraining or threshold changes",
+  "samplingCaveat": "150 intentionally balanced points per class; class frequencies do not represent prevalence",
+  "classes": [
+    "minimal",
+    "one_percent",
+    "point_two_percent"
+  ],
+  "rows": 450,
+  "cnn": {
+    "accuracy": 0.44666666666666666,
+    "balancedAccuracy": 0.4466666666666667,
+    "macroF1": 0.38154269972451793,
+    "logLoss": 1.3036780861277122,
+    "perClass": {
+      "minimal": {
+        "precision": 1.0,
+        "recall": 0.17333333333333334,
+        "f1": 0.29545454545454547,
+        "support": 150
+      },
+      "one_percent": {
+        "precision": 0.4341317365269461,
+        "recall": 0.9666666666666667,
+        "f1": 0.5991735537190083,
+        "support": 150
+      },
+      "point_two_percent": {
+        "precision": 0.3333333333333333,
+        "recall": 0.2,
+        "f1": 0.25,
+        "support": 150
+      }
+    },
+    "confusionMatrix": [
+      [
+        26,
+        69,
+        55
+      ],
+      [
+        0,
+        145,
+        5
+      ],
+      [
+        0,
+        120,
+        30
+      ]
+    ]
+  },
+  "bufferedBoosted": {
+    "accuracy": 0.5377777777777778,
+    "balancedAccuracy": 0.5377777777777778,
+    "macroF1": 0.43000566582983074,
+    "logLoss": 1.0936886195209161,
+    "perClass": {
+      "minimal": {
+        "precision": 0.5158371040723982,
+        "recall": 0.76,
+        "f1": 0.6145552560646901,
+        "support": 150
+      },
+      "one_percent": {
+        "precision": 0.5589519650655022,
+        "recall": 0.8533333333333334,
+        "f1": 0.6754617414248021,
+        "support": 150
+      },
+      "point_two_percent": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 150
+      }
+    },
+    "confusionMatrix": [
+      [
+        114,
+        36,
+        0
+      ],
+      [
+        22,
+        128,
+        0
+      ],
+      [
+        85,
+        65,
+        0
+      ]
+    ]
+  }
+}

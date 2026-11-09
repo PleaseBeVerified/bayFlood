@@ -9,10 +9,10 @@
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--background); color: var(--foreground); font-family: "Avenir Next", "Segoe UI", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
-button, input { font: inherit; }
+button, input, select { font: inherit; }
 button { cursor: pointer; transition: background-color 160ms, box-shadow 160ms; }
-button, input, summary { -webkit-tap-highlight-color: transparent; }
-button:focus-visible, summary:focus-visible { outline: 3px solid #279fa0; outline-offset: 4px; }
+button, input, select, summary { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, select:focus-visible, summary:focus-visible { outline: 3px solid #279fa0; outline-offset: 4px; }
 ::selection { background: #d0eae6; }
 
 .app-shell { min-height: 100dvh; }
@@ -67,6 +67,8 @@ button:focus-visible, summary:focus-visible { outline: 3px solid #279fa0; outlin
 .current-score-panel { margin: 0 0 12px; padding: 13px 16px; border: 1px solid #e1e8ec; border-radius: 9px; background: #f8fafb; }
 .current-score-panel p { margin: 9px 0 0; color: var(--muted); font-size: 11px; line-height: 1.6; }
 .current-score-panel .model-map-disagreement { margin-top: 12px; padding: 10px 11px; border-left: 3px solid #d97706; border-radius: 3px; background: #fff7e8; color: #704f1d; }
+.model-select-label { display: block; margin-top: 12px; color: #425b68; font-size: 10px; font-weight: 650; }
+.model-select { width: 100%; margin-top: 6px; padding: 9px 10px; border: 1px solid #cfdbe2; border-radius: 6px; background: #fff; color: var(--navy); font-size: 11px; font-weight: 650; cursor: pointer; }
 .event-panel { margin: 0 0 22px; padding: 16px; border: 1px solid #d6e8e4; border-radius: 9px; background: #f6faf9; }
 .event-eyebrow { color: #367b6c; font-size: 10px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; }
 .event-percentages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 14px 0; }
@@ -94,6 +96,12 @@ button:focus-visible, summary:focus-visible { outline: 3px solid #279fa0; outlin
 .result-details summary span { font-size: 20px; line-height: 14px; color: var(--teal); font-weight: 400; }
 .result-details[open] summary span { transform: rotate(45deg); }
 .result-details p { font-size: 12px; line-height: 1.8; color: var(--muted); margin: 12px 0 0; }
+.input-details { margin-top: 15px; }
+.input-list { margin: 13px 0 0; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.input-list > div { display: flex; justify-content: space-between; gap: 14px; padding: 9px 11px; border-bottom: 1px solid var(--line); font-size: 11px; line-height: 1.5; }
+.input-list > div:last-child { border-bottom: 0; }
+.input-list dt { color: #4c626e; }
+.input-list dd { margin: 0; color: var(--navy); font-weight: 650; text-align: right; font-variant-numeric: tabular-nums; }
 .panel-footer { margin-top: 22px; font-size: 10px; color: #788894; }
 
 .map-workspace { display: flex; flex-direction: column; min-width: 0; padding: 24px; }

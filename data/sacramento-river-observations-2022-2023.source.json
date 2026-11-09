@@ -1,0 +1,17 @@
+{
+  "source_url": "https://waterservices.usgs.gov/nwis/iv/?format=json&sites=11335000%2C11446500%2C11447650&startDT=2022-12-25&endDT=2023-01-20&parameterCd=00060%2C00065&siteStatus=all",
+  "retrieved_utc": "2026-11-06T07:19:28.922690+00:00",
+  "raw_sha256": "ff7ae687049a01f9163a5b8aff13823ecb1072a28867495603c09bd116a67a7f",
+  "series_count": 6,
+  "observation_count": 15084,
+  "site_ids": [
+    "11335000",
+    "11446500",
+    "11447650"
+  ],
+  "parameter_codes": [
+    "00060 (discharge)",
+    "00065 (gage height)"
+  ],
+  "limitations": "River measurements are event context at gauges, not location-level inundation labels."
+}

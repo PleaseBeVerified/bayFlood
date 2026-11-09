@@ -1,0 +1,370 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-08T06:57:08.088517+00:00",
+  "dataset": "data/tracy-lathrop-stockton-fema-map-class-terrain-sample.csv",
+  "datasetSha256": "ee3004b76dfffaa9d0e93fb9c89d7d2ae81d1f80ceb70747dee48e94180d01c4",
+  "hydrography": {
+    "source": "https://3dhp.nationalmap.gov/arcgis/rest/services/usgs_3dhp_all/FeatureServer/50",
+    "localFile": "hydrography/tracy_lathrop_stockton_3dhp_flowlines.geojson",
+    "sha256": "f71f4b55df1c4d5bb276c5f1b344f892a07a750c198acaeeba14570b35135f56",
+    "flowlineCount": 9200,
+    "note": "USGS 3DHP flowlines were included before sample selection and nearest-water feature computation."
+  },
+  "target": "FEMA NFHL mapped hazard class, not observed event flooding",
+  "sampleRole": "Western San Joaquin County external geographic test; no retraining",
+  "samplingCaveat": "150 points per class; metrics do not measure natural class prevalence. Some points within narrow 0.2% polygons may be spatially correlated.",
+  "features": [
+    "elevation_m",
+    "current_imperviousness_pct",
+    "current_100yr_24h_rainfall_mm",
+    "nearest_water_available",
+    "log_nearest_water_distance_m",
+    "slope_degrees",
+    "local_elevation_250m",
+    "local_elevation_500m",
+    "log_flow_accumulation_m2",
+    "height_above_drainage_m"
+  ],
+  "fiveInputFeatures": [
+    "elevation_m",
+    "current_imperviousness_pct",
+    "current_100yr_24h_rainfall_mm",
+    "nearest_water_available",
+    "log_nearest_water_distance_m"
+  ],
+  "classOrder": [
+    "minimal",
+    "one_percent",
+    "point_two_percent"
+  ],
+  "classCounts": {
+    "minimal": 150,
+    "point_two_percent": 150,
+    "one_percent": 150
+  },
+  "errorPatterns": {
+    "cnnMissedOnePercent": {
+      "count": 0,
+      "median": {
+        "elevation_m": null,
+        "height_above_drainage_m": null,
+        "nearest_water_distance_m": null,
+        "local_elevation_250m": null,
+        "local_elevation_500m": null,
+        "flow_accumulation_m2": null
+      },
+      "sourcePolygonCounts": {}
+    },
+    "cnnDetectedOnePercent": {
+      "count": 150,
+      "median": {
+        "elevation_m": 1.67,
+        "height_above_drainage_m": 0.2315,
+        "nearest_water_distance_m": 91.0,
+        "local_elevation_250m": -0.004,
+        "local_elevation_500m": -0.0185,
+        "flow_accumulation_m2": 2500.0
+      },
+      "sourcePolygonCounts": {
+        "28048893": 9,
+        "28049964": 47,
+        "28049982": 1,
+        "28049086": 40,
+        "28049026": 6,
+        "28049128": 8,
+        "28049901": 4,
+        "28049135": 3,
+        "28049112": 1,
+        "28049015": 3,
+        "28049077": 1,
+        "28048930": 3,
+        "28049160": 1,
+        "28050028": 1,
+        "28049952": 3,
+        "28049286": 6,
+        "28049849": 1,
+        "28048885": 3,
+        "28048831": 1,
+        "28049958": 1,
+        "28049971": 1,
+        "28049234": 1,
+        "28048749": 2,
+        "28048966": 1,
+        "28048803": 1,
+        "28049290": 1
+      }
+    },
+    "bothMissedOnePercent": {
+      "count": 0,
+      "median": {
+        "elevation_m": null,
+        "height_above_drainage_m": null,
+        "nearest_water_distance_m": null,
+        "local_elevation_250m": null,
+        "local_elevation_500m": null,
+        "flow_accumulation_m2": null
+      },
+      "sourcePolygonCounts": {}
+    },
+    "cnnFalsePositiveMinimal": {
+      "count": 104,
+      "median": {
+        "elevation_m": 13.040500000000002,
+        "height_above_drainage_m": 1.1840000000000002,
+        "nearest_water_distance_m": 324.0,
+        "local_elevation_250m": 0.018,
+        "local_elevation_500m": 0.0085,
+        "flow_accumulation_m2": 1500.0
+      },
+      "sourcePolygonCounts": {
+        "28049400": 58,
+        "28049960": 34,
+        "28048942": 1,
+        "28048826": 4,
+        "28049062": 1,
+        "28049050": 1,
+        "28048939": 2,
+        "28049272": 1,
+        "28048926": 1,
+        "28049918": 1
+      }
+    },
+    "cnnCorrectMinimal": {
+      "count": 46,
+      "median": {
+        "elevation_m": 37.982,
+        "height_above_drainage_m": 7.518000000000001,
+        "nearest_water_distance_m": 427.0,
+        "local_elevation_250m": -0.020999999999999998,
+        "local_elevation_500m": -0.056,
+        "flow_accumulation_m2": 2900.0
+      },
+      "sourcePolygonCounts": {
+        "28049960": 41,
+        "28049777": 1,
+        "28049400": 2,
+        "28048942": 1,
+        "28049848": 1
+      }
+    },
+    "cnnOnlyMissedCount": 0,
+    "boostedOnlyMissedCount": 0,
+    "cnnMissedPatchesBelow90PercentTopography": 0,
+    "cnnDetectedPatchesBelow90PercentTopography": 0
+  },
+  "models": {
+    "terrainThreeClassBoosted": {
+      "file": "models/flood-hazard-terrain-three-class-boosted.joblib",
+      "balancedAccuracy": 0.5177777777777778,
+      "macroF1": 0.41613274684961277,
+      "perClassF1": {
+        "minimal": 0.6064516129032258,
+        "one_percent": 0.6287015945330297,
+        "point_two_percent": 0.013245033112582781
+      },
+      "predictedCounts": {
+        "minimal": 160,
+        "one_percent": 289,
+        "point_two_percent": 1
+      },
+      "confusionMatrix": [
+        [
+          94,
+          56,
+          0
+        ],
+        [
+          12,
+          138,
+          0
+        ],
+        [
+          54,
+          95,
+          1
+        ]
+      ]
+    },
+    "terrainThreeClassDnn": {
+      "file": "models/flood-hazard-terrain-three-class-dnn.joblib",
+      "balancedAccuracy": 0.4711111111111112,
+      "macroF1": 0.41570206772807183,
+      "perClassF1": {
+        "minimal": 0.45685279187817257,
+        "one_percent": 0.5692007797270955,
+        "point_two_percent": 0.22105263157894736
+      },
+      "predictedCounts": {
+        "one_percent": 363,
+        "point_two_percent": 40,
+        "minimal": 47
+      },
+      "confusionMatrix": [
+        [
+          45,
+          90,
+          15
+        ],
+        [
+          0,
+          146,
+          4
+        ],
+        [
+          2,
+          127,
+          21
+        ]
+      ]
+    },
+    "fiveInputThreeClassDnn": {
+      "file": "models/flood-hazard-three-class-dnn.joblib",
+      "balancedAccuracy": 0.5466666666666667,
+      "macroF1": 0.4930154908627223,
+      "perClassF1": {
+        "minimal": 0.6747967479674797,
+        "one_percent": 0.6121593291404612,
+        "point_two_percent": 0.192090395480226
+      },
+      "predictedCounts": {
+        "minimal": 96,
+        "one_percent": 327,
+        "point_two_percent": 27
+      },
+      "confusionMatrix": [
+        [
+          83,
+          61,
+          6
+        ],
+        [
+          0,
+          146,
+          4
+        ],
+        [
+          13,
+          120,
+          17
+        ]
+      ]
+    }
+  },
+  "binaryComparison": {
+    "classes": [
+      "minimal",
+      "one_percent"
+    ],
+    "excludedClass": "point_two_percent (no binary target assigned)",
+    "rowCount": 300,
+    "models": {
+      "servedTerrainBoosted": {
+        "file": "models/flood-risk-terrain-full.joblib",
+        "decisionThresholdFromOriginalValidation": 0.135,
+        "balancedAccuracy": 0.6066666666666667,
+        "onePercentF1": 0.7177033492822966,
+        "rocAuc": 0.9217333333333333,
+        "confusionMatrix": [
+          [
+            32,
+            118
+          ],
+          [
+            0,
+            150
+          ]
+        ]
+      },
+      "terrainDnn": {
+        "file": "models/flood-risk-terrain-dnn.joblib",
+        "decisionThresholdFromOriginalValidation": 0.115,
+        "balancedAccuracy": 0.6466666666666667,
+        "onePercentF1": 0.7389162561576355,
+        "rocAuc": 0.8912888888888888,
+        "confusionMatrix": [
+          [
+            44,
+            106
+          ],
+          [
+            0,
+            150
+          ]
+        ]
+      },
+      "highElevationTerrainBoosted": {
+        "file": "models/flood-risk-terrain-high-elevation.joblib",
+        "decisionThresholdFromOriginalValidation": 0.275,
+        "balancedAccuracy": 0.5,
+        "onePercentF1": 0.6666666666666666,
+        "rocAuc": 0.8405333333333334,
+        "confusionMatrix": [
+          [
+            0,
+            150
+          ],
+          [
+            0,
+            150
+          ]
+        ]
+      },
+      "fiveInputBoosted": {
+        "file": "models/flood-risk-boosted.joblib",
+        "decisionThresholdFromOriginalValidation": 0.22,
+        "balancedAccuracy": 0.6933333333333334,
+        "onePercentF1": 0.7653061224489796,
+        "rocAuc": 0.9293333333333333,
+        "confusionMatrix": [
+          [
+            58,
+            92
+          ],
+          [
+            0,
+            150
+          ]
+        ]
+      },
+      "fiveInputDnn": {
+        "file": "models/flood-risk-dnn.joblib",
+        "decisionThresholdFromOriginalValidation": 0.665,
+        "balancedAccuracy": 0.66,
+        "onePercentF1": 0.746268656716418,
+        "rocAuc": 0.9221777777777778,
+        "confusionMatrix": [
+          [
+            48,
+            102
+          ],
+          [
+            0,
+            150
+          ]
+        ]
+      },
+      "terrainCnn": {
+        "file": "models/flood-risk-terrain-cnn.pt",
+        "patchFile": "data/cache/terrain-cnn/tracy-lathrop-stockton-external-patches-float16.npy",
+        "minimumTopographyCoverage": 1.0,
+        "patchesBelow90PercentTopography": 0,
+        "bayAreaTestBalancedAccuracy": 0.937660242560424,
+        "bayAreaTestOnePercentRecall": 0.9590643274853801,
+        "decisionThresholdFromOriginalValidation": 0.06182599067687988,
+        "balancedAccuracy": 0.6533333333333333,
+        "onePercentF1": 0.7425742574257426,
+        "rocAuc": 0.7725333333333333,
+        "confusionMatrix": [
+          [
+            46,
+            104
+          ],
+          [
+            0,
+            150
+          ]
+        ]
+      }
+    }
+  }
+}

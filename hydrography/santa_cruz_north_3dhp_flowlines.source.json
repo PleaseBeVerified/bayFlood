@@ -1,0 +1,21 @@
+{
+  "dataset_kind": "USGS 3D Hydrography Program flowlines",
+  "source_url": "https://3dhp.nationalmap.gov/arcgis/rest/services/usgs_3dhp_all/FeatureServer/50",
+  "retrieved_utc": "2026-11-07T23:05:51.195854+00:00",
+  "query_bounds_wgs84": [
+    -122.23,
+    36.94,
+    -121.92,
+    37.22
+  ],
+  "feature_count": 5111,
+  "output_crs": "EPSG:4326",
+  "geometry_precision_decimal_places": 7,
+  "source_fields": [
+    "OBJECTID",
+    "gnisidlabel",
+    "featuretypelabel"
+  ],
+  "sha256": "f24aae349b0dff8730cbbf82cb391d2c6d6b890b9c5b0201a34f78e11f5e2bed",
+  "limitations": "Flowlines intersecting the query window are included with whole geometries; this is local hydrography coverage for the pilot, not event-specific water extent."
+}

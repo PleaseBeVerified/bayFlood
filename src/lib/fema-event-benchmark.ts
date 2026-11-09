@@ -9,13 +9,14 @@ type FloodFeature = {
 };
 type FloodCollection = { features: FloodFeature[] };
 
-const SOURCES: Array<{ file: string; bounds: Bounds }> = [
+const SOURCES: Array<{ file: string; bounds: Bounds; priority?: number }> = [
   { file: "alameda_county_flood_zones.geojson", bounds: [-122.37386, 37.45396, -121.4691, 37.90581] },
   { file: "contra_costa_county_flood_zones.geojson", bounds: [-122.44138, 37.71848, -121.53429, 38.10452] },
   { file: "marin_county.geojson", bounds: [-123.028, 37.81317, -122.41874, 38.32117] },
   { file: "napa_county.geojson", bounds: [-122.64682, 38.15487, -122.06141, 38.86421] },
   { file: "san_francisco_county_flood_zones.geojson", bounds: [-123.11112, 37.59222, -122.28149, 37.92982] },
   { file: "san_joaquin_boundary_flood_zones.geojson", bounds: [-121.58488, 37.48191, -120.91705, 38.30013] },
+  { file: "tracy_lathrop_stockton_nfhl_flood_zones.geojson", bounds: [-121.55, 37.68, -121.15, 37.98], priority: 1 },
   { file: "san_mateo_county_flood_zones.geojson", bounds: [-122.52681, 37.10553, -122.08171, 37.70832] },
   { file: "santa_clara_flood_zones.geojson", bounds: [-122.20267, 36.89312, -121.20831, 37.48464] },
   { file: "solano_county.geojson", bounds: [-122.40706, 38.03191, -121.59333, 38.54031] },
@@ -98,7 +99,8 @@ export async function lookupMappedFloodZone(longitude: number, latitude: number)
   const results = await Promise.allSettled(candidates.map((source) => loadCollection(source.file)));
   let selected: MappedFloodZone | null = null;
   let bestChance = -1;
-  for (const result of results) {
+  let bestPriority = -1;
+  for (const [index, result] of results.entries()) {
     if (result.status !== "fulfilled") continue;
     for (const feature of result.value.features) {
       if (!pointInFeature(point, feature)) continue;
@@ -108,9 +110,11 @@ export async function lookupMappedFloodZone(longitude: number, latitude: number)
         sfha: feature.properties.SFHA_TF ?? null,
       };
       const chance = mappedAnnualChance(zone) ?? 0;
-      if (!selected || chance > bestChance) {
+      const priority = candidates[index].priority ?? 0;
+      if (!selected || priority > bestPriority || (priority === bestPriority && chance > bestChance)) {
         selected = zone;
         bestChance = chance;
+        bestPriority = priority;
       }
     }
   }

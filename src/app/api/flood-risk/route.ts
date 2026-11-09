@@ -1,10 +1,8 @@
 import { cumulativeEventChance, cumulativeEventUpperBound, isMinimalHazardZone, mappedAnnualChance } from "@/lib/fema-event-benchmark";
 import { lookupFemaZoneWithLocalFallback } from "@/lib/fema-live-lookup";
 import { predictBoostedFloodRisk } from "@/lib/boosted-model";
-import { sampleElevation } from "@/lib/elevation";
-import { sampleImperviousness } from "@/lib/nlcd";
-import { sampleRainfall } from "@/lib/rainfall";
-import { lookupNearbyWater } from "@/lib/water";
+import { sampleCurrentInputData } from "@/lib/current-model-input";
+import { predictTerrainDnnFloodRisk } from "@/lib/terrain-dnn-model";
 
 export const runtime = "nodejs";
 
@@ -28,29 +26,19 @@ export async function GET(request: Request) {
   }
 
   try {
-    const [zoneLookup, samples] = await Promise.all([
+    const [zoneLookup, inputData] = await Promise.all([
       lookupFemaZoneWithLocalFallback(longitude, latitude),
-      Promise.allSettled([
-        sampleElevation(longitude, latitude),
-        sampleImperviousness(longitude, latitude),
-        sampleRainfall(longitude, latitude),
-        lookupNearbyWater(longitude, latitude),
-      ]),
+      sampleCurrentInputData(longitude, latitude),
     ]);
+    const modelInput = inputData.modelInput;
     const floodZone = zoneLookup.zone;
-    const [elevationResult, imperviousnessResult, rainfallResult, waterResult] = samples;
-    const elevationMeters = elevationResult.status === "fulfilled" ? elevationResult.value : null;
-    const imperviousnessPercent = imperviousnessResult.status === "fulfilled" ? imperviousnessResult.value : null;
-    const rainfallInches = rainfallResult.status === "fulfilled" ? rainfallResult.value : null;
-    const nearbyWater = waterResult.status === "fulfilled" ? waterResult.value : null;
-    const modelPrediction = elevationMeters === null ? null : predictBoostedFloodRisk({
-      elevationMeters,
-      imperviousnessPercent,
-      rainfallMillimeters: rainfallInches === null ? null : rainfallInches * 25.4,
-      nearestWaterAvailable: nearbyWater === null || nearbyWater.status === "unavailable"
-        ? null : nearbyWater.status === "found" ? 1 : 0,
-      nearestWaterDistanceMeters: nearbyWater?.distanceMeters ?? null,
-    });
+    const modelPrediction = modelInput === null ? null : predictBoostedFloodRisk(modelInput);
+    const terrainDnnPrediction = modelInput === null ? null : predictTerrainDnnFloodRisk(modelInput);
+    const terrainDnnModel = terrainDnnPrediction === null ? null : {
+      scoreOutOf100: terrainDnnPrediction.scorePercent,
+      classification: terrainDnnPrediction.classification,
+      imputedFeatures: terrainDnnPrediction.imputedFeatures,
+    };
     const model = modelPrediction === null ? null : {
       scoreOutOf100: modelPrediction.scorePercent,
       classification: modelPrediction.classification,
@@ -68,7 +56,9 @@ export async function GET(request: Request) {
     return Response.json({
       latitude,
       longitude,
+      modelInputs: inputData.inputs,
       model,
+      terrainDnnModel,
       modelMapDisagreement,
       floodEventChance: {
         source: zoneLookup.source,

@@ -1,0 +1,48 @@
+{
+  "dataset_name": "Tracy\u2013Lathrop\u2013Stockton FEMA map-class terrain sample",
+  "dataset_role": "geographically external test set for existing terrain FEMA classifiers",
+  "target_column": "mapped_hazard_class",
+  "target_meaning": "FEMA NFHL mapped annual-chance class; not observed event flooding",
+  "created_utc": "2026-11-08T06:54:09.614022+00:00",
+  "source_file": "FEMAdata/tracy_lathrop_stockton_nfhl_flood_zones.geojson",
+  "source_sha256": "b8f241f9abced47f252bcf97ce371d24b42897568b47c784ebc5d133d3ab4bb3",
+  "source_url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/28",
+  "source_dfirm_id": "06077C",
+  "study_bounds_wgs84": [
+    -121.55,
+    37.68,
+    -121.15,
+    37.98
+  ],
+  "row_count": 450,
+  "class_counts": {
+    "minimal": 150,
+    "point_two_percent": 150,
+    "one_percent": 150
+  },
+  "distinct_source_polygons_by_class": {
+    "minimal": 12,
+    "point_two_percent": 17,
+    "one_percent": 26
+  },
+  "seed": 20261108,
+  "minimum_polygon_boundary_distance_m": 10,
+  "minimum_point_separation_m": 30,
+  "water_search_radius_m": 5000,
+  "sampling": "Area-weighted FEMA polygon selection; random point in a 10 m inward buffer; require unique class, at least 30 m between samples, complete local raster values, and a water feature within 5 km in the base-plus-USGS-3DHP network.",
+  "supplemental_hydrography_sha256": "f71f4b55df1c4d5bb276c5f1b344f892a07a750c198acaeeba14570b35135f56",
+  "feature_sources": {
+    "elevation_m": "elevation/USGS_13_*.tif (5x5 median, matching app)",
+    "current_imperviousness_pct": "data/nlcd/fractional-impervious-2025-full.tiff",
+    "current_100yr_24h_rainfall_mm": "rainfall/rainfall_data.tif",
+    "terrain_features": "terrain/runtime/terrain-features-30m.tif",
+    "nearest_water_distance_m": [
+      "hydrography/bay_area_flowlines.geojson",
+      "hydrography/bay_area_water_bodies.geojson",
+      "hydrography/NHDArea.geojson",
+      "hydrography/NHDLine.geojson",
+      "hydrography/tracy_lathrop_stockton_3dhp_flowlines.geojson"
+    ]
+  },
+  "limitations": "FEMA map labels are not observed floods or verified dry event outcomes. Balanced spatial samples do not represent natural class prevalence. Leveed or unmapped areas must not be silently labeled minimal. Points can cluster by source polygon despite 30 m separation; use this entire region as one geographic holdout, not random row splits."
+}

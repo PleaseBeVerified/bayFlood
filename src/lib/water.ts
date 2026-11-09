@@ -14,6 +14,7 @@ type GeoJsonFeature = {
   properties?: {
     GNIS_Name?: string | null;
     FType?: number | null;
+    featuretypelabel?: string | null;
   };
   geometry?: GeoJsonGeometry | null;
 };
@@ -39,7 +40,11 @@ export type NearbyWater = {
 
 let localWaterFeaturesPromise: Promise<LocalWaterFeature[]> | undefined;
 
-function waterKind(featureType?: number | null) {
+function waterKind(featureType?: number | null, featureTypeLabel?: string | null) {
+  if (featureTypeLabel === "River" || featureTypeLabel === "Drainageway") return "stream/river";
+  if (featureTypeLabel === "Channel Line") return "stream/river";
+  if (featureTypeLabel === "Canal") return "canal/ditch";
+  if (featureTypeLabel === "Waterbody Connector") return "waterbody";
   if (featureType === 336) return "canal/ditch";
   if (featureType === 343) return "dam/weir";
   if (featureType === 364) return "foreshore";
@@ -87,6 +92,8 @@ async function loadLocalWaterFeatures() {
     "bay_area_water_bodies.geojson",
     "NHDArea.geojson",
     "NHDLine.geojson",
+    "santa_cruz_north_3dhp_flowlines.geojson",
+    "tracy_lathrop_stockton_3dhp_flowlines.geojson",
   ];
   const collections = await Promise.all(
     files.map(async (file) => {
@@ -101,7 +108,7 @@ async function loadLocalWaterFeatures() {
 
       return {
         name: feature.properties?.GNIS_Name ?? null,
-        kind: waterKind(feature.properties?.FType),
+        kind: waterKind(feature.properties?.FType, feature.properties?.featuretypelabel),
         geometry: feature.geometry,
         bounds: boundsForGeometry(feature.geometry),
       };

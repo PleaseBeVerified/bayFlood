@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-03T04:05:29.753540+00:00",
+  "target": "FEMA mapped class; not observed flooding",
+  "inputFiles": [
+    "data/dnn-three-class-training-table.csv",
+    "data/physical-hazard-calibration.csv"
+  ],
+  "features": [
+    "elevation_m",
+    "current_imperviousness_pct",
+    "current_100yr_24h_rainfall_mm",
+    "nearest_water_available",
+    "log_nearest_water_distance_m",
+    "slope_degrees",
+    "local_elevation_250m",
+    "local_elevation_500m",
+    "log_flow_accumulation_m2",
+    "height_above_drainage_m"
+  ],
+  "classes": [
+    "minimal",
+    "one_percent",
+    "point_two_percent"
+  ],
+  "partitionCounts": {
+    "training": 7364,
+    "validation": 1336,
+    "test": 1300
+  },
+  "labelCounts": {
+    "training": {
+      "minimal": 5452,
+      "one_percent": 1238,
+      "point_two_percent": 674
+    },
+    "validation": {
+      "minimal": 985,
+      "one_percent": 238,
+      "point_two_percent": 113
+    },
+    "test": {
+      "minimal": 812,
+      "one_percent": 342,
+      "point_two_percent": 146
+    }
+  },
+  "candidates": [
+    {
+      "trees": 350,
+      "maxDepth": 3,
+      "classWeight": "none",
+      "validationMacroF1": 0.5955177017743769,
+      "validationBalancedAccuracy": 0.5921554534396302,
+      "validationPointTwoF1": 0.07194244604316546
+    },
+    {
+      "trees": 350,
+      "maxDepth": 3,
+      "classWeight": "balanced",
+      "validationMacroF1": 0.6425724302917286,
+      "validationBalancedAccuracy": 0.682610693080071,
+      "validationPointTwoF1": 0.30996309963099633
+    },
+    {
+      "trees": 500,
+      "maxDepth": 3,
+      "classWeight": "balanced",
+      "validationMacroF1": 0.6500937488015804,
+      "validationBalancedAccuracy": 0.6855016693349097,
+      "validationPointTwoF1": 0.3058823529411765
+    },
+    {
+      "trees": 500,
+      "maxDepth": 4,
+      "classWeight": "balanced",
+      "validationMacroF1": 0.6560551188426457,
+      "validationBalancedAccuracy": 0.6816344093003087,
+      "validationPointTwoF1": 0.314410480349345
+    },
+    {
+      "trees": 350,
+      "maxDepth": 4,
+      "classWeight": "none",
+      "validationMacroF1": 0.5924773575810817,
+      "validationBalancedAccuracy": 0.5922982085336718,
+      "validationPointTwoF1": 0.061068702290076333
+    },
+    {
+      "trees": 500,
+      "maxDepth": 4,
+      "classWeight": "none",
+      "validationMacroF1": 0.5923701113979881,
+      "validationBalancedAccuracy": 0.592636618009137,
+      "validationPointTwoF1": 0.061068702290076333
+    },
+    {
+      "trees": 500,
+      "maxDepth": 5,
+      "classWeight": "balanced",
+      "validationMacroF1": 0.6497382316593642,
+      "validationBalancedAccuracy": 0.6658249841421676,
+      "validationPointTwoF1": 0.27906976744186046
+    },
+    {
+      "trees": 500,
+      "maxDepth": 5,
+      "classWeight": "none",
+      "validationMacroF1": 0.5942560161580335,
+      "validationBalancedAccuracy": 0.5940371782332267,
+      "validationPointTwoF1": 0.06153846153846154
+    }
+  ],
+  "selectedCandidate": {
+    "trees": 500,
+    "maxDepth": 4,
+    "classWeight": "balanced",
+    "validationMacroF1": 0.6560551188426457,
+    "validationBalancedAccuracy": 0.6816344093003087,
+    "validationPointTwoF1": 0.314410480349345
+  },
+  "selectionCriterion": "highest geographic-validation macro F1, then balanced accuracy",
+  "validationMetrics": {
+    "accuracy": 0.8181137724550899,
+    "balancedAccuracy": 0.6816344093003087,
+    "macroF1": 0.6560551188426457,
+    "logLoss": 0.4341669976711273,
+    "perClass": {
+      "minimal": {
+        "precision": 0.9291166848418757,
+        "recall": 0.86497461928934,
+        "f1": 0.8958990536277602,
+        "support": 985
+      },
+      "one_percent": {
+        "precision": 0.6765676567656765,
+        "recall": 0.8613445378151261,
+        "f1": 0.7578558225508318,
+        "support": 238
+      },
+      "point_two_percent": {
+        "precision": 0.3103448275862069,
+        "recall": 0.3185840707964602,
+        "f1": 0.314410480349345,
+        "support": 113
+      }
+    },
+    "confusionMatrix": [
+      [
+        852,
+        69,
+        64
+      ],
+      [
+        17,
+        205,
+        16
+      ],
+      [
+        48,
+        29,
+        36
+      ]
+    ]
+  },
+  "testMetrics": {
+    "accuracy": 0.8407692307692308,
+    "balancedAccuracy": 0.7883849786119631,
+    "macroF1": 0.7680347501319368,
+    "logLoss": 0.37437576055526733,
+    "perClass": {
+      "minimal": {
+        "precision": 0.9148936170212766,
+        "recall": 0.8472906403940886,
+        "f1": 0.8797953964194374,
+        "support": 812
+      },
+      "one_percent": {
+        "precision": 0.8602150537634409,
+        "recall": 0.935672514619883,
+        "f1": 0.896358543417367,
+        "support": 342
+      },
+      "point_two_percent": {
+        "precision": 0.48295454545454547,
+        "recall": 0.5821917808219178,
+        "f1": 0.5279503105590062,
+        "support": 146
+      }
+    },
+    "confusionMatrix": [
+      [
+        688,
+        44,
+        80
+      ],
+      [
+        11,
+        320,
+        11
+      ],
+      [
+        53,
+        8,
+        85
+      ]
+    ]
+  },
+  "fiveInputDnnTestMetrics": {
+    "accuracy": 0.7776923076923077,
+    "balancedAccuracy": 0.7872305350054399,
+    "macroF1": 0.7230697132370475,
+    "logLoss": 0.5421216514117664,
+    "perClass": {
+      "minimal": {
+        "precision": 0.9443585780525502,
+        "recall": 0.7524630541871922,
+        "f1": 0.8375599725839616,
+        "support": 812
+      },
+      "one_percent": {
+        "precision": 0.768,
+        "recall": 0.8421052631578947,
+        "f1": 0.803347280334728,
+        "support": 342
+      },
+      "point_two_percent": {
+        "precision": 0.4028776978417266,
+        "recall": 0.7671232876712328,
+        "f1": 0.5283018867924528,
+        "support": 146
+      }
+    },
+    "confusionMatrix": [
+      [
+        611,
+        77,
+        124
+      ],
+      [
+        12,
+        288,
+        42
+      ],
+      [
+        24,
+        10,
+        112
+      ]
+    ]
+  },
+  "terrainDnnTestMetrics": {
+    "accuracy": 0.7892307692307692,
+    "balancedAccuracy": 0.7400547503225076,
+    "macroF1": 0.7090886880472261,
+    "logLoss": 0.6139673299247137,
+    "perClass": {
+      "minimal": {
+        "precision": 0.9108910891089109,
+        "recall": 0.7931034482758621,
+        "f1": 0.847926267281106,
+        "support": 812
+      },
+      "one_percent": {
+        "precision": 0.8015873015873016,
+        "recall": 0.8859649122807017,
+        "f1": 0.8416666666666667,
+        "support": 342
+      },
+      "point_two_percent": {
+        "precision": 0.3674418604651163,
+        "recall": 0.541095890410959,
+        "f1": 0.4376731301939058,
+        "support": 146
+      }
+    },
+    "confusionMatrix": [
+      [
+        644,
+        61,
+        107
+      ],
+      [
+        10,
+        303,
+        29
+      ],
+      [
+        53,
+        14,
+        79
+      ]
+    ]
+  }
+}

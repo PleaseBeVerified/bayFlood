@@ -1,0 +1,393 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-03T04:03:13.243520+00:00",
+  "target": "FEMA mapped class; not observed flooding",
+  "inputFiles": [
+    "data/dnn-three-class-training-table.csv",
+    "data/physical-hazard-calibration.csv"
+  ],
+  "features": [
+    "elevation_m",
+    "current_imperviousness_pct",
+    "current_100yr_24h_rainfall_mm",
+    "nearest_water_available",
+    "log_nearest_water_distance_m",
+    "slope_degrees",
+    "local_elevation_250m",
+    "local_elevation_500m",
+    "log_flow_accumulation_m2",
+    "height_above_drainage_m"
+  ],
+  "classes": [
+    "minimal",
+    "one_percent",
+    "point_two_percent"
+  ],
+  "partitionCounts": {
+    "training": 7364,
+    "validation": 1336,
+    "test": 1300
+  },
+  "labelCounts": {
+    "training": {
+      "minimal": 5452,
+      "one_percent": 1238,
+      "point_two_percent": 674
+    },
+    "validation": {
+      "minimal": 985,
+      "one_percent": 238,
+      "point_two_percent": 113
+    },
+    "test": {
+      "minimal": 812,
+      "one_percent": 342,
+      "point_two_percent": 146
+    }
+  },
+  "candidates": [
+    {
+      "hiddenLayerSizes": [
+        32,
+        16
+      ],
+      "alpha": 0.001,
+      "classWeight": "balanced",
+      "iterations": 253,
+      "validationMacroF1": 0.6594619052469559,
+      "validationBalancedAccuracy": 0.6901575112772749,
+      "validationPointTwoF1": 0.3467741935483871
+    },
+    {
+      "hiddenLayerSizes": [
+        64,
+        32,
+        16
+      ],
+      "alpha": 0.001,
+      "classWeight": "balanced",
+      "iterations": 53,
+      "validationMacroF1": 0.5986531121645429,
+      "validationBalancedAccuracy": 0.6318202551673381,
+      "validationPointTwoF1": 0.23030303030303031
+    },
+    {
+      "hiddenLayerSizes": [
+        64,
+        64,
+        32
+      ],
+      "alpha": 0.01,
+      "classWeight": "balanced",
+      "iterations": 68,
+      "validationMacroF1": 0.6153860578585345,
+      "validationBalancedAccuracy": 0.6412248902975232,
+      "validationPointTwoF1": 0.23809523809523808
+    },
+    {
+      "hiddenLayerSizes": [
+        128,
+        64,
+        32
+      ],
+      "alpha": 0.01,
+      "classWeight": "balanced",
+      "iterations": 101,
+      "validationMacroF1": 0.618560810356975,
+      "validationBalancedAccuracy": 0.6374125176776609,
+      "validationPointTwoF1": 0.2413793103448276
+    },
+    {
+      "hiddenLayerSizes": [
+        32,
+        32,
+        16
+      ],
+      "alpha": 0.01,
+      "classWeight": "balanced",
+      "iterations": 79,
+      "validationMacroF1": 0.6428942869382932,
+      "validationBalancedAccuracy": 0.6772041065651363,
+      "validationPointTwoF1": 0.30604982206405695
+    },
+    {
+      "hiddenLayerSizes": [
+        64,
+        32,
+        16
+      ],
+      "alpha": 0.1,
+      "classWeight": "balanced",
+      "iterations": 53,
+      "validationMacroF1": 0.5886416769617847,
+      "validationBalancedAccuracy": 0.618328797760513,
+      "validationPointTwoF1": 0.20481927710843373
+    },
+    {
+      "hiddenLayerSizes": [
+        64,
+        64,
+        32
+      ],
+      "alpha": 0.01,
+      "classWeight": "none",
+      "iterations": 52,
+      "validationMacroF1": 0.5674731139234296,
+      "validationBalancedAccuracy": 0.5773552923258158,
+      "validationPointTwoF1": 0.026845637583892617
+    },
+    {
+      "hiddenLayerSizes": [
+        128,
+        64,
+        32
+      ],
+      "alpha": 0.01,
+      "classWeight": "none",
+      "iterations": 98,
+      "validationMacroF1": 0.6135657933929283,
+      "validationBalancedAccuracy": 0.5980730893498408,
+      "validationPointTwoF1": 0.1780821917808219
+    }
+  ],
+  "selectedCandidate": {
+    "hiddenLayerSizes": [
+      32,
+      16
+    ],
+    "alpha": 0.001,
+    "classWeight": "balanced",
+    "iterations": 253,
+    "validationMacroF1": 0.6594619052469559,
+    "validationBalancedAccuracy": 0.6901575112772749,
+    "validationPointTwoF1": 0.3467741935483871
+  },
+  "selectionCriterion": "highest geographic-validation macro F1, then balanced accuracy",
+  "validationMetrics": {
+    "accuracy": 0.8106287425149701,
+    "balancedAccuracy": 0.6901575112772749,
+    "macroF1": 0.6594619052469559,
+    "logLoss": 0.5011573715197774,
+    "perClass": {
+      "minimal": {
+        "precision": 0.9334073251942286,
+        "recall": 0.8538071065989847,
+        "f1": 0.8918345705196182,
+        "support": 985
+      },
+      "one_percent": {
+        "precision": 0.6633333333333333,
+        "recall": 0.8361344537815126,
+        "f1": 0.7397769516728625,
+        "support": 238
+      },
+      "point_two_percent": {
+        "precision": 0.31851851851851853,
+        "recall": 0.3805309734513274,
+        "f1": 0.3467741935483871,
+        "support": 113
+      }
+    },
+    "confusionMatrix": [
+      [
+        841,
+        75,
+        69
+      ],
+      [
+        16,
+        199,
+        23
+      ],
+      [
+        44,
+        26,
+        43
+      ]
+    ]
+  },
+  "testMetrics": {
+    "accuracy": 0.7892307692307692,
+    "balancedAccuracy": 0.7400547503225076,
+    "macroF1": 0.7090886880472261,
+    "logLoss": 0.6139673299247137,
+    "perClass": {
+      "minimal": {
+        "precision": 0.9108910891089109,
+        "recall": 0.7931034482758621,
+        "f1": 0.847926267281106,
+        "support": 812
+      },
+      "one_percent": {
+        "precision": 0.8015873015873016,
+        "recall": 0.8859649122807017,
+        "f1": 0.8416666666666667,
+        "support": 342
+      },
+      "point_two_percent": {
+        "precision": 0.3674418604651163,
+        "recall": 0.541095890410959,
+        "f1": 0.4376731301939058,
+        "support": 146
+      }
+    },
+    "confusionMatrix": [
+      [
+        644,
+        61,
+        107
+      ],
+      [
+        10,
+        303,
+        29
+      ],
+      [
+        53,
+        14,
+        79
+      ]
+    ]
+  },
+  "fiveInputTestMetrics": {
+    "accuracy": 0.7776923076923077,
+    "balancedAccuracy": 0.7872305350054399,
+    "macroF1": 0.7230697132370475,
+    "logLoss": 0.5421216514117664,
+    "perClass": {
+      "minimal": {
+        "precision": 0.9443585780525502,
+        "recall": 0.7524630541871922,
+        "f1": 0.8375599725839616,
+        "support": 812
+      },
+      "one_percent": {
+        "precision": 0.768,
+        "recall": 0.8421052631578947,
+        "f1": 0.803347280334728,
+        "support": 342
+      },
+      "point_two_percent": {
+        "precision": 0.4028776978417266,
+        "recall": 0.7671232876712328,
+        "f1": 0.5283018867924528,
+        "support": 146
+      }
+    },
+    "confusionMatrix": [
+      [
+        611,
+        77,
+        124
+      ],
+      [
+        12,
+        288,
+        42
+      ],
+      [
+        24,
+        10,
+        112
+      ]
+    ]
+  },
+  "exportMaximumProbabilityError": 0.0,
+  "referenceCases": [
+    {
+      "inputs": [
+        220.4,
+        0.0,
+        168.148,
+        1.0,
+        4.990432586778736,
+        24.768,
+        22.359,
+        6.195,
+        5.993961427306569,
+        79.056
+      ],
+      "probabilities": [
+        0.9996132539108076,
+        2.701479013806723e-05,
+        0.000359731299054506
+      ]
+    },
+    {
+      "inputs": [
+        19.3,
+        61.0,
+        114.554,
+        1.0,
+        5.641907070938114,
+        0.915,
+        -0.008,
+        0.629,
+        5.303304908059076,
+        6.739
+      ],
+      "probabilities": [
+        0.12674159689721662,
+        0.17484939701600896,
+        0.6984090060867744
+      ]
+    },
+    {
+      "inputs": [
+        328.3,
+        0.0,
+        178.562,
+        1.0,
+        5.375278407684165,
+        17.486,
+        -15.817,
+        -23.964,
+        9.918425424900335,
+        36.865
+      ],
+      "probabilities": [
+        0.9984963539531101,
+        0.0007281982424887384,
+        0.0007754478044012296
+      ]
+    },
+    {
+      "inputs": [
+        7.7,
+        69.0,
+        114.3,
+        1.0,
+        5.823045895483019,
+        1.254,
+        0.053,
+        0.139,
+        9.898525260706313,
+        0.043
+      ],
+      "probabilities": [
+        0.06357747476564624,
+        0.20086438684602556,
+        0.7355581383883282
+      ]
+    },
+    {
+      "inputs": [
+        11.0,
+        25.0,
+        113.03,
+        1.0,
+        6.0014148779611505,
+        0.451,
+        -0.106,
+        -0.165,
+        6.68586094706836,
+        0.009
+      ],
+      "probabilities": [
+        0.024432902080746992,
+        0.2523836105829152,
+        0.7231834873363377
+      ]
+    }
+  ]
+}

@@ -1,0 +1,273 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-03T04:05:47.164793+00:00",
+  "target": "FEMA mapped one_percent versus minimal; not observed storm inundation",
+  "inputFiles": [
+    "data/dnn-training-table.csv",
+    "data/physical-hazard-calibration.csv"
+  ],
+  "features": [
+    "elevation_m",
+    "current_imperviousness_pct",
+    "current_100yr_24h_rainfall_mm",
+    "nearest_water_available",
+    "log_nearest_water_distance_m",
+    "slope_degrees",
+    "local_elevation_250m",
+    "local_elevation_500m",
+    "log_flow_accumulation_m2",
+    "height_above_drainage_m"
+  ],
+  "parameters": {
+    "n_estimators": 350,
+    "max_depth": 3,
+    "learning_rate": 0.03,
+    "subsample": 0.85,
+    "colsample_bytree": 0.9,
+    "reg_lambda": 10,
+    "n_jobs": 4,
+    "random_state": 42
+  },
+  "partitionCounts": {
+    "training": 6690,
+    "validation": 1223,
+    "test": 1154
+  },
+  "highElevationMinimalCutoffMeters": 282.1,
+  "currentAppTestMetrics": {
+    "accuracy": 0.938474870017331,
+    "balancedAccuracy": 0.9435874168179068,
+    "rocAuc": 0.9869177253478523,
+    "averagePrecision": 0.9797785473105286,
+    "precision": 0.8537859007832899,
+    "recall": 0.956140350877193,
+    "f1": 0.9020689655172414,
+    "brierScore": 0.03215958923101425,
+    "confusionMatrix": [
+      [
+        756,
+        56
+      ],
+      [
+        15,
+        327
+      ]
+    ]
+  },
+  "variants": {
+    "full": {
+      "modelPath": "models/flood-risk-terrain-full.joblib",
+      "trainingRows": 6690,
+      "trainingSeconds": 0.11675624997587875,
+      "trainingLabels": {
+        "minimal": 5452,
+        "one_percent": 1238
+      },
+      "decisionThreshold": 0.135,
+      "validationMetrics": {
+        "accuracy": 0.9010629599345871,
+        "balancedAccuracy": 0.9146802883589984,
+        "precision": 0.6778115501519757,
+        "recall": 0.9369747899159664,
+        "f1": 0.7865961199294532,
+        "rocAuc": 0.9764151345817516,
+        "brierScore": 0.04601249098777771,
+        "confusionMatrix": [
+          [
+            879,
+            106
+          ],
+          [
+            15,
+            223
+          ]
+        ]
+      },
+      "testMetrics": {
+        "accuracy": 0.9150779896013865,
+        "balancedAccuracy": 0.9354240486273154,
+        "precision": 0.7837209302325582,
+        "recall": 0.9853801169590644,
+        "f1": 0.8730569948186528,
+        "rocAuc": 0.9935146774983437,
+        "brierScore": 0.026305414736270905,
+        "confusionMatrix": [
+          [
+            719,
+            93
+          ],
+          [
+            5,
+            337
+          ]
+        ]
+      },
+      "featureGain": {
+        "elevation_m": 41.226505279541016,
+        "current_imperviousness_pct": 12.480899810791016,
+        "current_100yr_24h_rainfall_mm": 6.6022772789001465,
+        "nearest_water_available": 1.7033705711364746,
+        "log_nearest_water_distance_m": 10.700197219848633,
+        "slope_degrees": 11.056507110595703,
+        "local_elevation_250m": 4.046728134155273,
+        "local_elevation_500m": 3.6512932777404785,
+        "log_flow_accumulation_m2": 6.072554588317871,
+        "height_above_drainage_m": 150.5212860107422
+      },
+      "appArtifactPath": "models/flood-risk-terrain-full.json",
+      "exportMaximumProbabilityError": 2.2330989918328825e-07,
+      "referenceCases": [
+        {
+          "inputs": [
+            220.39999389648438,
+            0.0,
+            168.1479949951172,
+            1.0,
+            4.9904327392578125,
+            24.76799964904785,
+            22.358999252319336,
+            6.195000171661377,
+            5.993961334228516,
+            79.05599975585938
+          ],
+          "probability": 0.0026419241912662983
+        },
+        {
+          "inputs": [
+            19.299999237060547,
+            61.0,
+            114.55400085449219,
+            1.0,
+            5.641907215118408,
+            0.9150000214576721,
+            -0.00800000037997961,
+            0.6290000081062317,
+            5.303304672241211,
+            6.738999843597412
+          ],
+          "probability": 0.03939918428659439
+        },
+        {
+          "inputs": [
+            328.29998779296875,
+            0.0,
+            178.56199645996094,
+            1.0,
+            5.375278472900391,
+            17.486000061035156,
+            -15.817000389099121,
+            -23.964000701904297,
+            9.918425559997559,
+            36.8650016784668
+          ],
+          "probability": 0.003331440268084407
+        },
+        {
+          "inputs": [
+            171.3000030517578,
+            27.0,
+            158.24200439453125,
+            1.0,
+            4.127134323120117,
+            17.482999801635742,
+            -17.503000259399414,
+            -30.667999267578125,
+            7.496097564697266,
+            13.302000045776367
+          ],
+          "probability": 0.017570536583662033
+        },
+        {
+          "inputs": [
+            256.8999938964844,
+            0.0,
+            169.92599487304688,
+            1.0,
+            4.9904327392578125,
+            24.06100082397461,
+            6.513000011444092,
+            7.248000144958496,
+            7.313886642456055,
+            89.6709976196289
+          ],
+          "probability": 0.0022684636060148478
+        },
+        {
+          "inputs": [
+            25.0,
+            60.0,
+            150.0,
+            1.0,
+            null,
+            2.0,
+            0.0,
+            0.0,
+            6.2166061010848646,
+            5.0
+          ],
+          "probability": 0.08584179729223251
+        }
+      ]
+    },
+    "high-elevation": {
+      "modelPath": "models/flood-risk-terrain-high-elevation.joblib",
+      "trainingRows": 2476,
+      "trainingSeconds": 0.09886295901378617,
+      "trainingLabels": {
+        "minimal": 1238,
+        "one_percent": 1238
+      },
+      "decisionThreshold": 0.275,
+      "validationMetrics": {
+        "accuracy": 0.4063777596075225,
+        "balancedAccuracy": 0.6314720812182741,
+        "precision": 0.24688796680497926,
+        "recall": 1.0,
+        "f1": 0.39600665557404324,
+        "rocAuc": 0.9437614639764536,
+        "brierScore": 0.5756171941757202,
+        "confusionMatrix": [
+          [
+            259,
+            726
+          ],
+          [
+            0,
+            238
+          ]
+        ]
+      },
+      "testMetrics": {
+        "accuracy": 0.4532062391681109,
+        "balancedAccuracy": 0.6097607524558523,
+        "precision": 0.3508771929824561,
+        "recall": 0.9941520467836257,
+        "f1": 0.5186880244088482,
+        "rocAuc": 0.947904963558321,
+        "brierScore": 0.5295359492301941,
+        "confusionMatrix": [
+          [
+            183,
+            629
+          ],
+          [
+            2,
+            340
+          ]
+        ]
+      },
+      "featureGain": {
+        "elevation_m": 121.39057159423828,
+        "current_imperviousness_pct": 1.4105224609375,
+        "current_100yr_24h_rainfall_mm": 1.3649554252624512,
+        "nearest_water_available": 0.044017791748046875,
+        "log_nearest_water_distance_m": 1.3845138549804688,
+        "slope_degrees": 1.0210143327713013,
+        "local_elevation_250m": 2.3078083992004395,
+        "local_elevation_500m": 0.7106506824493408,
+        "log_flow_accumulation_m2": 0.8484810590744019,
+        "height_above_drainage_m": 19.86745262145996
+      }
+    }
+  }
+}

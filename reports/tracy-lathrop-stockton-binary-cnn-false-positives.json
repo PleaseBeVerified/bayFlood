@@ -1,0 +1,1174 @@
+{
+  "generatedAt": "2026-11-08T21:06:40.410666+00:00",
+  "datasetSha256": "ee3004b76dfffaa9d0e93fb9c89d7d2ae81d1f80ceb70747dee48e94180d01c4",
+  "modelSha256": "af5daa8ded6a30a0b6fc6a4bb952e4e8d9f65d3530e2de94dac4707e2d4ecc89",
+  "sourceFemaSha256": "b8f241f9abced47f252bcf97ce371d24b42897568b47c784ebc5d133d3ab4bb3",
+  "threshold": 0.06182599067687988,
+  "minimalCount": 150,
+  "falsePositiveCount": 104,
+  "falsePositiveRate": 0.6933333333333334,
+  "falsePositiveSummary": {
+    "elevation_m": {
+      "q25": 10.528,
+      "median": 13.040500000000002,
+      "q75": 15.30425
+    },
+    "height_above_drainage_m": {
+      "q25": 0.6125,
+      "median": 1.1840000000000002,
+      "q75": 2.1995
+    },
+    "slope_degrees": {
+      "q25": 0.10875,
+      "median": 0.2765,
+      "q75": 0.585
+    },
+    "nearest_water_distance_m": {
+      "q25": 96.25,
+      "median": 324.0,
+      "q75": 595.25
+    },
+    "current_imperviousness_pct": {
+      "q25": 0.0,
+      "median": 0.0,
+      "q75": 52.0
+    },
+    "current_100yr_24h_rainfall_mm": {
+      "q25": 78.384,
+      "median": 86.41050000000001,
+      "q75": 87.71875
+    },
+    "local_elevation_250m": {
+      "q25": -0.1365,
+      "median": 0.018,
+      "q75": 0.18975
+    },
+    "local_elevation_500m": {
+      "q25": -0.17075,
+      "median": 0.0085,
+      "q75": 0.19025
+    },
+    "flow_accumulation_m2": {
+      "q25": 475.0,
+      "median": 1500.0,
+      "q75": 10925.0
+    },
+    "patch_median_slope_degrees": {
+      "q25": 0.1657562255859375,
+      "median": 0.255126953125,
+      "q75": 0.5955810546875
+    },
+    "patch_median_height_above_drainage_m": {
+      "q25": 0.807373046875,
+      "median": 1.10498046875,
+      "q75": 1.64306640625
+    },
+    "patch_dem_iqr_m": {
+      "q25": 1.0228424072265625,
+      "median": 1.23773193359375,
+      "q75": 3.149688720703125
+    },
+    "cnn_score": {
+      "q25": 0.15216271206736565,
+      "median": 0.38567544519901276,
+      "q75": 0.7822378277778625
+    },
+    "fema_polygon_boundary_distance_m": {
+      "q25": 434.11664670095,
+      "median": 1626.302633064409,
+      "q75": 2895.7246745336806
+    }
+  },
+  "correctMinimalSummary": {
+    "elevation_m": {
+      "q25": 24.523249999999997,
+      "median": 37.982,
+      "q75": 63.008
+    },
+    "height_above_drainage_m": {
+      "q25": 3.7672499999999998,
+      "median": 7.518000000000001,
+      "q75": 12.1755
+    },
+    "slope_degrees": {
+      "q25": 0.6465000000000001,
+      "median": 1.0345,
+      "q75": 1.31375
+    },
+    "nearest_water_distance_m": {
+      "q25": 167.0,
+      "median": 427.0,
+      "q75": 621.5
+    },
+    "current_imperviousness_pct": {
+      "q25": 0.0,
+      "median": 18.0,
+      "q75": 58.0
+    },
+    "current_100yr_24h_rainfall_mm": {
+      "q25": 70.79625,
+      "median": 74.6505,
+      "q75": 78.18125
+    },
+    "local_elevation_250m": {
+      "q25": -0.32225000000000004,
+      "median": -0.020999999999999998,
+      "q75": 0.159
+    },
+    "local_elevation_500m": {
+      "q25": -0.595,
+      "median": -0.056,
+      "q75": 0.37925000000000003
+    },
+    "flow_accumulation_m2": {
+      "q25": 800.0,
+      "median": 2900.0,
+      "q75": 16950.0
+    },
+    "patch_median_slope_degrees": {
+      "q25": 0.580810546875,
+      "median": 0.86083984375,
+      "q75": 1.5087890625
+    },
+    "patch_median_height_above_drainage_m": {
+      "q25": 3.735107421875,
+      "median": 6.205078125,
+      "q75": 11.2587890625
+    },
+    "patch_dem_iqr_m": {
+      "q25": 4.56658935546875,
+      "median": 9.05908203125,
+      "q75": 13.717041015625
+    },
+    "cnn_score": {
+      "q25": 0.0011236780555918813,
+      "median": 0.01229554507881403,
+      "q75": 0.026666257064789534
+    },
+    "fema_polygon_boundary_distance_m": {
+      "q25": 1995.767533455643,
+      "median": 3128.8009964606367,
+      "q75": 4023.009358847976
+    }
+  },
+  "mappedOnePercentSummary": {
+    "elevation_m": {
+      "q25": -0.34575,
+      "median": 1.67,
+      "q75": 4.4392499999999995
+    },
+    "height_above_drainage_m": {
+      "q25": 0.01,
+      "median": 0.2315,
+      "q75": 0.9915
+    },
+    "slope_degrees": {
+      "q25": 0.10225,
+      "median": 0.141,
+      "q75": 0.32275
+    },
+    "nearest_water_distance_m": {
+      "q25": 36.25,
+      "median": 91.0,
+      "q75": 143.0
+    },
+    "current_imperviousness_pct": {
+      "q25": 0.0,
+      "median": 0.0,
+      "q75": 0.0
+    },
+    "current_100yr_24h_rainfall_mm": {
+      "q25": 83.814,
+      "median": 88.9,
+      "q75": 91.52925
+    },
+    "local_elevation_250m": {
+      "q25": -0.162,
+      "median": -0.004,
+      "q75": 0.11475
+    },
+    "local_elevation_500m": {
+      "q25": -0.21825,
+      "median": -0.0185,
+      "q75": 0.17275
+    },
+    "flow_accumulation_m2": {
+      "q25": 800.0,
+      "median": 2500.0,
+      "q75": 9200.0
+    },
+    "patch_median_slope_degrees": {
+      "q25": 0.1250457763671875,
+      "median": 0.1441650390625,
+      "q75": 0.1807098388671875
+    },
+    "patch_median_height_above_drainage_m": {
+      "q25": 0.0135345458984375,
+      "median": 0.177337646484375,
+      "q75": 0.91412353515625
+    },
+    "patch_dem_iqr_m": {
+      "q25": 0.5676841735839844,
+      "median": 0.7253570556640625,
+      "q75": 0.9971389770507812
+    },
+    "cnn_score": {
+      "q25": 0.46844617277383804,
+      "median": 0.6664805114269257,
+      "q75": 0.8260800838470459
+    }
+  },
+  "polygonGroups": [
+    {
+      "sourceObjectId": "28049960",
+      "minimalCount": 75,
+      "falsePositives": 34,
+      "falsePositiveRate": 0.4533333333333333,
+      "falsePositiveTerrain": {
+        "elevation_m": {
+          "q25": 9.73925,
+          "median": 13.125,
+          "q75": 21.44075
+        },
+        "height_above_drainage_m": {
+          "q25": 1.2197500000000001,
+          "median": 2.5215,
+          "q75": 4.664
+        },
+        "slope_degrees": {
+          "q25": 0.23725,
+          "median": 0.391,
+          "q75": 0.69225
+        },
+        "nearest_water_distance_m": {
+          "q25": 130.0,
+          "median": 288.0,
+          "q75": 595.75
+        },
+        "current_imperviousness_pct": {
+          "q25": 0.0,
+          "median": 26.5,
+          "q75": 57.0
+        },
+        "current_100yr_24h_rainfall_mm": {
+          "q25": 73.0695,
+          "median": 76.35249999999999,
+          "q75": 78.29525
+        },
+        "local_elevation_250m": {
+          "q25": -0.05975,
+          "median": 0.0245,
+          "q75": 0.19475
+        },
+        "local_elevation_500m": {
+          "q25": -0.1035,
+          "median": 0.040999999999999995,
+          "q75": 0.163
+        },
+        "flow_accumulation_m2": {
+          "q25": 600.0,
+          "median": 2000.0,
+          "q75": 12425.0
+        }
+      },
+      "correctMinimalTerrain": {
+        "elevation_m": {
+          "q25": 28.452,
+          "median": 38.748,
+          "q75": 65.372
+        },
+        "height_above_drainage_m": {
+          "q25": 3.977,
+          "median": 8.675,
+          "q75": 12.327
+        },
+        "slope_degrees": {
+          "q25": 0.645,
+          "median": 1.012,
+          "q75": 1.301
+        },
+        "nearest_water_distance_m": {
+          "q25": 167.0,
+          "median": 384.0,
+          "q75": 628.0
+        },
+        "current_imperviousness_pct": {
+          "q25": 0.0,
+          "median": 0.0,
+          "q75": 57.0
+        },
+        "current_100yr_24h_rainfall_mm": {
+          "q25": 70.714,
+          "median": 72.847,
+          "q75": 77.394
+        },
+        "local_elevation_250m": {
+          "q25": -0.456,
+          "median": -0.049,
+          "q75": 0.148
+        },
+        "local_elevation_500m": {
+          "q25": -0.759,
+          "median": -0.116,
+          "q75": 0.32
+        },
+        "flow_accumulation_m2": {
+          "q25": 800.0,
+          "median": 2900.0,
+          "q75": 17600.0
+        }
+      }
+    },
+    {
+      "sourceObjectId": "28049400",
+      "minimalCount": 60,
+      "falsePositives": 58,
+      "falsePositiveRate": 0.9666666666666667,
+      "falsePositiveTerrain": {
+        "elevation_m": {
+          "q25": 11.31275,
+          "median": 13.040500000000002,
+          "q75": 15.091000000000001
+        },
+        "height_above_drainage_m": {
+          "q25": 0.47224999999999995,
+          "median": 0.828,
+          "q75": 1.3940000000000001
+        },
+        "slope_degrees": {
+          "q25": 0.07,
+          "median": 0.2175,
+          "q75": 0.6025
+        },
+        "nearest_water_distance_m": {
+          "q25": 71.25,
+          "median": 276.0,
+          "q75": 630.0
+        },
+        "current_imperviousness_pct": {
+          "q25": 0.0,
+          "median": 0.0,
+          "q75": 32.5
+        },
+        "current_100yr_24h_rainfall_mm": {
+          "q25": 86.309,
+          "median": 86.94399999999999,
+          "q75": 87.687
+        },
+        "local_elevation_250m": {
+          "q25": -0.18375,
+          "median": 0.004,
+          "q75": 0.18075
+        },
+        "local_elevation_500m": {
+          "q25": -0.29925,
+          "median": -0.006,
+          "q75": 0.2105
+        },
+        "flow_accumulation_m2": {
+          "q25": 400.0,
+          "median": 1200.0,
+          "q75": 10675.0
+        }
+      },
+      "correctMinimalTerrain": {
+        "elevation_m": {
+          "q25": 9.507249999999999,
+          "median": 9.532499999999999,
+          "q75": 9.55775
+        },
+        "height_above_drainage_m": {
+          "q25": 1.796,
+          "median": 2.342,
+          "q75": 2.888
+        },
+        "slope_degrees": {
+          "q25": 0.5902499999999999,
+          "median": 0.6935,
+          "q75": 0.7967500000000001
+        },
+        "nearest_water_distance_m": {
+          "q25": 513.75,
+          "median": 543.5,
+          "q75": 573.25
+        },
+        "current_imperviousness_pct": {
+          "q25": 36.25,
+          "median": 47.5,
+          "q75": 58.75
+        },
+        "current_100yr_24h_rainfall_mm": {
+          "q25": 86.15025,
+          "median": 86.2455,
+          "q75": 86.34075000000001
+        },
+        "local_elevation_250m": {
+          "q25": 0.10575,
+          "median": 0.1215,
+          "q75": 0.13724999999999998
+        },
+        "local_elevation_500m": {
+          "q25": 0.09225,
+          "median": 0.1365,
+          "q75": 0.18075000000000002
+        },
+        "flow_accumulation_m2": {
+          "q25": 1150.0,
+          "median": 2000.0,
+          "q75": 2850.0
+        }
+      }
+    },
+    {
+      "sourceObjectId": "28048826",
+      "minimalCount": 4,
+      "falsePositives": 4,
+      "falsePositiveRate": 1.0,
+      "falsePositiveTerrain": {
+        "elevation_m": {
+          "q25": 13.01025,
+          "median": 13.241,
+          "q75": 14.155999999999999
+        },
+        "height_above_drainage_m": {
+          "q25": 1.4552500000000002,
+          "median": 1.6855,
+          "q75": 2.21775
+        },
+        "slope_degrees": {
+          "q25": 0.11649999999999999,
+          "median": 0.137,
+          "q75": 0.199
+        },
+        "nearest_water_distance_m": {
+          "q25": 385.5,
+          "median": 396.0,
+          "q75": 467.75
+        },
+        "current_imperviousness_pct": {
+          "q25": 0.0,
+          "median": 26.5,
+          "q75": 60.0
+        },
+        "current_100yr_24h_rainfall_mm": {
+          "q25": 91.12899999999999,
+          "median": 91.4145,
+          "q75": 91.6175
+        },
+        "local_elevation_250m": {
+          "q25": 0.21875,
+          "median": 0.2845,
+          "q75": 0.3195
+        },
+        "local_elevation_500m": {
+          "q25": 0.13174999999999998,
+          "median": 0.242,
+          "q75": 0.43775
+        },
+        "flow_accumulation_m2": {
+          "q25": 675.0,
+          "median": 750.0,
+          "q75": 5725.0
+        }
+      },
+      "correctMinimalTerrain": {}
+    },
+    {
+      "sourceObjectId": "28048942",
+      "minimalCount": 2,
+      "falsePositives": 1,
+      "falsePositiveRate": 0.5,
+      "falsePositiveTerrain": {
+        "elevation_m": {
+          "q25": 10.39,
+          "median": 10.39,
+          "q75": 10.39
+        },
+        "height_above_drainage_m": {
+          "q25": 2.057,
+          "median": 2.057,
+          "q75": 2.057
+        },
+        "slope_degrees": {
+          "q25": 0.109,
+          "median": 0.109,
+          "q75": 0.109
+        },
+        "nearest_water_distance_m": {
+          "q25": 352.0,
+          "median": 352.0,
+          "q75": 352.0
+        },
+        "current_imperviousness_pct": {
+          "q25": 0.0,
+          "median": 0.0,
+          "q75": 0.0
+        },
+        "current_100yr_24h_rainfall_mm": {
+          "q25": 91.237,
+          "median": 91.237,
+          "q75": 91.237
+        },
+        "local_elevation_250m": {
+          "q25": 0.04,
+          "median": 0.04,
+          "q75": 0.04
+        },
+        "local_elevation_500m": {
+          "q25": 0.006,
+          "median": 0.006,
+          "q75": 0.006
+        },
+        "flow_accumulation_m2": {
+          "q25": 3500.0,
+          "median": 3500.0,
+          "q75": 3500.0
+        }
+      },
+      "correctMinimalTerrain": {
+        "elevation_m": {
+          "q25": 7.96,
+          "median": 7.96,
+          "q75": 7.96
+        },
+        "height_above_drainage_m": {
+          "q25": 1.671,
+          "median": 1.671,
+          "q75": 1.671
+        },
+        "slope_degrees": {
+          "q25": 1.095,
+          "median": 1.095,
+          "q75": 1.095
+        },
+        "nearest_water_distance_m": {
+          "q25": 559.0,
+          "median": 559.0,
+          "q75": 559.0
+        },
+        "current_imperviousness_pct": {
+          "q25": 64.0,
+          "median": 64.0,
+          "q75": 64.0
+        },
+        "current_100yr_24h_rainfall_mm": {
+          "q25": 91.415,
+          "median": 91.415,
+          "q75": 91.415
+        },
+        "local_elevation_250m": {
+          "q25": 0.134,
+          "median": 0.134,
+          "q75": 0.134
+        },
+        "local_elevation_500m": {
+          "q25": -0.01,
+          "median": -0.01,
+          "q75": -0.01
+        },
+        "flow_accumulation_m2": {
+          "q25": 2900.0,
+          "median": 2900.0,
+          "q75": 2900.0
+        }
+      }
+    },
+    {
+      "sourceObjectId": "28048939",
+      "minimalCount": 2,
+      "falsePositives": 2,
+      "falsePositiveRate": 1.0,
+      "falsePositiveTerrain": {
+        "elevation_m": {
+          "q25": 8.77825,
+          "median": 10.5775,
+          "q75": 12.37675
+        },
+        "height_above_drainage_m": {
+          "q25": 0.397,
+          "median": 0.7849999999999999,
+          "q75": 1.173
+        },
+        "slope_degrees": {
+          "q25": 2.5195,
+          "median": 4.93,
+          "q75": 7.3405
+        },
+        "nearest_water_distance_m": {
+          "q25": 318.25,
+          "median": 403.5,
+          "q75": 488.75
+        },
+        "current_imperviousness_pct": {
+          "q25": 0.0,
+          "median": 0.0,
+          "q75": 0.0
+        },
+        "current_100yr_24h_rainfall_mm": {
+          "q25": 90.4685,
+          "median": 90.513,
+          "q75": 90.5575
+        },
+        "local_elevation_250m": {
+          "q25": -7.457,
+          "median": -4.984,
+          "q75": -2.5109999999999997
+        },
+        "local_elevation_500m": {
+          "q25": -13.22475,
+          "median": -8.8405,
+          "q75": -4.456250000000001
+        },
+        "flow_accumulation_m2": {
+          "q25": 6175.0,
+          "median": 7350.0,
+          "q75": 8525.0
+        }
+      },
+      "correctMinimalTerrain": {}
+    },
+    {
+      "sourceObjectId": "28049777",
+      "minimalCount": 1,
+      "falsePositives": 0,
+      "falsePositiveRate": 0.0,
+      "falsePositiveTerrain": {},
+      "correctMinimalTerrain": {
+        "elevation_m": {
+          "q25": 49.331,
+          "median": 49.331,
+          "q75": 49.331
+        },
+        "height_above_drainage_m": {
+          "q25": 40.136,
+          "median": 40.136,
+          "q75": 40.136
+        },
+        "slope_degrees": {
+          "q25": 1.957,
+          "median": 1.957,
+          "q75": 1.957
+        },
+        "nearest_water_distance_m": {
+          "q25": 485.0,
+          "median": 485.0,
+          "q75": 485.0
+        },
+        "current_imperviousness_pct": {
+          "q25": 0.0,
+          "median": 0.0,
+          "q75": 0.0
+        },
+        "current_100yr_24h_rainfall_mm": {
+          "q25": 91.338,
+          "median": 91.338,
+          "q75": 91.338
+        },
+        "local_elevation_250m": {
+          "q25": 8.457,
+          "median": 8.457,
+          "q75": 8.457
+        },
+        "local_elevation_500m": {
+          "q25": 19.351,
+          "median": 19.351,
+          "q75": 19.351
+        },
+        "flow_accumulation_m2": {
+          "q25": 1400.0,
+          "median": 1400.0,
+          "q75": 1400.0
+        }
+      }
+    },
+    {
+      "sourceObjectId": "28049062",
+      "minimalCount": 1,
+      "falsePositives": 1,
+      "falsePositiveRate": 1.0,
+      "falsePositiveTerrain": {
+        "elevation_m": {
+          "q25": 13.988,
+          "median": 13.988,
+          "q75": 13.988
+        },
+        "height_above_drainage_m": {
+          "q25": 2.14,
+          "median": 2.14,
+          "q75": 2.14
+        },
+        "slope_degrees": {
+          "q25": 0.158,
+          "median": 0.158,
+          "q75": 0.158
+        },
+        "nearest_water_distance_m": {
+          "q25": 78.0,
+          "median": 78.0,
+          "q75": 78.0
+        },
+        "current_imperviousness_pct": {
+          "q25": 18.0,
+          "median": 18.0,
+          "q75": 18.0
+        },
+        "current_100yr_24h_rainfall_mm": {
+          "q25": 91.364,
+          "median": 91.364,
+          "q75": 91.364
+        },
+        "local_elevation_250m": {
+          "q25": 0.183,
+          "median": 0.183,
+          "q75": 0.183
+        },
+        "local_elevation_500m": {
+          "q25": 0.166,
+          "median": 0.166,
+          "q75": 0.166
+        },
+        "flow_accumulation_m2": {
+          "q25": 2500.0,
+          "median": 2500.0,
+          "q75": 2500.0
+        }
+      },
+      "correctMinimalTerrain": {}
+    },
+    {
+      "sourceObjectId": "28049050",
+      "minimalCount": 1,
+      "falsePositives": 1,
+      "falsePositiveRate": 1.0,
+      "falsePositiveTerrain": {
+        "elevation_m": {
+          "q25": 7.586,
+          "median": 7.586,
+          "q75": 7.586
+        },
+        "height_above_drainage_m": {
+          "q25": 1.277,
+          "median": 1.277,
+          "q75": 1.277
+        },
+        "slope_degrees": {
+          "q25": 2.019,
+          "median": 2.019,
+          "q75": 2.019
+        },
+        "nearest_water_distance_m": {
+          "q25": 429.0,
+          "median": 429.0,
+          "q75": 429.0
+        },
+        "current_imperviousness_pct": {
+          "q25": 88.0,
+          "median": 88.0,
+          "q75": 88.0
+        },
+        "current_100yr_24h_rainfall_mm": {
+          "q25": 91.694,
+          "median": 91.694,
+          "q75": 91.694
+        },
+        "local_elevation_250m": {
+          "q25": 0.003,
+          "median": 0.003,
+          "q75": 0.003
+        },
+        "local_elevation_500m": {
+          "q25": 0.317,
+          "median": 0.317,
+          "q75": 0.317
+        },
+        "flow_accumulation_m2": {
+          "q25": 800.0,
+          "median": 800.0,
+          "q75": 800.0
+        }
+      },
+      "correctMinimalTerrain": {}
+    },
+    {
+      "sourceObjectId": "28049272",
+      "minimalCount": 1,
+      "falsePositives": 1,
+      "falsePositiveRate": 1.0,
+      "falsePositiveTerrain": {
+        "elevation_m": {
+          "q25": 14.171,
+          "median": 14.171,
+          "q75": 14.171
+        },
+        "height_above_drainage_m": {
+          "q25": 0.104,
+          "median": 0.104,
+          "q75": 0.104
+        },
+        "slope_degrees": {
+          "q25": 0.077,
+          "median": 0.077,
+          "q75": 0.077
+        },
+        "nearest_water_distance_m": {
+          "q25": 291.0,
+          "median": 291.0,
+          "q75": 291.0
+        },
+        "current_imperviousness_pct": {
+          "q25": 0.0,
+          "median": 0.0,
+          "q75": 0.0
+        },
+        "current_100yr_24h_rainfall_mm": {
+          "q25": 91.11,
+          "median": 91.11,
+          "q75": 91.11
+        },
+        "local_elevation_250m": {
+          "q25": 0.012,
+          "median": 0.012,
+          "q75": 0.012
+        },
+        "local_elevation_500m": {
+          "q25": 0.024,
+          "median": 0.024,
+          "q75": 0.024
+        },
+        "flow_accumulation_m2": {
+          "q25": 3300.0,
+          "median": 3300.0,
+          "q75": 3300.0
+        }
+      },
+      "correctMinimalTerrain": {}
+    },
+    {
+      "sourceObjectId": "28049848",
+      "minimalCount": 1,
+      "falsePositives": 0,
+      "falsePositiveRate": 0.0,
+      "falsePositiveTerrain": {},
+      "correctMinimalTerrain": {
+        "elevation_m": {
+          "q25": 5.225,
+          "median": 5.225,
+          "q75": 5.225
+        },
+        "height_above_drainage_m": {
+          "q25": 3.201,
+          "median": 3.201,
+          "q75": 3.201
+        },
+        "slope_degrees": {
+          "q25": 1.318,
+          "median": 1.318,
+          "q75": 1.318
+        },
+        "nearest_water_distance_m": {
+          "q25": 111.0,
+          "median": 111.0,
+          "q75": 111.0
+        },
+        "current_imperviousness_pct": {
+          "q25": 72.0,
+          "median": 72.0,
+          "q75": 72.0
+        },
+        "current_100yr_24h_rainfall_mm": {
+          "q25": 90.957,
+          "median": 90.957,
+          "q75": 90.957
+        },
+        "local_elevation_250m": {
+          "q25": 0.642,
+          "median": 0.642,
+          "q75": 0.642
+        },
+        "local_elevation_500m": {
+          "q25": 1.954,
+          "median": 1.954,
+          "q75": 1.954
+        },
+        "flow_accumulation_m2": {
+          "q25": 17200.0,
+          "median": 17200.0,
+          "q75": 17200.0
+        }
+      }
+    },
+    {
+      "sourceObjectId": "28048926",
+      "minimalCount": 1,
+      "falsePositives": 1,
+      "falsePositiveRate": 1.0,
+      "falsePositiveTerrain": {
+        "elevation_m": {
+          "q25": 8.23,
+          "median": 8.23,
+          "q75": 8.23
+        },
+        "height_above_drainage_m": {
+          "q25": 1.449,
+          "median": 1.449,
+          "q75": 1.449
+        },
+        "slope_degrees": {
+          "q25": 0.241,
+          "median": 0.241,
+          "q75": 0.241
+        },
+        "nearest_water_distance_m": {
+          "q25": 166.0,
+          "median": 166.0,
+          "q75": 166.0
+        },
+        "current_imperviousness_pct": {
+          "q25": 0.0,
+          "median": 0.0,
+          "q75": 0.0
+        },
+        "current_100yr_24h_rainfall_mm": {
+          "q25": 92.05,
+          "median": 92.05,
+          "q75": 92.05
+        },
+        "local_elevation_250m": {
+          "q25": 0.054,
+          "median": 0.054,
+          "q75": 0.054
+        },
+        "local_elevation_500m": {
+          "q25": 0.003,
+          "median": 0.003,
+          "q75": 0.003
+        },
+        "flow_accumulation_m2": {
+          "q25": 15400.0,
+          "median": 15400.0,
+          "q75": 15400.0
+        }
+      },
+      "correctMinimalTerrain": {}
+    },
+    {
+      "sourceObjectId": "28049918",
+      "minimalCount": 1,
+      "falsePositives": 1,
+      "falsePositiveRate": 1.0,
+      "falsePositiveTerrain": {
+        "elevation_m": {
+          "q25": 7.677,
+          "median": 7.677,
+          "q75": 7.677
+        },
+        "height_above_drainage_m": {
+          "q25": 1.31,
+          "median": 1.31,
+          "q75": 1.31
+        },
+        "slope_degrees": {
+          "q25": 0.173,
+          "median": 0.173,
+          "q75": 0.173
+        },
+        "nearest_water_distance_m": {
+          "q25": 661.0,
+          "median": 661.0,
+          "q75": 661.0
+        },
+        "current_imperviousness_pct": {
+          "q25": 60.0,
+          "median": 60.0,
+          "q75": 60.0
+        },
+        "current_100yr_24h_rainfall_mm": {
+          "q25": 92.1,
+          "median": 92.1,
+          "q75": 92.1
+        },
+        "local_elevation_250m": {
+          "q25": 0.132,
+          "median": 0.132,
+          "q75": 0.132
+        },
+        "local_elevation_500m": {
+          "q25": 0.123,
+          "median": 0.123,
+          "q75": 0.123
+        },
+        "flow_accumulation_m2": {
+          "q25": 1400.0,
+          "median": 1400.0,
+          "q75": 1400.0
+        }
+      },
+      "correctMinimalTerrain": {}
+    }
+  ],
+  "terrainBins": {
+    "elevation_m": [
+      {
+        "range": "[-inf, 10)",
+        "minimalCount": 27,
+        "falsePositives": 22
+      },
+      {
+        "range": "[10, 20)",
+        "minimalCount": 75,
+        "falsePositives": 72
+      },
+      {
+        "range": "[20, 40)",
+        "minimalCount": 27,
+        "falsePositives": 9
+      },
+      {
+        "range": "[40, inf)",
+        "minimalCount": 21,
+        "falsePositives": 1
+      }
+    ],
+    "height_above_drainage_m": [
+      {
+        "range": "[-inf, 1)",
+        "minimalCount": 49,
+        "falsePositives": 46
+      },
+      {
+        "range": "[1, 3)",
+        "minimalCount": 50,
+        "falsePositives": 45
+      },
+      {
+        "range": "[3, 10)",
+        "minimalCount": 32,
+        "falsePositives": 11
+      },
+      {
+        "range": "[10, inf)",
+        "minimalCount": 19,
+        "falsePositives": 2
+      }
+    ]
+  },
+  "thresholdSensitivityDiagnosticOnly": [
+    {
+      "threshold": 0.06182599067687988,
+      "minimalFalsePositives": 104,
+      "onePercentDetected": 150
+    },
+    {
+      "threshold": 0.1,
+      "minimalFalsePositives": 91,
+      "onePercentDetected": 150
+    },
+    {
+      "threshold": 0.2,
+      "minimalFalsePositives": 70,
+      "onePercentDetected": 147
+    },
+    {
+      "threshold": 0.5,
+      "minimalFalsePositives": 42,
+      "onePercentDetected": 107
+    },
+    {
+      "threshold": 0.8,
+      "minimalFalsePositives": 24,
+      "onePercentDetected": 44
+    }
+  ],
+  "bayAreaTestInputComparison": {
+    "minimal": {
+      "count": 812,
+      "terrain": {
+        "elevation_m": {
+          "q25": 52.375,
+          "median": 127.6,
+          "q75": 253.025
+        },
+        "height_above_drainage_m": {
+          "q25": 10.36825,
+          "median": 41.3035,
+          "q75": 90.96424999999999
+        },
+        "slope_degrees": {
+          "q25": 3.5004999999999997,
+          "median": 11.170000000000002,
+          "q75": 19.80775
+        },
+        "current_imperviousness_pct": {
+          "q25": 0.0,
+          "median": 0.0,
+          "q75": 0.0
+        },
+        "current_100yr_24h_rainfall_mm": {
+          "q25": 160.2105,
+          "median": 193.167,
+          "q75": 226.06
+        },
+        "local_elevation_250m": {
+          "q25": -7.0249999999999995,
+          "median": -0.16999999999999998,
+          "q75": 6.417
+        },
+        "local_elevation_500m": {
+          "q25": -11.382000000000001,
+          "median": -0.27,
+          "q75": 10.2305
+        }
+      }
+    },
+    "one_percent": {
+      "count": 342,
+      "terrain": {
+        "elevation_m": {
+          "q25": 0.0,
+          "median": 1.0,
+          "q75": 2.2
+        },
+        "height_above_drainage_m": {
+          "q25": 0.004,
+          "median": 0.011,
+          "q75": 0.0285
+        },
+        "slope_degrees": {
+          "q25": 0.0,
+          "median": 0.262,
+          "q75": 1.0434999999999999
+        },
+        "current_imperviousness_pct": {
+          "q25": 0.0,
+          "median": 0.0,
+          "q75": 0.0
+        },
+        "current_100yr_24h_rainfall_mm": {
+          "q25": 105.156,
+          "median": 131.572,
+          "q75": 154.1145
+        },
+        "local_elevation_250m": {
+          "q25": -0.6697500000000001,
+          "median": -0.1345,
+          "q75": 0.0115
+        },
+        "local_elevation_500m": {
+          "q25": -1.3505,
+          "median": -0.334,
+          "q75": -0.008
+        }
+      }
+    }
+  },
+  "qualityChecks": {
+    "allMinimalPointsInsideRecordedSourcePolygon": true,
+    "allMinimalLabelsExplicitFemaUnshadedZoneX": true,
+    "minimumTopographyCoverage": 1.0,
+    "minimumImperviousnessCoverage": 1.0,
+    "falsePositivesWithin30mOfFemaBoundary": 1,
+    "falsePositivesWithin100mOfFemaBoundary": 7,
+    "falsePositivesMoreThan1400mInsideFemaPolygon": 57
+  },
+  "limitations": "Descriptive spatially correlated sample; associations do not isolate causal model drivers. Scores measure mapped-class agreement, not event probabilities. Threshold alternatives use test labels for diagnosis only and must not be selected for deployment from this analysis."
+}

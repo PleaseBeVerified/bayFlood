@@ -1,0 +1,21 @@
+{
+  "dataset_kind": "USGS 3D Hydrography Program flowlines",
+  "source_url": "https://3dhp.nationalmap.gov/arcgis/rest/services/usgs_3dhp_all/FeatureServer/50",
+  "query_bounds_wgs84": [
+    -121.62,
+    37.61,
+    -121.08,
+    38.05
+  ],
+  "source_fields": [
+    "OBJECTID",
+    "gnisidlabel",
+    "featuretypelabel"
+  ],
+  "limitations": "Local water proximity source; not a flood-event extent. Whole flowlines intersecting the query window are included.",
+  "retrieved_utc": "2026-11-08T06:53:23.548355+00:00",
+  "feature_count": 9200,
+  "output_crs": "EPSG:4326",
+  "geometry_precision_decimal_places": 7,
+  "sha256": "f71f4b55df1c4d5bb276c5f1b344f892a07a750c198acaeeba14570b35135f56"
+}

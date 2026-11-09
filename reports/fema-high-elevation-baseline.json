@@ -1,0 +1,84 @@
+{
+  "purpose": "FEMA-label sampling experiment; not an observed-flood model",
+  "input": "data/dnn-training-table.csv",
+  "selectedTrainingTable": "data/fema-high-elevation-balanced-training.csv",
+  "trainingRows": 2476,
+  "trainingPositiveRows": 1238,
+  "selectedMinimalRows": 1238,
+  "minimalElevationCutoffMeters": 282.1,
+  "untouchedValidationRows": 1223,
+  "untouchedTestRows": 1154,
+  "parameters": {
+    "n_estimators": 350,
+    "max_depth": 3,
+    "learning_rate": 0.03,
+    "subsample": 0.85,
+    "colsample_bytree": 0.9,
+    "reg_lambda": 10,
+    "n_jobs": 4,
+    "random_state": 42
+  },
+  "decisionThreshold": 0.255,
+  "validationMetrics": {
+    "accuracy": 0.40310711365494684,
+    "balancedAccuracy": 0.6294416243654822,
+    "precision": 0.24586776859504134,
+    "recall": 1.0,
+    "f1": 0.3946932006633499,
+    "rocAuc": 0.8359744913193703,
+    "brierScore": 0.5893369317054749,
+    "confusionMatrix": [
+      [
+        255,
+        730
+      ],
+      [
+        0,
+        238
+      ]
+    ]
+  },
+  "testMetrics": {
+    "accuracy": 0.4488734835355286,
+    "balancedAccuracy": 0.6032970356926799,
+    "precision": 0.34782608695652173,
+    "recall": 0.9824561403508771,
+    "f1": 0.5137614678899083,
+    "rocAuc": 0.8867913317777201,
+    "brierScore": 0.543729305267334,
+    "confusionMatrix": [
+      [
+        182,
+        630
+      ],
+      [
+        6,
+        336
+      ]
+    ]
+  },
+  "testMinimalFalsePositiveRateBelowTrainingCutoff": 1.0,
+  "testMinimalRowsBelowTrainingCutoff": 628,
+  "testMinimalFalsePositiveRateAtOrAboveTrainingCutoff": 0.010869565217391304,
+  "testMinimalRowsAtOrAboveTrainingCutoff": 184,
+  "currentAppTestMetrics": {
+    "accuracy": 0.938474870017331,
+    "balancedAccuracy": 0.9435874168179068,
+    "rocAuc": 0.9869177253478523,
+    "averagePrecision": 0.9797785473105286,
+    "precision": 0.8537859007832899,
+    "recall": 0.956140350877193,
+    "f1": 0.9020689655172414,
+    "brierScore": 0.03215958923101425,
+    "confusionMatrix": [
+      [
+        756,
+        56
+      ],
+      [
+        15,
+        327
+      ]
+    ]
+  }
+}

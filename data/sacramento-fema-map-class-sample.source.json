@@ -1,0 +1,15 @@
+{
+  "source_file": "FEMAdata/sacramento_county_100_500_year_floodplain.geojson",
+  "source_sha256": "f6dae38f8e185083f397eb155bbc3c5473767af69dcbca21c970b7c677f1515e",
+  "source_url": "https://mapservices.gis.saccounty.net/arcgis/rest/services/DWR_HYDROLOGY/MapServer/7",
+  "created_utc": "2026-11-06T07:21:46.644739+00:00",
+  "seed": 20261105,
+  "points_per_class": 1000,
+  "minimum_boundary_distance_m": 30,
+  "feature_sources": {
+    "current_imperviousness_pct": "data/nlcd/fractional-impervious-2025-full.tiff",
+    "rainfall_100yr_24h_in": "rainfall/rainfall_data.tif"
+  },
+  "sampling": "Area-weighted polygon selection, then uniform point within polygon; 30 m boundary exclusion",
+  "limitations": "FEMA-derived map classes and two static raster features; no observed event outcomes, elevation, water distance, or terrain features."
+}

@@ -1,0 +1,5949 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-08T05:27:17.626898+00:00",
+  "target": "FEMA mapped one_percent versus minimal; not observed storm inundation",
+  "ablation": "CNN tabular branch and head, without any image-patch input",
+  "pointFeatures": [
+    "elevation_m",
+    "current_imperviousness_pct",
+    "current_100yr_24h_rainfall_mm",
+    "nearest_water_available",
+    "log_nearest_water_distance_m",
+    "slope_degrees",
+    "local_elevation_250m",
+    "local_elevation_500m",
+    "log_flow_accumulation_m2",
+    "height_above_drainage_m"
+  ],
+  "seed": 42,
+  "epochs": 100,
+  "batchSize": 96,
+  "optimizer": {
+    "name": "AdamW",
+    "learningRate": 0.001,
+    "weightDecay": 0.01
+  },
+  "targetValidationRecall": 0.95,
+  "partitionCounts": {
+    "training": 4998,
+    "validation": 1067,
+    "test": 1154
+  },
+  "candidateHistory": [
+    {
+      "hardMinimal": false,
+      "history": [
+        {
+          "hardMinimal": false,
+          "epoch": 1,
+          "trainingLoss": 0.5530751240568287,
+          "validationThreshold": 0.16100451350212097,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.507029053420806,
+            "balancedAccuracy": 0.6763058117820158,
+            "minimalFalsePositiveRate": 0.5986078886310905,
+            "minimalFalsePositives": 516,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.2742616033755274,
+            "rocAuc": 0.8349555769339596,
+            "brierScore": 0.11949706822633743,
+            "confusionMatrix": [
+              [
+                346,
+                516
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 2,
+          "trainingLoss": 0.31700280848957624,
+          "validationThreshold": 0.0872393548488617,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.598875351452671,
+            "balancedAccuracy": 0.7331503593458208,
+            "minimalFalsePositiveRate": 0.48491879350348027,
+            "minimalFalsePositives": 418,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.3181076672104405,
+            "rocAuc": 0.8955463754173504,
+            "brierScore": 0.08789721876382828,
+            "confusionMatrix": [
+              [
+                444,
+                418
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 3,
+          "trainingLoss": 0.2586263682232613,
+          "validationThreshold": 0.08629585802555084,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.6588566073102156,
+            "balancedAccuracy": 0.7702733291834079,
+            "minimalFalsePositiveRate": 0.41067285382830626,
+            "minimalFalsePositives": 354,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.3551912568306011,
+            "rocAuc": 0.9142380170901477,
+            "brierScore": 0.08313272893428802,
+            "confusionMatrix": [
+              [
+                508,
+                354
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 4,
+          "trainingLoss": 0.24477744953972952,
+          "validationThreshold": 0.0817360207438469,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.676663542642924,
+            "balancedAccuracy": 0.7812942108539415,
+            "minimalFalsePositiveRate": 0.388631090487239,
+            "minimalFalsePositives": 335,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.36792452830188677,
+            "rocAuc": 0.9183690792824402,
+            "brierScore": 0.08042041212320328,
+            "confusionMatrix": [
+              [
+                527,
+                335
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 5,
+          "trainingLoss": 0.23454685033369466,
+          "validationThreshold": 0.07499377429485321,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.6954076850984068,
+            "balancedAccuracy": 0.7928951389281874,
+            "minimalFalsePositiveRate": 0.3654292343387471,
+            "minimalFalsePositives": 315,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.38235294117647056,
+            "rocAuc": 0.9229189066832664,
+            "brierScore": 0.07767856121063232,
+            "confusionMatrix": [
+              [
+                547,
+                315
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 6,
+          "trainingLoss": 0.22736157011799737,
+          "validationThreshold": 0.08256470412015915,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.711340206185567,
+            "balancedAccuracy": 0.8027559277912965,
+            "minimalFalsePositiveRate": 0.345707656612529,
+            "minimalFalsePositives": 298,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.39553752535496955,
+            "rocAuc": 0.9260709637258785,
+            "brierScore": 0.07751324772834778,
+            "confusionMatrix": [
+              [
+                564,
+                298
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 7,
+          "trainingLoss": 0.2238104504947903,
+          "validationThreshold": 0.095634825527668,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.7300843486410497,
+            "balancedAccuracy": 0.8143568558655424,
+            "minimalFalsePositiveRate": 0.3225058004640371,
+            "minimalFalsePositives": 278,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.41226215644820297,
+            "rocAuc": 0.9298455095919869,
+            "brierScore": 0.07624070346355438,
+            "confusionMatrix": [
+              [
+                584,
+                278
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 8,
+          "trainingLoss": 0.21756990368412035,
+          "validationThreshold": 0.11844171583652496,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.7507029053420806,
+            "balancedAccuracy": 0.8271178767472129,
+            "minimalFalsePositiveRate": 0.29698375870069604,
+            "minimalFalsePositives": 256,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.43237250554323725,
+            "rocAuc": 0.9340275026880198,
+            "brierScore": 0.07534696906805038,
+            "confusionMatrix": [
+              [
+                606,
+                256
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 9,
+          "trainingLoss": 0.2140252935428436,
+          "validationThreshold": 0.11161285638809204,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.7666354264292409,
+            "balancedAccuracy": 0.836978665610322,
+            "minimalFalsePositiveRate": 0.27726218097447797,
+            "minimalFalsePositives": 239,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.44930875576036866,
+            "rocAuc": 0.935725199479373,
+            "brierScore": 0.07442924380302429,
+            "confusionMatrix": [
+              [
+                623,
+                239
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 10,
+          "trainingLoss": 0.20841772641454423,
+          "validationThreshold": 0.13366898894309998,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.7900656044985942,
+            "balancedAccuracy": 0.8514798257031294,
+            "minimalFalsePositiveRate": 0.2482598607888631,
+            "minimalFalsePositives": 214,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.4767726161369193,
+            "rocAuc": 0.9388885745005943,
+            "brierScore": 0.07370474189519882,
+            "confusionMatrix": [
+              [
+                648,
+                214
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 11,
+          "trainingLoss": 0.20530703399075464,
+          "validationThreshold": 0.12019512057304382,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.795688847235239,
+            "balancedAccuracy": 0.8549601041254031,
+            "minimalFalsePositiveRate": 0.24129930394431554,
+            "minimalFalsePositives": 208,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.4838709677419355,
+            "rocAuc": 0.9403316167732443,
+            "brierScore": 0.07306022942066193,
+            "confusionMatrix": [
+              [
+                654,
+                208
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 12,
+          "trainingLoss": 0.2013398736205493,
+          "validationThreshold": 0.13601042330265045,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8022492970946579,
+            "balancedAccuracy": 0.8590204289513892,
+            "minimalFalsePositiveRate": 0.23317865429234338,
+            "minimalFalsePositives": 201,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.49242424242424243,
+            "rocAuc": 0.9423971478693907,
+            "brierScore": 0.0727066770195961,
+            "confusionMatrix": [
+              [
+                661,
+                201
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 13,
+          "trainingLoss": 0.2000750158013416,
+          "validationThreshold": 0.14095263183116913,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8163074039362699,
+            "balancedAccuracy": 0.8677211250070738,
+            "minimalFalsePositiveRate": 0.21577726218097448,
+            "minimalFalsePositives": 186,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5118110236220472,
+            "rocAuc": 0.9439363929602174,
+            "brierScore": 0.07163835316896439,
+            "confusionMatrix": [
+              [
+                676,
+                186
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 14,
+          "trainingLoss": 0.19563034030140378,
+          "validationThreshold": 0.13114966452121735,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8134957825679475,
+            "balancedAccuracy": 0.8659809857959369,
+            "minimalFalsePositiveRate": 0.21925754060324826,
+            "minimalFalsePositives": 189,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5078125,
+            "rocAuc": 0.9452945503932997,
+            "brierScore": 0.0708393082022667,
+            "confusionMatrix": [
+              [
+                673,
+                189
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 15,
+          "trainingLoss": 0.19436642137609897,
+          "validationThreshold": 0.13952748477458954,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8116213683223993,
+            "balancedAccuracy": 0.8648208929885122,
+            "minimalFalsePositiveRate": 0.22157772621809746,
+            "minimalFalsePositives": 191,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5051813471502591,
+            "rocAuc": 0.9463810763397658,
+            "brierScore": 0.07102694362401962,
+            "confusionMatrix": [
+              [
+                671,
+                191
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 16,
+          "trainingLoss": 0.1932966652519706,
+          "validationThreshold": 0.13858304917812347,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8153701968134958,
+            "balancedAccuracy": 0.8671410786033614,
+            "minimalFalsePositiveRate": 0.21693735498839908,
+            "minimalFalsePositives": 187,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5104712041884817,
+            "rocAuc": 0.9470658140456113,
+            "brierScore": 0.06963904201984406,
+            "confusionMatrix": [
+              [
+                675,
+                187
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 17,
+          "trainingLoss": 0.18852014073124881,
+          "validationThreshold": 0.11543324589729309,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8088097469540768,
+            "balancedAccuracy": 0.8630807537773754,
+            "minimalFalsePositiveRate": 0.22505800464037123,
+            "minimalFalsePositives": 194,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5012853470437018,
+            "rocAuc": 0.9469299983023033,
+            "brierScore": 0.06893248856067657,
+            "confusionMatrix": [
+              [
+                668,
+                194
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 18,
+          "trainingLoss": 0.18656525382546246,
+          "validationThreshold": 0.13728463649749756,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.817244611059044,
+            "balancedAccuracy": 0.868301171410786,
+            "minimalFalsePositiveRate": 0.21461716937354988,
+            "minimalFalsePositives": 185,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5131578947368421,
+            "rocAuc": 0.9483051327032992,
+            "brierScore": 0.06967060267925262,
+            "confusionMatrix": [
+              [
+                677,
+                185
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 19,
+          "trainingLoss": 0.18124304137149064,
+          "validationThreshold": 0.13233289122581482,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.817244611059044,
+            "balancedAccuracy": 0.868301171410786,
+            "minimalFalsePositiveRate": 0.21461716937354988,
+            "minimalFalsePositives": 185,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5131578947368421,
+            "rocAuc": 0.9498726727406485,
+            "brierScore": 0.06770097464323044,
+            "confusionMatrix": [
+              [
+                677,
+                185
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 20,
+          "trainingLoss": 0.1819316596329427,
+          "validationThreshold": 0.14860911667346954,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8219306466729147,
+            "balancedAccuracy": 0.8712014034293475,
+            "minimalFalsePositiveRate": 0.2088167053364269,
+            "minimalFalsePositives": 180,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.52,
+            "rocAuc": 0.9503253918850094,
+            "brierScore": 0.06910808384418488,
+            "confusionMatrix": [
+              [
+                682,
+                180
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 21,
+          "trainingLoss": 0.17825070506527502,
+          "validationThreshold": 0.1233794167637825,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8228678537956888,
+            "balancedAccuracy": 0.8717814498330598,
+            "minimalFalsePositiveRate": 0.20765661252900233,
+            "minimalFalsePositives": 179,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5213903743315508,
+            "rocAuc": 0.9498047648689943,
+            "brierScore": 0.06909677386283875,
+            "confusionMatrix": [
+              [
+                683,
+                179
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 22,
+          "trainingLoss": 0.17894952144420126,
+          "validationThreshold": 0.16271968185901642,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8181818181818182,
+            "balancedAccuracy": 0.8688812178144982,
+            "minimalFalsePositiveRate": 0.21345707656612528,
+            "minimalFalsePositives": 184,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5145118733509235,
+            "rocAuc": 0.9516552543715693,
+            "brierScore": 0.06912039965391159,
+            "confusionMatrix": [
+              [
+                678,
+                184
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 23,
+          "trainingLoss": 0.1746690582264872,
+          "validationThreshold": 0.1254308670759201,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8256794751640113,
+            "balancedAccuracy": 0.8735215890441967,
+            "minimalFalsePositiveRate": 0.20417633410672853,
+            "minimalFalsePositives": 176,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5256064690026954,
+            "rocAuc": 0.9507045441684114,
+            "brierScore": 0.06789535284042358,
+            "confusionMatrix": [
+              [
+                686,
+                176
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 24,
+          "trainingLoss": 0.1733113800143065,
+          "validationThreshold": 0.13340990245342255,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.831302717900656,
+            "balancedAccuracy": 0.8770018674664705,
+            "minimalFalsePositiveRate": 0.19721577726218098,
+            "minimalFalsePositives": 170,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5342465753424658,
+            "rocAuc": 0.9520174296870579,
+            "brierScore": 0.06784778088331223,
+            "confusionMatrix": [
+              [
+                692,
+                170
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 25,
+          "trainingLoss": 0.1712415196529242,
+          "validationThreshold": 0.12290920317173004,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.823805060918463,
+            "balancedAccuracy": 0.8723614962367721,
+            "minimalFalsePositiveRate": 0.20649651972157773,
+            "minimalFalsePositives": 178,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5227882037533512,
+            "rocAuc": 0.9539980759436365,
+            "brierScore": 0.06576606631278992,
+            "confusionMatrix": [
+              [
+                684,
+                178
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 26,
+          "trainingLoss": 0.17017733606220292,
+          "validationThreshold": 0.13450922071933746,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8284910965323337,
+            "balancedAccuracy": 0.8752617282553335,
+            "minimalFalsePositiveRate": 0.20069605568445475,
+            "minimalFalsePositives": 173,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.529891304347826,
+            "rocAuc": 0.9519099088902723,
+            "brierScore": 0.06772511452436447,
+            "confusionMatrix": [
+              [
+                689,
+                173
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 27,
+          "trainingLoss": 0.16918162702798556,
+          "validationThreshold": 0.14987128973007202,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8247422680412371,
+            "balancedAccuracy": 0.8729415426404844,
+            "minimalFalsePositiveRate": 0.20533642691415313,
+            "minimalFalsePositives": 177,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5241935483870968,
+            "rocAuc": 0.9530473657404789,
+            "brierScore": 0.06932858377695084,
+            "confusionMatrix": [
+              [
+                685,
+                177
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 28,
+          "trainingLoss": 0.16855542918964594,
+          "validationThreshold": 0.1200629472732544,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.823805060918463,
+            "balancedAccuracy": 0.8723614962367721,
+            "minimalFalsePositiveRate": 0.20649651972157773,
+            "minimalFalsePositives": 178,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5227882037533512,
+            "rocAuc": 0.9508969498047648,
+            "brierScore": 0.07112596184015274,
+            "confusionMatrix": [
+              [
+                684,
+                178
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 29,
+          "trainingLoss": 0.1658907729465993,
+          "validationThreshold": 0.11857998371124268,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8284910965323337,
+            "balancedAccuracy": 0.8752617282553335,
+            "minimalFalsePositiveRate": 0.20069605568445475,
+            "minimalFalsePositives": 173,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.529891304347826,
+            "rocAuc": 0.9529002320185616,
+            "brierScore": 0.06839944422245026,
+            "confusionMatrix": [
+              [
+                689,
+                173
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 30,
+          "trainingLoss": 0.16546317079917294,
+          "validationThreshold": 0.13061225414276123,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8341143392689785,
+            "balancedAccuracy": 0.8787420066776074,
+            "minimalFalsePositiveRate": 0.1937354988399072,
+            "minimalFalsePositives": 167,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5386740331491713,
+            "rocAuc": 0.9556618187991626,
+            "brierScore": 0.06621813774108887,
+            "confusionMatrix": [
+              [
+                695,
+                167
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 31,
+          "trainingLoss": 0.16218678446627466,
+          "validationThreshold": 0.16122230887413025,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.837863167760075,
+            "balancedAccuracy": 0.8810621922924565,
+            "minimalFalsePositiveRate": 0.18909512761020883,
+            "minimalFalsePositives": 163,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5446927374301676,
+            "rocAuc": 0.9555599569916813,
+            "brierScore": 0.0680973082780838,
+            "confusionMatrix": [
+              [
+                699,
+                163
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 32,
+          "trainingLoss": 0.16338567357758532,
+          "validationThreshold": 0.14200055599212646,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8303655107778819,
+            "balancedAccuracy": 0.8764218210627581,
+            "minimalFalsePositiveRate": 0.19837587006960558,
+            "minimalFalsePositives": 171,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5327868852459017,
+            "rocAuc": 0.9562956256012676,
+            "brierScore": 0.06743954867124557,
+            "confusionMatrix": [
+              [
+                691,
+                171
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 33,
+          "trainingLoss": 0.15844796317722312,
+          "validationThreshold": 0.1641758382320404,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8397375820056232,
+            "balancedAccuracy": 0.8822222850998811,
+            "minimalFalsePositiveRate": 0.18677494199535963,
+            "minimalFalsePositives": 161,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.547752808988764,
+            "rocAuc": 0.9561994227830909,
+            "brierScore": 0.06867196410894394,
+            "confusionMatrix": [
+              [
+                701,
+                161
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 34,
+          "trainingLoss": 0.16006023128207278,
+          "validationThreshold": 0.14581653475761414,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8369259606373008,
+            "balancedAccuracy": 0.8804821458887442,
+            "minimalFalsePositiveRate": 0.1902552204176334,
+            "minimalFalsePositives": 164,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5431754874651811,
+            "rocAuc": 0.9568728425103277,
+            "brierScore": 0.06580200791358948,
+            "confusionMatrix": [
+              [
+                698,
+                164
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 35,
+          "trainingLoss": 0.15761706528185654,
+          "validationThreshold": 0.1236182227730751,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8444236176194939,
+            "balancedAccuracy": 0.8851225171184427,
+            "minimalFalsePositiveRate": 0.18097447795823665,
+            "minimalFalsePositives": 156,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5555555555555556,
+            "rocAuc": 0.9539528040292005,
+            "brierScore": 0.0685911625623703,
+            "confusionMatrix": [
+              [
+                706,
+                156
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 36,
+          "trainingLoss": 0.15840813650840185,
+          "validationThreshold": 0.12285427749156952,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8341143392689785,
+            "balancedAccuracy": 0.8787420066776074,
+            "minimalFalsePositiveRate": 0.1937354988399072,
+            "minimalFalsePositives": 167,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5386740331491713,
+            "rocAuc": 0.9557749985852527,
+            "brierScore": 0.06670209020376205,
+            "confusionMatrix": [
+              [
+                695,
+                167
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 37,
+          "trainingLoss": 0.15523937987532616,
+          "validationThreshold": 0.12748172879219055,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.837863167760075,
+            "balancedAccuracy": 0.8810621922924565,
+            "minimalFalsePositiveRate": 0.18909512761020883,
+            "minimalFalsePositives": 163,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5446927374301676,
+            "rocAuc": 0.9586044932375078,
+            "brierScore": 0.06399733573198318,
+            "confusionMatrix": [
+              [
+                699,
+                163
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 38,
+          "trainingLoss": 0.15542564139503534,
+          "validationThreshold": 0.18046431243419647,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.831302717900656,
+            "balancedAccuracy": 0.8770018674664705,
+            "minimalFalsePositiveRate": 0.19721577726218098,
+            "minimalFalsePositives": 170,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5342465753424658,
+            "rocAuc": 0.9588987606813423,
+            "brierScore": 0.06817572563886642,
+            "confusionMatrix": [
+              [
+                692,
+                170
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 39,
+          "trainingLoss": 0.15945280908572287,
+          "validationThreshold": 0.08788436651229858,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8294283036551078,
+            "balancedAccuracy": 0.8758417746590459,
+            "minimalFalsePositiveRate": 0.19953596287703015,
+            "minimalFalsePositives": 172,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5313351498637602,
+            "rocAuc": 0.9560183351253466,
+            "brierScore": 0.06641712039709091,
+            "confusionMatrix": [
+              [
+                690,
+                172
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 40,
+          "trainingLoss": 0.15480842960982763,
+          "validationThreshold": 0.1299406886100769,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8359887535145267,
+            "balancedAccuracy": 0.879902099485032,
+            "minimalFalsePositiveRate": 0.191415313225058,
+            "minimalFalsePositives": 165,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5416666666666666,
+            "rocAuc": 0.9578575066493124,
+            "brierScore": 0.06574209779500961,
+            "confusionMatrix": [
+              [
+                697,
+                165
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 41,
+          "trainingLoss": 0.15579648922328332,
+          "validationThreshold": 0.20186662673950195,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8603561387066542,
+            "balancedAccuracy": 0.8949833059815517,
+            "minimalFalsePositiveRate": 0.16125290023201855,
+            "minimalFalsePositives": 139,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5838323353293413,
+            "rocAuc": 0.9600928074245939,
+            "brierScore": 0.0657300353050232,
+            "confusionMatrix": [
+              [
+                723,
+                139
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 42,
+          "trainingLoss": 0.15332833866254478,
+          "validationThreshold": 0.19633938372135162,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8472352389878163,
+            "balancedAccuracy": 0.8868626563295795,
+            "minimalFalsePositiveRate": 0.17749419953596288,
+            "minimalFalsePositives": 153,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5603448275862069,
+            "rocAuc": 0.9597476090770188,
+            "brierScore": 0.06736396998167038,
+            "confusionMatrix": [
+              [
+                709,
+                153
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 43,
+          "trainingLoss": 0.15392747106386118,
+          "validationThreshold": 0.11361365765333176,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.837863167760075,
+            "balancedAccuracy": 0.8810621922924565,
+            "minimalFalsePositiveRate": 0.18909512761020883,
+            "minimalFalsePositives": 163,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5446927374301676,
+            "rocAuc": 0.9582649538792374,
+            "brierScore": 0.06432425230741501,
+            "confusionMatrix": [
+              [
+                699,
+                163
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 44,
+          "trainingLoss": 0.15321276464811465,
+          "validationThreshold": 0.1409943699836731,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.837863167760075,
+            "balancedAccuracy": 0.8810621922924565,
+            "minimalFalsePositiveRate": 0.18909512761020883,
+            "minimalFalsePositives": 163,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5446927374301676,
+            "rocAuc": 0.9596910191839738,
+            "brierScore": 0.06520385295152664,
+            "confusionMatrix": [
+              [
+                699,
+                163
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 45,
+          "trainingLoss": 0.15305939706384528,
+          "validationThreshold": 0.11946845054626465,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.845360824742268,
+            "balancedAccuracy": 0.8857025635221549,
+            "minimalFalsePositiveRate": 0.17981438515081208,
+            "minimalFalsePositives": 155,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5571428571428572,
+            "rocAuc": 0.9583102257936732,
+            "brierScore": 0.06482172757387161,
+            "confusionMatrix": [
+              [
+                707,
+                155
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 46,
+          "trainingLoss": 0.14938814640224052,
+          "validationThreshold": 0.13533641397953033,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8491096532333646,
+            "balancedAccuracy": 0.8880227491370041,
+            "minimalFalsePositiveRate": 0.1751740139211137,
+            "minimalFalsePositives": 151,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5635838150289018,
+            "rocAuc": 0.9582536359006282,
+            "brierScore": 0.06624844670295715,
+            "confusionMatrix": [
+              [
+                711,
+                151
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 47,
+          "trainingLoss": 0.15030800205927078,
+          "validationThreshold": 0.12912292778491974,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8509840674789129,
+            "balancedAccuracy": 0.8891828419444288,
+            "minimalFalsePositiveRate": 0.1728538283062645,
+            "minimalFalsePositives": 149,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5668604651162791,
+            "rocAuc": 0.9601493973176389,
+            "brierScore": 0.06414318829774857,
+            "confusionMatrix": [
+              [
+                713,
+                149
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 48,
+          "trainingLoss": 0.14712226372950074,
+          "validationThreshold": 0.14447936415672302,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8528584817244611,
+            "balancedAccuracy": 0.8903429347518532,
+            "minimalFalsePositiveRate": 0.17053364269141533,
+            "minimalFalsePositives": 147,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5701754385964912,
+            "rocAuc": 0.9615698036330711,
+            "brierScore": 0.06242586672306061,
+            "confusionMatrix": [
+              [
+                715,
+                147
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 49,
+          "trainingLoss": 0.14814296680852537,
+          "validationThreshold": 0.1202661469578743,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8434864104967198,
+            "balancedAccuracy": 0.8845424707147302,
+            "minimalFalsePositiveRate": 0.18213457076566125,
+            "minimalFalsePositives": 157,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5539772727272727,
+            "rocAuc": 0.9590968253070002,
+            "brierScore": 0.06494400650262833,
+            "confusionMatrix": [
+              [
+                705,
+                157
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 50,
+          "trainingLoss": 0.14664355669917464,
+          "validationThreshold": 0.17933312058448792,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8444236176194939,
+            "balancedAccuracy": 0.8851225171184427,
+            "minimalFalsePositiveRate": 0.18097447795823665,
+            "minimalFalsePositives": 156,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5555555555555556,
+            "rocAuc": 0.9600814894459849,
+            "brierScore": 0.06819800287485123,
+            "confusionMatrix": [
+              [
+                706,
+                156
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 51,
+          "trainingLoss": 0.14873957388899048,
+          "validationThreshold": 0.16212095320224762,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.851921274601687,
+            "balancedAccuracy": 0.889762888348141,
+            "minimalFalsePositiveRate": 0.1716937354988399,
+            "minimalFalsePositives": 148,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5685131195335277,
+            "rocAuc": 0.960726614226699,
+            "brierScore": 0.06545141339302063,
+            "confusionMatrix": [
+              [
+                714,
+                148
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 52,
+          "trainingLoss": 0.14675111519474657,
+          "validationThreshold": 0.11966478824615479,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8481724461105904,
+            "balancedAccuracy": 0.8874427027332918,
+            "minimalFalsePositiveRate": 0.17633410672853828,
+            "minimalFalsePositives": 152,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5619596541786743,
+            "rocAuc": 0.9610887895421878,
+            "brierScore": 0.061803508549928665,
+            "confusionMatrix": [
+              [
+                710,
+                152
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 53,
+          "trainingLoss": 0.146779847719303,
+          "validationThreshold": 0.12129529565572739,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8425492033739457,
+            "balancedAccuracy": 0.883962424311018,
+            "minimalFalsePositiveRate": 0.18329466357308585,
+            "minimalFalsePositives": 158,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5524079320113314,
+            "rocAuc": 0.9594137287080527,
+            "brierScore": 0.06580593436956406,
+            "confusionMatrix": [
+              [
+                704,
+                158
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 54,
+          "trainingLoss": 0.1445249397786153,
+          "validationThreshold": 0.11918415874242783,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8509840674789129,
+            "balancedAccuracy": 0.8891828419444288,
+            "minimalFalsePositiveRate": 0.1728538283062645,
+            "minimalFalsePositives": 149,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5668604651162791,
+            "rocAuc": 0.9621526795314357,
+            "brierScore": 0.061028607189655304,
+            "confusionMatrix": [
+              [
+                713,
+                149
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 55,
+          "trainingLoss": 0.14205312623535055,
+          "validationThreshold": 0.15049120783805847,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8575445173383318,
+            "balancedAccuracy": 0.8932431667704148,
+            "minimalFalsePositiveRate": 0.16473317865429235,
+            "minimalFalsePositives": 142,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5786350148367952,
+            "rocAuc": 0.9625488087827514,
+            "brierScore": 0.061596598476171494,
+            "confusionMatrix": [
+              [
+                720,
+                142
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 56,
+          "trainingLoss": 0.1427649181573188,
+          "validationThreshold": 0.11121805757284164,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.845360824742268,
+            "balancedAccuracy": 0.8857025635221549,
+            "minimalFalsePositiveRate": 0.17981438515081208,
+            "minimalFalsePositives": 155,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5571428571428572,
+            "rocAuc": 0.9616320525154207,
+            "brierScore": 0.06280261278152466,
+            "confusionMatrix": [
+              [
+                707,
+                155
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 57,
+          "trainingLoss": 0.14226414061555057,
+          "validationThreshold": 0.13067740201950073,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8631677600749765,
+            "balancedAccuracy": 0.8967234451926885,
+            "minimalFalsePositiveRate": 0.15777262180974477,
+            "minimalFalsePositives": 136,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5891238670694864,
+            "rocAuc": 0.9620621357025635,
+            "brierScore": 0.06206197664141655,
+            "confusionMatrix": [
+              [
+                726,
+                136
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 58,
+          "trainingLoss": 0.14156770301895555,
+          "validationThreshold": 0.18559545278549194,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8678537956888472,
+            "balancedAccuracy": 0.89962367721125,
+            "minimalFalsePositiveRate": 0.1519721577726218,
+            "minimalFalsePositives": 131,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.598159509202454,
+            "rocAuc": 0.9629505970233716,
+            "brierScore": 0.06418519467115402,
+            "confusionMatrix": [
+              [
+                731,
+                131
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 59,
+          "trainingLoss": 0.14053364475520433,
+          "validationThreshold": 0.07615017145872116,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8687910028116214,
+            "balancedAccuracy": 0.9002037236149624,
+            "minimalFalsePositiveRate": 0.15081206496519722,
+            "minimalFalsePositives": 130,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.6,
+            "rocAuc": 0.9627921453228454,
+            "brierScore": 0.06341210752725601,
+            "confusionMatrix": [
+              [
+                732,
+                130
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 60,
+          "trainingLoss": 0.14333778340704872,
+          "validationThreshold": 0.16838642954826355,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8584817244611059,
+            "balancedAccuracy": 0.893823213174127,
+            "minimalFalsePositiveRate": 0.16357308584686775,
+            "minimalFalsePositives": 141,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5803571428571429,
+            "rocAuc": 0.9633014543602513,
+            "brierScore": 0.06358034163713455,
+            "confusionMatrix": [
+              [
+                721,
+                141
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 61,
+          "trainingLoss": 0.13972231405837482,
+          "validationThreshold": 0.11802078783512115,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8556701030927835,
+            "balancedAccuracy": 0.8920830739629901,
+            "minimalFalsePositiveRate": 0.16705336426914152,
+            "minimalFalsePositives": 144,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5752212389380531,
+            "rocAuc": 0.9626450116009281,
+            "brierScore": 0.061509307473897934,
+            "confusionMatrix": [
+              [
+                718,
+                144
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 62,
+          "trainingLoss": 0.1401925298775516,
+          "validationThreshold": 0.1351076364517212,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8444236176194939,
+            "balancedAccuracy": 0.8851225171184427,
+            "minimalFalsePositiveRate": 0.18097447795823665,
+            "minimalFalsePositives": 156,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5555555555555556,
+            "rocAuc": 0.9621809744779581,
+            "brierScore": 0.06392233818769455,
+            "confusionMatrix": [
+              [
+                706,
+                156
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 63,
+          "trainingLoss": 0.13890457096076955,
+          "validationThreshold": 0.15758267045021057,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8528584817244611,
+            "balancedAccuracy": 0.8903429347518532,
+            "minimalFalsePositiveRate": 0.17053364269141533,
+            "minimalFalsePositives": 147,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5701754385964912,
+            "rocAuc": 0.9617622092694245,
+            "brierScore": 0.06653176248073578,
+            "confusionMatrix": [
+              [
+                715,
+                147
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 64,
+          "trainingLoss": 0.14288989805458796,
+          "validationThreshold": 0.13163967430591583,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8547328959700093,
+            "balancedAccuracy": 0.8915030275592779,
+            "minimalFalsePositiveRate": 0.16821345707656613,
+            "minimalFalsePositives": 145,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5735294117647058,
+            "rocAuc": 0.9624809009110973,
+            "brierScore": 0.06144708767533302,
+            "confusionMatrix": [
+              [
+                717,
+                145
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 65,
+          "trainingLoss": 0.13984676226995893,
+          "validationThreshold": 0.13823114335536957,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8528584817244611,
+            "balancedAccuracy": 0.8903429347518532,
+            "minimalFalsePositiveRate": 0.17053364269141533,
+            "minimalFalsePositives": 147,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5701754385964912,
+            "rocAuc": 0.9631090487238979,
+            "brierScore": 0.0614333376288414,
+            "confusionMatrix": [
+              [
+                715,
+                147
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 66,
+          "trainingLoss": 0.13940349891155707,
+          "validationThreshold": 0.13093335926532745,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8622305529522024,
+            "balancedAccuracy": 0.8961433987889762,
+            "minimalFalsePositiveRate": 0.15893271461716937,
+            "minimalFalsePositives": 137,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5873493975903614,
+            "rocAuc": 0.963697583611567,
+            "brierScore": 0.060411661863327026,
+            "confusionMatrix": [
+              [
+                725,
+                137
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 67,
+          "trainingLoss": 0.13807036510320986,
+          "validationThreshold": 0.06263507902622223,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8434864104967198,
+            "balancedAccuracy": 0.8845424707147302,
+            "minimalFalsePositiveRate": 0.18213457076566125,
+            "minimalFalsePositives": 157,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5539772727272727,
+            "rocAuc": 0.9626563295795372,
+            "brierScore": 0.06187295913696289,
+            "confusionMatrix": [
+              [
+                705,
+                157
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 68,
+          "trainingLoss": 0.14170692376300495,
+          "validationThreshold": 0.08944272249937057,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8500468603561387,
+            "balancedAccuracy": 0.8886027955407164,
+            "minimalFalsePositiveRate": 0.1740139211136891,
+            "minimalFalsePositives": 150,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5652173913043478,
+            "rocAuc": 0.9631373436704204,
+            "brierScore": 0.0612289234995842,
+            "confusionMatrix": [
+              [
+                712,
+                150
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 69,
+          "trainingLoss": 0.1396182066127032,
+          "validationThreshold": 0.14967629313468933,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8547328959700093,
+            "balancedAccuracy": 0.8915030275592779,
+            "minimalFalsePositiveRate": 0.16821345707656613,
+            "minimalFalsePositives": 145,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5735294117647058,
+            "rocAuc": 0.9627864863335409,
+            "brierScore": 0.06330990791320801,
+            "confusionMatrix": [
+              [
+                717,
+                145
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 70,
+          "trainingLoss": 0.13530583972601043,
+          "validationThreshold": 0.11962980031967163,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8631677600749765,
+            "balancedAccuracy": 0.8967234451926885,
+            "minimalFalsePositiveRate": 0.15777262180974477,
+            "minimalFalsePositives": 136,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5891238670694864,
+            "rocAuc": 0.9632109105313791,
+            "brierScore": 0.06117719039320946,
+            "confusionMatrix": [
+              [
+                726,
+                136
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 71,
+          "trainingLoss": 0.1357551872694478,
+          "validationThreshold": 0.15669886767864227,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.85941893158388,
+            "balancedAccuracy": 0.8944032595778394,
+            "minimalFalsePositiveRate": 0.16241299303944315,
+            "minimalFalsePositives": 140,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.582089552238806,
+            "rocAuc": 0.9639069662158338,
+            "brierScore": 0.061652857810258865,
+            "confusionMatrix": [
+              [
+                722,
+                140
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 72,
+          "trainingLoss": 0.13698222130170318,
+          "validationThreshold": 0.11481146514415741,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8462980318650422,
+            "balancedAccuracy": 0.8862826099258672,
+            "minimalFalsePositiveRate": 0.17865429234338748,
+            "minimalFalsePositives": 154,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5587392550143266,
+            "rocAuc": 0.9602456001358157,
+            "brierScore": 0.06791789084672928,
+            "confusionMatrix": [
+              [
+                708,
+                154
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 73,
+          "trainingLoss": 0.13784519678690568,
+          "validationThreshold": 0.1052306741476059,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8481724461105904,
+            "balancedAccuracy": 0.8874427027332918,
+            "minimalFalsePositiveRate": 0.17633410672853828,
+            "minimalFalsePositives": 152,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5619596541786743,
+            "rocAuc": 0.9619772508629959,
+            "brierScore": 0.06411565840244293,
+            "confusionMatrix": [
+              [
+                710,
+                152
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 74,
+          "trainingLoss": 0.1366191213013602,
+          "validationThreshold": 0.09054113924503326,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8462980318650422,
+            "balancedAccuracy": 0.8862826099258672,
+            "minimalFalsePositiveRate": 0.17865429234338748,
+            "minimalFalsePositives": 154,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5587392550143266,
+            "rocAuc": 0.9641163488201007,
+            "brierScore": 0.05978870764374733,
+            "confusionMatrix": [
+              [
+                708,
+                154
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 75,
+          "trainingLoss": 0.14030158517173394,
+          "validationThreshold": 0.11371615529060364,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8481724461105904,
+            "balancedAccuracy": 0.8874427027332918,
+            "minimalFalsePositiveRate": 0.17633410672853828,
+            "minimalFalsePositives": 152,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5619596541786743,
+            "rocAuc": 0.9627525323977137,
+            "brierScore": 0.06214141100645065,
+            "confusionMatrix": [
+              [
+                710,
+                152
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 76,
+          "trainingLoss": 0.13520077793072968,
+          "validationThreshold": 0.11636025458574295,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8500468603561387,
+            "balancedAccuracy": 0.8886027955407164,
+            "minimalFalsePositiveRate": 0.1740139211136891,
+            "minimalFalsePositives": 150,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5652173913043478,
+            "rocAuc": 0.9637145605794806,
+            "brierScore": 0.06242281198501587,
+            "confusionMatrix": [
+              [
+                712,
+                150
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 77,
+          "trainingLoss": 0.1331217303237065,
+          "validationThreshold": 0.10489512979984283,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8641049671977507,
+            "balancedAccuracy": 0.8973034915964009,
+            "minimalFalsePositiveRate": 0.15661252900232017,
+            "minimalFalsePositives": 135,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5909090909090909,
+            "rocAuc": 0.963244864467206,
+            "brierScore": 0.06234506517648697,
+            "confusionMatrix": [
+              [
+                727,
+                135
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 78,
+          "trainingLoss": 0.13628470221487413,
+          "validationThreshold": 0.1803618222475052,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8500468603561387,
+            "balancedAccuracy": 0.8886027955407164,
+            "minimalFalsePositiveRate": 0.1740139211136891,
+            "minimalFalsePositives": 150,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5652173913043478,
+            "rocAuc": 0.9646822477505518,
+            "brierScore": 0.06390226632356644,
+            "confusionMatrix": [
+              [
+                712,
+                150
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 79,
+          "trainingLoss": 0.13757692356141102,
+          "validationThreshold": 0.07814133912324905,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8425492033739457,
+            "balancedAccuracy": 0.883962424311018,
+            "minimalFalsePositiveRate": 0.18329466357308585,
+            "minimalFalsePositives": 158,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5524079320113314,
+            "rocAuc": 0.9637994454190482,
+            "brierScore": 0.05978430062532425,
+            "confusionMatrix": [
+              [
+                704,
+                158
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 80,
+          "trainingLoss": 0.13555214871145954,
+          "validationThreshold": 0.08137501031160355,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8444236176194939,
+            "balancedAccuracy": 0.8851225171184427,
+            "minimalFalsePositiveRate": 0.18097447795823665,
+            "minimalFalsePositives": 156,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5555555555555556,
+            "rocAuc": 0.9642351875954954,
+            "brierScore": 0.060509078204631805,
+            "confusionMatrix": [
+              [
+                706,
+                156
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 81,
+          "trainingLoss": 0.13633880568813592,
+          "validationThreshold": 0.2100394368171692,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8650421743205249,
+            "balancedAccuracy": 0.8978835380001131,
+            "minimalFalsePositiveRate": 0.1554524361948956,
+            "minimalFalsePositives": 134,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5927051671732523,
+            "rocAuc": 0.9659951332691981,
+            "brierScore": 0.06170681491494179,
+            "confusionMatrix": [
+              [
+                728,
+                134
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 82,
+          "trainingLoss": 0.1354430587160779,
+          "validationThreshold": 0.0926542580127716,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8509840674789129,
+            "balancedAccuracy": 0.8891828419444288,
+            "minimalFalsePositiveRate": 0.1728538283062645,
+            "minimalFalsePositives": 149,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5668604651162791,
+            "rocAuc": 0.9632052515420747,
+            "brierScore": 0.06272953748703003,
+            "confusionMatrix": [
+              [
+                713,
+                149
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 83,
+          "trainingLoss": 0.13247244664784275,
+          "validationThreshold": 0.11050637811422348,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.851921274601687,
+            "balancedAccuracy": 0.889762888348141,
+            "minimalFalsePositiveRate": 0.1716937354988399,
+            "minimalFalsePositives": 148,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5685131195335277,
+            "rocAuc": 0.9639805330767925,
+            "brierScore": 0.06078474596142769,
+            "confusionMatrix": [
+              [
+                714,
+                148
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 84,
+          "trainingLoss": 0.131044840437918,
+          "validationThreshold": 0.06575018912553787,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8472352389878163,
+            "balancedAccuracy": 0.8868626563295795,
+            "minimalFalsePositiveRate": 0.17749419953596288,
+            "minimalFalsePositives": 153,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5603448275862069,
+            "rocAuc": 0.964218210627582,
+            "brierScore": 0.059384945780038834,
+            "confusionMatrix": [
+              [
+                709,
+                153
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 85,
+          "trainingLoss": 0.13372111125510422,
+          "validationThreshold": 0.10589879751205444,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8678537956888472,
+            "balancedAccuracy": 0.89962367721125,
+            "minimalFalsePositiveRate": 0.1519721577726218,
+            "minimalFalsePositives": 131,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.598159509202454,
+            "rocAuc": 0.9641446437666232,
+            "brierScore": 0.06091313436627388,
+            "confusionMatrix": [
+              [
+                731,
+                131
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 86,
+          "trainingLoss": 0.13317041426431947,
+          "validationThreshold": 0.138444721698761,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8612933458294283,
+            "balancedAccuracy": 0.895563352385264,
+            "minimalFalsePositiveRate": 0.16009280742459397,
+            "minimalFalsePositives": 138,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5855855855855856,
+            "rocAuc": 0.9658593175258899,
+            "brierScore": 0.059628669172525406,
+            "confusionMatrix": [
+              [
+                724,
+                138
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 87,
+          "trainingLoss": 0.13334826779823486,
+          "validationThreshold": 0.09950825572013855,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8556701030927835,
+            "balancedAccuracy": 0.8920830739629901,
+            "minimalFalsePositiveRate": 0.16705336426914152,
+            "minimalFalsePositives": 144,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5752212389380531,
+            "rocAuc": 0.9653386905098749,
+            "brierScore": 0.05885373428463936,
+            "confusionMatrix": [
+              [
+                718,
+                144
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 88,
+          "trainingLoss": 0.1338593064307594,
+          "validationThreshold": 0.09704277664422989,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.85941893158388,
+            "balancedAccuracy": 0.8944032595778394,
+            "minimalFalsePositiveRate": 0.16241299303944315,
+            "minimalFalsePositives": 140,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.582089552238806,
+            "rocAuc": 0.964874653386905,
+            "brierScore": 0.060732290148735046,
+            "confusionMatrix": [
+              [
+                722,
+                140
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 89,
+          "trainingLoss": 0.13688103622105086,
+          "validationThreshold": 0.08960545063018799,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8481724461105904,
+            "balancedAccuracy": 0.8874427027332918,
+            "minimalFalsePositiveRate": 0.17633410672853828,
+            "minimalFalsePositives": 152,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5619596541786743,
+            "rocAuc": 0.9643483673815856,
+            "brierScore": 0.059739094227552414,
+            "confusionMatrix": [
+              [
+                710,
+                152
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 90,
+          "trainingLoss": 0.1327648082793336,
+          "validationThreshold": 0.12494029104709625,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8547328959700093,
+            "balancedAccuracy": 0.8915030275592779,
+            "minimalFalsePositiveRate": 0.16821345707656613,
+            "minimalFalsePositives": 145,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5735294117647058,
+            "rocAuc": 0.9640484409484466,
+            "brierScore": 0.06188786029815674,
+            "confusionMatrix": [
+              [
+                717,
+                145
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 91,
+          "trainingLoss": 0.13056873922132287,
+          "validationThreshold": 0.06149668246507645,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8462980318650422,
+            "balancedAccuracy": 0.8862826099258672,
+            "minimalFalsePositiveRate": 0.17865429234338748,
+            "minimalFalsePositives": 154,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5587392550143266,
+            "rocAuc": 0.9643879803067172,
+            "brierScore": 0.059309206902980804,
+            "confusionMatrix": [
+              [
+                708,
+                154
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 92,
+          "trainingLoss": 0.13281770427191422,
+          "validationThreshold": 0.08185237646102905,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8491096532333646,
+            "balancedAccuracy": 0.8880227491370041,
+            "minimalFalsePositiveRate": 0.1751740139211137,
+            "minimalFalsePositives": 151,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5635838150289018,
+            "rocAuc": 0.9627638503763227,
+            "brierScore": 0.06290837377309799,
+            "confusionMatrix": [
+              [
+                711,
+                151
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 93,
+          "trainingLoss": 0.1290042179727218,
+          "validationThreshold": 0.0631873682141304,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8388003748828491,
+            "balancedAccuracy": 0.8816422386961689,
+            "minimalFalsePositiveRate": 0.18793503480278423,
+            "minimalFalsePositives": 162,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5462184873949579,
+            "rocAuc": 0.9626563295795371,
+            "brierScore": 0.061352260410785675,
+            "confusionMatrix": [
+              [
+                700,
+                162
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 94,
+          "trainingLoss": 0.13019336304892334,
+          "validationThreshold": 0.13132931292057037,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8622305529522024,
+            "balancedAccuracy": 0.8961433987889762,
+            "minimalFalsePositiveRate": 0.15893271461716937,
+            "minimalFalsePositives": 137,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5873493975903614,
+            "rocAuc": 0.9654462113066606,
+            "brierScore": 0.05954480171203613,
+            "confusionMatrix": [
+              [
+                725,
+                137
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 95,
+          "trainingLoss": 0.12793027995084943,
+          "validationThreshold": 0.08057355135679245,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8491096532333646,
+            "balancedAccuracy": 0.8880227491370041,
+            "minimalFalsePositiveRate": 0.1751740139211137,
+            "minimalFalsePositives": 151,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5635838150289018,
+            "rocAuc": 0.9636240167506084,
+            "brierScore": 0.06165473163127899,
+            "confusionMatrix": [
+              [
+                711,
+                151
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 96,
+          "trainingLoss": 0.13109916523277831,
+          "validationThreshold": 0.10497043281793594,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8509840674789129,
+            "balancedAccuracy": 0.8891828419444288,
+            "minimalFalsePositiveRate": 0.1728538283062645,
+            "minimalFalsePositives": 149,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5668604651162791,
+            "rocAuc": 0.9643313904136721,
+            "brierScore": 0.06081110239028931,
+            "confusionMatrix": [
+              [
+                713,
+                149
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 97,
+          "trainingLoss": 0.13018141318859458,
+          "validationThreshold": 0.10410016030073166,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8462980318650422,
+            "balancedAccuracy": 0.8862826099258672,
+            "minimalFalsePositiveRate": 0.17865429234338748,
+            "minimalFalsePositives": 154,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5587392550143266,
+            "rocAuc": 0.9653217135419615,
+            "brierScore": 0.06108919903635979,
+            "confusionMatrix": [
+              [
+                708,
+                154
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 98,
+          "trainingLoss": 0.12724092384489502,
+          "validationThreshold": 0.06898009032011032,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8481724461105904,
+            "balancedAccuracy": 0.8874427027332918,
+            "minimalFalsePositiveRate": 0.17633410672853828,
+            "minimalFalsePositives": 152,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5619596541786743,
+            "rocAuc": 0.963720219568785,
+            "brierScore": 0.06045529991388321,
+            "confusionMatrix": [
+              [
+                710,
+                152
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 99,
+          "trainingLoss": 0.12847527307050138,
+          "validationThreshold": 0.07610440999269485,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8612933458294283,
+            "balancedAccuracy": 0.895563352385264,
+            "minimalFalsePositiveRate": 0.16009280742459397,
+            "minimalFalsePositives": 138,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5855855855855856,
+            "rocAuc": 0.9638616943013977,
+            "brierScore": 0.06097139045596123,
+            "confusionMatrix": [
+              [
+                724,
+                138
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": false,
+          "epoch": 100,
+          "trainingLoss": 0.13049032388865447,
+          "validationThreshold": 0.12995645403862,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.851921274601687,
+            "balancedAccuracy": 0.889762888348141,
+            "minimalFalsePositiveRate": 0.1716937354988399,
+            "minimalFalsePositives": 148,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5685131195335277,
+            "rocAuc": 0.963131684681116,
+            "brierScore": 0.06765187531709671,
+            "confusionMatrix": [
+              [
+                714,
+                148
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "hardMinimal": true,
+      "history": [
+        {
+          "hardMinimal": true,
+          "epoch": 1,
+          "trainingLoss": 0.6008275113329024,
+          "validationThreshold": 0.1442292034626007,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.4761012183692596,
+            "balancedAccuracy": 0.6571642804595099,
+            "minimalFalsePositiveRate": 0.6368909512761021,
+            "minimalFalsePositives": 549,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.2620967741935484,
+            "rocAuc": 0.8170505347744893,
+            "brierScore": 0.12367229908704758,
+            "confusionMatrix": [
+              [
+                313,
+                549
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 2,
+          "trainingLoss": 0.34657428512910976,
+          "validationThreshold": 0.0628611370921135,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.5660731021555764,
+            "balancedAccuracy": 0.7128487352158904,
+            "minimalFalsePositiveRate": 0.525522041763341,
+            "minimalFalsePositives": 453,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.30092592592592593,
+            "rocAuc": 0.8862033840756041,
+            "brierScore": 0.08961477875709534,
+            "confusionMatrix": [
+              [
+                409,
+                453
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 3,
+          "trainingLoss": 0.28319426737770453,
+          "validationThreshold": 0.06620362401008606,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.6307403936269915,
+            "balancedAccuracy": 0.7528719370720389,
+            "minimalFalsePositiveRate": 0.44547563805104406,
+            "minimalFalsePositives": 384,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.33678756476683935,
+            "rocAuc": 0.9080018108765774,
+            "brierScore": 0.08284715563058853,
+            "confusionMatrix": [
+              [
+                478,
+                384
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 4,
+          "trainingLoss": 0.26783097770606196,
+          "validationThreshold": 0.06341012567281723,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.6597938144329897,
+            "balancedAccuracy": 0.7708533755871201,
+            "minimalFalsePositiveRate": 0.4095127610208817,
+            "minimalFalsePositives": 353,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.35583941605839414,
+            "rocAuc": 0.9129194725821969,
+            "brierScore": 0.08060941100120544,
+            "confusionMatrix": [
+              [
+                509,
+                353
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 5,
+          "trainingLoss": 0.25739881201308457,
+          "validationThreshold": 0.056728608906269073,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.669165885660731,
+            "balancedAccuracy": 0.7766538396242431,
+            "minimalFalsePositiveRate": 0.39791183294663574,
+            "minimalFalsePositives": 343,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.362453531598513,
+            "rocAuc": 0.9174523230151095,
+            "brierScore": 0.07909000664949417,
+            "confusionMatrix": [
+              [
+                519,
+                343
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 6,
+          "trainingLoss": 0.25004612562321527,
+          "validationThreshold": 0.06317377835512161,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.6916588566073102,
+            "balancedAccuracy": 0.7905749533133382,
+            "minimalFalsePositiveRate": 0.3700696055684455,
+            "minimalFalsePositives": 319,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.37937743190661477,
+            "rocAuc": 0.920774149736857,
+            "brierScore": 0.07866968959569931,
+            "confusionMatrix": [
+              [
+                543,
+                319
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 7,
+          "trainingLoss": 0.2467844965113025,
+          "validationThreshold": 0.07226154208183289,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.7132146204311153,
+            "balancedAccuracy": 0.803916020598721,
+            "minimalFalsePositiveRate": 0.3433874709976798,
+            "minimalFalsePositives": 296,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.3971486761710794,
+            "rocAuc": 0.92437892592383,
+            "brierScore": 0.07789652049541473,
+            "confusionMatrix": [
+              [
+                566,
+                296
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 8,
+          "trainingLoss": 0.2400656212993315,
+          "validationThreshold": 0.09303396195173264,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.7366447985004686,
+            "balancedAccuracy": 0.8184171806915285,
+            "minimalFalsePositiveRate": 0.314385150812065,
+            "minimalFalsePositives": 271,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.4184549356223176,
+            "rocAuc": 0.9290419331107465,
+            "brierScore": 0.07615014165639877,
+            "confusionMatrix": [
+              [
+                591,
+                271
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 9,
+          "trainingLoss": 0.23699867081384557,
+          "validationThreshold": 0.08837918937206268,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.7525773195876289,
+            "balancedAccuracy": 0.8282779695546375,
+            "minimalFalsePositiveRate": 0.29466357308584684,
+            "minimalFalsePositives": 254,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.43429844097995546,
+            "rocAuc": 0.9305642012336597,
+            "brierScore": 0.0756433978676796,
+            "confusionMatrix": [
+              [
+                608,
+                254
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 10,
+          "trainingLoss": 0.2314170093542817,
+          "validationThreshold": 0.10479942709207535,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.7703842549203374,
+            "balancedAccuracy": 0.8392988512251711,
+            "minimalFalsePositiveRate": 0.27262180974477956,
+            "minimalFalsePositives": 235,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.45348837209302323,
+            "rocAuc": 0.9343217701318545,
+            "brierScore": 0.07473299652338028,
+            "confusionMatrix": [
+              [
+                627,
+                235
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 11,
+          "trainingLoss": 0.2278805043624372,
+          "validationThreshold": 0.09534946829080582,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.7797563261480788,
+            "balancedAccuracy": 0.8450993152622941,
+            "minimalFalsePositiveRate": 0.26102088167053367,
+            "minimalFalsePositives": 225,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.4642857142857143,
+            "rocAuc": 0.9363929602173052,
+            "brierScore": 0.0744837298989296,
+            "confusionMatrix": [
+              [
+                637,
+                225
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 12,
+          "trainingLoss": 0.22450418213979392,
+          "validationThreshold": 0.10737820714712143,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.7891283973758201,
+            "balancedAccuracy": 0.8508997792994171,
+            "minimalFalsePositiveRate": 0.2494199535962877,
+            "minimalFalsePositives": 215,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.47560975609756095,
+            "rocAuc": 0.9382094957840529,
+            "brierScore": 0.07376428693532944,
+            "confusionMatrix": [
+              [
+                647,
+                215
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 13,
+          "trainingLoss": 0.2230159717590726,
+          "validationThreshold": 0.10914307087659836,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.795688847235239,
+            "balancedAccuracy": 0.8549601041254031,
+            "minimalFalsePositiveRate": 0.24129930394431554,
+            "minimalFalsePositives": 208,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.4838709677419355,
+            "rocAuc": 0.9399864184256691,
+            "brierScore": 0.07297445088624954,
+            "confusionMatrix": [
+              [
+                654,
+                208
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 14,
+          "trainingLoss": 0.21869263718394386,
+          "validationThreshold": 0.09446371346712112,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.7863167760074976,
+            "balancedAccuracy": 0.8491596400882802,
+            "minimalFalsePositiveRate": 0.2529002320185615,
+            "minimalFalsePositives": 218,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.4721549636803874,
+            "rocAuc": 0.941061626393526,
+            "brierScore": 0.07251095026731491,
+            "confusionMatrix": [
+              [
+                644,
+                218
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 15,
+          "trainingLoss": 0.21786716687722224,
+          "validationThreshold": 0.10184973478317261,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.795688847235239,
+            "balancedAccuracy": 0.8549601041254031,
+            "minimalFalsePositiveRate": 0.24129930394431554,
+            "minimalFalsePositives": 208,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.4838709677419355,
+            "rocAuc": 0.942080244468338,
+            "brierScore": 0.0721643790602684,
+            "confusionMatrix": [
+              [
+                654,
+                208
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 16,
+          "trainingLoss": 0.21656927801802808,
+          "validationThreshold": 0.10321127623319626,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8003748828491096,
+            "balancedAccuracy": 0.8578603361439647,
+            "minimalFalsePositiveRate": 0.2354988399071926,
+            "minimalFalsePositives": 203,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.4899497487437186,
+            "rocAuc": 0.9438854620564767,
+            "brierScore": 0.0714079812169075,
+            "confusionMatrix": [
+              [
+                659,
+                203
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 17,
+          "trainingLoss": 0.21232368696887954,
+          "validationThreshold": 0.10094455629587173,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8078725398313027,
+            "balancedAccuracy": 0.862500707373663,
+            "minimalFalsePositiveRate": 0.22621809744779584,
+            "minimalFalsePositives": 195,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5,
+            "rocAuc": 0.9439533699281308,
+            "brierScore": 0.07160534709692001,
+            "confusionMatrix": [
+              [
+                667,
+                195
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 18,
+          "trainingLoss": 0.20986035376751408,
+          "validationThreshold": 0.10361575335264206,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8134957825679475,
+            "balancedAccuracy": 0.8659809857959369,
+            "minimalFalsePositiveRate": 0.21925754060324826,
+            "minimalFalsePositives": 189,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5078125,
+            "rocAuc": 0.9452492784788636,
+            "brierScore": 0.0717073306441307,
+            "confusionMatrix": [
+              [
+                673,
+                189
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 19,
+          "trainingLoss": 0.20418953277519486,
+          "validationThreshold": 0.08865971118211746,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.7985004686035614,
+            "balancedAccuracy": 0.85670024333654,
+            "minimalFalsePositiveRate": 0.23781902552204176,
+            "minimalFalsePositives": 205,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.4875,
+            "rocAuc": 0.9465112330937695,
+            "brierScore": 0.0697680190205574,
+            "confusionMatrix": [
+              [
+                657,
+                205
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 20,
+          "trainingLoss": 0.20461547029476349,
+          "validationThreshold": 0.11002649366855621,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8163074039362699,
+            "balancedAccuracy": 0.8677211250070738,
+            "minimalFalsePositiveRate": 0.21577726218097448,
+            "minimalFalsePositives": 186,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5118110236220472,
+            "rocAuc": 0.9469017033557806,
+            "brierScore": 0.06988167762756348,
+            "confusionMatrix": [
+              [
+                676,
+                186
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 21,
+          "trainingLoss": 0.2016529927269465,
+          "validationThreshold": 0.09507506340742111,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8125585754451734,
+            "balancedAccuracy": 0.8654009393922245,
+            "minimalFalsePositiveRate": 0.22041763341067286,
+            "minimalFalsePositives": 190,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5064935064935064,
+            "rocAuc": 0.9463188274574159,
+            "brierScore": 0.07042091339826584,
+            "confusionMatrix": [
+              [
+                672,
+                190
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 22,
+          "trainingLoss": 0.20185848627136607,
+          "validationThreshold": 0.12307487428188324,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8116213683223993,
+            "balancedAccuracy": 0.8648208929885122,
+            "minimalFalsePositiveRate": 0.22157772621809746,
+            "minimalFalsePositives": 191,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5051813471502591,
+            "rocAuc": 0.9478637315375473,
+            "brierScore": 0.06929982453584671,
+            "confusionMatrix": [
+              [
+                671,
+                191
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 23,
+          "trainingLoss": 0.19732599666550094,
+          "validationThreshold": 0.09088428318500519,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8059981255857545,
+            "balancedAccuracy": 0.8613406145662384,
+            "minimalFalsePositiveRate": 0.228538283062645,
+            "minimalFalsePositives": 197,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.49744897959183676,
+            "rocAuc": 0.9465847999547281,
+            "brierScore": 0.06964576244354248,
+            "confusionMatrix": [
+              [
+                665,
+                197
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 24,
+          "trainingLoss": 0.19573961121409164,
+          "validationThreshold": 0.10222015529870987,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8153701968134958,
+            "balancedAccuracy": 0.8671410786033614,
+            "minimalFalsePositiveRate": 0.21693735498839908,
+            "minimalFalsePositives": 187,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5104712041884817,
+            "rocAuc": 0.9485484692433932,
+            "brierScore": 0.06983400136232376,
+            "confusionMatrix": [
+              [
+                675,
+                187
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 25,
+          "trainingLoss": 0.19374097821091404,
+          "validationThreshold": 0.09461554884910583,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8134957825679475,
+            "balancedAccuracy": 0.8659809857959369,
+            "minimalFalsePositiveRate": 0.21925754060324826,
+            "minimalFalsePositives": 189,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5078125,
+            "rocAuc": 0.9501725991737875,
+            "brierScore": 0.06840374320745468,
+            "confusionMatrix": [
+              [
+                673,
+                189
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 26,
+          "trainingLoss": 0.19247163494988506,
+          "validationThreshold": 0.08444961160421371,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8088097469540768,
+            "balancedAccuracy": 0.8630807537773754,
+            "minimalFalsePositiveRate": 0.22505800464037123,
+            "minimalFalsePositives": 194,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5012853470437018,
+            "rocAuc": 0.9484013355214759,
+            "brierScore": 0.07003974914550781,
+            "confusionMatrix": [
+              [
+                668,
+                194
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 27,
+          "trainingLoss": 0.19210771073241767,
+          "validationThreshold": 0.11927329003810883,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8191190253045924,
+            "balancedAccuracy": 0.8694612642182107,
+            "minimalFalsePositiveRate": 0.2122969837587007,
+            "minimalFalsePositives": 183,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5158730158730159,
+            "rocAuc": 0.9497594929545583,
+            "brierScore": 0.06940319389104843,
+            "confusionMatrix": [
+              [
+                679,
+                183
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 28,
+          "trainingLoss": 0.19083134484749023,
+          "validationThreshold": 0.08697953820228577,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8116213683223993,
+            "balancedAccuracy": 0.8648208929885122,
+            "minimalFalsePositiveRate": 0.22157772621809746,
+            "minimalFalsePositives": 191,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5051813471502591,
+            "rocAuc": 0.948412653500085,
+            "brierScore": 0.07138550281524658,
+            "confusionMatrix": [
+              [
+                671,
+                191
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 29,
+          "trainingLoss": 0.18792272909205643,
+          "validationThreshold": 0.08641059696674347,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8247422680412371,
+            "balancedAccuracy": 0.8729415426404844,
+            "minimalFalsePositiveRate": 0.20533642691415313,
+            "minimalFalsePositives": 177,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5241935483870968,
+            "rocAuc": 0.9502744609812688,
+            "brierScore": 0.06911171227693558,
+            "confusionMatrix": [
+              [
+                685,
+                177
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 30,
+          "trainingLoss": 0.1885287875817174,
+          "validationThreshold": 0.09704074263572693,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8275538894095595,
+            "balancedAccuracy": 0.8746816818516212,
+            "minimalFalsePositiveRate": 0.20185614849187936,
+            "minimalFalsePositives": 174,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5284552845528455,
+            "rocAuc": 0.9518589779865315,
+            "brierScore": 0.06828895956277847,
+            "confusionMatrix": [
+              [
+                688,
+                174
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 31,
+          "trainingLoss": 0.1844052902969564,
+          "validationThreshold": 0.11498060822486877,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8266166822867854,
+            "balancedAccuracy": 0.874101635447909,
+            "minimalFalsePositiveRate": 0.20301624129930396,
+            "minimalFalsePositives": 175,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.527027027027027,
+            "rocAuc": 0.9521871993661932,
+            "brierScore": 0.06856276839971542,
+            "confusionMatrix": [
+              [
+                687,
+                175
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 32,
+          "trainingLoss": 0.18638231275359443,
+          "validationThreshold": 0.10642756521701813,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8219306466729147,
+            "balancedAccuracy": 0.8712014034293475,
+            "minimalFalsePositiveRate": 0.2088167053364269,
+            "minimalFalsePositives": 180,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.52,
+            "rocAuc": 0.9530700016976967,
+            "brierScore": 0.06778980791568756,
+            "confusionMatrix": [
+              [
+                682,
+                180
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 33,
+          "trainingLoss": 0.1804047088688832,
+          "validationThreshold": 0.12126831710338593,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.837863167760075,
+            "balancedAccuracy": 0.8810621922924565,
+            "minimalFalsePositiveRate": 0.18909512761020883,
+            "minimalFalsePositives": 163,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5446927374301676,
+            "rocAuc": 0.9526342595212496,
+            "brierScore": 0.06970978528261185,
+            "confusionMatrix": [
+              [
+                699,
+                163
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 34,
+          "trainingLoss": 0.18181650735894028,
+          "validationThreshold": 0.09084442257881165,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8209934395501406,
+            "balancedAccuracy": 0.8706213570256351,
+            "minimalFalsePositiveRate": 0.2099767981438515,
+            "minimalFalsePositives": 181,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5186170212765957,
+            "rocAuc": 0.9535962877030163,
+            "brierScore": 0.06704407185316086,
+            "confusionMatrix": [
+              [
+                681,
+                181
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 35,
+          "trainingLoss": 0.17922280379990282,
+          "validationThreshold": 0.08622076362371445,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8388003748828491,
+            "balancedAccuracy": 0.8816422386961689,
+            "minimalFalsePositiveRate": 0.18793503480278423,
+            "minimalFalsePositives": 162,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5462184873949579,
+            "rocAuc": 0.9508233829438063,
+            "brierScore": 0.07059530168771744,
+            "confusionMatrix": [
+              [
+                700,
+                162
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 36,
+          "trainingLoss": 0.18117015938512704,
+          "validationThreshold": 0.08602990210056305,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8266166822867854,
+            "balancedAccuracy": 0.874101635447909,
+            "minimalFalsePositiveRate": 0.20301624129930396,
+            "minimalFalsePositives": 175,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.527027027027027,
+            "rocAuc": 0.9525154207458547,
+            "brierScore": 0.06823607534170151,
+            "confusionMatrix": [
+              [
+                687,
+                175
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 37,
+          "trainingLoss": 0.1769132177096133,
+          "validationThreshold": 0.10104956477880478,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8350515463917526,
+            "balancedAccuracy": 0.8793220530813197,
+            "minimalFalsePositiveRate": 0.1925754060324826,
+            "minimalFalsePositives": 166,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5401662049861495,
+            "rocAuc": 0.9546488597136553,
+            "brierScore": 0.06646488606929779,
+            "confusionMatrix": [
+              [
+                696,
+                166
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 38,
+          "trainingLoss": 0.17786078772195676,
+          "validationThreshold": 0.14676162600517273,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8322399250234301,
+            "balancedAccuracy": 0.8775819138701828,
+            "minimalFalsePositiveRate": 0.19605568445475638,
+            "minimalFalsePositives": 169,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5357142857142857,
+            "rocAuc": 0.9554298002376774,
+            "brierScore": 0.06769728660583496,
+            "confusionMatrix": [
+              [
+                693,
+                169
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 39,
+          "trainingLoss": 0.18276955001279802,
+          "validationThreshold": 0.06349655240774155,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8200562324273665,
+            "balancedAccuracy": 0.8700413106219229,
+            "minimalFalsePositiveRate": 0.2111368909512761,
+            "minimalFalsePositives": 182,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5172413793103449,
+            "rocAuc": 0.9523399920774149,
+            "brierScore": 0.06852883100509644,
+            "confusionMatrix": [
+              [
+                680,
+                182
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 40,
+          "trainingLoss": 0.17567661921588743,
+          "validationThreshold": 0.09628371149301529,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8359887535145267,
+            "balancedAccuracy": 0.879902099485032,
+            "minimalFalsePositiveRate": 0.191415313225058,
+            "minimalFalsePositives": 165,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5416666666666666,
+            "rocAuc": 0.9538848961575462,
+            "brierScore": 0.06749872863292694,
+            "confusionMatrix": [
+              [
+                697,
+                165
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 41,
+          "trainingLoss": 0.1764004003672468,
+          "validationThreshold": 0.12920460104942322,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.845360824742268,
+            "balancedAccuracy": 0.8857025635221549,
+            "minimalFalsePositiveRate": 0.17981438515081208,
+            "minimalFalsePositives": 155,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5571428571428572,
+            "rocAuc": 0.9560749250183916,
+            "brierScore": 0.06648854911327362,
+            "confusionMatrix": [
+              [
+                707,
+                155
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 42,
+          "trainingLoss": 0.17483999291244817,
+          "validationThreshold": 0.12469346076250076,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.831302717900656,
+            "balancedAccuracy": 0.8770018674664705,
+            "minimalFalsePositiveRate": 0.19721577726218098,
+            "minimalFalsePositives": 170,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5342465753424658,
+            "rocAuc": 0.9556731367777714,
+            "brierScore": 0.06779932975769043,
+            "confusionMatrix": [
+              [
+                692,
+                170
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 43,
+          "trainingLoss": 0.17542373858580068,
+          "validationThreshold": 0.08239474147558212,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8331771321462043,
+            "balancedAccuracy": 0.878161960273895,
+            "minimalFalsePositiveRate": 0.19489559164733178,
+            "minimalFalsePositives": 168,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5371900826446281,
+            "rocAuc": 0.9546545187029596,
+            "brierScore": 0.06619434803724289,
+            "confusionMatrix": [
+              [
+                694,
+                168
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 44,
+          "trainingLoss": 0.1737330984525463,
+          "validationThreshold": 0.09179668873548508,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8219306466729147,
+            "balancedAccuracy": 0.8712014034293475,
+            "minimalFalsePositiveRate": 0.2088167053364269,
+            "minimalFalsePositives": 180,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.52,
+            "rocAuc": 0.9555260030558541,
+            "brierScore": 0.06538639217615128,
+            "confusionMatrix": [
+              [
+                682,
+                180
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 45,
+          "trainingLoss": 0.1734387326934168,
+          "validationThreshold": 0.07819357514381409,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8275538894095595,
+            "balancedAccuracy": 0.8746816818516212,
+            "minimalFalsePositiveRate": 0.20185614849187936,
+            "minimalFalsePositives": 174,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5284552845528455,
+            "rocAuc": 0.9549883990719257,
+            "brierScore": 0.06612231582403183,
+            "confusionMatrix": [
+              [
+                688,
+                174
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 46,
+          "trainingLoss": 0.1695839256620636,
+          "validationThreshold": 0.07562579959630966,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8284910965323337,
+            "balancedAccuracy": 0.8752617282553335,
+            "minimalFalsePositiveRate": 0.20069605568445475,
+            "minimalFalsePositives": 173,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.529891304347826,
+            "rocAuc": 0.954558315884783,
+            "brierScore": 0.06769908964633942,
+            "confusionMatrix": [
+              [
+                689,
+                173
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 47,
+          "trainingLoss": 0.17090803692463924,
+          "validationThreshold": 0.09834937751293182,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8500468603561387,
+            "balancedAccuracy": 0.8886027955407164,
+            "minimalFalsePositiveRate": 0.1740139211136891,
+            "minimalFalsePositives": 150,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5652173913043478,
+            "rocAuc": 0.9565502801199706,
+            "brierScore": 0.06577735394239426,
+            "confusionMatrix": [
+              [
+                712,
+                150
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 48,
+          "trainingLoss": 0.16694485919386828,
+          "validationThreshold": 0.09461922943592072,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8397375820056232,
+            "balancedAccuracy": 0.8822222850998811,
+            "minimalFalsePositiveRate": 0.18677494199535963,
+            "minimalFalsePositives": 161,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.547752808988764,
+            "rocAuc": 0.957897119574444,
+            "brierScore": 0.06385495513677597,
+            "confusionMatrix": [
+              [
+                701,
+                161
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 49,
+          "trainingLoss": 0.16794472911349292,
+          "validationThreshold": 0.08584990352392197,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8369259606373008,
+            "balancedAccuracy": 0.8804821458887442,
+            "minimalFalsePositiveRate": 0.1902552204176334,
+            "minimalFalsePositives": 164,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5431754874651811,
+            "rocAuc": 0.955656159809858,
+            "brierScore": 0.06548497080802917,
+            "confusionMatrix": [
+              [
+                698,
+                164
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 50,
+          "trainingLoss": 0.16676483425845046,
+          "validationThreshold": 0.12735453248023987,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8275538894095595,
+            "balancedAccuracy": 0.8746816818516212,
+            "minimalFalsePositiveRate": 0.20185614849187936,
+            "minimalFalsePositives": 174,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5284552845528455,
+            "rocAuc": 0.9571614509648577,
+            "brierScore": 0.06653360277414322,
+            "confusionMatrix": [
+              [
+                688,
+                174
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 51,
+          "trainingLoss": 0.16947940174414186,
+          "validationThreshold": 0.1113727018237114,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8388003748828491,
+            "balancedAccuracy": 0.8816422386961689,
+            "minimalFalsePositiveRate": 0.18793503480278423,
+            "minimalFalsePositives": 162,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5462184873949579,
+            "rocAuc": 0.9572180408579026,
+            "brierScore": 0.06505095213651657,
+            "confusionMatrix": [
+              [
+                700,
+                162
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 52,
+          "trainingLoss": 0.1669911806966935,
+          "validationThreshold": 0.08982058614492416,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8369259606373008,
+            "balancedAccuracy": 0.8804821458887442,
+            "minimalFalsePositiveRate": 0.1902552204176334,
+            "minimalFalsePositives": 164,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5431754874651811,
+            "rocAuc": 0.9576028521306094,
+            "brierScore": 0.06358253955841064,
+            "confusionMatrix": [
+              [
+                698,
+                164
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 53,
+          "trainingLoss": 0.16798469231945842,
+          "validationThreshold": 0.11692333966493607,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8500468603561387,
+            "balancedAccuracy": 0.8886027955407164,
+            "minimalFalsePositiveRate": 0.1740139211136891,
+            "minimalFalsePositives": 150,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5652173913043478,
+            "rocAuc": 0.9562503536868316,
+            "brierScore": 0.06691573560237885,
+            "confusionMatrix": [
+              [
+                712,
+                150
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 54,
+          "trainingLoss": 0.16440051495928276,
+          "validationThreshold": 0.08442620187997818,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8350515463917526,
+            "balancedAccuracy": 0.8793220530813197,
+            "minimalFalsePositiveRate": 0.1925754060324826,
+            "minimalFalsePositives": 166,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5401662049861495,
+            "rocAuc": 0.9583215437722823,
+            "brierScore": 0.06337746232748032,
+            "confusionMatrix": [
+              [
+                696,
+                166
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 55,
+          "trainingLoss": 0.16172809668314628,
+          "validationThreshold": 0.09468767046928406,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8406747891283973,
+            "balancedAccuracy": 0.8828023315035934,
+            "minimalFalsePositiveRate": 0.18561484918793503,
+            "minimalFalsePositives": 160,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5492957746478874,
+            "rocAuc": 0.9590855073283912,
+            "brierScore": 0.06318232417106628,
+            "confusionMatrix": [
+              [
+                702,
+                160
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 56,
+          "trainingLoss": 0.16205884484486993,
+          "validationThreshold": 0.08285857737064362,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8444236176194939,
+            "balancedAccuracy": 0.8851225171184427,
+            "minimalFalsePositiveRate": 0.18097447795823665,
+            "minimalFalsePositives": 156,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5555555555555556,
+            "rocAuc": 0.9576368060664364,
+            "brierScore": 0.06412216275930405,
+            "confusionMatrix": [
+              [
+                706,
+                156
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 57,
+          "trainingLoss": 0.16215494485283527,
+          "validationThreshold": 0.07143023610115051,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8406747891283973,
+            "balancedAccuracy": 0.8828023315035934,
+            "minimalFalsePositiveRate": 0.18561484918793503,
+            "minimalFalsePositives": 160,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5492957746478874,
+            "rocAuc": 0.9579027785637485,
+            "brierScore": 0.06464076042175293,
+            "confusionMatrix": [
+              [
+                702,
+                160
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 58,
+          "trainingLoss": 0.1606858770171849,
+          "validationThreshold": 0.11155357956886292,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8462980318650422,
+            "balancedAccuracy": 0.8862826099258672,
+            "minimalFalsePositiveRate": 0.17865429234338748,
+            "minimalFalsePositives": 154,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5587392550143266,
+            "rocAuc": 0.959606134344406,
+            "brierScore": 0.06435175240039825,
+            "confusionMatrix": [
+              [
+                708,
+                154
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 59,
+          "trainingLoss": 0.1602438656168253,
+          "validationThreshold": 0.04402973875403404,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8481724461105904,
+            "balancedAccuracy": 0.8874427027332918,
+            "minimalFalsePositiveRate": 0.17633410672853828,
+            "minimalFalsePositives": 152,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5619596541786743,
+            "rocAuc": 0.9591138022749137,
+            "brierScore": 0.06932365149259567,
+            "confusionMatrix": [
+              [
+                710,
+                152
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 60,
+          "trainingLoss": 0.16157059685713576,
+          "validationThreshold": 0.10438463091850281,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8444236176194939,
+            "balancedAccuracy": 0.8851225171184427,
+            "minimalFalsePositiveRate": 0.18097447795823665,
+            "minimalFalsePositives": 156,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5555555555555556,
+            "rocAuc": 0.9595325674834474,
+            "brierScore": 0.06387852877378464,
+            "confusionMatrix": [
+              [
+                706,
+                156
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 61,
+          "trainingLoss": 0.15912076319251456,
+          "validationThreshold": 0.07961307466030121,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8472352389878163,
+            "balancedAccuracy": 0.8868626563295795,
+            "minimalFalsePositiveRate": 0.17749419953596288,
+            "minimalFalsePositives": 153,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5603448275862069,
+            "rocAuc": 0.9594024107294437,
+            "brierScore": 0.06281346827745438,
+            "confusionMatrix": [
+              [
+                709,
+                153
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 62,
+          "trainingLoss": 0.15968185179039882,
+          "validationThreshold": 0.08288104087114334,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8331771321462043,
+            "balancedAccuracy": 0.878161960273895,
+            "minimalFalsePositiveRate": 0.19489559164733178,
+            "minimalFalsePositives": 168,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5371900826446281,
+            "rocAuc": 0.9586158112161167,
+            "brierScore": 0.0637020692229271,
+            "confusionMatrix": [
+              [
+                694,
+                168
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 63,
+          "trainingLoss": 0.15813806796131158,
+          "validationThreshold": 0.105826236307621,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8500468603561387,
+            "balancedAccuracy": 0.8886027955407164,
+            "minimalFalsePositiveRate": 0.1740139211136891,
+            "minimalFalsePositives": 150,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5652173913043478,
+            "rocAuc": 0.9587006960556844,
+            "brierScore": 0.06596969068050385,
+            "confusionMatrix": [
+              [
+                712,
+                150
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 64,
+          "trainingLoss": 0.1613853906526142,
+          "validationThreshold": 0.07100021094083786,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8350515463917526,
+            "balancedAccuracy": 0.8793220530813197,
+            "minimalFalsePositiveRate": 0.1925754060324826,
+            "minimalFalsePositives": 166,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5401662049861495,
+            "rocAuc": 0.959028917435346,
+            "brierScore": 0.06295278668403625,
+            "confusionMatrix": [
+              [
+                696,
+                166
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 65,
+          "trainingLoss": 0.1583947623880873,
+          "validationThreshold": 0.08130396157503128,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8322399250234301,
+            "balancedAccuracy": 0.8775819138701828,
+            "minimalFalsePositiveRate": 0.19605568445475638,
+            "minimalFalsePositives": 169,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5357142857142857,
+            "rocAuc": 0.9595438854620566,
+            "brierScore": 0.062193892896175385,
+            "confusionMatrix": [
+              [
+                693,
+                169
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 66,
+          "trainingLoss": 0.1579794827468541,
+          "validationThreshold": 0.07193967700004578,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8359887535145267,
+            "balancedAccuracy": 0.879902099485032,
+            "minimalFalsePositiveRate": 0.191415313225058,
+            "minimalFalsePositives": 165,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5416666666666666,
+            "rocAuc": 0.9603418029539925,
+            "brierScore": 0.06218795105814934,
+            "confusionMatrix": [
+              [
+                697,
+                165
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 67,
+          "trainingLoss": 0.1567266463052754,
+          "validationThreshold": 0.047804009169340134,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8472352389878163,
+            "balancedAccuracy": 0.8868626563295795,
+            "minimalFalsePositiveRate": 0.17749419953596288,
+            "minimalFalsePositives": 153,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5603448275862069,
+            "rocAuc": 0.9596344292909287,
+            "brierScore": 0.06629674881696701,
+            "confusionMatrix": [
+              [
+                709,
+                153
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 68,
+          "trainingLoss": 0.16019082394968562,
+          "validationThreshold": 0.06455297023057938,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8462980318650422,
+            "balancedAccuracy": 0.8862826099258672,
+            "minimalFalsePositiveRate": 0.17865429234338748,
+            "minimalFalsePositives": 154,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5587392550143266,
+            "rocAuc": 0.960160715296248,
+            "brierScore": 0.06272413581609726,
+            "confusionMatrix": [
+              [
+                708,
+                154
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 69,
+          "trainingLoss": 0.15948851265254713,
+          "validationThreshold": 0.0886654332280159,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8425492033739457,
+            "balancedAccuracy": 0.883962424311018,
+            "minimalFalsePositiveRate": 0.18329466357308585,
+            "minimalFalsePositives": 158,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5524079320113314,
+            "rocAuc": 0.9603531209326015,
+            "brierScore": 0.06251753121614456,
+            "confusionMatrix": [
+              [
+                704,
+                158
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 70,
+          "trainingLoss": 0.15362613382531243,
+          "validationThreshold": 0.07168765366077423,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8472352389878163,
+            "balancedAccuracy": 0.8868626563295795,
+            "minimalFalsePositiveRate": 0.17749419953596288,
+            "minimalFalsePositives": 153,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5603448275862069,
+            "rocAuc": 0.9595948163657972,
+            "brierScore": 0.06402932107448578,
+            "confusionMatrix": [
+              [
+                709,
+                153
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 71,
+          "trainingLoss": 0.15488787081275954,
+          "validationThreshold": 0.0946391299366951,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8481724461105904,
+            "balancedAccuracy": 0.8874427027332918,
+            "minimalFalsePositiveRate": 0.17633410672853828,
+            "minimalFalsePositives": 152,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5619596541786743,
+            "rocAuc": 0.9609190198630524,
+            "brierScore": 0.0623629130423069,
+            "confusionMatrix": [
+              [
+                710,
+                152
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 72,
+          "trainingLoss": 0.15633396764307106,
+          "validationThreshold": 0.07846780121326447,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8472352389878163,
+            "balancedAccuracy": 0.8868626563295795,
+            "minimalFalsePositiveRate": 0.17749419953596288,
+            "minimalFalsePositives": 153,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5603448275862069,
+            "rocAuc": 0.9570143172429404,
+            "brierScore": 0.06845777481794357,
+            "confusionMatrix": [
+              [
+                709,
+                153
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 73,
+          "trainingLoss": 0.1577816043151956,
+          "validationThreshold": 0.0644993856549263,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8416119962511716,
+            "balancedAccuracy": 0.8833823779073058,
+            "minimalFalsePositiveRate": 0.18445475638051045,
+            "minimalFalsePositives": 159,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5508474576271186,
+            "rocAuc": 0.9592439590289175,
+            "brierScore": 0.06462718546390533,
+            "confusionMatrix": [
+              [
+                703,
+                159
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 74,
+          "trainingLoss": 0.1558115347808435,
+          "validationThreshold": 0.04723430052399635,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8228678537956888,
+            "balancedAccuracy": 0.8717814498330598,
+            "minimalFalsePositiveRate": 0.20765661252900233,
+            "minimalFalsePositives": 179,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5213903743315508,
+            "rocAuc": 0.9614283289004584,
+            "brierScore": 0.060970738530159,
+            "confusionMatrix": [
+              [
+                683,
+                179
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 75,
+          "trainingLoss": 0.16037368515924533,
+          "validationThreshold": 0.06476739794015884,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8388003748828491,
+            "balancedAccuracy": 0.8816422386961689,
+            "minimalFalsePositiveRate": 0.18793503480278423,
+            "minimalFalsePositives": 162,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5462184873949579,
+            "rocAuc": 0.9602625771037293,
+            "brierScore": 0.06244628503918648,
+            "confusionMatrix": [
+              [
+                700,
+                162
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 76,
+          "trainingLoss": 0.15462317597680017,
+          "validationThreshold": 0.07795906066894531,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8425492033739457,
+            "balancedAccuracy": 0.883962424311018,
+            "minimalFalsePositiveRate": 0.18329466357308585,
+            "minimalFalsePositives": 158,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5524079320113314,
+            "rocAuc": 0.9609812687454021,
+            "brierScore": 0.0628662183880806,
+            "confusionMatrix": [
+              [
+                704,
+                158
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 77,
+          "trainingLoss": 0.1522988925630949,
+          "validationThreshold": 0.06894475966691971,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8575445173383318,
+            "balancedAccuracy": 0.8932431667704148,
+            "minimalFalsePositiveRate": 0.16473317865429235,
+            "minimalFalsePositives": 142,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5786350148367952,
+            "rocAuc": 0.9605228906117368,
+            "brierScore": 0.06484805047512054,
+            "confusionMatrix": [
+              [
+                720,
+                142
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 78,
+          "trainingLoss": 0.1558762973024636,
+          "validationThreshold": 0.10008841753005981,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.837863167760075,
+            "balancedAccuracy": 0.8810621922924565,
+            "minimalFalsePositiveRate": 0.18909512761020883,
+            "minimalFalsePositives": 163,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5446927374301676,
+            "rocAuc": 0.9614792598041989,
+            "brierScore": 0.06299683451652527,
+            "confusionMatrix": [
+              [
+                699,
+                163
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 79,
+          "trainingLoss": 0.154675976658354,
+          "validationThreshold": 0.05262777581810951,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8331771321462043,
+            "balancedAccuracy": 0.878161960273895,
+            "minimalFalsePositiveRate": 0.19489559164733178,
+            "minimalFalsePositives": 168,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5371900826446281,
+            "rocAuc": 0.9606417293871314,
+            "brierScore": 0.0617733970284462,
+            "confusionMatrix": [
+              [
+                694,
+                168
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 80,
+          "trainingLoss": 0.15524280972394194,
+          "validationThreshold": 0.07099975645542145,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.845360824742268,
+            "balancedAccuracy": 0.8857025635221549,
+            "minimalFalsePositiveRate": 0.17981438515081208,
+            "minimalFalsePositives": 155,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5571428571428572,
+            "rocAuc": 0.9616943013977703,
+            "brierScore": 0.06143084168434143,
+            "confusionMatrix": [
+              [
+                707,
+                155
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 81,
+          "trainingLoss": 0.15449987029453285,
+          "validationThreshold": 0.12743878364562988,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8500468603561387,
+            "balancedAccuracy": 0.8886027955407164,
+            "minimalFalsePositiveRate": 0.1740139211136891,
+            "minimalFalsePositives": 150,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5652173913043478,
+            "rocAuc": 0.9634202931356459,
+            "brierScore": 0.06098172068595886,
+            "confusionMatrix": [
+              [
+                712,
+                150
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 82,
+          "trainingLoss": 0.1546226757532992,
+          "validationThreshold": 0.05669090896844864,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8369259606373008,
+            "balancedAccuracy": 0.8804821458887442,
+            "minimalFalsePositiveRate": 0.1902552204176334,
+            "minimalFalsePositives": 164,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5431754874651811,
+            "rocAuc": 0.9606813423122631,
+            "brierScore": 0.0626533180475235,
+            "confusionMatrix": [
+              [
+                698,
+                164
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 83,
+          "trainingLoss": 0.1513211302881857,
+          "validationThreshold": 0.08643226325511932,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8509840674789129,
+            "balancedAccuracy": 0.8891828419444288,
+            "minimalFalsePositiveRate": 0.1728538283062645,
+            "minimalFalsePositives": 149,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5668604651162791,
+            "rocAuc": 0.9613604210288043,
+            "brierScore": 0.0623827762901783,
+            "confusionMatrix": [
+              [
+                713,
+                149
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 84,
+          "trainingLoss": 0.1505621027196942,
+          "validationThreshold": 0.04522232338786125,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8425492033739457,
+            "balancedAccuracy": 0.883962424311018,
+            "minimalFalsePositiveRate": 0.18329466357308585,
+            "minimalFalsePositives": 158,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5524079320113314,
+            "rocAuc": 0.9619206609699508,
+            "brierScore": 0.06293947994709015,
+            "confusionMatrix": [
+              [
+                704,
+                158
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 85,
+          "trainingLoss": 0.15266408414399923,
+          "validationThreshold": 0.05497455224394798,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.851921274601687,
+            "balancedAccuracy": 0.889762888348141,
+            "minimalFalsePositiveRate": 0.1716937354988399,
+            "minimalFalsePositives": 148,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5685131195335277,
+            "rocAuc": 0.9617791862373379,
+            "brierScore": 0.062261614948511124,
+            "confusionMatrix": [
+              [
+                714,
+                148
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 86,
+          "trainingLoss": 0.1512873463985585,
+          "validationThreshold": 0.09773223847150803,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.85941893158388,
+            "balancedAccuracy": 0.8944032595778394,
+            "minimalFalsePositiveRate": 0.16241299303944315,
+            "minimalFalsePositives": 140,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.582089552238806,
+            "rocAuc": 0.9636070397826949,
+            "brierScore": 0.060516487807035446,
+            "confusionMatrix": [
+              [
+                722,
+                140
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 87,
+          "trainingLoss": 0.15138921209600936,
+          "validationThreshold": 0.07509692758321762,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8584817244611059,
+            "balancedAccuracy": 0.893823213174127,
+            "minimalFalsePositiveRate": 0.16357308584686775,
+            "minimalFalsePositives": 141,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5803571428571429,
+            "rocAuc": 0.9634938599966046,
+            "brierScore": 0.06033014878630638,
+            "confusionMatrix": [
+              [
+                721,
+                141
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 88,
+          "trainingLoss": 0.15257434051434676,
+          "validationThreshold": 0.061917610466480255,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8547328959700093,
+            "balancedAccuracy": 0.8915030275592779,
+            "minimalFalsePositiveRate": 0.16821345707656613,
+            "minimalFalsePositives": 145,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5735294117647058,
+            "rocAuc": 0.9619659328843868,
+            "brierScore": 0.06290514022111893,
+            "confusionMatrix": [
+              [
+                717,
+                145
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 89,
+          "trainingLoss": 0.15603086990969522,
+          "validationThreshold": 0.06677447259426117,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8547328959700093,
+            "balancedAccuracy": 0.8915030275592779,
+            "minimalFalsePositiveRate": 0.16821345707656613,
+            "minimalFalsePositives": 145,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5735294117647058,
+            "rocAuc": 0.962011204798823,
+            "brierScore": 0.0613233856856823,
+            "confusionMatrix": [
+              [
+                717,
+                145
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 90,
+          "trainingLoss": 0.15216840636868384,
+          "validationThreshold": 0.0855146124958992,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8537956888472352,
+            "balancedAccuracy": 0.8909229811555657,
+            "minimalFalsePositiveRate": 0.16937354988399073,
+            "minimalFalsePositives": 146,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5718475073313783,
+            "rocAuc": 0.9616773244298568,
+            "brierScore": 0.06170794367790222,
+            "confusionMatrix": [
+              [
+                716,
+                146
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 91,
+          "trainingLoss": 0.14968846177308856,
+          "validationThreshold": 0.0403917022049427,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8406747891283973,
+            "balancedAccuracy": 0.8828023315035934,
+            "minimalFalsePositiveRate": 0.18561484918793503,
+            "minimalFalsePositives": 160,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5492957746478874,
+            "rocAuc": 0.9617678682587291,
+            "brierScore": 0.06223509460687637,
+            "confusionMatrix": [
+              [
+                702,
+                160
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 92,
+          "trainingLoss": 0.15122644273208685,
+          "validationThreshold": 0.04499970003962517,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8416119962511716,
+            "balancedAccuracy": 0.8833823779073058,
+            "minimalFalsePositiveRate": 0.18445475638051045,
+            "minimalFalsePositives": 159,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5508474576271186,
+            "rocAuc": 0.9599626506705903,
+            "brierScore": 0.06424229592084885,
+            "confusionMatrix": [
+              [
+                703,
+                159
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 93,
+          "trainingLoss": 0.14883064354086767,
+          "validationThreshold": 0.04858225956559181,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8425492033739457,
+            "balancedAccuracy": 0.883962424311018,
+            "minimalFalsePositiveRate": 0.18329466357308585,
+            "minimalFalsePositives": 158,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5524079320113314,
+            "rocAuc": 0.9608284760341804,
+            "brierScore": 0.06330636888742447,
+            "confusionMatrix": [
+              [
+                704,
+                158
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 94,
+          "trainingLoss": 0.1493607785324661,
+          "validationThreshold": 0.09011036902666092,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8584817244611059,
+            "balancedAccuracy": 0.893823213174127,
+            "minimalFalsePositiveRate": 0.16357308584686775,
+            "minimalFalsePositives": 141,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5803571428571429,
+            "rocAuc": 0.9631203667025069,
+            "brierScore": 0.060519032180309296,
+            "confusionMatrix": [
+              [
+                721,
+                141
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 95,
+          "trainingLoss": 0.1472962368525663,
+          "validationThreshold": 0.04613538831472397,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8444236176194939,
+            "balancedAccuracy": 0.8851225171184427,
+            "minimalFalsePositiveRate": 0.18097447795823665,
+            "minimalFalsePositives": 156,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5555555555555556,
+            "rocAuc": 0.960658706355045,
+            "brierScore": 0.06374592334032059,
+            "confusionMatrix": [
+              [
+                706,
+                156
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 96,
+          "trainingLoss": 0.1496586693721373,
+          "validationThreshold": 0.08552652597427368,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8547328959700093,
+            "balancedAccuracy": 0.8915030275592779,
+            "minimalFalsePositiveRate": 0.16821345707656613,
+            "minimalFalsePositives": 145,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5735294117647058,
+            "rocAuc": 0.9621753154886539,
+            "brierScore": 0.06152302399277687,
+            "confusionMatrix": [
+              [
+                717,
+                145
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 97,
+          "trainingLoss": 0.14912672301067884,
+          "validationThreshold": 0.09548287093639374,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8500468603561387,
+            "balancedAccuracy": 0.8886027955407164,
+            "minimalFalsePositiveRate": 0.1740139211136891,
+            "minimalFalsePositives": 150,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5652173913043478,
+            "rocAuc": 0.9634372701035595,
+            "brierScore": 0.061399366706609726,
+            "confusionMatrix": [
+              [
+                712,
+                150
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 98,
+          "trainingLoss": 0.1458661707849348,
+          "validationThreshold": 0.04996803030371666,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8434864104967198,
+            "balancedAccuracy": 0.8845424707147302,
+            "minimalFalsePositiveRate": 0.18213457076566125,
+            "minimalFalsePositives": 157,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5539772727272727,
+            "rocAuc": 0.9618640710769056,
+            "brierScore": 0.06187121570110321,
+            "confusionMatrix": [
+              [
+                705,
+                157
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 99,
+          "trainingLoss": 0.14744562225467733,
+          "validationThreshold": 0.04894931986927986,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.8491096532333646,
+            "balancedAccuracy": 0.8880227491370041,
+            "minimalFalsePositiveRate": 0.1751740139211137,
+            "minimalFalsePositives": 151,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5635838150289018,
+            "rocAuc": 0.9612981721464547,
+            "brierScore": 0.06380710750818253,
+            "confusionMatrix": [
+              [
+                711,
+                151
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        },
+        {
+          "hardMinimal": true,
+          "epoch": 100,
+          "trainingLoss": 0.15005351183991902,
+          "validationThreshold": 0.08348700404167175,
+          "validation": {
+            "rows": 1067,
+            "minimalRows": 862,
+            "onePercentRows": 205,
+            "accuracy": 0.845360824742268,
+            "balancedAccuracy": 0.8857025635221549,
+            "minimalFalsePositiveRate": 0.17981438515081208,
+            "minimalFalsePositives": 155,
+            "onePercentRecall": 0.9512195121951219,
+            "onePercentPrecision": 0.5571428571428572,
+            "rocAuc": 0.9609529737988795,
+            "brierScore": 0.06682240217924118,
+            "confusionMatrix": [
+              [
+                707,
+                155
+              ],
+              [
+                10,
+                195
+              ]
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "selected": {
+    "hardMinimal": false,
+    "epoch": 59,
+    "validationThreshold": 0.07615017145872116,
+    "validation": {
+      "rows": 1067,
+      "minimalRows": 862,
+      "onePercentRows": 205,
+      "accuracy": 0.8687910028116214,
+      "balancedAccuracy": 0.9002037236149624,
+      "minimalFalsePositiveRate": 0.15081206496519722,
+      "minimalFalsePositives": 130,
+      "onePercentRecall": 0.9512195121951219,
+      "onePercentPrecision": 0.6,
+      "rocAuc": 0.9627921453228454,
+      "brierScore": 0.06341210752725601,
+      "confusionMatrix": [
+        [
+          732,
+          130
+        ],
+        [
+          10,
+          195
+        ]
+      ]
+    },
+    "test": {
+      "rows": 1154,
+      "minimalRows": 812,
+      "onePercentRows": 342,
+      "accuracy": 0.8925476603119584,
+      "balancedAccuracy": 0.9160292973813845,
+      "minimalFalsePositiveRate": 0.1416256157635468,
+      "minimalFalsePositives": 115,
+      "onePercentRecall": 0.9736842105263158,
+      "onePercentPrecision": 0.7433035714285714,
+      "rocAuc": 0.9860354910264166,
+      "brierScore": 0.04605548828840256,
+      "confusionMatrix": [
+        [
+          697,
+          115
+        ],
+        [
+          9,
+          333
+        ]
+      ]
+    }
+  },
+  "reference": {
+    "cnn": {
+      "rows": 1154,
+      "minimalRows": 812,
+      "onePercentRows": 342,
+      "accuracy": 0.92894280762565,
+      "balancedAccuracy": 0.937660242560424,
+      "minimalFalsePositiveRate": 0.08374384236453201,
+      "minimalFalsePositives": 68,
+      "onePercentRecall": 0.9590643274853801,
+      "onePercentPrecision": 0.8282828282828283,
+      "rocAuc": 0.9881492524414485,
+      "brierScore": 0.04508918523788452,
+      "confusionMatrix": [
+        [
+          744,
+          68
+        ],
+        [
+          14,
+          328
+        ]
+      ]
+    },
+    "bufferedBoosted": {
+      "rows": 1154,
+      "minimalRows": 812,
+      "onePercentRows": 342,
+      "accuracy": 0.8821490467937608,
+      "balancedAccuracy": 0.9128712586062858,
+      "minimalFalsePositiveRate": 0.1625615763546798,
+      "minimalFalsePositives": 132,
+      "onePercentRecall": 0.9883040935672515,
+      "onePercentPrecision": 0.7191489361702128,
+      "rocAuc": 0.9917934203324403,
+      "brierScore": 0.030529657378792763,
+      "confusionMatrix": [
+        [
+          680,
+          132
+        ],
+        [
+          4,
+          338
+        ]
+      ]
+    }
+  },
+  "matchedTestRecallDiagnostic": {
+    "meaning": "Thresholds chosen from test labels for ranking comparison only; not deployable",
+    "onePercentDetections": 328,
+    "pointOnlyMinimalFalsePositives": 73,
+    "cnnMinimalFalsePositives": 55
+  }
+}

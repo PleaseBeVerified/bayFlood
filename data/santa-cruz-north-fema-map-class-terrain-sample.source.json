@@ -1,0 +1,48 @@
+{
+  "dataset_name": "Northern Santa Cruz FEMA map-class terrain sample",
+  "dataset_role": "geographically external test set for existing terrain FEMA classifiers",
+  "target_column": "mapped_hazard_class",
+  "target_meaning": "FEMA NFHL mapped annual-chance class; not observed event flooding",
+  "created_utc": "2026-11-07T23:33:11.425847+00:00",
+  "source_file": "FEMAdata/santa_cruz_north_nfhl_flood_zones.geojson",
+  "source_sha256": "f960e1c19fc8d23e95350dbd1a25243348e14093a35bd7ad2fc16327cf07a1fd",
+  "source_url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/28",
+  "source_dfirm_id": "06087C",
+  "study_bounds_wgs84": [
+    -122.16,
+    37.005,
+    -121.99,
+    37.155
+  ],
+  "row_count": 450,
+  "class_counts": {
+    "minimal": 150,
+    "point_two_percent": 150,
+    "one_percent": 150
+  },
+  "distinct_source_polygons_by_class": {
+    "minimal": 2,
+    "point_two_percent": 33,
+    "one_percent": 22
+  },
+  "seed": 20261107,
+  "minimum_polygon_boundary_distance_m": 10,
+  "minimum_point_separation_m": 30,
+  "water_search_radius_m": 5000,
+  "sampling": "Area-weighted FEMA polygon selection; random point in a 10 m inward buffer; require unique class, at least 30 m between samples, complete local raster values, and a legacy local water feature within 5 km. The legacy eligibility rule preserves the original 450 locations; nearest-water distance is then corrected with USGS 3DHP flowlines.",
+  "supplemental_hydrography_sha256": "f24aae349b0dff8730cbbf82cb391d2c6d6b890b9c5b0201a34f78e11f5e2bed",
+  "feature_sources": {
+    "elevation_m": "elevation/USGS_13_*.tif (5x5 median, matching app)",
+    "current_imperviousness_pct": "data/nlcd/fractional-impervious-2025-full.tiff",
+    "current_100yr_24h_rainfall_mm": "rainfall/rainfall_data.tif",
+    "terrain_features": "terrain/runtime/terrain-features-30m.tif",
+    "nearest_water_distance_m": [
+      "hydrography/bay_area_flowlines.geojson",
+      "hydrography/bay_area_water_bodies.geojson",
+      "hydrography/NHDArea.geojson",
+      "hydrography/NHDLine.geojson",
+      "hydrography/santa_cruz_north_3dhp_flowlines.geojson"
+    ]
+  },
+  "limitations": "FEMA map labels are not observed floods or verified dry event outcomes. Balanced spatial samples do not represent natural class prevalence. The original point eligibility used a Bay-centered hydrography layer, so the sample favors locations within 5 km of that legacy layer even though stored distances use the augmented 3DHP network. Narrow 0.2% zones may cluster despite 30 m separation; use this region as one holdout, not random row splits."
+}

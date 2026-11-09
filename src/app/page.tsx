@@ -6,11 +6,32 @@ import "maplibre-gl/dist/maplibre-gl.css";
 
 type SearchResult = { id: string; label: string; longitude: number; latitude: number };
 
+type ModelInputs = {
+  elevationMeters: number | null;
+  imperviousnessPercent: number | null;
+  rainfallMillimeters: number | null;
+  nearestWaterAvailable: number | null;
+  nearestWaterDistanceMeters: number | null;
+  slopeDegrees: number | null;
+  localElevation250Meters: number | null;
+  localElevation500Meters: number | null;
+  flowAccumulationSquareMeters: number | null;
+  heightAboveDrainageMeters: number | null;
+};
+
 type RiskResult = {
+  latitude: number;
+  longitude: number;
+  modelInputs: ModelInputs;
   model: {
     scoreOutOf100: number;
     classification: string;
     missingFeatures: string[];
+  } | null;
+  terrainDnnModel: {
+    scoreOutOf100: number;
+    classification: string;
+    imputedFeatures: string[];
   } | null;
   modelMapDisagreement: string | null;
   floodEventChance: {
@@ -26,11 +47,23 @@ type RiskResult = {
   caveat: string;
 };
 
+type CnnResult = {
+  onePercentPatternScore: number;
+  classification: string;
+  imputedFeatures: string[];
+  topographyCoverage: number;
+  imperviousnessCoverage: number;
+};
+
 type SelectedLocation = {
   latitude: number;
   longitude: number;
   label: string;
 };
+
+function formatInput(value: number | null, unit: string) {
+  return value === null ? "Unavailable" : `${value.toLocaleString(undefined, { maximumFractionDigits: 3 })}${unit}`;
+}
 
 export default function Home() {
   const mapContainer = useRef<HTMLDivElement>(null);
@@ -45,6 +78,8 @@ export default function Home() {
   const [riskError, setRiskError] = useState("");
   const [loadingRisk, setLoadingRisk] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState<SelectedLocation | null>(null);
+  const [selectedModel, setSelectedModel] = useState<"boosted" | "terrainDnn" | "cnn">("boosted");
+  const [cnnState, setCnnState] = useState<{ key: string; model: CnnResult | null; error: string } | null>(null);
 
   const assessLocation = useCallback(async (longitude: number, latitude: number) => {
     riskRequest.current?.abort();
@@ -53,6 +88,7 @@ export default function Home() {
     setLoadingRisk(true);
     setRiskError("");
     setRisk(null);
+    setCnnState(null);
 
     try {
       const parameters = new URLSearchParams({ lat: latitude.toString(), lng: longitude.toString() });
@@ -80,6 +116,7 @@ export default function Home() {
     setSelectedLocation(null);
     setRisk(null);
     setRiskError("");
+    setCnnState(null);
     setQuery("");
     setResults([]);
   }
@@ -169,6 +206,39 @@ export default function Home() {
     }
     selectMapLocation(result.longitude, result.latitude, result.label);
   }
+
+  const selectedDnnModel = risk?.terrainDnnModel;
+  const cnnKey = risk !== null && selectedLocation !== null &&
+    risk.latitude === selectedLocation.latitude && risk.longitude === selectedLocation.longitude
+    ? `${risk.latitude},${risk.longitude}` : null;
+  const activeCnnState = cnnState?.key === cnnKey ? cnnState : null;
+  const cnnLoading = selectedModel === "cnn" && cnnKey !== null && activeCnnState === null;
+  const cnnModel = activeCnnState?.model ?? null;
+  const cnnError = activeCnnState?.error ?? "";
+
+  useEffect(() => {
+    if (selectedModel !== "cnn" || cnnKey === null || selectedLocation === null || activeCnnState !== null) {
+      return;
+    }
+    const controller = new AbortController();
+    const parameters = new URLSearchParams({
+      lat: selectedLocation.latitude.toString(),
+      lng: selectedLocation.longitude.toString(),
+    });
+    void (async () => {
+      try {
+        const response = await fetch(`/api/flood-risk/cnn?${parameters}`, { signal: controller.signal });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error ?? "CNN calculation failed.");
+        setCnnState({ key: cnnKey, model: data.cnnModel ?? null, error: data.reason ?? "" });
+      } catch (error) {
+        if (!controller.signal.aborted) {
+          setCnnState({ key: cnnKey, model: null, error: error instanceof Error ? error.message : "CNN calculation failed." });
+        }
+      }
+    })();
+    return () => controller.abort();
+  }, [selectedModel, selectedLocation, cnnKey, activeCnnState]);
 
   return (
     <main className="app-shell">
@@ -290,11 +360,63 @@ export default function Home() {
                   {risk.floodEventChance.tenYearPercent === null && <p>A blank map benchmark does not mean zero flood risk. Check the current FEMA map for this location.</p>}
                 </div>
                 <div className="current-score-panel">
-                  <span className="event-eyebrow">Separate model pattern score</span>
-                  <p>{risk.model ? `${risk.model.scoreOutOf100} / 100 — similarity to the model's higher-risk training pattern, not a flood percentage.` : "Unavailable because local elevation data could not be sampled."}</p>
-                  {risk.modelMapDisagreement && <p className="model-map-disagreement">{risk.modelMapDisagreement}</p>}
-                  {risk.model && risk.model.missingFeatures.length > 0 && <p>Some current inputs were unavailable, so this score may be less reliable.</p>}
+                  <span className="event-eyebrow">Terrain model pattern score</span>
+                  <label className="model-select-label" htmlFor="terrain-model">Choose model</label>
+                  <select
+                    id="terrain-model"
+                    className="model-select"
+                    value={selectedModel}
+                    onChange={(event) => setSelectedModel(event.target.value === "terrainDnn" ? "terrainDnn" : event.target.value === "cnn" ? "cnn" : "boosted")}
+                  >
+                    <option value="boosted">Terrain boosted · 2 classes</option>
+                    <option value="terrainDnn">Terrain DNN · 2 classes</option>
+                    <option value="cnn">Terrain CNN · 2 classes</option>
+                  </select>
+                  {selectedModel === "boosted" ? (
+                    <>
+                      <p>{risk.model ? `${risk.model.scoreOutOf100} / 100 — similarity to the model's higher-risk training pattern, not a flood percentage.` : "Unavailable because local elevation or terrain data could not be sampled."}</p>
+                      {risk.model && <p>Predicted class: <strong>{risk.model.classification}</strong></p>}
+                      {risk.modelMapDisagreement && <p className="model-map-disagreement">{risk.modelMapDisagreement}</p>}
+                      {risk.model && risk.model.missingFeatures.length > 0 && <p>Some current inputs were unavailable, so this score may be less reliable.</p>}
+                    </>
+                  ) : selectedModel === "cnn" ? (
+                    cnnLoading ? <p>Reading the surrounding terrain grid and running the CNN…</p>
+                    : cnnError ? <p>{cnnError}</p>
+                    : cnnModel ? (
+                      <>
+                        <p>{(cnnModel.onePercentPatternScore * 100).toFixed(1)} / 100 — similarity to the FEMA 1% training pattern, not a flood percentage.</p>
+                        <p>Predicted class: <strong>{cnnModel.classification}</strong></p>
+                        <p>This research CNN compares FEMA Minimal and 1% classes. The 0.2% class was excluded from its training.</p>
+                        {cnnModel.imputedFeatures.length > 0 && <p>Some point inputs were unavailable and imputed, so this score may be less reliable.</p>}
+                        {(cnnModel.topographyCoverage < 0.8 || cnnModel.imperviousnessCoverage < 0.8) && <p>Part of the surrounding grid lacked data, so this score may be less reliable.</p>}
+                      </>
+                    ) : <p>The CNN score is unavailable at this location.</p>
+                  ) : selectedDnnModel ? (
+                    <>
+                      <p>{selectedDnnModel.scoreOutOf100} / 100 — similarity to the FEMA 1% training pattern, not a flood percentage.</p>
+                      <p>Predicted class: <strong>{selectedDnnModel.classification}</strong></p>
+                      <p>This DNN compares FEMA minimal and 1% classes. The 0.2% class was excluded from its training.</p>
+                      {selectedDnnModel.imputedFeatures.length > 0 && <p>Some current inputs were unavailable and imputed, so this score may be less reliable.</p>}
+                    </>
+                  ) : <p>Unavailable because local elevation or terrain data could not be sampled.</p>}
                 </div>
+                <details className="result-details input-details">
+                  <summary>Show model input data <span aria-hidden="true">+</span></summary>
+                  <p>These ten point values are sampled for this location and shared by the terrain models. The CNN also reads a 64 × 64 grid with terrain and imperviousness pixels and valid-data masks.</p>
+                  <dl className="input-list">
+                    <div><dt>Elevation</dt><dd>{formatInput(risk.modelInputs.elevationMeters, " m")}</dd></div>
+                    <div><dt>Impervious surface</dt><dd>{formatInput(risk.modelInputs.imperviousnessPercent, "%")}</dd></div>
+                    <div><dt>100-year, 24-hour rainfall</dt><dd>{formatInput(risk.modelInputs.rainfallMillimeters, " mm")}</dd></div>
+                    <div><dt>Mapped water nearby</dt><dd>{risk.modelInputs.nearestWaterAvailable === null ? "Unavailable" : risk.modelInputs.nearestWaterAvailable === 1 ? "Yes" : "No"}</dd></div>
+                    <div><dt>Distance to nearest mapped water</dt><dd>{formatInput(risk.modelInputs.nearestWaterDistanceMeters, " m")}</dd></div>
+                    <div><dt>Terrain slope</dt><dd>{formatInput(risk.modelInputs.slopeDegrees, "°")}</dd></div>
+                    <div><dt>Local elevation (250 m)</dt><dd>{formatInput(risk.modelInputs.localElevation250Meters, " m")}</dd></div>
+                    <div><dt>Local elevation (500 m)</dt><dd>{formatInput(risk.modelInputs.localElevation500Meters, " m")}</dd></div>
+                    <div><dt>Flow accumulation</dt><dd>{formatInput(risk.modelInputs.flowAccumulationSquareMeters, " m²")}</dd></div>
+                    <div><dt>Height above drainage</dt><dd>{formatInput(risk.modelInputs.heightAboveDrainageMeters, " m")}</dd></div>
+                  </dl>
+                  <p>Rainfall is a NOAA design-storm value, not observed rainfall for a specific event. Models transform and standardize some values internally.</p>
+                </details>
                 <p className="disclaimer">{risk.caveat}</p>
               </>
             )}
@@ -303,7 +425,7 @@ export default function Home() {
 
         <details className="result-details">
           <summary>About this analysis <span aria-hidden="true">+</span></summary>
-          <p>The current annual, 10-year, and 20-year percentages use FEMA flood-zone thresholds. In unshaded Zone X, the less-than values are upper bounds for the mapped hazard. They do not predict whether a building floods. The separate DNN score measures similarity to a higher-risk training pattern; it is not a flood probability.</p>
+          <p>The current annual, 10-year, and 20-year percentages use FEMA flood-zone thresholds. In unshaded Zone X, the less-than values are upper bounds for the mapped hazard. They do not predict whether a building floods. The boosted terrain model, two-class terrain DNN, and two-class terrain CNN score similarity to the FEMA 1% training pattern. The 0.2% class was excluded from their training. These model outputs are not flood probabilities.</p>
         </details>
         <footer className="panel-footer">Built for exploration. Informed by local data.</footer>
       </section>

@@ -1,0 +1,22 @@
+{
+  "dataset_name": "Experimental terrain-coverage weights for existing buffered Bay training IDs",
+  "dataset_role": "training-only development weights; no new examples or labels",
+  "created_utc": "2026-11-08T21:51:56.515853+00:00",
+  "row_count": 5521,
+  "binary_row_count": 4982,
+  "partition": "training",
+  "external_rows_included": 0,
+  "class_order": [
+    "minimal",
+    "one_percent",
+    "point_two_percent"
+  ],
+  "weights_sha256": "0684e16f6e66f9c3d9acbd6a0e769e003a3f78426ebca4e3f31c0dc5b5f6a05b",
+  "recipe_sha256": "ed1259724c7b185927ef795c4a87a00da0201035ee60a60ef7cfdf976e14211a",
+  "source_sha256": {
+    "data/dnn-three-class-training-table.csv": "6104603d854d2f521cbb84a20354a0f23f39ae0ccdbcf559e2220efa5ea85cc0",
+    "data/physical-hazard-calibration.csv": "c0261b3e81e0d5ef569107af76316d1226107c00f22c200bfbaa2bab63abbffc",
+    "data/cache/terrain-cnn/three-class/partitions.json": "e60300aaec7822b267b2fb145c3188467f0938bc4a897cb7ced2adfba81f6662"
+  },
+  "limitations": "Only IDs in the actual buffered training subset may use these weights. Recompute from training-only data if splits change. Experimental; not selected for production."
+}

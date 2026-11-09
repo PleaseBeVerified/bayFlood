@@ -1,0 +1,529 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-02T06:27:57.254351+00:00",
+  "target": "FEMA mapped one_percent versus minimal; not observed storm flooding",
+  "inputFiles": [
+    "data/dnn-training-table.csv",
+    "data/physical-hazard-calibration.csv"
+  ],
+  "features": [
+    "elevation_m",
+    "current_imperviousness_pct",
+    "current_100yr_24h_rainfall_mm",
+    "nearest_water_available",
+    "log_nearest_water_distance_m",
+    "slope_degrees",
+    "local_elevation_250m",
+    "local_elevation_500m",
+    "log_flow_accumulation_m2",
+    "height_above_drainage_m"
+  ],
+  "partitionCounts": {
+    "training": 6690,
+    "validation": 1223,
+    "test": 1154
+  },
+  "trainingLabels": {
+    "minimal": 5452,
+    "one_percent": 1238
+  },
+  "candidates": [
+    {
+      "hiddenLayerSizes": [
+        32,
+        16
+      ],
+      "alpha": 0.001,
+      "batchSize": 128,
+      "learningRateInit": 0.001,
+      "classWeight": "balanced",
+      "iterations": 90,
+      "trainingSeconds": 0.5755755839636549,
+      "validationRocAuc": 0.9663055069743633,
+      "validationAveragePrecision": 0.8848126887842982,
+      "validationBrierScore": 0.07858941993786397
+    },
+    {
+      "hiddenLayerSizes": [
+        64,
+        32,
+        16
+      ],
+      "alpha": 0.001,
+      "batchSize": 128,
+      "learningRateInit": 0.001,
+      "classWeight": "balanced",
+      "iterations": 84,
+      "trainingSeconds": 0.7978338329703547,
+      "validationRocAuc": 0.9677302393038434,
+      "validationAveragePrecision": 0.8669275771765382,
+      "validationBrierScore": 0.07381969750486539
+    },
+    {
+      "hiddenLayerSizes": [
+        64,
+        64,
+        32
+      ],
+      "alpha": 0.01,
+      "batchSize": 128,
+      "learningRateInit": 0.001,
+      "classWeight": "balanced",
+      "iterations": 73,
+      "trainingSeconds": 0.8177885839832015,
+      "validationRocAuc": 0.971176897154801,
+      "validationAveragePrecision": 0.8986374937576005,
+      "validationBrierScore": 0.06985321715851461
+    },
+    {
+      "hiddenLayerSizes": [
+        16,
+        8
+      ],
+      "alpha": 0.01,
+      "batchSize": 128,
+      "learningRateInit": 0.001,
+      "classWeight": "balanced",
+      "iterations": 128,
+      "trainingSeconds": 0.7314612910267897,
+      "validationRocAuc": 0.9625943778526639,
+      "validationAveragePrecision": 0.8714286041396682,
+      "validationBrierScore": 0.08463442213824443
+    },
+    {
+      "hiddenLayerSizes": [
+        32,
+        16
+      ],
+      "alpha": 0.01,
+      "batchSize": 128,
+      "learningRateInit": 0.001,
+      "classWeight": "balanced",
+      "iterations": 100,
+      "trainingSeconds": 0.6327649999875575,
+      "validationRocAuc": 0.9671714371027599,
+      "validationAveragePrecision": 0.8895124251295538,
+      "validationBrierScore": 0.07570525080000946
+    },
+    {
+      "hiddenLayerSizes": [
+        32,
+        32,
+        16
+      ],
+      "alpha": 0.01,
+      "batchSize": 128,
+      "learningRateInit": 0.001,
+      "classWeight": "balanced",
+      "iterations": 134,
+      "trainingSeconds": 1.062900457996875,
+      "validationRocAuc": 0.97175702768417,
+      "validationAveragePrecision": 0.9010437620398037,
+      "validationBrierScore": 0.06513347007205157
+    },
+    {
+      "hiddenLayerSizes": [
+        64,
+        32
+      ],
+      "alpha": 0.01,
+      "batchSize": 128,
+      "learningRateInit": 0.001,
+      "classWeight": "balanced",
+      "iterations": 78,
+      "trainingSeconds": 0.6088329170015641,
+      "validationRocAuc": 0.9679563195836711,
+      "validationAveragePrecision": 0.894428647758275,
+      "validationBrierScore": 0.07397549223840645
+    },
+    {
+      "hiddenLayerSizes": [
+        64,
+        32,
+        16
+      ],
+      "alpha": 0.01,
+      "batchSize": 128,
+      "learningRateInit": 0.001,
+      "classWeight": "balanced",
+      "iterations": 118,
+      "trainingSeconds": 1.110211832972709,
+      "validationRocAuc": 0.9706138292880603,
+      "validationAveragePrecision": 0.8824534218458954,
+      "validationBrierScore": 0.06934476287535367
+    },
+    {
+      "hiddenLayerSizes": [
+        64,
+        64,
+        32
+      ],
+      "alpha": 0.001,
+      "batchSize": 128,
+      "learningRateInit": 0.001,
+      "classWeight": "balanced",
+      "iterations": 105,
+      "trainingSeconds": 1.169712333008647,
+      "validationRocAuc": 0.969073923985838,
+      "validationAveragePrecision": 0.887509834722668,
+      "validationBrierScore": 0.07094724781261832
+    },
+    {
+      "hiddenLayerSizes": [
+        64,
+        64,
+        32
+      ],
+      "alpha": 0.1,
+      "batchSize": 128,
+      "learningRateInit": 0.001,
+      "classWeight": "balanced",
+      "iterations": 86,
+      "trainingSeconds": 0.9549931249930523,
+      "validationRocAuc": 0.969445036898008,
+      "validationAveragePrecision": 0.8976968405282282,
+      "validationBrierScore": 0.07083012731172607
+    },
+    {
+      "hiddenLayerSizes": [
+        128,
+        64,
+        32
+      ],
+      "alpha": 0.01,
+      "batchSize": 128,
+      "learningRateInit": 0.001,
+      "classWeight": "balanced",
+      "iterations": 75,
+      "trainingSeconds": 1.0456457500113174,
+      "validationRocAuc": 0.9713688521093717,
+      "validationAveragePrecision": 0.8969299698234636,
+      "validationBrierScore": 0.06410429227412555
+    },
+    {
+      "hiddenLayerSizes": [
+        128,
+        64,
+        32
+      ],
+      "alpha": 0.1,
+      "batchSize": 128,
+      "learningRateInit": 0.001,
+      "classWeight": "balanced",
+      "iterations": 56,
+      "trainingSeconds": 0.7780583329731598,
+      "validationRocAuc": 0.9692957386000085,
+      "validationAveragePrecision": 0.8964368351353877,
+      "validationBrierScore": 0.07001315614397051
+    },
+    {
+      "hiddenLayerSizes": [
+        64,
+        64,
+        64,
+        32
+      ],
+      "alpha": 0.01,
+      "batchSize": 128,
+      "learningRateInit": 0.001,
+      "classWeight": "balanced",
+      "iterations": 95,
+      "trainingSeconds": 1.4029410000075586,
+      "validationRocAuc": 0.9675212216866443,
+      "validationAveragePrecision": 0.8495076716244584,
+      "validationBrierScore": 0.07787237393035756
+    },
+    {
+      "hiddenLayerSizes": [
+        64,
+        64,
+        32
+      ],
+      "alpha": 0.01,
+      "batchSize": 128,
+      "learningRateInit": 0.0003,
+      "classWeight": "balanced",
+      "iterations": 133,
+      "trainingSeconds": 1.4827589589986019,
+      "validationRocAuc": 0.9696284605212644,
+      "validationAveragePrecision": 0.8964855213183469,
+      "validationBrierScore": 0.07272111561013045
+    },
+    {
+      "hiddenLayerSizes": [
+        128,
+        64,
+        32
+      ],
+      "alpha": 0.01,
+      "batchSize": 128,
+      "learningRateInit": 0.0003,
+      "classWeight": "balanced",
+      "iterations": 93,
+      "trainingSeconds": 1.2876083749579266,
+      "validationRocAuc": 0.9713091327901718,
+      "validationAveragePrecision": 0.8990345610214989,
+      "validationBrierScore": 0.07320557258256631
+    },
+    {
+      "hiddenLayerSizes": [
+        64,
+        64,
+        32
+      ],
+      "alpha": 0.01,
+      "batchSize": 256,
+      "learningRateInit": 0.001,
+      "classWeight": "balanced",
+      "iterations": 160,
+      "trainingSeconds": 1.3129120410303585,
+      "validationRocAuc": 0.9702811073668045,
+      "validationAveragePrecision": 0.8581249896209527,
+      "validationBrierScore": 0.06428947564214413
+    },
+    {
+      "hiddenLayerSizes": [
+        64,
+        64,
+        32
+      ],
+      "alpha": 0.01,
+      "batchSize": 128,
+      "learningRateInit": 0.001,
+      "classWeight": "none",
+      "iterations": 49,
+      "trainingSeconds": 0.5357373749720864,
+      "validationRocAuc": 0.9687582647272107,
+      "validationAveragePrecision": 0.8908507184880216,
+      "validationBrierScore": 0.057214680886660846
+    },
+    {
+      "hiddenLayerSizes": [
+        128,
+        64,
+        32
+      ],
+      "alpha": 0.01,
+      "batchSize": 128,
+      "learningRateInit": 0.001,
+      "classWeight": "none",
+      "iterations": 82,
+      "trainingSeconds": 1.1186462920159101,
+      "validationRocAuc": 0.972733865119652,
+      "validationAveragePrecision": 0.9009319835081425,
+      "validationBrierScore": 0.05405516415140951
+    }
+  ],
+  "selectedCandidate": {
+    "hiddenLayerSizes": [
+      128,
+      64,
+      32
+    ],
+    "alpha": 0.01,
+    "batchSize": 128,
+    "learningRateInit": 0.001,
+    "classWeight": "none",
+    "iterations": 82,
+    "trainingSeconds": 1.1186462920159101,
+    "validationRocAuc": 0.972733865119652,
+    "validationAveragePrecision": 0.9009319835081425,
+    "validationBrierScore": 0.05405516415140951
+  },
+  "selectionCriterion": "highest geographic-validation ROC AUC, then average precision",
+  "decisionThreshold": 0.115,
+  "validationMetrics": {
+    "accuracy": 0.9084219133278822,
+    "balancedAccuracy": 0.9160623640319072,
+    "precision": 0.6993670886075949,
+    "recall": 0.9285714285714286,
+    "f1": 0.7978339350180506,
+    "rocAuc": 0.972733865119652,
+    "averagePrecision": 0.9009319835081425,
+    "brierScore": 0.05405516415140951,
+    "confusionMatrix": [
+      [
+        890,
+        95
+      ],
+      [
+        17,
+        221
+      ]
+    ]
+  },
+  "testMetrics": {
+    "accuracy": 0.9098786828422877,
+    "balancedAccuracy": 0.928344568317345,
+    "precision": 0.7780373831775701,
+    "recall": 0.9736842105263158,
+    "f1": 0.8649350649350649,
+    "rocAuc": 0.9886065739060294,
+    "averagePrecision": 0.9764851820635145,
+    "brierScore": 0.0367450450592661,
+    "confusionMatrix": [
+      [
+        717,
+        95
+      ],
+      [
+        9,
+        333
+      ]
+    ]
+  },
+  "exportMaximumProbabilityError": 0.0,
+  "referenceCases": [
+    {
+      "inputs": [
+        220.4,
+        0.0,
+        168.148,
+        1.0,
+        4.990432586778736,
+        24.768,
+        22.359,
+        6.195,
+        5.993961427306569,
+        79.056
+      ],
+      "probability": 1.1058757832409897e-12
+    },
+    {
+      "inputs": [
+        19.3,
+        61.0,
+        114.554,
+        1.0,
+        5.641907070938114,
+        0.915,
+        -0.008,
+        0.629,
+        5.303304908059076,
+        6.739
+      ],
+      "probability": 0.12689321904876466
+    },
+    {
+      "inputs": [
+        328.3,
+        0.0,
+        178.562,
+        1.0,
+        5.375278407684165,
+        17.486,
+        -15.817,
+        -23.964,
+        9.918425424900335,
+        36.865
+      ],
+      "probability": 1.0149947340954945e-05
+    },
+    {
+      "inputs": [
+        171.3,
+        27.0,
+        158.242,
+        1.0,
+        4.127134385045092,
+        17.483,
+        -17.503,
+        -30.668,
+        7.496097345175956,
+        13.302
+      ],
+      "probability": 0.004465973452400711
+    },
+    {
+      "inputs": [
+        256.9,
+        0.0,
+        169.926,
+        1.0,
+        4.990432586778736,
+        24.061,
+        6.513,
+        7.248,
+        7.313886831633462,
+        89.671
+      ],
+      "probability": 1.7767930899012785e-13
+    },
+    {
+      "inputs": [
+        25.0,
+        60.0,
+        150.0,
+        1.0,
+        null,
+        2.0,
+        0.0,
+        0.0,
+        6.2166061010848646,
+        5.0
+      ],
+      "probability": 0.02366791548676491
+    }
+  ],
+  "comparisons": {
+    "fiveInputDnn": {
+      "accuracy": 0.901213171577123,
+      "balancedAccuracy": 0.9204944833347737,
+      "precision": 0.7626728110599078,
+      "recall": 0.9678362573099415,
+      "f1": 0.8530927835051546,
+      "rocAuc": 0.9810661711750641,
+      "averagePrecision": 0.9639161534557085,
+      "brierScore": 0.10324644344583842,
+      "confusionMatrix": [
+        [
+          709,
+          103
+        ],
+        [
+          11,
+          331
+        ]
+      ]
+    },
+    "initialTenInputDnn": {
+      "accuracy": 0.8986135181975736,
+      "balancedAccuracy": 0.9178009679370841,
+      "precision": 0.7586206896551724,
+      "recall": 0.9649122807017544,
+      "f1": 0.8494208494208494,
+      "rocAuc": 0.9884157232160862,
+      "averagePrecision": 0.9774199727779571,
+      "brierScore": 0.058799169973458125,
+      "confusionMatrix": [
+        [
+          707,
+          105
+        ],
+        [
+          12,
+          330
+        ]
+      ]
+    },
+    "tenInputBoosted": {
+      "accuracy": 0.9150779896013865,
+      "balancedAccuracy": 0.9354240486273154,
+      "precision": 0.7837209302325582,
+      "recall": 0.9853801169590644,
+      "f1": 0.8730569948186528,
+      "rocAuc": 0.9935146774983437,
+      "brierScore": 0.026305414736270905,
+      "confusionMatrix": [
+        [
+          719,
+          93
+        ],
+        [
+          5,
+          337
+        ]
+      ]
+    }
+  }
+}

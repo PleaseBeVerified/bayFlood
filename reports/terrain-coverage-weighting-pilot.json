@@ -1,0 +1,4404 @@
+{
+  "complete": true,
+  "generatedAt": "2026-11-08T21:52:02.718380+00:00",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "pairedRuns": 42,
+  "runs": [
+    {
+      "model": "binary_five_input_boosted",
+      "seed": 42,
+      "variant": "control",
+      "trainingRows": 4982,
+      "validationThreshold": 0.06449107080698013,
+      "trainingSeconds": 0.12045849999412894,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.8118466898954704,
+          "macroF1": 0.6852340984932754,
+          "confusionMatrix": [
+            [
+              579,
+              282
+            ],
+            [
+              10,
+              195
+            ]
+          ],
+          "rocAuc": 0.9453754851137361
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.7774032783107193,
+          "macroF1": 0.6880209472430804,
+          "confusionMatrix": [
+            [
+              460,
+              352
+            ],
+            [
+              4,
+              338
+            ]
+          ],
+          "rocAuc": 0.9864207933627172
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.7666666666666666,
+          "macroF1": 0.7588535207385972,
+          "confusionMatrix": [
+            [
+              142,
+              8
+            ],
+            [
+              62,
+              88
+            ]
+          ],
+          "rocAuc": 0.9049333333333334
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.5833333333333334,
+          "macroF1": 0.4957983193277311,
+          "confusionMatrix": [
+            [
+              25,
+              125
+            ],
+            [
+              0,
+              150
+            ]
+          ],
+          "rocAuc": 0.8859999999999999
+        }
+      }
+    },
+    {
+      "model": "binary_five_input_boosted",
+      "seed": 42,
+      "variant": "coverage",
+      "trainingRows": 4982,
+      "validationThreshold": 0.10450099408626556,
+      "trainingSeconds": 0.10597879200940952,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.8292682926829268,
+          "macroF1": 0.7105662410877135,
+          "confusionMatrix": [
+            [
+              609,
+              252
+            ],
+            [
+              10,
+              195
+            ]
+          ],
+          "rocAuc": 0.9406164131327723
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.8108849710483104,
+          "macroF1": 0.7313984545858885,
+          "confusionMatrix": [
+            [
+              512,
+              300
+            ],
+            [
+              3,
+              339
+            ]
+          ],
+          "rocAuc": 0.9839685420447671
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.6933333333333334,
+          "macroF1": 0.69245854876092,
+          "confusionMatrix": [
+            [
+              112,
+              38
+            ],
+            [
+              54,
+              96
+            ]
+          ],
+          "rocAuc": 0.8333555555555556
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.6033333333333334,
+          "macroF1": 0.5404163287374966,
+          "confusionMatrix": [
+            [
+              35,
+              115
+            ],
+            [
+              4,
+              146
+            ]
+          ],
+          "rocAuc": 0.8814222222222223
+        }
+      }
+    },
+    {
+      "model": "binary_five_input_boosted",
+      "seed": 43,
+      "variant": "control",
+      "trainingRows": 4982,
+      "validationThreshold": 0.07713168114423752,
+      "trainingSeconds": 0.10848804202396423,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.8292682926829268,
+          "macroF1": 0.7105662410877135,
+          "confusionMatrix": [
+            [
+              609,
+              252
+            ],
+            [
+              10,
+              195
+            ]
+          ],
+          "rocAuc": 0.9476643721141044
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.8001865295422463,
+          "macroF1": 0.7182209600936901,
+          "confusionMatrix": [
+            [
+              497,
+              315
+            ],
+            [
+              4,
+              338
+            ]
+          ],
+          "rocAuc": 0.9867628842220493
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.7633333333333334,
+          "macroF1": 0.7544696891102121,
+          "confusionMatrix": [
+            [
+              143,
+              7
+            ],
+            [
+              64,
+              86
+            ]
+          ],
+          "rocAuc": 0.9149555555555556
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.5833333333333334,
+          "macroF1": 0.4957983193277311,
+          "confusionMatrix": [
+            [
+              25,
+              125
+            ],
+            [
+              0,
+              150
+            ]
+          ],
+          "rocAuc": 0.8962222222222223
+        }
+      }
+    },
+    {
+      "model": "binary_five_input_boosted",
+      "seed": 43,
+      "variant": "coverage",
+      "trainingRows": 4982,
+      "validationThreshold": 0.09255313128232956,
+      "trainingSeconds": 0.10884424997493625,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.8182346109175378,
+          "macroF1": 0.6944440194179313,
+          "confusionMatrix": [
+            [
+              590,
+              271
+            ],
+            [
+              10,
+              195
+            ]
+          ],
+          "rocAuc": 0.9422084360216424
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.7862544291763892,
+          "macroF1": 0.6987717908383921,
+          "confusionMatrix": [
+            [
+              472,
+              340
+            ],
+            [
+              3,
+              339
+            ]
+          ],
+          "rocAuc": 0.9842350128194048
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.6966666666666667,
+          "macroF1": 0.6965014285555469,
+          "confusionMatrix": [
+            [
+              108,
+              42
+            ],
+            [
+              49,
+              101
+            ]
+          ],
+          "rocAuc": 0.8432222222222222
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.5966666666666667,
+          "macroF1": 0.5299814841190714,
+          "confusionMatrix": [
+            [
+              33,
+              117
+            ],
+            [
+              4,
+              146
+            ]
+          ],
+          "rocAuc": 0.8838444444444445
+        }
+      }
+    },
+    {
+      "model": "binary_five_input_boosted",
+      "seed": 44,
+      "variant": "control",
+      "trainingRows": 4982,
+      "validationThreshold": 0.07291587442159653,
+      "trainingSeconds": 0.1081731669837609,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.8234610917537746,
+          "macroF1": 0.7020449267320221,
+          "confusionMatrix": [
+            [
+              599,
+              262
+            ],
+            [
+              10,
+              195
+            ]
+          ],
+          "rocAuc": 0.947075153678366
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.8001865295422463,
+          "macroF1": 0.7182209600936901,
+          "confusionMatrix": [
+            [
+              497,
+              315
+            ],
+            [
+              4,
+              338
+            ]
+          ],
+          "rocAuc": 0.9867556823092214
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.76,
+          "macroF1": 0.7513354208878247,
+          "confusionMatrix": [
+            [
+              142,
+              8
+            ],
+            [
+              64,
+              86
+            ]
+          ],
+          "rocAuc": 0.9126222222222222
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.5833333333333334,
+          "macroF1": 0.4957983193277311,
+          "confusionMatrix": [
+            [
+              25,
+              125
+            ],
+            [
+              0,
+              150
+            ]
+          ],
+          "rocAuc": 0.9092444444444445
+        }
+      }
+    },
+    {
+      "model": "binary_five_input_boosted",
+      "seed": 44,
+      "variant": "coverage",
+      "trainingRows": 4982,
+      "validationThreshold": 0.09596776217222214,
+      "trainingSeconds": 0.10912379197543487,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.8252032520325203,
+          "macroF1": 0.7045926319682458,
+          "confusionMatrix": [
+            [
+              602,
+              259
+            ],
+            [
+              10,
+              195
+            ]
+          ],
+          "rocAuc": 0.9418146794708366
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.8010327542995419,
+          "macroF1": 0.7183572073964074,
+          "confusionMatrix": [
+            [
+              496,
+              316
+            ],
+            [
+              3,
+              339
+            ]
+          ],
+          "rocAuc": 0.983973943479388
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.7066666666666667,
+          "macroF1": 0.7063403781979978,
+          "confusionMatrix": [
+            [
+              111,
+              39
+            ],
+            [
+              49,
+              101
+            ]
+          ],
+          "rocAuc": 0.8411777777777778
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.5866666666666667,
+          "macroF1": 0.5110153004889847,
+          "confusionMatrix": [
+            [
+              29,
+              121
+            ],
+            [
+              3,
+              147
+            ]
+          ],
+          "rocAuc": 0.8835555555555555
+        }
+      }
+    },
+    {
+      "model": "binary_terrain_boosted",
+      "seed": 42,
+      "variant": "control",
+      "trainingRows": 4982,
+      "validationThreshold": 0.07943340390920639,
+      "trainingSeconds": 0.12447962502483279,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.8908246225319396,
+          "macroF1": 0.8079625292740047,
+          "confusionMatrix": [
+            [
+              715,
+              146
+            ],
+            [
+              10,
+              195
+            ]
+          ],
+          "rocAuc": 0.974587122177842
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.9106386656295913,
+          "macroF1": 0.8665722010248538,
+          "confusionMatrix": [
+            [
+              674,
+              138
+            ],
+            [
+              3,
+              339
+            ]
+          ],
+          "rocAuc": 0.9916889925964337
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.8166666666666667,
+          "macroF1": 0.8128211818357137,
+          "confusionMatrix": [
+            [
+              144,
+              6
+            ],
+            [
+              49,
+              101
+            ]
+          ],
+          "rocAuc": 0.9744444444444444
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.5966666666666667,
+          "macroF1": 0.5183057100014596,
+          "confusionMatrix": [
+            [
+              29,
+              121
+            ],
+            [
+              0,
+              150
+            ]
+          ],
+          "rocAuc": 0.8939999999999999
+        }
+      }
+    },
+    {
+      "model": "binary_terrain_boosted",
+      "seed": 42,
+      "variant": "coverage",
+      "trainingRows": 4982,
+      "validationThreshold": 0.1014341339468956,
+      "trainingSeconds": 0.13757533300668,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.9047619047619048,
+          "macroF1": 0.8325694295709288,
+          "confusionMatrix": [
+            [
+              739,
+              122
+            ],
+            [
+              10,
+              195
+            ]
+          ],
+          "rocAuc": 0.9735871505056515
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.91471854924668,
+          "macroF1": 0.8734368441754743,
+          "confusionMatrix": [
+            [
+              683,
+              129
+            ],
+            [
+              4,
+              338
+            ]
+          ],
+          "rocAuc": 0.9918222279837524
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.9566666666666667,
+          "macroF1": 0.9566661851798354,
+          "confusionMatrix": [
+            [
+              143,
+              7
+            ],
+            [
+              6,
+              144
+            ]
+          ],
+          "rocAuc": 0.9852444444444444
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.5933333333333333,
+          "macroF1": 0.5158730158730159,
+          "confusionMatrix": [
+            [
+              29,
+              121
+            ],
+            [
+              1,
+              149
+            ]
+          ],
+          "rocAuc": 0.8970666666666667
+        }
+      }
+    },
+    {
+      "model": "binary_terrain_boosted",
+      "seed": 43,
+      "variant": "control",
+      "trainingRows": 4982,
+      "validationThreshold": 0.08362827450037003,
+      "trainingSeconds": 0.13458258303580806,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.8948896631823461,
+          "macroF1": 0.8150139699776504,
+          "confusionMatrix": [
+            [
+              722,
+              139
+            ],
+            [
+              10,
+              195
+            ]
+          ],
+          "rocAuc": 0.9744256536642021
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.9116397315126898,
+          "macroF1": 0.869048676277592,
+          "confusionMatrix": [
+            [
+              678,
+              134
+            ],
+            [
+              4,
+              338
+            ]
+          ],
+          "rocAuc": 0.9919590643274854
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.8266666666666667,
+          "macroF1": 0.8235294117647058,
+          "confusionMatrix": [
+            [
+              144,
+              6
+            ],
+            [
+              46,
+              104
+            ]
+          ],
+          "rocAuc": 0.9748
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.5966666666666667,
+          "macroF1": 0.5183057100014596,
+          "confusionMatrix": [
+            [
+              29,
+              121
+            ],
+            [
+              0,
+              150
+            ]
+          ],
+          "rocAuc": 0.8950666666666667
+        }
+      }
+    },
+    {
+      "model": "binary_terrain_boosted",
+      "seed": 43,
+      "variant": "coverage",
+      "trainingRows": 4982,
+      "validationThreshold": 0.10478052496910095,
+      "trainingSeconds": 0.12466745800338686,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.9036004645760742,
+          "macroF1": 0.8304707379134859,
+          "confusionMatrix": [
+            [
+              737,
+              124
+            ],
+            [
+              10,
+              195
+            ]
+          ],
+          "rocAuc": 0.9731395711169655
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.9122554950594878,
+          "macroF1": 0.8699247594482633,
+          "confusionMatrix": [
+            [
+              679,
+              133
+            ],
+            [
+              4,
+              338
+            ]
+          ],
+          "rocAuc": 0.9915413533834586
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.9733333333333334,
+          "macroF1": 0.9733321480954709,
+          "confusionMatrix": [
+            [
+              145,
+              5
+            ],
+            [
+              3,
+              147
+            ]
+          ],
+          "rocAuc": 0.9875555555555555
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.5933333333333333,
+          "macroF1": 0.5158730158730159,
+          "confusionMatrix": [
+            [
+              29,
+              121
+            ],
+            [
+              1,
+              149
+            ]
+          ],
+          "rocAuc": 0.8783555555555556
+        }
+      }
+    },
+    {
+      "model": "binary_terrain_boosted",
+      "seed": 44,
+      "variant": "control",
+      "trainingRows": 4982,
+      "validationThreshold": 0.08153104037046432,
+      "trainingSeconds": 0.12248954200185835,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.8948896631823461,
+          "macroF1": 0.8150139699776504,
+          "confusionMatrix": [
+            [
+              722,
+              139
+            ],
+            [
+              10,
+              195
+            ]
+          ],
+          "rocAuc": 0.9744653125973769
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.9159500763402759,
+          "macroF1": 0.8751976171193595,
+          "confusionMatrix": [
+            [
+              685,
+              127
+            ],
+            [
+              4,
+              338
+            ]
+          ],
+          "rocAuc": 0.9917105983349178
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.8233333333333333,
+          "macroF1": 0.8199707877127231,
+          "confusionMatrix": [
+            [
+              144,
+              6
+            ],
+            [
+              47,
+              103
+            ]
+          ],
+          "rocAuc": 0.9748888888888889
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.5966666666666667,
+          "macroF1": 0.5183057100014596,
+          "confusionMatrix": [
+            [
+              29,
+              121
+            ],
+            [
+              0,
+              150
+            ]
+          ],
+          "rocAuc": 0.8851111111111111
+        }
+      }
+    },
+    {
+      "model": "binary_terrain_boosted",
+      "seed": 44,
+      "variant": "coverage",
+      "trainingRows": 4982,
+      "validationThreshold": 0.11329364031553268,
+      "trainingSeconds": 0.12252725003054366,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.9065040650406504,
+          "macroF1": 0.8357349426086458,
+          "confusionMatrix": [
+            [
+              742,
+              119
+            ],
+            [
+              10,
+              195
+            ]
+          ],
+          "rocAuc": 0.9737174584289396
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.9194141964105667,
+          "macroF1": 0.881246161762021,
+          "confusionMatrix": [
+            [
+              693,
+              119
+            ],
+            [
+              5,
+              337
+            ]
+          ],
+          "rocAuc": 0.9913973151268977
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.9533333333333334,
+          "macroF1": 0.9533250355618776,
+          "confusionMatrix": [
+            [
+              145,
+              5
+            ],
+            [
+              9,
+              141
+            ]
+          ],
+          "rocAuc": 0.9859555555555556
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.6033333333333334,
+          "macroF1": 0.5350048844024748,
+          "confusionMatrix": [
+            [
+              33,
+              117
+            ],
+            [
+              2,
+              148
+            ]
+          ],
+          "rocAuc": 0.8851111111111111
+        }
+      }
+    },
+    {
+      "model": "binary_five_input_dnn",
+      "seed": 42,
+      "variant": "control",
+      "trainingRows": 4982,
+      "validationThreshold": 0.04201859640625327,
+      "trainingSeconds": 3.0942062080139294,
+      "fitWarnings": [
+        "Stochastic Optimizer: Maximum iterations (500) reached and the optimization hasn't converged yet."
+      ],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.8420441347270615,
+          "macroF1": 0.7296303341576311,
+          "confusionMatrix": [
+            [
+              631,
+              230
+            ],
+            [
+              10,
+              195
+            ]
+          ],
+          "rocAuc": 0.9431630831987763
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.8211224901333793,
+          "macroF1": 0.7459263156187064,
+          "confusionMatrix": [
+            [
+              531,
+              281
+            ],
+            [
+              4,
+              338
+            ]
+          ],
+          "rocAuc": 0.9837488837035118
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.6433333333333333,
+          "macroF1": 0.5956720535073246,
+          "confusionMatrix": [
+            [
+              148,
+              2
+            ],
+            [
+              105,
+              45
+            ]
+          ],
+          "rocAuc": 0.8487555555555556
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.5866666666666667,
+          "macroF1": 0.5015008576329331,
+          "confusionMatrix": [
+            [
+              26,
+              124
+            ],
+            [
+              0,
+              150
+            ]
+          ],
+          "rocAuc": 0.930088888888889
+        }
+      }
+    },
+    {
+      "model": "binary_five_input_dnn",
+      "seed": 42,
+      "variant": "coverage",
+      "trainingRows": 4982,
+      "validationThreshold": 0.04439374218411774,
+      "trainingSeconds": 2.079162959009409,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.7961672473867596,
+          "macroF1": 0.6629481210854915,
+          "confusionMatrix": [
+            [
+              552,
+              309
+            ],
+            [
+              10,
+              195
+            ]
+          ],
+          "rocAuc": 0.9302512676694711
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.7633163368190592,
+          "macroF1": 0.6661250420193459,
+          "confusionMatrix": [
+            [
+              430,
+              382
+            ],
+            [
+              1,
+              341
+            ]
+          ],
+          "rocAuc": 0.9732701005387031
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.77,
+          "macroF1": 0.7699360933592665,
+          "confusionMatrix": [
+            [
+              118,
+              32
+            ],
+            [
+              37,
+              113
+            ]
+          ],
+          "rocAuc": 0.8754222222222222
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.6466666666666667,
+          "macroF1": 0.5962622517901579,
+          "confusionMatrix": [
+            [
+              44,
+              106
+            ],
+            [
+              0,
+              150
+            ]
+          ],
+          "rocAuc": 0.932
+        }
+      }
+    },
+    {
+      "model": "binary_five_input_dnn",
+      "seed": 43,
+      "variant": "control",
+      "trainingRows": 4982,
+      "validationThreshold": 0.0584901795052186,
+      "trainingSeconds": 2.7390260829706676,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.8484320557491289,
+          "macroF1": 0.7393467706372452,
+          "confusionMatrix": [
+            [
+              642,
+              219
+            ],
+            [
+              10,
+              195
+            ]
+          ],
+          "rocAuc": 0.9452876689045636
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.844597124996399,
+          "macroF1": 0.7742149468966188,
+          "confusionMatrix": [
+            [
+              562,
+              250
+            ],
+            [
+              1,
+              341
+            ]
+          ],
+          "rocAuc": 0.9883329012185637
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.7066666666666667,
+          "macroF1": 0.6876626756897448,
+          "confusionMatrix": [
+            [
+              143,
+              7
+            ],
+            [
+              81,
+              69
+            ]
+          ],
+          "rocAuc": 0.8686666666666667
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.67,
+          "macroF1": 0.6296711929076422,
+          "confusionMatrix": [
+            [
+              51,
+              99
+            ],
+            [
+              0,
+              150
+            ]
+          ],
+          "rocAuc": 0.9156444444444445
+        }
+      }
+    },
+    {
+      "model": "binary_five_input_dnn",
+      "seed": 43,
+      "variant": "coverage",
+      "trainingRows": 4982,
+      "validationThreshold": 0.07231308390994921,
+      "trainingSeconds": 1.3843464590026997,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.8333333333333333,
+          "macroF1": 0.7165824744686508,
+          "confusionMatrix": [
+            [
+              616,
+              245
+            ],
+            [
+              10,
+              195
+            ]
+          ],
+          "rocAuc": 0.9350896575167843
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.812962722899202,
+          "macroF1": 0.733171402080371,
+          "confusionMatrix": [
+            [
+              513,
+              299
+            ],
+            [
+              2,
+              340
+            ]
+          ],
+          "rocAuc": 0.97494094431481
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.7766666666666666,
+          "macroF1": 0.7759472082576273,
+          "confusionMatrix": [
+            [
+              125,
+              25
+            ],
+            [
+              42,
+              108
+            ]
+          ],
+          "rocAuc": 0.8799111111111111
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.5433333333333333,
+          "macroF1": 0.423004029144614,
+          "confusionMatrix": [
+            [
+              13,
+              137
+            ],
+            [
+              0,
+              150
+            ]
+          ],
+          "rocAuc": 0.9165333333333333
+        }
+      }
+    },
+    {
+      "model": "binary_five_input_dnn",
+      "seed": 44,
+      "variant": "control",
+      "trainingRows": 4982,
+      "validationThreshold": 0.04902405896595652,
+      "trainingSeconds": 2.337745791010093,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.8373983739837398,
+          "macroF1": 0.7226439719169258,
+          "confusionMatrix": [
+            [
+              623,
+              238
+            ],
+            [
+              10,
+              195
+            ]
+          ],
+          "rocAuc": 0.9449477351916376
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.8211981102180739,
+          "macroF1": 0.7431065599467581,
+          "confusionMatrix": [
+            [
+              524,
+              288
+            ],
+            [
+              1,
+              341
+            ]
+          ],
+          "rocAuc": 0.9888982513755654
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.6733333333333333,
+          "macroF1": 0.6606491527771365,
+          "confusionMatrix": [
+            [
+              130,
+              20
+            ],
+            [
+              78,
+              72
+            ]
+          ],
+          "rocAuc": 0.7936
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.62,
+          "macroF1": 0.5558672276764843,
+          "confusionMatrix": [
+            [
+              36,
+              114
+            ],
+            [
+              0,
+              150
+            ]
+          ],
+          "rocAuc": 0.9408
+        }
+      }
+    },
+    {
+      "model": "binary_five_input_dnn",
+      "seed": 44,
+      "variant": "coverage",
+      "trainingRows": 4982,
+      "validationThreshold": 0.06973022397501448,
+      "trainingSeconds": 2.169454915972892,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.8339140534262486,
+          "macroF1": 0.7174455686903092,
+          "confusionMatrix": [
+            [
+              617,
+              244
+            ],
+            [
+              10,
+              195
+            ]
+          ],
+          "rocAuc": 0.935814849437693
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.8242769279520641,
+          "macroF1": 0.7471898498270557,
+          "confusionMatrix": [
+            [
+              529,
+              283
+            ],
+            [
+              1,
+              341
+            ]
+          ],
+          "rocAuc": 0.9867412784835654
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.63,
+          "macroF1": 0.6067130422458693,
+          "confusionMatrix": [
+            [
+              131,
+              19
+            ],
+            [
+              92,
+              58
+            ]
+          ],
+          "rocAuc": 0.6188
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.5733333333333334,
+          "macroF1": 0.4783742664638122,
+          "confusionMatrix": [
+            [
+              22,
+              128
+            ],
+            [
+              0,
+              150
+            ]
+          ],
+          "rocAuc": 0.941511111111111
+        }
+      }
+    },
+    {
+      "model": "binary_terrain_dnn",
+      "seed": 42,
+      "variant": "control",
+      "trainingRows": 4982,
+      "validationThreshold": 0.070012361027845,
+      "trainingSeconds": 1.685998540953733,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.9163763066202091,
+          "macroF1": 0.8540903869185833,
+          "confusionMatrix": [
+            [
+              759,
+              102
+            ],
+            [
+              10,
+              195
+            ]
+          ],
+          "rocAuc": 0.9723520580153536
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.9147977702877885,
+          "macroF1": 0.8788978172223555,
+          "confusionMatrix": [
+            [
+              695,
+              117
+            ],
+            [
+              9,
+              333
+            ]
+          ],
+          "rocAuc": 0.9845915075043932
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.6733333333333333,
+          "macroF1": 0.6360665478312537,
+          "confusionMatrix": [
+            [
+              149,
+              1
+            ],
+            [
+              97,
+              53
+            ]
+          ],
+          "rocAuc": 0.9835111111111111
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.6633333333333333,
+          "macroF1": 0.6202959936841315,
+          "confusionMatrix": [
+            [
+              49,
+              101
+            ],
+            [
+              0,
+              150
+            ]
+          ],
+          "rocAuc": 0.9112888888888889
+        }
+      }
+    },
+    {
+      "model": "binary_terrain_dnn",
+      "seed": 42,
+      "variant": "coverage",
+      "trainingRows": 4982,
+      "validationThreshold": 0.011945373634984881,
+      "trainingSeconds": 3.2464471249841154,
+      "fitWarnings": [
+        "Stochastic Optimizer: Maximum iterations (500) reached and the optimization hasn't converged yet."
+      ],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.8972125435540069,
+          "macroF1": 0.8190883607699015,
+          "confusionMatrix": [
+            [
+              726,
+              135
+            ],
+            [
+              10,
+              195
+            ]
+          ],
+          "rocAuc": 0.964465595875471
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.8930912050240544,
+          "macroF1": 0.8460477208463894,
+          "confusionMatrix": [
+            [
+              655,
+              157
+            ],
+            [
+              7,
+              335
+            ]
+          ],
+          "rocAuc": 0.9778037046639588
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.6433333333333333,
+          "macroF1": 0.5935422602089269,
+          "confusionMatrix": [
+            [
+              149,
+              1
+            ],
+            [
+              106,
+              44
+            ]
+          ],
+          "rocAuc": 0.9572444444444445
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.6233333333333333,
+          "macroF1": 0.5610570884748353,
+          "confusionMatrix": [
+            [
+              37,
+              113
+            ],
+            [
+              0,
+              150
+            ]
+          ],
+          "rocAuc": 0.8598666666666668
+        }
+      }
+    },
+    {
+      "model": "binary_terrain_dnn",
+      "seed": 43,
+      "variant": "control",
+      "trainingRows": 4982,
+      "validationThreshold": 0.04474304056732603,
+      "trainingSeconds": 2.0343573330319487,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.9065040650406504,
+          "macroF1": 0.8357349426086458,
+          "confusionMatrix": [
+            [
+              742,
+              119
+            ],
+            [
+              10,
+              195
+            ]
+          ],
+          "rocAuc": 0.9669131186085379
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.9140271656151874,
+          "macroF1": 0.875646551724138,
+          "confusionMatrix": [
+            [
+              689,
+              123
+            ],
+            [
+              7,
+              335
+            ]
+          ],
+          "rocAuc": 0.986687264137355
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.6633333333333333,
+          "macroF1": 0.6221898028653724,
+          "confusionMatrix": [
+            [
+              149,
+              1
+            ],
+            [
+              100,
+              50
+            ]
+          ],
+          "rocAuc": 0.9836444444444445
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.64,
+          "macroF1": 0.5863970588235294,
+          "confusionMatrix": [
+            [
+              42,
+              108
+            ],
+            [
+              0,
+              150
+            ]
+          ],
+          "rocAuc": 0.9176
+        }
+      }
+    },
+    {
+      "model": "binary_terrain_dnn",
+      "seed": 43,
+      "variant": "coverage",
+      "trainingRows": 4982,
+      "validationThreshold": 0.034277920861106884,
+      "trainingSeconds": 2.4157053329981863,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.90534262485482,
+          "macroF1": 0.8336222539141293,
+          "confusionMatrix": [
+            [
+              740,
+              121
+            ],
+            [
+              10,
+              195
+            ]
+          ],
+          "rocAuc": 0.9616611427438316
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.9134114020683893,
+          "macroF1": 0.8747633805453867,
+          "confusionMatrix": [
+            [
+              688,
+              124
+            ],
+            [
+              7,
+              335
+            ]
+          ],
+          "rocAuc": 0.98165312707055
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.6933333333333334,
+          "macroF1": 0.6644621668936004,
+          "confusionMatrix": [
+            [
+              148,
+              2
+            ],
+            [
+              90,
+              60
+            ]
+          ],
+          "rocAuc": 0.9729777777777777
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.5366666666666666,
+          "macroF1": 0.4100086305691931,
+          "confusionMatrix": [
+            [
+              11,
+              139
+            ],
+            [
+              0,
+              150
+            ]
+          ],
+          "rocAuc": 0.8848444444444444
+        }
+      }
+    },
+    {
+      "model": "binary_terrain_dnn",
+      "seed": 44,
+      "variant": "control",
+      "trainingRows": 4982,
+      "validationThreshold": 0.03473753973004673,
+      "trainingSeconds": 2.4424795410013758,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.9105691056910569,
+          "macroF1": 0.8432050540123457,
+          "confusionMatrix": [
+            [
+              749,
+              112
+            ],
+            [
+              10,
+              195
+            ]
+          ],
+          "rocAuc": 0.9657630095464718
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.9047150923285224,
+          "macroF1": 0.8655161726236966,
+          "confusionMatrix": [
+            [
+              681,
+              131
+            ],
+            [
+              10,
+              332
+            ]
+          ],
+          "rocAuc": 0.9822904963558321
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.78,
+          "macroF1": 0.7695101508660831,
+          "confusionMatrix": [
+            [
+              149,
+              1
+            ],
+            [
+              65,
+              85
+            ]
+          ],
+          "rocAuc": 0.9822666666666667
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.6533333333333333,
+          "macroF1": 0.6080205035428916,
+          "confusionMatrix": [
+            [
+              47,
+              103
+            ],
+            [
+              1,
+              149
+            ]
+          ],
+          "rocAuc": 0.8700444444444445
+        }
+      }
+    },
+    {
+      "model": "binary_terrain_dnn",
+      "seed": 44,
+      "variant": "coverage",
+      "trainingRows": 4982,
+      "validationThreshold": 0.01310581280438398,
+      "trainingSeconds": 2.759450666955672,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.8989547038327526,
+          "macroF1": 0.8221663533834587,
+          "confusionMatrix": [
+            [
+              729,
+              132
+            ],
+            [
+              10,
+              195
+            ]
+          ],
+          "rocAuc": 0.9623240134840372
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.895323798000749,
+          "macroF1": 0.8501894615145327,
+          "confusionMatrix": [
+            [
+              661,
+              151
+            ],
+            [
+              8,
+              334
+            ]
+          ],
+          "rocAuc": 0.9778181084896149
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.7433333333333333,
+          "macroF1": 0.7262222222222222,
+          "confusionMatrix": [
+            [
+              149,
+              1
+            ],
+            [
+              76,
+              74
+            ]
+          ],
+          "rocAuc": 0.9832
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.6133333333333333,
+          "macroF1": 0.5480754246532648,
+          "confusionMatrix": [
+            [
+              35,
+              115
+            ],
+            [
+              1,
+              149
+            ]
+          ],
+          "rocAuc": 0.9161333333333335
+        }
+      }
+    },
+    {
+      "model": "three_class_five_input_dnn",
+      "seed": 42,
+      "variant": "control",
+      "trainingRows": 5521,
+      "validationThreshold": null,
+      "trainingSeconds": 1.9891452920273878,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.5880758807588076,
+          "macroF1": 0.52923955430976,
+          "confusionMatrix": [
+            [
+              616,
+              163,
+              82
+            ],
+            [
+              10,
+              174,
+              21
+            ],
+            [
+              47,
+              33,
+              20
+            ]
+          ]
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.7197580499298422,
+          "macroF1": 0.6669701550441052,
+          "confusionMatrix": [
+            [
+              558,
+              165,
+              89
+            ],
+            [
+              6,
+              302,
+              34
+            ],
+            [
+              39,
+              21,
+              86
+            ]
+          ]
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.45999999999999996,
+          "macroF1": 0.3663752979252586,
+          "confusionMatrix": [
+            [
+              148,
+              2,
+              0
+            ],
+            [
+              91,
+              59,
+              0
+            ],
+            [
+              144,
+              6,
+              0
+            ]
+          ]
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.5333333333333333,
+          "macroF1": 0.4661435546962535,
+          "confusionMatrix": [
+            [
+              85,
+              60,
+              5
+            ],
+            [
+              1,
+              146,
+              3
+            ],
+            [
+              10,
+              131,
+              9
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "model": "three_class_five_input_dnn",
+      "seed": 42,
+      "variant": "coverage",
+      "trainingRows": 5521,
+      "validationThreshold": null,
+      "trainingSeconds": 3.9031127499765716,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.5593302361595044,
+          "macroF1": 0.5270821785322478,
+          "confusionMatrix": [
+            [
+              673,
+              107,
+              81
+            ],
+            [
+              18,
+              153,
+              34
+            ],
+            [
+              48,
+              37,
+              15
+            ]
+          ]
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.7006469027762815,
+          "macroF1": 0.664959161374932,
+          "confusionMatrix": [
+            [
+              595,
+              125,
+              92
+            ],
+            [
+              5,
+              316,
+              21
+            ],
+            [
+              58,
+              23,
+              65
+            ]
+          ]
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.4577777777777778,
+          "macroF1": 0.36270903010033445,
+          "confusionMatrix": [
+            [
+              145,
+              5,
+              0
+            ],
+            [
+              89,
+              61,
+              0
+            ],
+            [
+              136,
+              14,
+              0
+            ]
+          ]
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.5733333333333334,
+          "macroF1": 0.46220762010933586,
+          "confusionMatrix": [
+            [
+              117,
+              33,
+              0
+            ],
+            [
+              10,
+              140,
+              0
+            ],
+            [
+              100,
+              49,
+              1
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "model": "three_class_five_input_dnn",
+      "seed": 43,
+      "variant": "control",
+      "trainingRows": 5521,
+      "validationThreshold": null,
+      "trainingSeconds": 3.421922333945986,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.587669376693767,
+          "macroF1": 0.5548511257030794,
+          "confusionMatrix": [
+            [
+              700,
+              100,
+              61
+            ],
+            [
+              20,
+              164,
+              21
+            ],
+            [
+              54,
+              31,
+              15
+            ]
+          ]
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.7329220613597712,
+          "macroF1": 0.7038886529652628,
+          "confusionMatrix": [
+            [
+              637,
+              93,
+              82
+            ],
+            [
+              8,
+              308,
+              26
+            ],
+            [
+              58,
+              13,
+              75
+            ]
+          ]
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.5377777777777778,
+          "macroF1": 0.42822618215699976,
+          "confusionMatrix": [
+            [
+              143,
+              7,
+              0
+            ],
+            [
+              51,
+              99,
+              0
+            ],
+            [
+              88,
+              62,
+              0
+            ]
+          ]
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.5399999999999999,
+          "macroF1": 0.4363134409075599,
+          "confusionMatrix": [
+            [
+              95,
+              55,
+              0
+            ],
+            [
+              3,
+              147,
+              0
+            ],
+            [
+              42,
+              107,
+              1
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "model": "three_class_five_input_dnn",
+      "seed": 43,
+      "variant": "coverage",
+      "trainingRows": 5521,
+      "validationThreshold": null,
+      "trainingSeconds": 3.479624083964154,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.5732907471931862,
+          "macroF1": 0.5344053463254709,
+          "confusionMatrix": [
+            [
+              649,
+              100,
+              112
+            ],
+            [
+              16,
+              155,
+              34
+            ],
+            [
+              34,
+              45,
+              21
+            ]
+          ]
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.7227350378781153,
+          "macroF1": 0.6683698116709019,
+          "confusionMatrix": [
+            [
+              566,
+              126,
+              120
+            ],
+            [
+              8,
+              297,
+              37
+            ],
+            [
+              46,
+              12,
+              88
+            ]
+          ]
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.40444444444444444,
+          "macroF1": 0.30033890812642744,
+          "confusionMatrix": [
+            [
+              145,
+              5,
+              0
+            ],
+            [
+              113,
+              37,
+              0
+            ],
+            [
+              146,
+              4,
+              0
+            ]
+          ]
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.48,
+          "macroF1": 0.39636389729420296,
+          "confusionMatrix": [
+            [
+              66,
+              83,
+              1
+            ],
+            [
+              0,
+              146,
+              4
+            ],
+            [
+              19,
+              127,
+              4
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "model": "three_class_five_input_dnn",
+      "seed": 44,
+      "variant": "control",
+      "trainingRows": 5521,
+      "validationThreshold": null,
+      "trainingSeconds": 3.148999167024158,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.6042740998838559,
+          "macroF1": 0.5578516189134607,
+          "confusionMatrix": [
+            [
+              657,
+              106,
+              98
+            ],
+            [
+              10,
+              166,
+              29
+            ],
+            [
+              36,
+              40,
+              24
+            ]
+          ]
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.7397195489642597,
+          "macroF1": 0.6938480886390384,
+          "confusionMatrix": [
+            [
+              605,
+              111,
+              96
+            ],
+            [
+              7,
+              298,
+              37
+            ],
+            [
+              41,
+              17,
+              88
+            ]
+          ]
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.4266666666666667,
+          "macroF1": 0.32615797717610207,
+          "confusionMatrix": [
+            [
+              147,
+              3,
+              0
+            ],
+            [
+              105,
+              45,
+              0
+            ],
+            [
+              143,
+              7,
+              0
+            ]
+          ]
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.4444444444444444,
+          "macroF1": 0.3463373691298162,
+          "confusionMatrix": [
+            [
+              49,
+              101,
+              0
+            ],
+            [
+              0,
+              149,
+              1
+            ],
+            [
+              19,
+              129,
+              2
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "model": "three_class_five_input_dnn",
+      "seed": 44,
+      "variant": "coverage",
+      "trainingRows": 5521,
+      "validationThreshold": null,
+      "trainingSeconds": 3.8938532909960486,
+      "fitWarnings": [
+        "Stochastic Optimizer: Maximum iterations (500) reached and the optimization hasn't converged yet."
+      ],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.5612156407278358,
+          "macroF1": 0.5244333156389983,
+          "confusionMatrix": [
+            [
+              626,
+              109,
+              126
+            ],
+            [
+              14,
+              151,
+              40
+            ],
+            [
+              51,
+              27,
+              22
+            ]
+          ]
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.70010863378464,
+          "macroF1": 0.6446789439374184,
+          "confusionMatrix": [
+            [
+              545,
+              126,
+              141
+            ],
+            [
+              5,
+              292,
+              45
+            ],
+            [
+              54,
+              8,
+              84
+            ]
+          ]
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.4666666666666666,
+          "macroF1": 0.38220608569986436,
+          "confusionMatrix": [
+            [
+              147,
+              3,
+              0
+            ],
+            [
+              90,
+              59,
+              1
+            ],
+            [
+              137,
+              9,
+              4
+            ]
+          ]
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.5533333333333333,
+          "macroF1": 0.4589642337067967,
+          "confusionMatrix": [
+            [
+              103,
+              45,
+              2
+            ],
+            [
+              6,
+              141,
+              3
+            ],
+            [
+              63,
+              82,
+              5
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "model": "three_class_terrain_boosted",
+      "seed": 42,
+      "variant": "control",
+      "trainingRows": 5521,
+      "validationThreshold": null,
+      "trainingSeconds": 0.35480295901652426,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.6301355013550135,
+          "macroF1": 0.596310339687281,
+          "confusionMatrix": [
+            [
+              707,
+              69,
+              85
+            ],
+            [
+              9,
+              170,
+              26
+            ],
+            [
+              42,
+              34,
+              24
+            ]
+          ]
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.7613194996097813,
+          "macroF1": 0.7361239713606159,
+          "confusionMatrix": [
+            [
+              661,
+              54,
+              97
+            ],
+            [
+              9,
+              320,
+              13
+            ],
+            [
+              60,
+              8,
+              78
+            ]
+          ]
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.5444444444444444,
+          "macroF1": 0.5216713487620378,
+          "confusionMatrix": [
+            [
+              134,
+              5,
+              11
+            ],
+            [
+              60,
+              50,
+              40
+            ],
+            [
+              80,
+              9,
+              61
+            ]
+          ]
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.5111111111111111,
+          "macroF1": 0.44186687691788173,
+          "confusionMatrix": [
+            [
+              84,
+              54,
+              12
+            ],
+            [
+              14,
+              135,
+              1
+            ],
+            [
+              41,
+              98,
+              11
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "model": "three_class_terrain_boosted",
+      "seed": 42,
+      "variant": "coverage",
+      "trainingRows": 5521,
+      "validationThreshold": null,
+      "trainingSeconds": 0.34916645800694823,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.6233875338753387,
+          "macroF1": 0.5894869802069768,
+          "confusionMatrix": [
+            [
+              707,
+              70,
+              84
+            ],
+            [
+              9,
+              172,
+              24
+            ],
+            [
+              43,
+              36,
+              21
+            ]
+          ]
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.7599343317091868,
+          "macroF1": 0.7348675705685356,
+          "confusionMatrix": [
+            [
+              660,
+              62,
+              90
+            ],
+            [
+              10,
+              319,
+              13
+            ],
+            [
+              58,
+              10,
+              78
+            ]
+          ]
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.62,
+          "macroF1": 0.6060331825037708,
+          "confusionMatrix": [
+            [
+              134,
+              2,
+              14
+            ],
+            [
+              25,
+              82,
+              43
+            ],
+            [
+              48,
+              39,
+              63
+            ]
+          ]
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.5377777777777778,
+          "macroF1": 0.43694153069153074,
+          "confusionMatrix": [
+            [
+              127,
+              23,
+              0
+            ],
+            [
+              34,
+              115,
+              1
+            ],
+            [
+              118,
+              32,
+              0
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "model": "three_class_terrain_boosted",
+      "seed": 43,
+      "variant": "control",
+      "trainingRows": 5521,
+      "validationThreshold": null,
+      "trainingSeconds": 0.36961033300030977,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.6301355013550135,
+          "macroF1": 0.5964215941435839,
+          "confusionMatrix": [
+            [
+              707,
+              69,
+              85
+            ],
+            [
+              10,
+              170,
+              25
+            ],
+            [
+              42,
+              34,
+              24
+            ]
+          ]
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.7640131136638111,
+          "macroF1": 0.738654275289345,
+          "confusionMatrix": [
+            [
+              662,
+              52,
+              98
+            ],
+            [
+              9,
+              320,
+              13
+            ],
+            [
+              60,
+              7,
+              79
+            ]
+          ]
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.5466666666666667,
+          "macroF1": 0.5231493808095331,
+          "confusionMatrix": [
+            [
+              134,
+              5,
+              11
+            ],
+            [
+              60,
+              48,
+              42
+            ],
+            [
+              78,
+              8,
+              64
+            ]
+          ]
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.5155555555555555,
+          "macroF1": 0.44216266388212094,
+          "confusionMatrix": [
+            [
+              85,
+              56,
+              9
+            ],
+            [
+              13,
+              137,
+              0
+            ],
+            [
+              41,
+              99,
+              10
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "model": "three_class_terrain_boosted",
+      "seed": 43,
+      "variant": "coverage",
+      "trainingRows": 5521,
+      "validationThreshold": null,
+      "trainingSeconds": 0.35670225002104416,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.6309872241579558,
+          "macroF1": 0.5967724106566884,
+          "confusionMatrix": [
+            [
+              705,
+              69,
+              87
+            ],
+            [
+              9,
+              171,
+              25
+            ],
+            [
+              43,
+              33,
+              24
+            ]
+          ]
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.7619868768651803,
+          "macroF1": 0.7387938186776241,
+          "confusionMatrix": [
+            [
+              665,
+              60,
+              87
+            ],
+            [
+              10,
+              319,
+              13
+            ],
+            [
+              60,
+              8,
+              78
+            ]
+          ]
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.6155555555555555,
+          "macroF1": 0.5981058272324756,
+          "confusionMatrix": [
+            [
+              137,
+              3,
+              10
+            ],
+            [
+              29,
+              82,
+              39
+            ],
+            [
+              60,
+              32,
+              58
+            ]
+          ]
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.5333333333333333,
+          "macroF1": 0.4289828080229226,
+          "confusionMatrix": [
+            [
+              121,
+              29,
+              0
+            ],
+            [
+              30,
+              119,
+              1
+            ],
+            [
+              99,
+              51,
+              0
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "model": "three_class_terrain_boosted",
+      "seed": 44,
+      "variant": "control",
+      "trainingRows": 5521,
+      "validationThreshold": null,
+      "trainingSeconds": 0.3480549579835497,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.6305226480836237,
+          "macroF1": 0.5973810740111368,
+          "confusionMatrix": [
+            [
+              708,
+              69,
+              84
+            ],
+            [
+              11,
+              170,
+              24
+            ],
+            [
+              43,
+              33,
+              24
+            ]
+          ]
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.7630384547944153,
+          "macroF1": 0.7377296335880043,
+          "confusionMatrix": [
+            [
+              662,
+              52,
+              98
+            ],
+            [
+              10,
+              319,
+              13
+            ],
+            [
+              59,
+              8,
+              79
+            ]
+          ]
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.5444444444444444,
+          "macroF1": 0.5209762280391973,
+          "confusionMatrix": [
+            [
+              135,
+              5,
+              10
+            ],
+            [
+              61,
+              50,
+              39
+            ],
+            [
+              81,
+              9,
+              60
+            ]
+          ]
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.5022222222222222,
+          "macroF1": 0.43068637161941165,
+          "confusionMatrix": [
+            [
+              80,
+              59,
+              11
+            ],
+            [
+              10,
+              137,
+              3
+            ],
+            [
+              35,
+              106,
+              9
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "model": "three_class_terrain_boosted",
+      "seed": 44,
+      "variant": "coverage",
+      "trainingRows": 5521,
+      "validationThreshold": null,
+      "trainingSeconds": 0.3523625830421224,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.6250174216027874,
+          "macroF1": 0.5929394242191706,
+          "confusionMatrix": [
+            [
+              711,
+              68,
+              82
+            ],
+            [
+              11,
+              170,
+              24
+            ],
+            [
+              43,
+              35,
+              22
+            ]
+          ]
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.7693234227120312,
+          "macroF1": 0.7448650628885777,
+          "confusionMatrix": [
+            [
+              667,
+              58,
+              87
+            ],
+            [
+              7,
+              321,
+              14
+            ],
+            [
+              59,
+              7,
+              80
+            ]
+          ]
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.6022222222222222,
+          "macroF1": 0.5797313954818307,
+          "confusionMatrix": [
+            [
+              137,
+              3,
+              10
+            ],
+            [
+              33,
+              85,
+              32
+            ],
+            [
+              66,
+              35,
+              49
+            ]
+          ]
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.5355555555555556,
+          "macroF1": 0.43213401591078426,
+          "confusionMatrix": [
+            [
+              125,
+              25,
+              0
+            ],
+            [
+              33,
+              116,
+              1
+            ],
+            [
+              106,
+              44,
+              0
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "model": "three_class_terrain_dnn",
+      "seed": 42,
+      "variant": "control",
+      "trainingRows": 5521,
+      "validationThreshold": null,
+      "trainingSeconds": 4.045763582980726,
+      "fitWarnings": [
+        "Stochastic Optimizer: Maximum iterations (500) reached and the optimization hasn't converged yet."
+      ],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.632218350754936,
+          "macroF1": 0.6061990929959956,
+          "confusionMatrix": [
+            [
+              738,
+              75,
+              48
+            ],
+            [
+              14,
+              168,
+              23
+            ],
+            [
+              47,
+              31,
+              22
+            ]
+          ]
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.7172761194962423,
+          "macroF1": 0.6976692699733614,
+          "confusionMatrix": [
+            [
+              664,
+              68,
+              80
+            ],
+            [
+              9,
+              304,
+              29
+            ],
+            [
+              60,
+              21,
+              65
+            ]
+          ]
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.4666666666666666,
+          "macroF1": 0.36987238995759997,
+          "confusionMatrix": [
+            [
+              147,
+              3,
+              0
+            ],
+            [
+              86,
+              59,
+              5
+            ],
+            [
+              79,
+              67,
+              4
+            ]
+          ]
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.52,
+          "macroF1": 0.48970072007686577,
+          "confusionMatrix": [
+            [
+              77,
+              51,
+              22
+            ],
+            [
+              10,
+              129,
+              11
+            ],
+            [
+              13,
+              109,
+              28
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "model": "three_class_terrain_dnn",
+      "seed": 42,
+      "variant": "coverage",
+      "trainingRows": 5521,
+      "validationThreshold": null,
+      "trainingSeconds": 2.8754968749708496,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.5960433604336043,
+          "macroF1": 0.5848482990277238,
+          "confusionMatrix": [
+            [
+              742,
+              54,
+              65
+            ],
+            [
+              25,
+              153,
+              27
+            ],
+            [
+              59,
+              23,
+              18
+            ]
+          ]
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.7104533100977921,
+          "macroF1": 0.6952746391437211,
+          "confusionMatrix": [
+            [
+              668,
+              52,
+              92
+            ],
+            [
+              15,
+              300,
+              27
+            ],
+            [
+              69,
+              14,
+              63
+            ]
+          ]
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.46222222222222226,
+          "macroF1": 0.36334952258235037,
+          "confusionMatrix": [
+            [
+              147,
+              2,
+              1
+            ],
+            [
+              89,
+              61,
+              0
+            ],
+            [
+              127,
+              23,
+              0
+            ]
+          ]
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.5,
+          "macroF1": 0.43381726409560667,
+          "confusionMatrix": [
+            [
+              75,
+              65,
+              10
+            ],
+            [
+              7,
+              140,
+              3
+            ],
+            [
+              19,
+              121,
+              10
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "model": "three_class_terrain_dnn",
+      "seed": 43,
+      "variant": "control",
+      "trainingRows": 5521,
+      "validationThreshold": null,
+      "trainingSeconds": 3.630576124996878,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.627177700348432,
+          "macroF1": 0.6057789115464233,
+          "confusionMatrix": [
+            [
+              738,
+              60,
+              63
+            ],
+            [
+              11,
+              169,
+              25
+            ],
+            [
+              57,
+              23,
+              20
+            ]
+          ]
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.7381843576558044,
+          "macroF1": 0.7156522500500478,
+          "confusionMatrix": [
+            [
+              668,
+              48,
+              96
+            ],
+            [
+              10,
+              298,
+              34
+            ],
+            [
+              59,
+              11,
+              76
+            ]
+          ]
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.3688888888888889,
+          "macroF1": 0.25351095379431005,
+          "confusionMatrix": [
+            [
+              146,
+              1,
+              3
+            ],
+            [
+              118,
+              14,
+              18
+            ],
+            [
+              137,
+              7,
+              6
+            ]
+          ]
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.5466666666666667,
+          "macroF1": 0.4525732124884387,
+          "confusionMatrix": [
+            [
+              105,
+              43,
+              2
+            ],
+            [
+              8,
+              138,
+              4
+            ],
+            [
+              44,
+              103,
+              3
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "model": "three_class_terrain_dnn",
+      "seed": 43,
+      "variant": "coverage",
+      "trainingRows": 5521,
+      "validationThreshold": null,
+      "trainingSeconds": 3.3857546250219457,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.6134688346883469,
+          "macroF1": 0.5965788628644154,
+          "confusionMatrix": [
+            [
+              749,
+              60,
+              52
+            ],
+            [
+              23,
+              160,
+              22
+            ],
+            [
+              51,
+              30,
+              19
+            ]
+          ]
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.7306939736892749,
+          "macroF1": 0.7124510464137558,
+          "confusionMatrix": [
+            [
+              672,
+              50,
+              90
+            ],
+            [
+              16,
+              298,
+              28
+            ],
+            [
+              61,
+              13,
+              72
+            ]
+          ]
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.46666666666666673,
+          "macroF1": 0.3758790231401936,
+          "confusionMatrix": [
+            [
+              148,
+              1,
+              1
+            ],
+            [
+              77,
+              57,
+              16
+            ],
+            [
+              88,
+              57,
+              5
+            ]
+          ]
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.5399999999999999,
+          "macroF1": 0.43597888628970366,
+          "confusionMatrix": [
+            [
+              110,
+              39,
+              1
+            ],
+            [
+              17,
+              132,
+              1
+            ],
+            [
+              66,
+              83,
+              1
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "model": "three_class_terrain_dnn",
+      "seed": 44,
+      "variant": "control",
+      "trainingRows": 5521,
+      "validationThreshold": null,
+      "trainingSeconds": 2.552726208989043,
+      "fitWarnings": [],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.6379597367402245,
+          "macroF1": 0.6196461364165635,
+          "confusionMatrix": [
+            [
+              748,
+              60,
+              53
+            ],
+            [
+              16,
+              163,
+              26
+            ],
+            [
+              51,
+              24,
+              25
+            ]
+          ]
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.734258821882818,
+          "macroF1": 0.7148639989660378,
+          "confusionMatrix": [
+            [
+              672,
+              50,
+              90
+            ],
+            [
+              11,
+              304,
+              27
+            ],
+            [
+              60,
+              15,
+              71
+            ]
+          ]
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.4244444444444444,
+          "macroF1": 0.3294570725089133,
+          "confusionMatrix": [
+            [
+              150,
+              0,
+              0
+            ],
+            [
+              101,
+              34,
+              15
+            ],
+            [
+              125,
+              18,
+              7
+            ]
+          ]
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.5355555555555555,
+          "macroF1": 0.48729406420925936,
+          "confusionMatrix": [
+            [
+              85,
+              47,
+              18
+            ],
+            [
+              7,
+              136,
+              7
+            ],
+            [
+              26,
+              104,
+              20
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "model": "three_class_terrain_dnn",
+      "seed": 44,
+      "variant": "coverage",
+      "trainingRows": 5521,
+      "validationThreshold": null,
+      "trainingSeconds": 4.115132040984463,
+      "fitWarnings": [
+        "Stochastic Optimizer: Maximum iterations (500) reached and the optimization hasn't converged yet."
+      ],
+      "evaluation": {
+        "bay_validation": {
+          "balancedAccuracy": 0.6018505613627564,
+          "macroF1": 0.5941845890065168,
+          "confusionMatrix": [
+            [
+              757,
+              53,
+              51
+            ],
+            [
+              32,
+              153,
+              20
+            ],
+            [
+              60,
+              22,
+              18
+            ]
+          ]
+        },
+        "bay_test": {
+          "balancedAccuracy": 0.7268505528767072,
+          "macroF1": 0.7191257048352336,
+          "confusionMatrix": [
+            [
+              703,
+              32,
+              77
+            ],
+            [
+              22,
+              281,
+              39
+            ],
+            [
+              68,
+              6,
+              72
+            ]
+          ]
+        },
+        "santa-cruz-north": {
+          "balancedAccuracy": 0.4222222222222222,
+          "macroF1": 0.3265606503147576,
+          "confusionMatrix": [
+            [
+              142,
+              2,
+              6
+            ],
+            [
+              104,
+              45,
+              1
+            ],
+            [
+              102,
+              45,
+              3
+            ]
+          ]
+        },
+        "tracy-lathrop-stockton": {
+          "balancedAccuracy": 0.5111111111111112,
+          "macroF1": 0.43138691927352385,
+          "confusionMatrix": [
+            [
+              102,
+              42,
+              6
+            ],
+            [
+              21,
+              123,
+              6
+            ],
+            [
+              45,
+              100,
+              5
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "binary_five_input_boosted": {
+      "bay_test": {
+        "control": {
+          "balancedAccuracy": 0.7925921124650707,
+          "macroF1": 0.7081542891434869,
+          "perClassRecall": {
+            "minimal": 0.5968801313628899,
+            "one_percent": 0.9883040935672515
+          },
+          "meanConfusionMatrix": [
+            [
+              484.6666666666667,
+              327.3333333333333
+            ],
+            [
+              4.0,
+              338.0
+            ]
+          ]
+        },
+        "coverage": {
+          "balancedAccuracy": 0.799390718174747,
+          "macroF1": 0.7161758176068961,
+          "perClassRecall": {
+            "minimal": 0.6075533661740559,
+            "one_percent": 0.9912280701754387
+          },
+          "meanConfusionMatrix": [
+            [
+              493.3333333333333,
+              318.6666666666667
+            ],
+            [
+              3.0,
+              339.0
+            ]
+          ]
+        }
+      },
+      "santa-cruz-north": {
+        "control": {
+          "balancedAccuracy": 0.7633333333333333,
+          "macroF1": 0.7548862102455446,
+          "perClassRecall": {
+            "minimal": 0.9488888888888889,
+            "one_percent": 0.5777777777777778
+          },
+          "meanConfusionMatrix": [
+            [
+              142.33333333333334,
+              7.666666666666667
+            ],
+            [
+              63.333333333333336,
+              86.66666666666667
+            ]
+          ]
+        },
+        "coverage": {
+          "balancedAccuracy": 0.6988888888888889,
+          "macroF1": 0.6984334518381549,
+          "perClassRecall": {
+            "minimal": 0.7355555555555556,
+            "one_percent": 0.6622222222222223
+          },
+          "meanConfusionMatrix": [
+            [
+              110.33333333333333,
+              39.666666666666664
+            ],
+            [
+              50.666666666666664,
+              99.33333333333333
+            ]
+          ]
+        }
+      },
+      "tracy-lathrop-stockton": {
+        "control": {
+          "balancedAccuracy": 0.5833333333333334,
+          "macroF1": 0.4957983193277311,
+          "perClassRecall": {
+            "minimal": 0.16666666666666666,
+            "one_percent": 1.0
+          },
+          "meanConfusionMatrix": [
+            [
+              25.0,
+              125.0
+            ],
+            [
+              0.0,
+              150.0
+            ]
+          ]
+        },
+        "coverage": {
+          "balancedAccuracy": 0.5955555555555556,
+          "macroF1": 0.5271377044485176,
+          "perClassRecall": {
+            "minimal": 0.21555555555555558,
+            "one_percent": 0.9755555555555556
+          },
+          "meanConfusionMatrix": [
+            [
+              32.333333333333336,
+              117.66666666666667
+            ],
+            [
+              3.6666666666666665,
+              146.33333333333334
+            ]
+          ]
+        }
+      }
+    },
+    "binary_terrain_boosted": {
+      "bay_test": {
+        "control": {
+          "balancedAccuracy": 0.9127428244941856,
+          "macroF1": 0.8702728314739351,
+          "perClassRecall": {
+            "minimal": 0.8362068965517242,
+            "one_percent": 0.9892787524366472
+          },
+          "meanConfusionMatrix": [
+            [
+              679.0,
+              133.0
+            ],
+            [
+              3.6666666666666665,
+              338.3333333333333
+            ]
+          ]
+        },
+        "coverage": {
+          "balancedAccuracy": 0.915462746905578,
+          "macroF1": 0.8748692551285862,
+          "perClassRecall": {
+            "minimal": 0.8435960591133004,
+            "one_percent": 0.9873294346978557
+          },
+          "meanConfusionMatrix": [
+            [
+              685.0,
+              127.0
+            ],
+            [
+              4.333333333333333,
+              337.6666666666667
+            ]
+          ]
+        }
+      },
+      "santa-cruz-north": {
+        "control": {
+          "balancedAccuracy": 0.8222222222222223,
+          "macroF1": 0.8187737937710476,
+          "perClassRecall": {
+            "minimal": 0.96,
+            "one_percent": 0.6844444444444444
+          },
+          "meanConfusionMatrix": [
+            [
+              144.0,
+              6.0
+            ],
+            [
+              47.333333333333336,
+              102.66666666666667
+            ]
+          ]
+        },
+        "coverage": {
+          "balancedAccuracy": 0.9611111111111112,
+          "macroF1": 0.9611077896123946,
+          "perClassRecall": {
+            "minimal": 0.9622222222222222,
+            "one_percent": 0.96
+          },
+          "meanConfusionMatrix": [
+            [
+              144.33333333333334,
+              5.666666666666667
+            ],
+            [
+              6.0,
+              144.0
+            ]
+          ]
+        }
+      },
+      "tracy-lathrop-stockton": {
+        "control": {
+          "balancedAccuracy": 0.5966666666666667,
+          "macroF1": 0.5183057100014596,
+          "perClassRecall": {
+            "minimal": 0.19333333333333333,
+            "one_percent": 1.0
+          },
+          "meanConfusionMatrix": [
+            [
+              29.0,
+              121.0
+            ],
+            [
+              0.0,
+              150.0
+            ]
+          ]
+        },
+        "coverage": {
+          "balancedAccuracy": 0.5966666666666667,
+          "macroF1": 0.5222503053828356,
+          "perClassRecall": {
+            "minimal": 0.20222222222222222,
+            "one_percent": 0.991111111111111
+          },
+          "meanConfusionMatrix": [
+            [
+              30.333333333333332,
+              119.66666666666667
+            ],
+            [
+              1.3333333333333333,
+              148.66666666666666
+            ]
+          ]
+        }
+      }
+    },
+    "binary_five_input_dnn": {
+      "bay_test": {
+        "control": {
+          "balancedAccuracy": 0.8289725751159507,
+          "macroF1": 0.7544159408206944,
+          "perClassRecall": {
+            "minimal": 0.6637931034482758,
+            "one_percent": 0.9941520467836257
+          },
+          "meanConfusionMatrix": [
+            [
+              539.0,
+              273.0
+            ],
+            [
+              2.0,
+              340.0
+            ]
+          ]
+        },
+        "coverage": {
+          "balancedAccuracy": 0.8001853292234418,
+          "macroF1": 0.7154954313089242,
+          "perClassRecall": {
+            "minimal": 0.6042692939244664,
+            "one_percent": 0.9961013645224172
+          },
+          "meanConfusionMatrix": [
+            [
+              490.6666666666667,
+              321.3333333333333
+            ],
+            [
+              1.3333333333333333,
+              340.6666666666667
+            ]
+          ]
+        }
+      },
+      "santa-cruz-north": {
+        "control": {
+          "balancedAccuracy": 0.6744444444444445,
+          "macroF1": 0.6479946273247353,
+          "perClassRecall": {
+            "minimal": 0.9355555555555556,
+            "one_percent": 0.41333333333333333
+          },
+          "meanConfusionMatrix": [
+            [
+              140.33333333333334,
+              9.666666666666666
+            ],
+            [
+              88.0,
+              62.0
+            ]
+          ]
+        },
+        "coverage": {
+          "balancedAccuracy": 0.7255555555555556,
+          "macroF1": 0.717532114620921,
+          "perClassRecall": {
+            "minimal": 0.831111111111111,
+            "one_percent": 0.62
+          },
+          "meanConfusionMatrix": [
+            [
+              124.66666666666667,
+              25.333333333333332
+            ],
+            [
+              57.0,
+              93.0
+            ]
+          ]
+        }
+      },
+      "tracy-lathrop-stockton": {
+        "control": {
+          "balancedAccuracy": 0.6255555555555556,
+          "macroF1": 0.5623464260723532,
+          "perClassRecall": {
+            "minimal": 0.2511111111111111,
+            "one_percent": 1.0
+          },
+          "meanConfusionMatrix": [
+            [
+              37.666666666666664,
+              112.33333333333333
+            ],
+            [
+              0.0,
+              150.0
+            ]
+          ]
+        },
+        "coverage": {
+          "balancedAccuracy": 0.5877777777777777,
+          "macroF1": 0.49921351579952805,
+          "perClassRecall": {
+            "minimal": 0.17555555555555555,
+            "one_percent": 1.0
+          },
+          "meanConfusionMatrix": [
+            [
+              26.333333333333332,
+              123.66666666666667
+            ],
+            [
+              0.0,
+              150.0
+            ]
+          ]
+        }
+      }
+    },
+    "binary_terrain_dnn": {
+      "bay_test": {
+        "control": {
+          "balancedAccuracy": 0.9111800094104995,
+          "macroF1": 0.87335351385673,
+          "perClassRecall": {
+            "minimal": 0.8477011494252874,
+            "one_percent": 0.9746588693957116
+          },
+          "meanConfusionMatrix": [
+            [
+              688.3333333333334,
+              123.66666666666667
+            ],
+            [
+              8.666666666666666,
+              333.3333333333333
+            ]
+          ]
+        },
+        "coverage": {
+          "balancedAccuracy": 0.9006088016977309,
+          "macroF1": 0.8570001876354363,
+          "perClassRecall": {
+            "minimal": 0.8226600985221676,
+            "one_percent": 0.9785575048732943
+          },
+          "meanConfusionMatrix": [
+            [
+              668.0,
+              144.0
+            ],
+            [
+              7.333333333333333,
+              334.6666666666667
+            ]
+          ]
+        }
+      },
+      "santa-cruz-north": {
+        "control": {
+          "balancedAccuracy": 0.7055555555555556,
+          "macroF1": 0.6759221671875698,
+          "perClassRecall": {
+            "minimal": 0.9933333333333333,
+            "one_percent": 0.4177777777777778
+          },
+          "meanConfusionMatrix": [
+            [
+              149.0,
+              1.0
+            ],
+            [
+              87.33333333333333,
+              62.666666666666664
+            ]
+          ]
+        },
+        "coverage": {
+          "balancedAccuracy": 0.6933333333333334,
+          "macroF1": 0.6614088831082499,
+          "perClassRecall": {
+            "minimal": 0.991111111111111,
+            "one_percent": 0.3955555555555556
+          },
+          "meanConfusionMatrix": [
+            [
+              148.66666666666666,
+              1.3333333333333333
+            ],
+            [
+              90.66666666666667,
+              59.333333333333336
+            ]
+          ]
+        }
+      },
+      "tracy-lathrop-stockton": {
+        "control": {
+          "balancedAccuracy": 0.6522222222222221,
+          "macroF1": 0.6049045186835175,
+          "perClassRecall": {
+            "minimal": 0.3066666666666667,
+            "one_percent": 0.9977777777777778
+          },
+          "meanConfusionMatrix": [
+            [
+              46.0,
+              104.0
+            ],
+            [
+              0.3333333333333333,
+              149.66666666666666
+            ]
+          ]
+        },
+        "coverage": {
+          "balancedAccuracy": 0.591111111111111,
+          "macroF1": 0.506380381232431,
+          "perClassRecall": {
+            "minimal": 0.18444444444444444,
+            "one_percent": 0.9977777777777778
+          },
+          "meanConfusionMatrix": [
+            [
+              27.666666666666668,
+              122.33333333333333
+            ],
+            [
+              0.3333333333333333,
+              149.66666666666666
+            ]
+          ]
+        }
+      }
+    },
+    "three_class_five_input_dnn": {
+      "bay_test": {
+        "control": {
+          "balancedAccuracy": 0.7307998867512912,
+          "macroF1": 0.6882356322161355,
+          "perClassRecall": {
+            "minimal": 0.7389162561576353,
+            "one_percent": 0.884990253411306,
+            "point_two_percent": 0.5684931506849316
+          },
+          "meanConfusionMatrix": [
+            [
+              600.0,
+              123.0,
+              89.0
+            ],
+            [
+              7.0,
+              302.6666666666667,
+              32.333333333333336
+            ],
+            [
+              46.0,
+              17.0,
+              83.0
+            ]
+          ]
+        },
+        "coverage": {
+          "balancedAccuracy": 0.7078301914796791,
+          "macroF1": 0.6593359723277508,
+          "perClassRecall": {
+            "minimal": 0.7003284072249589,
+            "one_percent": 0.8820662768031188,
+            "point_two_percent": 0.541095890410959
+          },
+          "meanConfusionMatrix": [
+            [
+              568.6666666666666,
+              125.66666666666667,
+              117.66666666666667
+            ],
+            [
+              6.0,
+              301.6666666666667,
+              34.333333333333336
+            ],
+            [
+              52.666666666666664,
+              14.333333333333334,
+              79.0
+            ]
+          ]
+        }
+      },
+      "santa-cruz-north": {
+        "control": {
+          "balancedAccuracy": 0.4748148148148148,
+          "macroF1": 0.3735864857527868,
+          "perClassRecall": {
+            "minimal": 0.9733333333333333,
+            "one_percent": 0.4511111111111111,
+            "point_two_percent": 0.0
+          },
+          "meanConfusionMatrix": [
+            [
+              146.0,
+              4.0,
+              0.0
+            ],
+            [
+              82.33333333333333,
+              67.66666666666667,
+              0.0
+            ],
+            [
+              125.0,
+              25.0,
+              0.0
+            ]
+          ]
+        },
+        "coverage": {
+          "balancedAccuracy": 0.44296296296296295,
+          "macroF1": 0.3484180079755421,
+          "perClassRecall": {
+            "minimal": 0.971111111111111,
+            "one_percent": 0.34888888888888886,
+            "point_two_percent": 0.008888888888888889
+          },
+          "meanConfusionMatrix": [
+            [
+              145.66666666666666,
+              4.333333333333333,
+              0.0
+            ],
+            [
+              97.33333333333333,
+              52.333333333333336,
+              0.3333333333333333
+            ],
+            [
+              139.66666666666666,
+              9.0,
+              1.3333333333333333
+            ]
+          ]
+        }
+      },
+      "tracy-lathrop-stockton": {
+        "control": {
+          "balancedAccuracy": 0.5059259259259259,
+          "macroF1": 0.4162647882445432,
+          "perClassRecall": {
+            "minimal": 0.5088888888888888,
+            "one_percent": 0.9822222222222222,
+            "point_two_percent": 0.02666666666666667
+          },
+          "meanConfusionMatrix": [
+            [
+              76.33333333333333,
+              72.0,
+              1.6666666666666667
+            ],
+            [
+              1.3333333333333333,
+              147.33333333333334,
+              1.3333333333333333
+            ],
+            [
+              23.666666666666668,
+              122.33333333333333,
+              4.0
+            ]
+          ]
+        },
+        "coverage": {
+          "balancedAccuracy": 0.5355555555555555,
+          "macroF1": 0.4391785837034452,
+          "perClassRecall": {
+            "minimal": 0.6355555555555555,
+            "one_percent": 0.9488888888888889,
+            "point_two_percent": 0.022222222222222223
+          },
+          "meanConfusionMatrix": [
+            [
+              95.33333333333333,
+              53.666666666666664,
+              1.0
+            ],
+            [
+              5.333333333333333,
+              142.33333333333334,
+              2.3333333333333335
+            ],
+            [
+              60.666666666666664,
+              86.0,
+              3.3333333333333335
+            ]
+          ]
+        }
+      }
+    },
+    "three_class_terrain_boosted": {
+      "bay_test": {
+        "control": {
+          "balancedAccuracy": 0.7627903560226693,
+          "macroF1": 0.7375026267459884,
+          "perClassRecall": {
+            "minimal": 0.8148604269293925,
+            "one_percent": 0.9346978557504872,
+            "point_two_percent": 0.5388127853881279
+          },
+          "meanConfusionMatrix": [
+            [
+              661.6666666666666,
+              52.666666666666664,
+              97.66666666666667
+            ],
+            [
+              9.333333333333334,
+              319.6666666666667,
+              13.0
+            ],
+            [
+              59.666666666666664,
+              7.666666666666667,
+              78.66666666666667
+            ]
+          ]
+        },
+        "coverage": {
+          "balancedAccuracy": 0.7637482104287994,
+          "macroF1": 0.7395088173782458,
+          "perClassRecall": {
+            "minimal": 0.8177339901477833,
+            "one_percent": 0.9346978557504872,
+            "point_two_percent": 0.5388127853881278
+          },
+          "meanConfusionMatrix": [
+            [
+              664.0,
+              60.0,
+              88.0
+            ],
+            [
+              9.0,
+              319.6666666666667,
+              13.333333333333334
+            ],
+            [
+              59.0,
+              8.333333333333334,
+              78.66666666666667
+            ]
+          ]
+        }
+      },
+      "santa-cruz-north": {
+        "control": {
+          "balancedAccuracy": 0.5451851851851851,
+          "macroF1": 0.5219323192035894,
+          "perClassRecall": {
+            "minimal": 0.8955555555555555,
+            "one_percent": 0.32888888888888884,
+            "point_two_percent": 0.41111111111111115
+          },
+          "meanConfusionMatrix": [
+            [
+              134.33333333333334,
+              5.0,
+              10.666666666666666
+            ],
+            [
+              60.333333333333336,
+              49.333333333333336,
+              40.333333333333336
+            ],
+            [
+              79.66666666666667,
+              8.666666666666666,
+              61.666666666666664
+            ]
+          ]
+        },
+        "coverage": {
+          "balancedAccuracy": 0.6125925925925926,
+          "macroF1": 0.5946234684060258,
+          "perClassRecall": {
+            "minimal": 0.9066666666666666,
+            "one_percent": 0.5533333333333333,
+            "point_two_percent": 0.37777777777777777
+          },
+          "meanConfusionMatrix": [
+            [
+              136.0,
+              2.6666666666666665,
+              11.333333333333334
+            ],
+            [
+              29.0,
+              83.0,
+              38.0
+            ],
+            [
+              58.0,
+              35.333333333333336,
+              56.666666666666664
+            ]
+          ]
+        }
+      },
+      "tracy-lathrop-stockton": {
+        "control": {
+          "balancedAccuracy": 0.5096296296296297,
+          "macroF1": 0.4382386374731381,
+          "perClassRecall": {
+            "minimal": 0.5533333333333333,
+            "one_percent": 0.9088888888888889,
+            "point_two_percent": 0.06666666666666667
+          },
+          "meanConfusionMatrix": [
+            [
+              83.0,
+              56.333333333333336,
+              10.666666666666666
+            ],
+            [
+              12.333333333333334,
+              136.33333333333334,
+              1.3333333333333333
+            ],
+            [
+              39.0,
+              101.0,
+              10.0
+            ]
+          ]
+        },
+        "coverage": {
+          "balancedAccuracy": 0.5355555555555556,
+          "macroF1": 0.4326861182084125,
+          "perClassRecall": {
+            "minimal": 0.8288888888888889,
+            "one_percent": 0.7777777777777778,
+            "point_two_percent": 0.0
+          },
+          "meanConfusionMatrix": [
+            [
+              124.33333333333333,
+              25.666666666666668,
+              0.0
+            ],
+            [
+              32.333333333333336,
+              116.66666666666667,
+              1.0
+            ],
+            [
+              107.66666666666667,
+              42.333333333333336,
+              0.0
+            ]
+          ]
+        }
+      }
+    },
+    "three_class_terrain_dnn": {
+      "bay_test": {
+        "control": {
+          "balancedAccuracy": 0.7299064330116215,
+          "macroF1": 0.7093951729964824,
+          "perClassRecall": {
+            "minimal": 0.8226600985221674,
+            "one_percent": 0.8830409356725145,
+            "point_two_percent": 0.4840182648401827
+          },
+          "meanConfusionMatrix": [
+            [
+              668.0,
+              55.333333333333336,
+              88.66666666666667
+            ],
+            [
+              10.0,
+              302.0,
+              30.0
+            ],
+            [
+              59.666666666666664,
+              15.666666666666666,
+              70.66666666666667
+            ]
+          ]
+        },
+        "coverage": {
+          "balancedAccuracy": 0.7226659455545915,
+          "macroF1": 0.7089504634642368,
+          "perClassRecall": {
+            "minimal": 0.8386699507389164,
+            "one_percent": 0.8567251461988304,
+            "point_two_percent": 0.47260273972602734
+          },
+          "meanConfusionMatrix": [
+            [
+              681.0,
+              44.666666666666664,
+              86.33333333333333
+            ],
+            [
+              17.666666666666668,
+              293.0,
+              31.333333333333332
+            ],
+            [
+              66.0,
+              11.0,
+              69.0
+            ]
+          ]
+        }
+      },
+      "santa-cruz-north": {
+        "control": {
+          "balancedAccuracy": 0.41999999999999993,
+          "macroF1": 0.31761347208694113,
+          "perClassRecall": {
+            "minimal": 0.9844444444444443,
+            "one_percent": 0.23777777777777775,
+            "point_two_percent": 0.03777777777777778
+          },
+          "meanConfusionMatrix": [
+            [
+              147.66666666666666,
+              1.3333333333333333,
+              1.0
+            ],
+            [
+              101.66666666666667,
+              35.666666666666664,
+              12.666666666666666
+            ],
+            [
+              113.66666666666667,
+              30.666666666666668,
+              5.666666666666667
+            ]
+          ]
+        },
+        "coverage": {
+          "balancedAccuracy": 0.45037037037037037,
+          "macroF1": 0.3552630653457672,
+          "perClassRecall": {
+            "minimal": 0.9711111111111111,
+            "one_percent": 0.3622222222222222,
+            "point_two_percent": 0.017777777777777778
+          },
+          "meanConfusionMatrix": [
+            [
+              145.66666666666666,
+              1.6666666666666667,
+              2.6666666666666665
+            ],
+            [
+              90.0,
+              54.333333333333336,
+              5.666666666666667
+            ],
+            [
+              105.66666666666667,
+              41.666666666666664,
+              2.6666666666666665
+            ]
+          ]
+        }
+      },
+      "tracy-lathrop-stockton": {
+        "control": {
+          "balancedAccuracy": 0.534074074074074,
+          "macroF1": 0.4765226655915213,
+          "perClassRecall": {
+            "minimal": 0.5933333333333334,
+            "one_percent": 0.8955555555555555,
+            "point_two_percent": 0.11333333333333333
+          },
+          "meanConfusionMatrix": [
+            [
+              89.0,
+              47.0,
+              14.0
+            ],
+            [
+              8.333333333333334,
+              134.33333333333334,
+              7.333333333333333
+            ],
+            [
+              27.666666666666668,
+              105.33333333333333,
+              17.0
+            ]
+          ]
+        },
+        "coverage": {
+          "balancedAccuracy": 0.5170370370370371,
+          "macroF1": 0.4337276898862781,
+          "perClassRecall": {
+            "minimal": 0.6377777777777779,
+            "one_percent": 0.8777777777777778,
+            "point_two_percent": 0.035555555555555556
+          },
+          "meanConfusionMatrix": [
+            [
+              95.66666666666667,
+              48.666666666666664,
+              5.666666666666667
+            ],
+            [
+              15.0,
+              131.66666666666666,
+              3.3333333333333335
+            ],
+            [
+              43.333333333333336,
+              101.33333333333333,
+              5.333333333333333
+            ]
+          ]
+        }
+      }
+    }
+  },
+  "protocol": "Prespecified mild weighting; same rows, features, architecture, seed and preprocessing within pairs. Binary thresholds target 95% Bay validation recall. Three-class control and coverage both use class-balanced loss. DNN training uses a 500-iteration maximum and training-loss convergence; no candidate chosen on external scores.",
+  "runsWithFitWarnings": 5,
+  "limitations": "Pilot configurations are not exact retrains of every saved checkpoint. CNNs were not retrained. Three seeds measure initialization variation, not independent regional uncertainty. Existing external results motivated the design; a fresh geographic test is required. No production model replaced.",
+  "sourceSha256": {
+    "data/dnn-three-class-training-table.csv": "6104603d854d2f521cbb84a20354a0f23f39ae0ccdbcf559e2220efa5ea85cc0",
+    "data/physical-hazard-calibration.csv": "c0261b3e81e0d5ef569107af76316d1226107c00f22c200bfbaa2bab63abbffc",
+    "data/cache/terrain-cnn/three-class/partitions.json": "e60300aaec7822b267b2fb145c3188467f0938bc4a897cb7ced2adfba81f6662"
+  },
+  "weightRecipeSha256": "ed1259724c7b185927ef795c4a87a00da0201035ee60a60ef7cfdf976e14211a",
+  "trainingWeightsSha256": "0684e16f6e66f9c3d9acbd6a0e769e003a3f78426ebca4e3f31c0dc5b5f6a05b"
+}

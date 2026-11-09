@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-08T00:42:19.391562+00:00",
+  "dataset": "data/santa-cruz-north-fema-map-class-terrain-sample.csv",
+  "datasetSha256": "35c78ab31dce18eda22d2a856f559ce72cb2ba3d63a4697a18635de81ec19f1f",
+  "hydrographyCorrection": {
+    "source": "https://3dhp.nationalmap.gov/arcgis/rest/services/usgs_3dhp_all/FeatureServer/50",
+    "localFile": "hydrography/santa_cruz_north_3dhp_flowlines.geojson",
+    "sha256": "f24aae349b0dff8730cbbf82cb391d2c6d6b890b9c5b0201a34f78e11f5e2bed",
+    "flowlineCount": 5111,
+    "note": "USGS 3DHP flowlines supplement the local water network. All 450 sample IDs, coordinates, and labels stayed fixed; earlier Santa Cruz scores are superseded."
+  },
+  "sampleRole": "Santa Cruz County external geographic test; no retraining or threshold changes",
+  "samplingCaveat": "150 intentionally balanced points per class; class frequencies do not represent prevalence",
+  "classes": [
+    "minimal",
+    "one_percent",
+    "point_two_percent"
+  ],
+  "rows": 450,
+  "cnn": {
+    "accuracy": 0.43555555555555553,
+    "balancedAccuracy": 0.43555555555555564,
+    "macroF1": 0.3393356536843674,
+    "logLoss": 1.1253478767676999,
+    "perClass": {
+      "minimal": {
+        "precision": 0.3973333333333333,
+        "recall": 0.9933333333333333,
+        "f1": 0.5676190476190476,
+        "support": 150
+      },
+      "one_percent": {
+        "precision": 0.6268656716417911,
+        "recall": 0.28,
+        "f1": 0.3870967741935484,
+        "support": 150
+      },
+      "point_two_percent": {
+        "precision": 0.625,
+        "recall": 0.03333333333333333,
+        "f1": 0.06329113924050633,
+        "support": 150
+      }
+    },
+    "confusionMatrix": [
+      [
+        149,
+        0,
+        1
+      ],
+      [
+        106,
+        42,
+        2
+      ],
+      [
+        120,
+        25,
+        5
+      ]
+    ]
+  },
+  "bufferedBoosted": {
+    "accuracy": 0.5333333333333333,
+    "balancedAccuracy": 0.5333333333333333,
+    "macroF1": 0.50453506222629,
+    "logLoss": 1.0591288246631139,
+    "perClass": {
+      "minimal": {
+        "precision": 0.44936708860759494,
+        "recall": 0.9466666666666667,
+        "f1": 0.6094420600858369,
+        "support": 150
+      },
+      "one_percent": {
+        "precision": 0.8125,
+        "recall": 0.3466666666666667,
+        "f1": 0.48598130841121495,
+        "support": 150
+      },
+      "point_two_percent": {
+        "precision": 0.6571428571428571,
+        "recall": 0.30666666666666664,
+        "f1": 0.41818181818181815,
+        "support": 150
+      }
+    },
+    "confusionMatrix": [
+      [
+        142,
+        2,
+        6
+      ],
+      [
+        80,
+        52,
+        18
+      ],
+      [
+        94,
+        10,
+        46
+      ]
+    ]
+  }
+}

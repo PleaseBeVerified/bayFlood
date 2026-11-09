@@ -1,4 +1,4 @@
-import modelArtifact from "../../models/flood-risk-boosted.json" with { type: "json" };
+import modelArtifact from "../../models/flood-risk-terrain-full.json" with { type: "json" };
 
 export type BoostedFloodRiskInput = {
   elevationMeters: number;
@@ -6,6 +6,11 @@ export type BoostedFloodRiskInput = {
   rainfallMillimeters: number | null;
   nearestWaterAvailable: number | null;
   nearestWaterDistanceMeters: number | null;
+  slopeDegrees: number;
+  localElevation250Meters: number;
+  localElevation500Meters: number;
+  flowAccumulationSquareMeters: number;
+  heightAboveDrainageMeters: number;
 };
 
 type Tree = { leaf: number } | {
@@ -34,6 +39,11 @@ function rawFeatures(input: BoostedFloodRiskInput): Array<number | null> {
     input.nearestWaterDistanceMeters === null
       ? null
       : Math.log1p(Math.max(0, input.nearestWaterDistanceMeters)),
+    input.slopeDegrees,
+    input.localElevation250Meters,
+    input.localElevation500Meters,
+    Math.log1p(Math.max(0, input.flowAccumulationSquareMeters)),
+    input.heightAboveDrainageMeters,
   ];
 }
 
